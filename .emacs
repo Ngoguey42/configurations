@@ -6,7 +6,7 @@
 ;    By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2015/02/09 15:34:40 by ngoguey           #+#    #+#              ;
-;    Updated: 2015/02/09 15:51:13 by ngoguey          ###   ########.fr        ;
+;    Updated: 2015/02/10 09:13:33 by ngoguey          ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 
@@ -26,9 +26,13 @@
 (add-to-list 'auto-mode-alist '("\\.php$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.php$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.cu$" . c-mode))
+(set-face-attribute 'web-mode-html-tag-face nil :foreground "MediumSlateBlue")
+(set-face-attribute 'web-mode-html-tag-bracket-face nil :foreground "SteelBlue")
 
 (setq-default tab-width 4)
 (setq-default indent-tabs-mode t)
+(setq-default c-basic-offset 4)
+(setq-default c-default-style "linux")
 (global-set-key (kbd "DEL") 'backward-delete-char)
 (setq-default c-backspace-function 'backward-delete-char)
 
@@ -55,6 +59,7 @@
 
 (global-set-key (kbd "<kp-3>") 'toggle-comment-on-line)
 (global-set-key (kbd "<kp-6>") 'comment-or-uncomment-region)
+(global-set-key (kbd "<kp-5>") "\M-;")
 
 
 (global-set-key (kbd "<kp-add>") 'forward-paragraph)
