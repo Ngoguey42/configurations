@@ -1,0 +1,3 @@
+[submodule "web-mode"]
+	path = web-mode
+	url = https://github.com/fxbois/web-mode
