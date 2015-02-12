@@ -1,7 +1,17 @@
+;******************************************************************************;
+;                                                                              ;
+;                                                         :::      ::::::::    ;
+;    my_bindings.el                                     :+:      :+:    :+:    ;
+;                                                     +:+ +:+         +:+      ;
+;    By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+         ;
+;                                                 +#+#+#+#+#+   +#+            ;
+;    Created: 2015/02/12 07:41:24 by ngoguey           #+#    #+#              ;
+;    Updated: 2015/02/12 07:41:30 by ngoguey          ###   ########.fr        ;
+;                                                                              ;
+;******************************************************************************;
 
 (global-set-key (kbd "DEL") 'backward-delete-char)
 (setq-default c-backspace-function 'backward-delete-char)
-
 
 (defun toggle-comment-on-line ()
   "comment or uncomment current line"
