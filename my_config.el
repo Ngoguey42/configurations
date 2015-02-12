@@ -6,7 +6,7 @@
 ;    By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2015/02/12 07:33:57 by ngoguey           #+#    #+#              ;
-;    Updated: 2015/02/12 07:40:54 by ngoguey          ###   ########.fr        ;
+;    Updated: 2015/02/12 08:14:19 by ngoguey          ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 
@@ -19,8 +19,9 @@
 
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.php$" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.php$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.cu$" . c-mode))
+
 (set-face-attribute 'web-mode-html-tag-face nil :foreground "MediumSlateBlue")
 (set-face-attribute 'web-mode-html-tag-bracket-face nil :foreground "SteelBlue")
 (setq web-mode-markup-indent-offset 2)
