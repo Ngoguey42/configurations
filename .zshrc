@@ -98,6 +98,9 @@ alias cdgnl="cd ~/gnl_project/"
 alias cdls="cd ~/ls_project/"
 alias cdfr="cd ~/fractol_project/"
 alias cdfdf="cd ~/fdf_project/"
+alias cdapache="cd /nfs/zfs-student-2/users/2014/ngoguey/mamp/apache2/conf/bitnami/"
+# alias cddemo="cd /nfs/zfs-student-2/users/2014/ngoguey/mamp/apps/demo/"
+alias cdapps="cd /nfs/zfs-student-2/users/2014/ngoguey/mamp/apps/"
 
 alias nvcc="/usr/local/cuda/bin/nvcc"
 alias wcc="gcc -Wall -Werror -Wextra"
@@ -211,4 +214,4 @@ kill -$1 $(ps | grep -v "grep" | grep "ft_minishell1" | cut -c -5)
 };_'
 
 alias kmsh="\`sigmsh KILL\`"
-
+alias chp="chmod 755 *.php"
