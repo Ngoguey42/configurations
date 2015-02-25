@@ -140,7 +140,9 @@ alias makejg="make fclean ; make -j g"
 alias makejgl="make -C libft/ fclean ; make -C libft/ -j g"
 alias makejga="makejgl ; makejg"
 
-alias kic="ls -ldGFtu /nfs/z*/*/*/*"
+# alias kic="ls -ldGFtu /nfs/z*/*/*/*"
+alias kic='ls -dltu /nfs/z*/*/*/* |  awk  '"'"'{printf "%15s (%s) %3s %2s %s\n", $3, $4, $6, $7, $8}'"'"' | rev | uniq -f4 | rev'
+
 alias qui='_(){ ldapsearch uid="$1" ; }; _'
 alias saveconf="cd ; cp .zshrc zshrc ; cp .emacs emacs ; ls -lt | head -n 4 ; open . ; /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --kiosk --args https://drive.google.com/drive/"
 
@@ -187,7 +189,7 @@ echo -n "\033[0m"
 echo "MSH:"
 touch log.txt
 exec 5>./log.txt
-env -i ./ft_minishell1 -c $@ 1>sht1 2>sht2
+env -i ./ft_minishell2 -c $@ 1>sht1 2>sht2
 echo -n "\033[33m"
 cat sht1
 echo -n "\033[31m"
