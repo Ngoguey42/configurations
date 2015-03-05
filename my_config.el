@@ -6,7 +6,7 @@
 ;    By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2015/02/12 07:33:57 by ngoguey           #+#    #+#              ;
-;    Updated: 2015/02/13 06:58:28 by ngoguey          ###   ########.fr        ;
+;    Updated: 2015/03/05 07:56:18 by ngoguey          ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 
@@ -15,6 +15,7 @@
 
 (load "my_bindings.el")
 (load "header.el")
+(load "my_cpptemplates.el")
 ;; (load "comments.el")
 
 
