@@ -1,0 +1,20 @@
+
+coplien templates:
+	add virtual destructor
+	class.cpp template
+
+coplien templates:
+	80 cols * 2 lines spacers cpp
+	
+	debug without new line
+	operator prototype template
+	
+	function minimal code template: bracket, new line, return and braket template 
+	
+	main minimal code template (includes etc..)
+	
+	
+	#include <|> template
+	#include "|.hpp" template
+	
+	
