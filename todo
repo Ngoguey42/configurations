@@ -13,6 +13,7 @@ coplien templates:
 	
 	main minimal code template (includes etc..)
 	
+	getter/setter one line
 	
 	#include <|> template
 	#include "|.hpp" template
