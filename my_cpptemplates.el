@@ -6,42 +6,9 @@
 ;    By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2015/03/05 07:55:56 by ngoguey           #+#    #+#              ;
-;    Updated: 2015/03/11 08:13:49 by ngoguey          ###   ########.fr        ;
+;    Updated: 2015/03/11 15:15:06 by ngoguey          ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
-
-(defun canonical-hpp (classname)
-  "canonical-hpp"
-  (interactive "sEnter class' name: ")
-
-  (insert "
-#ifndef " (upcase classname) "_CLASS_HPP
-# define " (upcase classname) "_CLASS_HPP
-
-class " classname "
-{
-public:
-	" classname "();
-	~" classname "();
-	" classname "(" classname " const &src);
-	" classname "			&operator=(" classname " const &rhs);
-
-private:
-	" "
-};
-
-#endif
-"
-)
-  (sit-for 0.1)
-  (header-insert)
-  (goto-line 19)
-  (move-end-of-line 1)
-  (backward-char)
-  (backward-char)
-  )
-
-(global-set-key (kbd "<f2>") 'canonical-hpp)
 
 (defun stdcout-hpp()
   "stdcout-hpp"
@@ -69,3 +36,18 @@ private:
   )
 
 (global-set-key (kbd "<f1>") 'stdcout-hpp)
+
+
+(defun canonical-hpp (classname)
+  "tester"
+  (interactive "sEnter class' name: ")
+  (shell-command (concat "php ~/configurations/coplien_hpp.php " classname) (current-buffer))
+  (sit-for 0.1)
+  (header-insert)
+  (goto-line 21)
+  (move-end-of-line 1)
+  (backward-char)
+  (backward-char)
+  )
+
+(global-set-key (kbd "<f10>") 'canonical-hpp)
