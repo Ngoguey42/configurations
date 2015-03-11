@@ -115,9 +115,9 @@ alias ackf="~/.brew/bin/ack \"^[\t\# ].*[a-z0-9_]+\(\""
 alias acki="~/.brew/bin/ack \"^\#[\t ]*include[\t ]+\<\""
 alias vg="~/bin/valgrind/bin/valgrind"
 
-alias lse="sh ~/.scripts/lslAbFh.sh"
-alias lsr="sh ~/.scripts/lslAbFhR.sh"
+alias l="ls -gohFG"
 alias lsc="ls -gohGF *.[ch] 1>&1 1>&2 | wc ; wc *.[ch] | tail -n 1"
+alias lscpp="ls -gohGF *.(cpp|hpp) 1>&1 1>&2 | wc ; wc *.(cpp|hpp) | tail -n 1"
 alias lscs="ls -gohGFS *.[ch] 1>&1 1>&2 | wc ; wc *.[ch] | tail -n 1"
 
 alias tig="~/.brew/bin/tig/"
@@ -168,6 +168,7 @@ alias gitals="git add \`git ls-files\` ; git status"
 alias gitac="git add \`ls -1 *.c\` ; git status"
 alias gitpom="git pull origin master"
 alias gits="git status"
+alias gitf="git fetch ; git status"
 
 #sh nm.sh binnary
 #nm $@ | grep ' [^tT] ' | cut -c 18- | sort
@@ -217,3 +218,6 @@ kill -$1 $(ps | grep -v "grep" | grep "ft_minishell1" | cut -c -5)
 
 alias kmsh="\`sigmsh KILL\`"
 alias chp="chmod 755 *.php"
+
+alias mysql="/nfs/zfs-student-2/users/2014/ngoguey/mamp/mysql/bin/mysql"
+alias mysqlu="/nfs/zfs-student-2/users/2014/ngoguey/mamp/mysql/bin/mysql -uroot -p"

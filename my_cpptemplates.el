@@ -6,7 +6,7 @@
 ;    By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2015/03/05 07:55:56 by ngoguey           #+#    #+#              ;
-;    Updated: 2015/03/05 08:09:11 by ngoguey          ###   ########.fr        ;
+;    Updated: 2015/03/11 08:13:49 by ngoguey          ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 
@@ -21,10 +21,10 @@
 class " classname "
 {
 public:
-	" classname "(void);
-	~" classname "(void);
-	" classname "(" classname " const & src);
-	" classname " &			operator=(" classname " const & rhs);
+	" classname "();
+	~" classname "();
+	" classname "(" classname " const &src);
+	" classname "			&operator=(" classname " const &rhs);
 
 private:
 	" "
