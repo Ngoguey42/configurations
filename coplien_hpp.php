@@ -29,5 +29,11 @@ echo "pritate:".PHP_EOL;
 echo "};".PHP_EOL;
 echo "//std::ostream\t\t\t&operator(std::ostream &o, $class const &rhs);".PHP_EOL;
 echo PHP_EOL;
-echo "#endif".PHP_EOL;
+
+echo "#endif // ";
+$nbstars = 66 - strlen($macro);
+while ($nbstars--)
+	echo "*";
+echo " $macro //".PHP_EOL;
+	
 ?>
