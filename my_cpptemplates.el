@@ -6,7 +6,7 @@
 ;    By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2015/03/05 07:55:56 by ngoguey           #+#    #+#              ;
-;    Updated: 2015/03/12 15:16:54 by ngoguey          ###   ########.fr        ;
+;    Updated: 2015/03/12 15:31:36 by ngoguey          ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 
@@ -79,3 +79,34 @@
   )
 
 (global-set-key (kbd "<f9>") 'canonical-cpp)
+
+(defun main_minimum1()
+  "main_minimum1"
+  (interactive)
+  (insert
+   "int\t\t\t\t\t\t\tmain(int ac, char *av[])
+{
+\t
+\t(void)ac;
+\treturn (0);
+}")
+  (previous-line 3)
+  (move-end-of-line 1)
+  )
+
+(global-set-key [f8] 'main_minimum1)
+
+(defun main_minimum2()
+  "main_minimum2"
+  (interactive)
+  (insert
+   "int\t\t\t\t\t\t\tmain(void)
+{
+\t
+\treturn (0);
+}")
+  (previous-line 2)
+  (move-end-of-line 1)
+  )
+
+(global-set-key [(shift f8)] 'main_minimum2)
