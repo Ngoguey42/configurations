@@ -36,6 +36,8 @@ echo "\t$class";
 input_tabs(32, 4 + strlen($class));
 echo "&operator=($class const &rhs);".PHP_EOL;
 echo PHP_EOL;
+echo "\t// $class();".PHP_EOL;
+echo PHP_EOL;
 echo "protected:".PHP_EOL;
 echo "private:".PHP_EOL;
 echo "};".PHP_EOL;
