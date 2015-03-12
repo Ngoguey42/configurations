@@ -80,26 +80,11 @@ alias zshconf="emacs ~/.zshrc"
 alias matrix="source ~/.zshrc"
 alias econf="emacs ~/.emacs"
 
-# alias cpllft="make -C .. && echo " " && sleep 0.6 && make && echo " " && sleep 0.6 && ./testmain.exe"
-alias cplptf="make ; gcc -I ./includes srcs/printf/main.c -L ./ -lft"
-
-alias cplgnl="make -C ./libft ; gcc -Wall -Wextra -Werror -I . -I ./libft/includes *.c -L ./libft/ -lft"
-alias cplls="make -C ./libft/ ; wcc *.c ft_error/ft_*.c -I ./ -I libft/includes -I ft_error/ -L ./libft -lft"
-
-alias cplgnl2="make -C libft/ clean ; make -C libft/ ; gcc -g -O2 -Wall -Wextra -Werror -I libft/includes/ -c get_next_line.c ; gcc -g -Wall -Wextra -Werror -I libft/includes/ -c main.c ; gcc -o test_gnl get_next_line.o main.o -L libft/ -lft"
-
-alias backup="sh ~/saveproj42/tarscript.sh"
-
 alias cddown="cd ~/Downloads/"
 alias cddesk="cd ~/Desktop/"
 alias cddocs="cd ~/Documents/"
-alias cdlft="cd ~/libft_project/"
-alias cdgnl="cd ~/gnl_project/"
-alias cdls="cd ~/ls_project/"
-alias cdfr="cd ~/fractol_project/"
-alias cdfdf="cd ~/fdf_project/"
+
 alias cdapache="cd /nfs/zfs-student-2/users/2014/ngoguey/mamp/apache2/conf/bitnami/"
-# alias cddemo="cd /nfs/zfs-student-2/users/2014/ngoguey/mamp/apps/demo/"
 alias cdapps="cd /nfs/zfs-student-2/users/2014/ngoguey/mamp/apps/"
 
 alias nvcc="/usr/local/cuda/bin/nvcc"
@@ -116,20 +101,13 @@ alias acki="~/.brew/bin/ack \"^\#[\t ]*include[\t ]+\<\""
 alias vg="~/bin/valgrind/bin/valgrind"
 
 alias l="ls -gohFG"
-alias lsc="ls -gohGF *.[ch] 1>&1 1>&2 | wc ; wc *.[ch] | tail -n 1"
-alias lscpp="ls -gohGF *.(cpp|hpp) 1>&1 1>&2 | wc ; wc *.(cpp|hpp) | tail -n 1"
-alias lscs="ls -gohGFS *.[ch] 1>&1 1>&2 | wc ; wc *.[ch] | tail -n 1"
+alias lsc="ls -gohGF *.(cpp|hpp|c|h|php) 1>&1 1>&2 | wc ; wc *.(cpp|hpp|c|h|php) | tail -n 1"
+alias lscs="ls -gohGFS *.(cpp|hpp|c|h|php) 1>&1 1>&2 | wc ; wc *.(cpp|hpp|c|h|php) | tail -n 1"
 
-alias tig="~/.brew/bin/tig/"
-alias rr="rm *~"
+
+alias rr="rm *~ \#* *.stackdump"
 alias rrlft="(rr) ; (cd includes && rr) ; (cd srcs && rr) ; (cd srcs/printf && rr)"
-alias rs="rm *.stackdump"
 
-export MAIL="ngoguey@student.42.fr"
-
-alias lst="sh ~/.scripts/lstest.sh"
-alias lst2="sh ~/.scripts/lstest2.sh"
-alias lst3="sh ~/.scripts/lstest3.sh"
 alias ch="chmod 644 \`ls -1d *.c\` ; chmod 644 \`ls -1d *.h\`; chmod 744 Makefile ; chmod 644 auteur ; ls -lFhG"
 
 alias makej="make fclean ; make -j"
@@ -140,11 +118,8 @@ alias makejg="make fclean ; make -j g"
 alias makejgl="make -C libft/ fclean ; make -C libft/ -j g"
 alias makejga="makejgl ; makejg"
 
-# alias kic="ls -ldGFtu /nfs/z*/*/*/*"
 alias kic='ls -dltu /nfs/z*/*/*/* |  awk  '"'"'{printf "%15s (%s) %3s %2s %s\n", $3, $4, $6, $7, $8}'"'"' | rev | uniq -f4 | rev'
-
 alias qui='_(){ ldapsearch uid="$1" ; }; _'
-alias saveconf="cd ; cp .zshrc zshrc ; cp .emacs emacs ; ls -lt | head -n 4 ; open . ; /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --kiosk --args https://drive.google.com/drive/"
 
 alias findman='_(){
 echo -e "Looking for /usr/share/man/man*/$1.*:";
@@ -164,6 +139,8 @@ echo -e "\n./pipex \"$1\" \"$2\"  \"$3\" \"$4\""
 ./pipex "$1" "$2" "$3" "$4"
 }; _'
 
+export MAIL="ngoguey@student.42.fr"
+alias tig="~/.brew/bin/tig/"
 alias gitals="git add \`git ls-files\` ; git status"
 alias gitac="git add \`ls -1 *.c\` ; git status"
 alias gitpom="git pull origin master"
