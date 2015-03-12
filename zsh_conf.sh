@@ -89,6 +89,7 @@ alias cdapps="cd /nfs/zfs-student-2/users/2014/ngoguey/mamp/apps/"
 
 alias nvcc="/usr/local/cuda/bin/nvcc"
 alias wcc="gcc -Wall -Werror -Wextra"
+alias wpp="g++ -Wall -Werror -Wextra"
 alias e="emacs"
 alias lret="echo $?"
 
@@ -105,7 +106,7 @@ alias lsc="ls -gohGF *.(cpp|hpp|c|h|php) 1>&1 1>&2 | wc ; wc *.(cpp|hpp|c|h|php)
 alias lscs="ls -gohGFS *.(cpp|hpp|c|h|php) 1>&1 1>&2 | wc ; wc *.(cpp|hpp|c|h|php) | tail -n 1"
 
 
-alias rr="rm *~ \#* *.stackdump"
+alias rr="rm *~; rm \#* ;rm *.stackdump"
 alias rrlft="(rr) ; (cd includes && rr) ; (cd srcs && rr) ; (cd srcs/printf && rr)"
 
 alias ch="chmod 644 \`ls -1d *.c\` ; chmod 644 \`ls -1d *.h\`; chmod 744 Makefile ; chmod 644 auteur ; ls -lFhG"
