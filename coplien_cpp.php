@@ -84,7 +84,7 @@ input_ender('DESTRUCTORS');
 input_spacer();
 input_starter('OPERATORS');
 echo "$class";
-input_tabs(20, strlen($class));
+input_tabs(28, strlen($class));
 echo "&$class::operator=($class const &rhs)".PHP_EOL;
 echo "{".PHP_EOL;
 echo "\t// std::cout << \"[$class]= Overload called\" << std::endl;".PHP_EOL;
@@ -94,7 +94,7 @@ echo "}".PHP_EOL;
 echo PHP_EOL;
 
 echo "// std::ostream";
-input_tabs(20, strlen('std::ostream'));
+input_tabs(28, strlen('std::ostream'));
 echo "&$class::operator<<(std::ostream &o, $class const &rhs)".PHP_EOL;
 echo "// {".PHP_EOL;
 echo "\t// (void)rhs;".PHP_EOL;

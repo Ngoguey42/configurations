@@ -6,7 +6,7 @@
 ;    By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2015/03/05 07:55:56 by ngoguey           #+#    #+#              ;
-;    Updated: 2015/03/12 08:38:34 by ngoguey          ###   ########.fr        ;
+;    Updated: 2015/03/12 15:16:54 by ngoguey          ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 
@@ -36,6 +36,21 @@
   )
 
 (global-set-key (kbd "<f1>") 'stdcout-hpp)
+
+(defun function-c(ret-type)
+  "function-c"
+  (interactive "sInput return type:")
+  (shell-command
+   (concat
+	(concat "php ~/configurations/function_minimum.php '" ret-type)
+	"'")
+   t)
+  (move-end-of-line 1)
+  (backward-char)
+  (backward-char)  
+  )
+
+(global-set-key (kbd "<f3>") 'function-c)
 
 
 (defun canonical-hpp ()
