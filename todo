@@ -6,8 +6,6 @@ debug without new line
 operator prototype template
 
 
-binding, swap lines
-
 getter/setter one line
 "std::string const &"
 "std::"

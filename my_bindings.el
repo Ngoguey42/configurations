@@ -6,7 +6,7 @@
 ;    By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2015/02/12 07:41:24 by ngoguey           #+#    #+#              ;
-;    Updated: 2015/03/13 07:16:40 by ngoguey          ###   ########.fr        ;
+;    Updated: 2015/03/13 08:38:28 by ngoguey          ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 
@@ -43,3 +43,38 @@
 	(indent-region (point-min) (point-max) nil)))
 
 (global-set-key (kbd "<kp-divide>") 'indent-buffer)
+
+
+(global-set-key [(control t)]
+				(lambda()
+				  "swap lines up"
+				  (interactive)
+				  (setq colnb (current-column))
+				  (beginning-of-line)
+				  (kill-line)
+				  (delete-backward-char 1)
+				  (beginning-of-line)
+				  (newline)
+				  (backward-char)
+				  (yank)
+				  (beginning-of-line)
+				  (forward-char colnb)
+				  ))
+
+(global-set-key [(control ^)]
+				(lambda()
+				  "swap lines down"
+				  (interactive)
+				  (setq colnb (current-column))
+				  (beginning-of-line)
+				  (kill-line)
+				  (delete-backward-char 1)
+				  (next-line)
+				  (next-line)
+				  (beginning-of-line)
+				  (newline)
+				  (previous-line)
+				  (yank)
+				  (beginning-of-line)
+				  (forward-char colnb)
+				  ))
