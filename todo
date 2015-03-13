@@ -1,11 +1,12 @@
 
 adaptative bindings with languages
 
-80 cols * 2 lines spacers cpp
 
 debug without new line
 operator prototype template
 
+
+binding, swap lines
 
 getter/setter one line
 "std::string const &"
