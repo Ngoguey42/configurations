@@ -25,6 +25,7 @@ echo "# define $macro".PHP_EOL;
 echo PHP_EOL;
 echo "//# include <string>".PHP_EOL;
 echo "//# include <iostream>".PHP_EOL;
+echo "//# include <stdexcept>".PHP_EOL;
 echo PHP_EOL;
 echo "class $class".PHP_EOL;
 echo "{".PHP_EOL;
@@ -41,7 +42,7 @@ echo PHP_EOL;
 echo "protected:".PHP_EOL;
 echo "private:".PHP_EOL;
 echo "};".PHP_EOL;
-echo "//std::ostream\t\t\t\t\t&operator(std::ostream &o, $class const &rhs);".PHP_EOL;
+echo "//std::ostream\t\t\t\t\t&operator<<(std::ostream &o, $class const &rhs);".PHP_EOL;
 echo PHP_EOL;
 echo "#endif // ".str_repeat('*', 66 - strlen($macro))." $macro //".PHP_EOL;
 	

@@ -95,9 +95,9 @@ echo PHP_EOL;
 
 echo "// std::ostream";
 input_tabs(28, strlen('std::ostream'));
-echo "&$class::operator<<(std::ostream &o, $class const &rhs)".PHP_EOL;
+echo "&operator<<(std::ostream &o, $class const &rhs)".PHP_EOL;
 echo "// {".PHP_EOL;
-echo "//\t(void)rhs;".PHP_EOL;
+echo "//\to << rhs.get();".PHP_EOL;
 echo "//\treturn (o);".PHP_EOL;
 echo "// }".PHP_EOL;
 echo PHP_EOL;

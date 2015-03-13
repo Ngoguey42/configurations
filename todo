@@ -5,8 +5,18 @@ adaptative bindings with languages
 debug without new line
 operator prototype template
 
+new hpp variable helper;
+new function prototype helper;
+initialize statics from .hpp in .cpp;
+import functions from .hpp in .cpp;
+
+put tabs until 28 or 32's column reached;
+
+add all includes from current directory
 
 initialization list
+
+new nested class
 
 "std::string const &"
 "std::"
