@@ -7,6 +7,7 @@ function input_tabs($align_chars, $already_inputed)
 	while ($align_chars-- > 0)
 		echo "\t";
 }
+std::cout <<  << std::endl;
 
 function input_starter($str)
 {
@@ -67,8 +68,8 @@ echo PHP_EOL;
 echo "// $class::$class() : ".PHP_EOL;
 echo "// ".PHP_EOL;
 echo "// {".PHP_EOL;
-echo "\t// std::cout << \"[$class](main) Ctor called\" << std::endl;".PHP_EOL;
-echo "\t// return ;".PHP_EOL;
+echo "//\tstd::cout << \"[$class](main) Ctor called\" << std::endl;".PHP_EOL;
+echo "//\treturn ;".PHP_EOL;
 echo "// }".PHP_EOL;
 echo PHP_EOL;
 input_ender('CONSTRUCTORS');
@@ -97,8 +98,8 @@ echo "// std::ostream";
 input_tabs(28, strlen('std::ostream'));
 echo "&$class::operator<<(std::ostream &o, $class const &rhs)".PHP_EOL;
 echo "// {".PHP_EOL;
-echo "\t// (void)rhs;".PHP_EOL;
-echo "\t// return (o);".PHP_EOL;
+echo "//\t(void)rhs;".PHP_EOL;
+echo "//\treturn (o);".PHP_EOL;
 echo "// }".PHP_EOL;
 echo PHP_EOL;
 

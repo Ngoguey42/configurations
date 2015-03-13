@@ -1,15 +1,18 @@
 
-	80 cols * 2 lines spacers cpp
+adaptative bindings with languages
 
-	debug without new line
-	operator prototype template
-	
-	getter/setter one line
-	"std::string const &"
-	"std::"
-	"(void)|;"
+80 cols * 2 lines spacers cpp
 
-	#include <|> template
-	#include "|.hpp" template
-		
-	
+debug without new line
+operator prototype template
+
+
+getter/setter one line
+"std::string const &"
+"std::"
+"(void)|;"
+
+#include <|> template
+#include "|.hpp" template
+
+

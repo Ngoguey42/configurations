@@ -106,7 +106,7 @@ alias lsc="ls -gohGF *.(cpp|hpp|c|h|php) 1>&1 1>&2 | wc ; wc *.(cpp|hpp|c|h|php)
 alias lscs="ls -gohGFS *.(cpp|hpp|c|h|php) 1>&1 1>&2 | wc ; wc *.(cpp|hpp|c|h|php) | tail -n 1"
 
 
-alias rr="rm *~; rm \#* ;rm *.stackdump"
+alias rr="rm *~; rm \#* ;rm *.stackdump; rm .\#*"
 alias rrlft="(rr) ; (cd includes && rr) ; (cd srcs && rr) ; (cd srcs/printf && rr)"
 
 alias ch="chmod 644 \`ls -1d *.c\` ; chmod 644 \`ls -1d *.h\`; chmod 744 Makefile ; chmod 644 auteur ; ls -lFhG"
@@ -143,6 +143,7 @@ echo -e "\n./pipex \"$1\" \"$2\"  \"$3\" \"$4\""
 export MAIL="ngoguey@student.42.fr"
 alias tig="~/.brew/bin/tig/"
 alias gitals="git add \`git ls-files\` ; git status"
+alias gitls="git ls-files"
 alias gitac="git add \`ls -1 *.c\` ; git status"
 alias gitpom="git pull origin master"
 alias gits="git status"

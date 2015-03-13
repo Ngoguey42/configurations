@@ -6,7 +6,7 @@
 ;    By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2015/02/12 07:41:24 by ngoguey           #+#    #+#              ;
-;    Updated: 2015/03/11 15:53:12 by ngoguey          ###   ########.fr        ;
+;    Updated: 2015/03/13 07:16:40 by ngoguey          ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 
@@ -18,7 +18,7 @@
   (interactive)
   (comment-or-uncomment-region (line-beginning-position) (line-end-position)))
 
-  
+
 (global-set-key (kbd "<kp-7>") "\C-a\C- \C-n\M-w\C-y\C-p")
 (global-set-key (kbd "<kp-8>") 'replace-string)
 (global-set-key (kbd "<kp-9>") 'goto-line)
@@ -36,3 +36,10 @@
 (global-set-key (kbd "<kp-add>") 'forward-paragraph)
 (global-set-key (kbd "<kp-subtract>") 'backward-paragraph)
 (global-set-key (kbd "<kp-enter>") "\C-m")
+
+(defun indent-buffer ()
+  (interactive)
+  (save-excursion
+	(indent-region (point-min) (point-max) nil)))
+
+(global-set-key (kbd "<kp-divide>") 'indent-buffer)
