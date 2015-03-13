@@ -18,18 +18,22 @@ Bindings:
 * **shift-f8** c-main void
 * **f9** coplien minimal code cpp
 * **f10** coplien minimal code hpp
+<br>
 
 * **\<kp-7\>** dup-line
 * **\<kp-6\>** TOUNSET
 * **\<kp-1\>** cutline
 * **\<kp-0\>** pasteline
+<br>
 
 * **\<kp-8\>** replace-string
 * **\<kp-9\>** goto-line
+<br>
 
 * **\<kp-5\>** web-mode comment
 * **\<kp-6\>** comment region(without web-mode)
 * **\<kp-3\>** comment line(without web-mode)
+<br>
 
 * **\<kp-divide\>** indent whole buffer
 * **\<kp-substract\>** jump paragraph forward
