@@ -18,20 +18,19 @@ Emacs bindings:
 * f10 coplien minimal code hpp
 
 <BR>
+
 * \<kp-7\> dup-line
 * \<kp-6\> TOUNSET
 * \<kp-1\> cutline
 * \<kp-0\> pasteline
-<BR>
-
+* 
 * \<kp-8\> replace-string
 * \<kp-9\> goto-line
-<BR>
+* 
 * \<kp-5\> web-mode comment
 * \<kp-6\> comment region(without web-mode)
 * \<kp-3\> comment line(without web-mode)
-
-
+* 
 * \<kp-divide\> indent whole buffer
 * \<kp-substract\> jump paragraph forward
 * \<kp-add\> jump paragraph forward
