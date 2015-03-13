@@ -10,7 +10,7 @@ function input_tabs($align_chars, $already_inputed)
 
 $filepath = $argv[1];
 
-if (!preg_match("/([^\/]*?)(\.class)?\.hpp$/", $filepath, $tab))
+if (!preg_match("/\/([^\/]*?)(\.class)?\.hpp$/", $filepath, $tab))
 	exit;
 $class = $tab[1];
 $preextension = $tab[2];

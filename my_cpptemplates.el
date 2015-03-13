@@ -6,7 +6,7 @@
 ;    By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2015/03/05 07:55:56 by ngoguey           #+#    #+#              ;
-;    Updated: 2015/03/13 07:49:07 by ngoguey          ###   ########.fr        ;
+;    Updated: 2015/03/13 10:13:46 by ngoguey          ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 
@@ -112,6 +112,23 @@
   (goto-line 40)
   )
 (global-set-key (kbd "<f9>") 'canonical-cpp)
+
+;;INPUT GETTERScpp
+(defun getters-cpp ()
+  "getters-cpp"
+  (interactive)
+  (shell-command (concat "php ~/configurations/getters_cpp.php " buffer-file-name) t)
+  )
+(global-set-key (kbd "<f7>") 'getters-cpp)
+
+;;INPUT GETTERShpp
+(defun getters-hpp ()
+  "getters-hpp"
+  (interactive)
+  (shell-command (concat "php ~/configurations/getters_hpp.php " buffer-file-name) t)
+  )
+(global-set-key [(shift f7)] 'getters-hpp)
+
 
 ;;MAIN MINIMUM AC AV
 (defun main_minimum1()

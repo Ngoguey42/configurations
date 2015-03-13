@@ -6,7 +6,8 @@ debug without new line
 operator prototype template
 
 
-getter/setter one line
+initialization list
+
 "std::string const &"
 "std::"
 "(void)|;"

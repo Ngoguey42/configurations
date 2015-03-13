@@ -19,7 +19,7 @@ input_tabs(28, strlen($tab[1]));
 echo $tab[2].'()'.PHP_EOL;
 echo '{'.PHP_EOL;
 echo "\t".PHP_EOL;
-if ($tab[0] == "void")
+if ($tab[0] == "void" || $tab[0] == "static void")
 	echo "\treturn ;".PHP_EOL;
 else
 	echo "\treturn ();".PHP_EOL;

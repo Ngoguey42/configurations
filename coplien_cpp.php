@@ -7,7 +7,6 @@ function input_tabs($align_chars, $already_inputed)
 	while ($align_chars-- > 0)
 		echo "\t";
 }
-std::cout <<  << std::endl;
 
 function input_starter($str)
 {
@@ -33,7 +32,7 @@ function input_spacer()
 
 $filepath = $argv[1];
 
-if (!preg_match("/([^\/]*?)(\.class)?\.cpp$/", $filepath, $tab))
+if (!preg_match("/\/([^\/]*?)(\.class)?\.cpp$/", $filepath, $tab))
 	exit;
 $class = $tab[1];
 $preextension = $tab[2];
