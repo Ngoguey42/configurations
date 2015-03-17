@@ -6,7 +6,7 @@
 ;    By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2015/03/05 07:55:56 by ngoguey           #+#    #+#              ;
-;    Updated: 2015/03/13 10:13:46 by ngoguey          ###   ########.fr        ;
+;    Updated: 2015/03/17 18:57:42 by ngoguey          ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 
@@ -160,3 +160,30 @@
   (move-end-of-line 1)
   )
 (global-set-key [(shift f8)] 'main_minimum2)
+
+;;NEW VARIABLE
+(global-set-key [(f4)]
+				(lambda(var-string)
+				  "new variable"
+				  (interactive "sInput vartiable type:")
+				  (shell-command
+				   (concat
+					(concat
+					 (concat
+					  (concat
+					   (concat
+						(concat
+						 "php ~/configurations/new_var.php "
+						 buffer-file-name)
+						" ")
+					   (number-to-string (current-column)))
+					  " '")
+					 var-string)
+					"'")
+				   t
+				   )
+				  (end-of-line)
+				  (backward-char)
+				  )
+				)
+
