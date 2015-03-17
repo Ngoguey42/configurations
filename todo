@@ -4,6 +4,9 @@
 import initialization list
 import non-pure member functions
 import statics variables;
+import constructors;
+
+
 
 adaptative bindings with languages
 redo all bindings
@@ -15,6 +18,8 @@ put tabs until 28 or 32's column reached;
 
 add all includes from current directory
 
+
+new constructor
 new nested class
 
 "std::string const &"
