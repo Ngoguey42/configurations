@@ -102,8 +102,13 @@ alias acki="~/.brew/bin/ack \"^\#[\t ]*include[\t ]+\<\""
 alias vg="~/bin/valgrind/bin/valgrind"
 
 alias l="ls -gohFG"
-alias lsc="ls -gohGF *.(cpp|hpp|c|h|php) 1>&1 1>&2 | wc ; wc *.(cpp|hpp|c|h|php) | tail -n 1"
-alias lscs="ls -gohGFS *.(cpp|hpp|c|h|php) 1>&1 1>&2 | wc ; wc *.(cpp|hpp|c|h|php) | tail -n 1"
+alias lsc="ls -gohGF **/*.(cpp|hpp|c|h|php) 1>&1 1>&2 |
+wc ; wc **/*.(cpp|hpp|c|h|php) |
+tail -n 1"
+
+alias lscs="ls -gohGFS **/*.(cpp|hpp|c|h|php) 1>&1 1>&2 |
+wc ; wc **/*.(cpp|hpp|c|h|php) |
+tail -n 1"
 
 
 alias rr="rm *~; rm \#* ;rm *.stackdump; rm .\#*"
@@ -144,7 +149,7 @@ export MAIL="ngoguey@student.42.fr"
 alias tig="~/.brew/bin/tig/"
 alias gitals="git add \`git ls-files\` ; git status"
 alias gitls="git ls-files"
-alias gitac="git add \`ls -1 *.c\` ; git status"
+alias gitac="git add \`ls -1 **/*.(cpp|hpp|c|h|php)\` ; git status"
 alias gitpom="git pull origin master"
 alias gits="git status"
 alias gitf="git fetch ; git status"
