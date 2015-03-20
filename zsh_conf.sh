@@ -152,6 +152,8 @@ alias gitls="git ls-files"
 alias gitac="git add \`ls -1 **/*.(cpp|hpp|c|h|php)\` ; git status"
 alias gitpom="git pull origin master"
 alias gits="git status"
+alias gitcm="git commit -m"
+alias gitck="git checkout"
 alias gitf="git fetch ; git status"
 
 #sh nm.sh binnary
