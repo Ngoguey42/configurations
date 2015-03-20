@@ -99,6 +99,7 @@ alias go="cd \`cat ~/.save_pwd\` ; clear"
 alias ack="~/.brew/bin/ack"
 alias ackf="~/.brew/bin/ack \"^[\t\# ].*[a-z0-9_]+\(\""
 alias acki="~/.brew/bin/ack \"^\#[\t ]*include[\t ]+\<\""
+alias grepclasses="grep -h 'class ' **/*.hpp | grep -v ';'"
 alias vg="~/bin/valgrind/bin/valgrind"
 
 alias l="ls -gohFG"
@@ -111,7 +112,7 @@ wc ; wc **/*.(cpp|hpp|c|h|php) |
 tail -n 1"
 
 
-alias rr="rm *~; rm \#* ;rm *.stackdump; rm .\#*"
+alias rr="rm **/*~; rm **/\#* ;rm **/*.stackdump; rm **/.\#*"
 alias rrlft="(rr) ; (cd includes && rr) ; (cd srcs && rr) ; (cd srcs/printf && rr)"
 
 alias ch="chmod 644 \`ls -1d *.c\` ; chmod 644 \`ls -1d *.h\`; chmod 744 Makefile ; chmod 644 auteur ; ls -lFhG"
