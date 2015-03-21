@@ -30,6 +30,7 @@ class Form : virtual public TrucMachin , public lol
 	int salutlol;
 public:
 	Form();
+	int AForm ( ) ;
 	virtual ~Form();
 
 	Form(std::string const &name, int sGrade, int eGrade);
@@ -38,17 +39,27 @@ public:
 	static const int			lowestGrade;
 	
 	std::string const			&getName(void) const;
+	virtual std::string const			&getNameTruc(void) const = 0;
 	int const					getSGrade(void) const;
 	int const					getEGrade(void) const;
+	int const					getEGradestatic(void) const;
 	bool						getIsSigned(void) const;
+	void						setIsSigned(bool truc) const;
 
+	void	*test(void) {
+		if () {void 1;}
+		return ;
+		}
+	
+	void	*test2(void) {}
+	
 	class GradeTooHighException : public std::exception
 	{
 	public:
 		GradeTooHighException() throw(); //
 		virtual ~GradeTooHighException() throw(); /* bjr*/
 		GradeTooHighException(GradeTooHighException const &src) throw();
-
+		void	*test2(void) {}
 		virtual const char *what() const throw();
 	private:
 		GradeTooHighException& operator=(GradeTooHighException const &rhs) throw();
@@ -72,6 +83,7 @@ private:
 
 	std::string const			_name;
 	int const					_sGrade;
+	int constatic				_sGrade;
 	int const					_eGrade;
 	bool						_isSigned;
 };
