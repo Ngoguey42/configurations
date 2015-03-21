@@ -22,71 +22,14 @@ $ret['filename_class'] = $tab[2];
 $ret['filename_preextension'] = $tab[3];
 $ret['filename_extension'] = $tab[4];
 
-// var_dump($tab);
-// var_dump($content);
-
-// $cppKeyword = '[a-z]*';	
-// $operatorOverload =	"operator$spnl*".
-					// "(?:".
-						// "\=".'|'.
-						// "\+".'|'.
-						// "\-".'|'.
-						// "\*".'|'.
-						// "\/".'|'.
-						// "\%".'|'.
-						// "\+\+".'|'.
-						// "\-\-".'|'.
-						// "\=\=".'|'.
-						// "\!\=".'|'.
-						// "\>".'|'.
-						// "\<".'|'.
-						// "\>\=".'|'.
-						// "\<\=".'|'.
-						// "\!".'|'.
-						// "\&\&".'|'.
-						// "\|\|".'|'.
-						// "\~".'|'.
-						// "\&".'|'.
-						// "\|".'|'.
-						// "\^".'|'.
-						// "\<\<".'|'.
-						// "\>\>".'|'.
-						// "\+\=".'|'.
-						// "\-\=".'|'.
-						// "\*\=".'|'.
-						// "\/\=".'|'.
-						// "\%\=".'|'.
-						// "\&\=".'|'.
-						// "\|\=".'|'.
-						// "\^\=".'|'.
-						// "\<\<\=".'|'.
-						// "\>\>\=".'|'.
-						// "\[\]".'|'.
-						// "\-\>".'|'.
-						// "\-\>\*".'|'.
-						// "\(\)".'|'.
-						// "\,".
-					// ")";
-
-
-
-// $varORfuncPrefix =	"(?:$cppKeyword$spnl*)*".
-					// "$varType$spnl*".
-					// "(?:$cppKeyword$spnl*)*".
-					// "[\*&]?";
-					
-// $varORfuncName =	"(?:$identifier|$operatorOverload|\~$identifier)";
-
-// $function = "$varORfuncPrefix$varORfuncName";
-					
-
-//#3 removing all comments and cr ln
+//#3 removing all comments, crln, and preprocessors
 $comStart = '\/\*';
 $comEnd = '\*\/';
 $comLine = '\/\/';
 $content = preg_replace("/$comStart.*?$comEnd/s", '', $content);
 $content = preg_replace("/$comLine.*/", '', $content);
-$content = preg_replace("/\r\n/", "\n", $content);
+$content = preg_replace("/\r\n/s", "\n", $content);
+$content = preg_replace("/\#.*/m", '', $content);
 
 //#4 splitting file's class
 $nl = '[\r\n]{1,2}';
@@ -174,12 +117,6 @@ $ret['zone2_inheritances'] = trim($tab[2], " \t\n\r\0\x0B:");
 // $ret['zone3_class'] = $tab[3];
 $ret['zone4_postClass'] = $tab[4];
 
-
-// preg_match_all("/$bodyBetweenMatchingBracketsR/s", $ret['rawfile'], $tab);
-// var_dump($tab);
-// exit;
-
-
 //#6 extracting nested classes
 $content = $tab[3];
 $ret['nested_classes'] = array();
@@ -195,7 +132,6 @@ $nestedClassPattern =
 $tab = array();
 while (preg_match($nestedClassPattern, $content, $tab))
 {
-	// var_dump($tab);
 	$nestedClass = array();
 	$nestedClass['name'] = $tab[1];
 	$nestedClass['inheritances'] = trim($tab[2], " \t\n\r\0\x0B:");
@@ -207,7 +143,7 @@ while (preg_match($nestedClassPattern, $content, $tab))
 
 function trim_class_content($content, $bodyBetweenMatchingBrackets, $className)
 {
-	//#5 splitting class by encapsulation
+//#5 splitting class by encapsulation
 	$encapsulationKeyword = '(?:public|private|protected)'; //redef
 	$sp = '[ \t]'; //redef
 	$spnl = '[ \t\r\n]'; //redef
@@ -219,7 +155,7 @@ function trim_class_content($content, $bodyBetweenMatchingBrackets, $className)
 	$nextSticker = "";
 	$trim_result = array();
 
-		//matching 0-3 first
+//matching 0-3 first
 	while (preg_match(
 		'/^'.
 		"(.*?)".
@@ -242,10 +178,9 @@ function trim_class_content($content, $bodyBetweenMatchingBrackets, $className)
 		"(.*?)".
 		"($encapsulationSpacer)".
 		'/s', '', $content, 1);
-		// exit ;
 	}
 
-		//matching trailing encapsulation
+//matching trailing encapsulation
 	if ($nextSticker === "")
 		$curSticker = "private";
 	else
@@ -256,7 +191,7 @@ function trim_class_content($content, $bodyBetweenMatchingBrackets, $className)
 		$trim_result[$curSticker] = $content;
 
 
-	//#6 splitting encapsulation zones by instructions
+//#6 splitting encapsulation zones by instructions
 	$functionDefinition = '{'."$bodyBetweenMatchingBrackets".'}';
 
 	if (isset($trim_result['private']) &&
@@ -271,8 +206,6 @@ function trim_class_content($content, $bodyBetweenMatchingBrackets, $className)
 			strlen(trim($trim_result['public'])) === 0)
 		unset($trim_result['public']);
 		
-	// var_dump($trim_result);
-	// exit;
 	foreach ($trim_result as $k => $v)
 	{
 		preg_match_all(
@@ -281,8 +214,7 @@ function trim_class_content($content, $bodyBetweenMatchingBrackets, $className)
 			'/s', $v, $matches);
 		foreach ($matches[0] as $l => $w)
 			$matches[0][$l] = trim(preg_replace("/[ \n\v\r\t]+/s", ' ', $w));
-		//removing defined functions
-	// var_dump($matches[0]);
+//removing defined functions
 		foreach ($matches[0] as $l => $w)
 		{
 			if (substr($w, -1) === '}')
@@ -291,9 +223,7 @@ function trim_class_content($content, $bodyBetweenMatchingBrackets, $className)
 		$trim_result[$k] = $matches[0];
 	}
 	
-	// var_dump($trim_result);
-	// exit;
-	//#7 sort instructions:
+//#7 sort instructions:
 	//external overload
 	
 	//static variable
@@ -398,6 +328,47 @@ foreach($ret['nested_classes'] as $k => $v)
 		trim_class_content($v['body'], $bodyBetweenMatchingBrackets, $v['name']);
 }
 
+$functionDefinition = '{'."$bodyBetweenMatchingBrackets".'}'; //redef
+
+//getting external overloads
+preg_match_all(
+	'/'.
+	"[^\{\}\;]*(?:$functionDefinition|\;)".
+	'/s', $ret['zone4_postClass'], $matches);
+foreach ($matches[0] as $l => $w)
+	$matches[0][$l] = trim(preg_replace("/[ \n\v\r\t]+/s", ' ', $w));
+foreach ($matches[0] as $l => $w)
+{
+	if (!(substr($w, -1) === '}'))
+	{
+		if (!isset($ret['encaps_zones']['public']))
+			$ret['encaps_zones']['public'] = array();
+		if (!isset($ret['encaps_zones']['public']['extern_operator']))
+			$ret['encaps_zones']['public']['extern_operator'] = array();
+		$ret['encaps_zones']['public']['extern_operator'][] = $w;
+	}
+}
+preg_match_all(
+	'/'.
+	"[^\{\}\;]*(?:$functionDefinition|\;)".
+	'/s', $ret['zone1_preClass'], $matches);
+foreach ($matches[0] as $l => $w)
+	$matches[0][$l] = trim(preg_replace("/[ \n\v\r\t]+/s", ' ', $w));
+foreach ($matches[0] as $l => $w)
+{
+	if (!(substr($w, -1) === '}'))
+	{
+		if (!isset($ret['encaps_zones']['public']))
+			$ret['encaps_zones']['public'] = array();
+		if (!isset($ret['encaps_zones']['public']['extern_operator']))
+			$ret['encaps_zones']['public']['extern_operator'] = array();
+		$ret['encaps_zones']['public']['extern_operator'][] = $w;
+	}
+}
+
+
+
+// var_dump($matches[0]);
 // var_dump($tab);
 // echo $content;
 // exit;
