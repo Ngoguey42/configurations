@@ -159,8 +159,14 @@ function ParseHppFile($filename)
 						'((?:\['.
 							'[^\[\]]*'.
 						'\]\s*)*)';
-		$rawText = trim($rawText, " \t\n\r\0\x0B;");
 		$replacements = array();
+		
+		if (preg_match("/\bstatic\b/", $rawText, $tab))
+		{
+			$replacements['isStatic'] = true;
+			$rawText = preg_replace("/".preg_quote($tab[0])."/", '', $rawText);
+		}
+		$rawText = trim($rawText, " \t\n\r\0\x0B;");
 		$replacements['full'] = $rawText;
 		preg_match("/^(.*?)([\&\*]?)$variableName$/", $rawText, $tab);
 		$replacements['type'] = trim($tab[1]);
@@ -231,7 +237,6 @@ function ParseHppFile($filename)
 	
 	
 	
-
 	function trim_class_content($content, $bodyBetweenMatchingBrackets, $className)
 	{
 	//#5 splitting class by encapsulation
@@ -473,7 +478,7 @@ function ParseHppFile($filename)
 	unset($ret['zone4_postClass']);
 	unset($ret['rawfile']);
 
-	// return ($ret);
+	return ($ret);
 	//DEBUG START
 	$color2 = "\033[32m";
 	$i = 0; foreach($ret as $k => $v){

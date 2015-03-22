@@ -25,33 +25,115 @@ function rawArgumentsToTab($rawArguments)
 	return ($arguments);
 }
 
-function put_function_body($returnType, $arguments)
+function put_variable($v, $class)
 {
-	echo '{'."\n";
-	// preg_match(	'/^([^\(\)\,]*)'.
-				// '(?:\,([^\(\)\,]*))*$/', $rawArguments, $arguments);
-	// unset($arguments[0]);
-	foreach ($arguments as $v)
-	{
-		if (strlen(trim($v)) === 0)
-			continue ;
-		echo "\t";
-		preg_match("/^(.*)\b([a-zA-Z_][a-zA-Z_0-9]*)\s*".
-						'(?:\['.
-							'[0-9\s]*'.
-						'\]\s*)*'.
-					"$/", $v, $tab);
-		echo '(void)'.$tab[2].';';
-		echo "\n";
-	}
-	echo "\t";
-	if (preg_match("/\bvoid\b/", $returnType)
-			&& !preg_match("/\*/", $returnType))
-		echo "return ;";
+	echo $v['type'];
+	indent_line(CPP_INDENT_COL, strlen($v['type']));
+	echo $v['typeSuffix'].$class.'::'.$v['name']." = ";
+	if ($v['nameSuffix'] != null)
+		echo "{}";
 	else
-		echo "return ();";
+		echo ";";
 	echo "\n";
-	echo '}'."\n";
+}
+
+function put_parenthesis_content_and_end($tab, $len)
+{
+	foreach ($tab as &$v)
+	{
+		$str = $v['full'];
+		if ($str == "void")
+			break ;
+		$nextLen = strlen($str);
+		if ($v != end($tab))
+		{
+			$nextLen += 2;
+			$str .= ", ";
+		}
+		else
+		{
+			$nextLen += 1;
+			// $str .= ")";
+		}
+		if ($len + $nextLen > 80)
+		{
+			echo "\n\t";
+			$len = 4;
+		}
+		$len += $nextLen;
+		echo $str;
+	}
+	echo ")";
+	return ($len);
+}
+function put_parenthesis_content_and_end_throw($tab, $len)
+{
+	foreach ($tab as &$v)
+	{
+		$str = $v;
+		$nextLen = strlen($str);
+		if ($v != end($tab))
+		{
+			$nextLen += 2;
+			$str .= ", ";
+		}
+		else
+		{
+			$nextLen += 1;
+			// $str .= ")";
+		}
+		if ($len + $nextLen > 80)
+		{
+			echo "\n\t";
+			$len = 4;
+		}
+		$len += $nextLen;
+		echo $str;
+	}
+	echo ")";
+	return ($len);
+}
+
+function put_member($v, $class)
+{
+	echo $v['type'];
+	indent_line(CPP_INDENT_COL, strlen($v['type']));
+	
+	$str = $v['typeSuffix'].$class.'::';
+	if (isset($v['isOperator']))
+		$str .= "operator";
+	$str .= $v['funName'].'(';
+	$len = strlen($str) + max(CPP_INDENT_COL, strlen($v['type']));
+	echo $str;
+	
+	$len = put_parenthesis_content_and_end($v['funargs'], $len);
+	
+	if (strlen($v['postFun']) + $len + 1 <= 80)
+	{
+		echo " ".$v['postFun'];
+		$len += strlen($v['postFun']) + 1;
+	}
+	else
+	{
+		echo "\n\t".$v['postFun'];
+		$len = 4 + strlen($v['postFun']);
+	}
+	if (isset($v['throwArgs']))
+	{
+		$str = "throw(";
+		if (strlen($str) + $len + 1 <= 80)
+		{
+			echo " $str";
+			$len += strlen($str) + 1;
+		}
+		else
+		{
+			echo "\n\t$str";
+			$len = 4 + strlen($str);
+		}
+		$len = put_parenthesis_content_and_end_throw($v['throwArgs'], $len);
+	}
+	echo "\n";
 }
 
 //$argv[1]		origin file name

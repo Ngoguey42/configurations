@@ -50,7 +50,7 @@ public:
 	int const					getEGradestatic(void) const;
 	bool						getIsSigned(void) const;
 	void						setIsSigned(bool truc) const;
-	static  const char *what2() const throw(int salut, hello lol, hello lol);
+	static  const char *what2() const throw(int salut, hello lol, hello loli);
 	
 	virtual const char *what() const throw(int salut, hello lol);
 	
