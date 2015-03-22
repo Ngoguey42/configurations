@@ -37,6 +37,11 @@ public:
 
 	static const int			highestGrade;
 	static const int			lowestGrade;
+	static const int			lowestGrade2[42];
+	static const int			lowestGrades(int lol);
+	static void			lowestGrades(int lol3);
+	static void			*lowestGrades(int lol3, int caca, char *truc);
+	static void			*lowestGrades(int lol3, std::string const &salut, char *truc);
 	
 	std::string const			&getName(void) const;
 	virtual std::string const			&getNameTruc(void) const = 0;
@@ -45,7 +50,10 @@ public:
 	int const					getEGradestatic(void) const;
 	bool						getIsSigned(void) const;
 	void						setIsSigned(bool truc) const;
-
+	static  const char *what2() const throw(int salut, hello lol, hello lol);
+	
+	virtual const char *what() const throw(int salut, hello lol);
+	
 	void	*test(void) {
 		if () {void 1;}
 		return ;
