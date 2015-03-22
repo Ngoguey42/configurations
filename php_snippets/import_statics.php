@@ -2,10 +2,6 @@
 
 function import_statics($infos, $p)
 {
-	// var_dump($infos);
-	// return ;
-	
-	
 	$staticVars = array();
 	$staticFuncs = array();
 	
@@ -31,7 +27,7 @@ function import_statics($infos, $p)
 			$staticFuncs = array_merge($staticFuncs, $infos['encaps_zones']['public']['static_function']);
 	}
 	// var_dump($staticVars);
-	var_dump($staticFuncs);
+	// var_dump($staticFuncs);
 	
 	foreach($staticVars as $v)
 	{

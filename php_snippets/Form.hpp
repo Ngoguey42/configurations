@@ -30,7 +30,7 @@ class Form : virtual public TrucMachin , public lol
 	int salutlol;
 public:
 	Form();
-	int AForm ( ) ;
+	int AForm (void) ;
 	virtual ~Form();
 
 	Form(std::string const &name, int sGrade, int eGrade);
@@ -42,6 +42,11 @@ public:
 	static void			lowestGrades(int lol3);
 	static void			*lowestGrades(int lol3, int caca, char *truc);
 	static void			*lowestGrades(int lol3, std::string const &salut, char *truc);
+	
+	const int			lowestGrades(int lol);
+	void			lowestGrades(int lol3);
+	void			*lowestGrades(int lol3, int caca, char *truc);
+	virtual void			*lowestGrades(int lol3, std::string const &salut, char *truc);
 	
 	std::string const			&getName(void) const;
 	virtual std::string const			&getNameTruc(void) const = 0;

@@ -42,8 +42,6 @@ function put_parenthesis_content_and_end($tab, $len)
 	foreach ($tab as &$v)
 	{
 		$str = $v['full'];
-		if ($str == "void")
-			break ;
 		$nextLen = strlen($str);
 		if ($v != end($tab))
 		{
@@ -96,14 +94,20 @@ function put_parenthesis_content_and_end_throw($tab, $len)
 
 function put_member($v, $class)
 {
-	echo $v['type'];
-	indent_line(CPP_INDENT_COL, strlen($v['type']));
-	
-	$str = $v['typeSuffix'].$class.'::';
-	if (isset($v['isOperator']))
-		$str .= "operator";
+	$str = "";
+	$len = 0;
+	if ($v['type'] !== '')
+	{
+		echo $v['type'];
+		indent_line(CPP_INDENT_COL, strlen($v['type']));
+		
+		$str .= $v['typeSuffix'].$class.'::';
+		if (isset($v['isOperator']))
+			$str .= "operator";
+		$len = max(CPP_INDENT_COL, strlen($v['type']));
+	}
 	$str .= $v['funName'].'(';
-	$len = strlen($str) + max(CPP_INDENT_COL, strlen($v['type']));
+	$len += strlen($str);
 	echo $str;
 	
 	$len = put_parenthesis_content_and_end($v['funargs'], $len);
@@ -135,9 +139,12 @@ function put_member($v, $class)
 	}
 	echo "\n{\n";
 	foreach ($v['funargs'] as $w)
-		echo "\t(void)".$w['name'].";\n";
+	{
+		if ($w['name'] != "void")
+			echo "\t(void)".$w['name'].";\n";
+	}
 	echo "\treturn ";
-	if ($v['type'] != "void")
+	if ($v['type'] != "void" && $v['type'] != "")
 		echo "()";
 	echo ";\n}\n";
 }
@@ -178,11 +185,47 @@ $p['throwAndContent'] =	'\bthrow\s*'.
 								'\('.
 									$p['parenthesisContent'].
 								'\)';
-if ($argv[3] === 'statics')
+// if ($argv[3] === 'statics')
 {
 	include("import_statics.php");
 	import_statics($infos, $p);
 }
+// if ($argv[3] === 'constructors')
+{
+	include("import_constructors.php");
+	import_constructors($infos, $p);
+}
+// if ($argv[3] === 'operators')
+{
+	include("import_operators.php");
+	import_operators($infos, $p);
+}
+// if ($argv[3] === 'getters')
+{
+	include("import_getters.php");
+	import_getters($infos, $p);
+}
+// if ($argv[3] === 'setters')
+{
+	include("import_setters.php");
+	import_setters($infos, $p);
+}
+// if ($argv[3] === 'member_functions')
+{
+	include("import_member_functions.php");
+	import_member_functions($infos, $p);
+}
+// if ($argv[3] === 'methods')
+{
+	include("import_methods.php");
+	import_methods($infos, $p);
+}
+// if ($argv[3] === 'pure_methods')
+{
+	include("import_pure_methods.php");
+	import_pure_methods($infos, $p);
+}
+
 
 // var_dump($infos);
 ?>
