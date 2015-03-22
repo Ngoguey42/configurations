@@ -133,7 +133,13 @@ function put_member($v, $class)
 		}
 		$len = put_parenthesis_content_and_end_throw($v['throwArgs'], $len);
 	}
-	echo "\n";
+	echo "\n{\n";
+	foreach ($v['funargs'] as $w)
+		echo "\t(void)".$w['name'].";\n";
+	echo "\treturn ";
+	if ($v['type'] != "void")
+		echo "()";
+	echo ";\n}\n";
 }
 
 //$argv[1]		origin file name
