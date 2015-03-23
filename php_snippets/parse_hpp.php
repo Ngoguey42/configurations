@@ -447,7 +447,9 @@ function ParseHppFile($filename)
 				$ret['encaps_zones']['public'] = array();
 			if (!isset($ret['encaps_zones']['public']['extern_operator']))
 				$ret['encaps_zones']['public']['extern_operator'] = array();
-			$ret['encaps_zones']['public']['extern_operator'][] = trim_function_prototype($w);
+			$t = trim_function_prototype($w);
+			$t['isExternalOperator'] = true;
+			$ret['encaps_zones']['public']['extern_operator'][] = $t;
 		}
 	}
 	preg_match_all(
@@ -464,7 +466,9 @@ function ParseHppFile($filename)
 				$ret['encaps_zones']['public'] = array();
 			if (!isset($ret['encaps_zones']['public']['extern_operator']))
 				$ret['encaps_zones']['public']['extern_operator'] = array();
-			$ret['encaps_zones']['public']['extern_operator'][] = trim_function_prototype($w);
+			$t = trim_function_prototype($w);
+			$t['isExternalOperator'] = true;
+			$ret['encaps_zones']['public']['extern_operator'][] = $t;
 		}
 	}
 

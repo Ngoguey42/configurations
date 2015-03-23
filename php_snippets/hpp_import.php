@@ -102,8 +102,9 @@ function put_member($v, $class, $putDebug = "", $putFunContent = true)
 	{
 		echo $v['type'];
 		indent_line(CPP_INDENT_COL, strlen($v['type']));
-		
-		$str .= $v['typeSuffix'].$class.'::';
+		$str .= $v['typeSuffix'];
+		if (!isset($v['isExternalOperator']))
+			$str .= $class.'::';
 		if (isset($v['isOperator']))
 			$str .= "operator";
 		$len = max(CPP_INDENT_COL, strlen($v['type']));
@@ -162,9 +163,12 @@ function put_member($v, $class, $putDebug = "", $putFunContent = true)
 			if ($w['name'] != "void")
 				echo "\t(void)".$w['name'].";\n";
 		}
-		echo "\treturn ";
+
+		echo "\treturn "; //returns
 		if ($v['type'] != "void" && $v['type'] != "")
 			echo "()";
+
+
 		echo ";\n}\n";
 	}
 	return ($len);
