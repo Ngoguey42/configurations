@@ -478,6 +478,7 @@ function ParseHppFile($filename)
 	unset($ret['zone4_postClass']);
 	unset($ret['rawfile']);
 
+	
 	return ($ret);
 	//DEBUG START
 	$color2 = "\033[32m";

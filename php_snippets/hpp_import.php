@@ -155,9 +155,11 @@ function put_member($v, $class)
 
 if (!isset($argv[3]))
 	exit ;
+
 if (!preg_match("/^(.*?\/)([^\/]*?)(\.class)?(\.(?:hpp|h|c|cpp|php))$/", $argv[1], $tab))
 	exit ;
 $infos = null;
+
 
 if ($argv[2] !== '')
 {
@@ -185,42 +187,42 @@ $p['throwAndContent'] =	'\bthrow\s*'.
 								'\('.
 									$p['parenthesisContent'].
 								'\)';
-// if ($argv[3] === 'statics')
+if ($argv[3] === 'statics')
 {
 	include("import_statics.php");
 	import_statics($infos, $p);
 }
-// if ($argv[3] === 'constructors')
+if ($argv[3] === 'constructors')
 {
 	include("import_constructors.php");
 	import_constructors($infos, $p);
 }
-// if ($argv[3] === 'operators')
+if ($argv[3] === 'operators')
 {
 	include("import_operators.php");
 	import_operators($infos, $p);
 }
-// if ($argv[3] === 'getters')
+if ($argv[3] === 'getters')
 {
 	include("import_getters.php");
 	import_getters($infos, $p);
 }
-// if ($argv[3] === 'setters')
+if ($argv[3] === 'setters')
 {
 	include("import_setters.php");
 	import_setters($infos, $p);
 }
-// if ($argv[3] === 'member_functions')
+if ($argv[3] === 'member_functions')
 {
 	include("import_member_functions.php");
 	import_member_functions($infos, $p);
 }
-// if ($argv[3] === 'methods')
+if ($argv[3] === 'methods')
 {
 	include("import_methods.php");
 	import_methods($infos, $p);
 }
-// if ($argv[3] === 'pure_methods')
+if ($argv[3] === 'pure_methods')
 {
 	include("import_pure_methods.php");
 	import_pure_methods($infos, $p);

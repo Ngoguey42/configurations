@@ -6,9 +6,180 @@
 ;    By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2015/03/05 07:55:56 by ngoguey           #+#    #+#              ;
-;    Updated: 2015/03/17 18:57:42 by ngoguey          ###   ########.fr        ;
+;    Updated: 2015/03/23 09:58:45 by ngoguey          ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
+
+
+
+;; Statics f1
+(global-set-key [(f1)]
+				'(lambda()
+				   "Statics"
+				   (interactive)
+				   (shell-command
+					(concat "php ~/configurations/php_snippets/hpp_import.php '"
+							(buffer-file-name)
+							"' '' 'statics'"
+							)
+					t)
+				   )
+				)
+
+
+
+(global-set-key [(f5)]
+				'(lambda(choice)
+				   "Class importation"
+				   (interactive "n(1)Stic (2)Ctor (3)Ope (4)Get (5)Set (6)Memb (7)Met (8)Pur (9)Nest : ")
+				   (if (= choice 1)
+					   (shell-command
+						(concat "php "
+								"~/configurations/php_snippets/hpp_import.php"
+								" '"
+								(buffer-file-name) "' '' '" "statics" "'") t)
+					 )
+				   (if (= choice 2)
+					   (shell-command
+						(concat "php "
+								"~/configurations/php_snippets/hpp_import.php"
+								" '"
+								(buffer-file-name) "' '' '" "constructors" "'") t)
+					 )
+				   (if (= choice 3)
+					   (shell-command
+						(concat "php "
+								"~/configurations/php_snippets/hpp_import.php"
+								" '"
+								(buffer-file-name) "' '' '" "operators" "'") t)
+					 )
+				   (if (= choice 4)
+					   (shell-command
+						(concat "php "
+								"~/configurations/php_snippets/hpp_import.php"
+								" '"
+								(buffer-file-name) "' '' '" "getters" "'") t)
+					 )
+				   (if (= choice 5)
+					   (shell-command
+						(concat "php "
+								"~/configurations/php_snippets/hpp_import.php"
+								" '"
+								(buffer-file-name) "' '' '" "setters" "'") t)
+					 )
+				   (if (= choice 6)
+					   (shell-command
+						(concat "php "
+								"~/configurations/php_snippets/hpp_import.php"
+								" '"
+								(buffer-file-name) "' '' '" "member_functions" "'") t)
+					 )
+				   (if (= choice 7)
+					   (shell-command
+						(concat "php "
+								"~/configurations/php_snippets/hpp_import.php"
+								" '"
+								(buffer-file-name) "' '' '" "methods" "'") t)
+					 )
+				   (if (= choice 8)
+					   (shell-command
+						(concat "php "
+								"~/configurations/php_snippets/hpp_import.php"
+								" '"
+								(buffer-file-name) "' '' '" "pure_methods" "'") t)
+					 )
+				   (if (= choice 9)
+					   (shell-command
+						(concat "php "
+								"~/configurations/php_snippets/hpp_import.php"
+								" '"
+								(buffer-file-name) "' '' '" "nested_classes" "'") t)
+					 )
+				   )
+				)
+
+
+
+
+(global-set-key [(shift f5)]
+				'(lambda(hppfilename choice)
+				   "Query specific file for class importation"
+				   (interactive (list (read-file-name "Hpp file: ")
+									  (read-number "(1)Stic (2)Ctor (3)Ope (4)Get (5)Set (6)Memb (7)Met (8)Pur (9)Nest: ")
+									  ))
+				   
+				   
+				   (if (= choice 1)
+					   (shell-command
+						(concat "php "
+								"~/configurations/php_snippets/hpp_import.php"
+								" '"
+								(buffer-file-name) "' '" hppfilename "' '" "statics" "'") t)
+					 )
+				   (if (= choice 2)
+					   (shell-command
+						(concat "php "
+								"~/configurations/php_snippets/hpp_import.php"
+								" '"
+								(buffer-file-name) "' " hppfilename " '" "constructors" "'") t)
+					 )
+				   (if (= choice 3)
+					   (shell-command
+						(concat "php "
+								"~/configurations/php_snippets/hpp_import.php"
+								" '"
+								(buffer-file-name) "' " hppfilename " '" "operators" "'") t)
+					 )
+				   (if (= choice 4)
+					   (shell-command
+						(concat "php "
+								"~/configurations/php_snippets/hpp_import.php"
+								" '"
+								(buffer-file-name) "' " hppfilename " '" "getters" "'") t)
+					 )
+				   (if (= choice 5)
+					   (shell-command
+						(concat "php "
+								"~/configurations/php_snippets/hpp_import.php"
+								" '"
+								(buffer-file-name) "' " hppfilename " '" "setters" "'") t)
+					 )
+				   (if (= choice 6)
+					   (shell-command
+						(concat "php "
+								"~/configurations/php_snippets/hpp_import.php"
+								" '"
+								(buffer-file-name) "' " hppfilename " '" "member_functions" "'") t)
+					 )
+				   (if (= choice 7)
+					   (shell-command
+						(concat "php "
+								"~/configurations/php_snippets/hpp_import.php"
+								" '"
+								(buffer-file-name) "' " hppfilename " '" "methods" "'") t)
+					 )
+				   (if (= choice 8)
+					   (shell-command
+						(concat "php "
+								"~/configurations/php_snippets/hpp_import.php"
+								" '"
+								(buffer-file-name) "' " hppfilename " '" "pure_methods" "'") t)
+					 )
+				   (if (= choice 9)
+					   (shell-command
+						(concat "php "
+								"~/configurations/php_snippets/hpp_import.php"
+								" '"
+								(buffer-file-name) "' " hppfilename " '" "nested_classes" "'") t)
+					 )
+				   ))
+
+
+
+
+
+
+
 
 ;;MULTIPLE LANGUAGES DEBUG
 (defun cpp-debug-func()
@@ -71,22 +242,8 @@
 				   )
 				)
 
-;;MINIMAL FUNCTION C
-(defun function-c(ret-type)
-  "function-c"
-  (interactive "sInput return type:")
-  (shell-command
-   (concat
-	(concat "php ~/configurations/function_minimum.php '" ret-type)
-	"'")
-   t)
-  (move-end-of-line 1)
-  (backward-char)
-  (backward-char)  
-  )
-(global-set-key (kbd "<f3>") 'function-c)
 
-;;CANONICAL HPP
+;;HPP CPP file initialization
 (defun canonical-hpp ()
   "canonical-hpp"
   (interactive)
@@ -98,9 +255,6 @@
   (backward-char)
   (backward-char)
   )
-(global-set-key (kbd "<f10>") 'canonical-hpp)
-
-;;CANONICAL CPP
 (defun canonical-cpp ()
   "canonical-cpp"
   (interactive)
@@ -111,23 +265,18 @@
   (push-mark)
   (goto-line 40)
   )
-(global-set-key (kbd "<f9>") 'canonical-cpp)
 
-;;INPUT GETTERScpp
-(defun getters-cpp ()
-  "getters-cpp"
-  (interactive)
-  (shell-command (concat "php ~/configurations/getters_cpp.php " buffer-file-name) t)
-  )
-(global-set-key (kbd "<f7>") 'getters-cpp)
-
-;;INPUT GETTERShpp
-(defun getters-hpp ()
-  "getters-hpp"
-  (interactive)
-  (shell-command (concat "php ~/configurations/getters_hpp.php " buffer-file-name) t)
-  )
-(global-set-key [(shift f7)] 'getters-hpp)
+(global-set-key (kbd "<f10>")
+				'(lambda()
+				   "init hpp cpp file"
+				   (interactive)
+				   (if (string= (file-name-extension (buffer-file-name)) "cpp")
+					   (canonical-cpp)
+					 (if (string= (file-name-extension (buffer-file-name)) "hpp")
+						 (canonical-hpp)
+					   ))
+				   )
+				)
 
 
 ;;MAIN MINIMUM AC AV
@@ -161,29 +310,45 @@
   )
 (global-set-key [(shift f8)] 'main_minimum2)
 
-;;NEW VARIABLE
-(global-set-key [(f4)]
-				(lambda(var-string)
-				  "new variable"
-				  (interactive "sInput vartiable type:")
-				  (shell-command
-				   (concat
-					(concat
-					 (concat
-					  (concat
-					   (concat
-						(concat
-						 "php ~/configurations/new_var.php "
-						 buffer-file-name)
-						" ")
-					   (number-to-string (current-column)))
-					  " '")
-					 var-string)
-					"'")
-				   t
-				   )
-				  (end-of-line)
-				  (backward-char)
-				  )
-				)
+;;MINIMAL FUNCTION / VARIABLE
+(defun function-c(arg)
+  "function-c2"
+  (interactive "*")
+  (shell-command
+   (concat
+	(concat "php ~/configurations/function_minimum.php '" arg)
+	"'")
+   t)
+  (move-end-of-line 1)
+  (backward-char)
+  (backward-char)  
+  )
+(defun variable_hpp(arg)
+  "new variable"
+  (interactive "*")
+  (shell-command
+   (concat
+	"php ~/configurations/new_var.php "
+	buffer-file-name
+	" "
+	(number-to-string (current-column))
+	" '"
+	arg
+	"'")
+   t
+   )
+  (end-of-line)
+  (backward-char)
+  )
 
+(global-set-key (kbd "<f9>")
+				'(lambda(arg)
+				   "minimal hpp/cpp variabl/function"
+				   (interactive "sInput variable/return type:")
+				   (if (string= (file-name-extension (buffer-file-name)) "cpp")
+					   (function-c arg)
+					 (if (string= (file-name-extension (buffer-file-name)) "hpp")
+						 (variable_hpp arg)
+					   ))
+				   )
+				)
