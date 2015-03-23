@@ -270,7 +270,32 @@ if ($argv[3] === 'pure_methods')
 	include("import_pure_methods.php");
 	import_pure_methods($infos, $p);
 }
-
+if ($argv[3] === 'nested_classes')
+{
+	if ($infos['orig_filename_extension'] === ".cpp" || $infos['orig_filename_extension'] === ".c")
+	{
+		include("import_nested_classes.php");
+		import_setters($infos, $p);
+	}
+	else
+	{
+		include("new_nested_classes.php");
+		new_nested_classes($infos, $p);
+	}
+}
+if ($argv[3] === 'init_list')
+{
+	if ($infos['orig_filename_extension'] === ".cpp" || $infos['orig_filename_extension'] === ".c")
+	{
+		include("import_init_list.php");
+		import_init_list($infos, $p);
+	}
+	/* else
+	   {
+	   include("new_nested_classes.php");
+	   new_nested_classes($infos, $p);
+	   } */
+}
 
 // var_dump($infos);
 ?>

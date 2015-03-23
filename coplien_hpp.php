@@ -13,9 +13,8 @@ $filepath = $argv[1];
 if (!preg_match("/\/([^\/]*?)(\.class)?\.hpp$/", $filepath, $tab))
 	exit;
 $class = $tab[1];
-$preextension = $tab[2];
 $macro = strtoupper($class);
-if ($preextension != NULL)
+if (isset($tab[2]))
 	$macro .= '_CLASS';
 $macro .= '_HPP';
 

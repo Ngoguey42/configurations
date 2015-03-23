@@ -34,7 +34,11 @@ $filepath = $argv[1];
 if (!preg_match("/\/([^\/]*?)(\.class)?\.cpp$/", $filepath, $tab))
 	exit;
 $class = $tab[1];
-$preextension = $tab[2];
+$preextension;
+if (isset($tab[2]))
+	$preextension = $tab[2];
+else
+	$preextension = "";
 $hppfilename = $class.$preextension.'.hpp';
 
 echo PHP_EOL;
