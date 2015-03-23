@@ -1,6 +1,6 @@
 <?php
 
-function import_setters($infos, $p)
+function import_setters_self($infos, $p)
 {
 	$vars = array();
 	
@@ -28,11 +28,12 @@ function import_setters($infos, $p)
 		if (preg_match("/((\:\:)|([A-Z]))/", $v['type']))
 			$addref = true;
 
+		echo "\t";
 
 		$str = "void";
 		echo $str;
-		indent_line(CPP_INDENT_COL, strlen($str));
-		$len = max(CPP_INDENT_COL, strlen($str));
+		indent_line(HPP_INDENT_COL, 4 + strlen($str));
+		$len = max(HPP_INDENT_COL, 4 + strlen($str));
 		
 		
 		$str  = "";
@@ -58,9 +59,9 @@ function import_setters($infos, $p)
 		echo $str;
 		$len += strlen($str);
 
-		/* echo ";\n"; */
-		/* continue ; */
-		$str = '{this->'.$v['name'].'=c;}';
+		echo ";\n";
+		continue ;
+		$str = '{return this->'.$v['name'].';}';
 
 		if (strlen($str) + $len > 80)
 			echo "\n";

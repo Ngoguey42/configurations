@@ -42,76 +42,76 @@ function ParseHppFile($filename)
 	$varType ="$identifier(?:[:]{2}$identifier)?";
 
 	$inheritances =
-		":$spnl*".
+	":$spnl*".
 		"(?:virtual$spnl*)?".
 		"(?:$encapsulationKeyword$spnl*)?".
 		"$varType$spnl*".
 		'(?:'.
-			",$spnl*".
-			"(?:virtual$spnl*)?".
-			"(?:$encapsulationKeyword$spnl*)?".
-			"$varType$spnl*".
+		",$spnl*".
+		"(?:virtual$spnl*)?".
+		"(?:$encapsulationKeyword$spnl*)?".
+		"$varType$spnl*".
 		')*';
 
 	// matching a maximum of 4lvl of nested brackets
 	$bodyBetweenMatchingBracketsL4 =
-		'[^\{\}]*'.
+	'[^\{\}]*'.
 		'(?:'.
-			'\{'.
-				'[^\{\}]*'.
-			'\}[^\{\}]*'.
+		'\{'.
+		'[^\{\}]*'.
+		'\}[^\{\}]*'.
 		')*';
-		
+	
 	$bodyBetweenMatchingBracketsL3 =
-		'[^\{\}]*'.
+	'[^\{\}]*'.
 		'(?:'.
-			'\{'.
-				$bodyBetweenMatchingBracketsL4.
-			'\}[^\{\}]*'.
+		'\{'.
+		$bodyBetweenMatchingBracketsL4.
+		'\}[^\{\}]*'.
 		')*';
-		
+	
 	$bodyBetweenMatchingBracketsL2 =
-		'[^\{\}]*'.
+	'[^\{\}]*'.
 		'(?:'.
-			'\{'.
-				$bodyBetweenMatchingBracketsL3.
-			'\}[^\{\}]*'.
+		'\{'.
+		$bodyBetweenMatchingBracketsL3.
+		'\}[^\{\}]*'.
 		')*';
-		
+	
 	$bodyBetweenMatchingBrackets =
-		'[^\{\}]*'.
+	'[^\{\}]*'.
 		'(?:'.
-			'\{'.
-				$bodyBetweenMatchingBracketsL2.
-			'\}[^\{\}]*'.
+		'\{'.
+		$bodyBetweenMatchingBracketsL2.
+		'\}[^\{\}]*'.
 		')*';
-		
+	
 	// $bodyBetweenMatchingBrackets =
-		// '[^\{\}]*'.
-		// '(?:'.
-			// '\{'.
-				// '[^\{\}]*'.
-			// '\}[^\{\}]*'.
-		// ')*';
+	// '[^\{\}]*'.
+	// '(?:'.
+	// '\{'.
+	// '[^\{\}]*'.
+	// '\}[^\{\}]*'.
+	// ')*';
 	// $bodyBetweenMatchingBracketsR =
-		// '[^\{\}]*'.
-		// '(?:\{(?:R)\}*)*'.
-		// '[^\{\}]*?';
-		
+	// '[^\{\}]*'.
+	// '(?:\{(?:R)\}*)*'.
+	// '[^\{\}]*?';
+	
 	$tab = array();
 	if (!preg_match(
 		'/'.
-		'^(.*?)'.
-		"class$spnl*".$ret['filename_class']."$spnl*".
-		"($inheritances)?".
-		'{'."$spnl*".
+			'^(.*?)'.
+			"class$spnl*".$ret['filename_class']."$spnl*".
+			"($inheritances)?".
+			'{'."$spnl*".
 			"($bodyBetweenMatchingBrackets)".
-		"}$spnl*;$spnl*".
+			"}$spnl*;$spnl*".
 			"($bodyBetweenMatchingBrackets)".
-		'$'.
-		'/s'
-		, $content, $tab))
-		return (null);
+			'$'.
+			'/s'
+			, $content, $tab))
+				return (null);
 	$ret['zone1_preClass'] = $tab[1];
 	$ret['zone2_inheritances'] = trim($tab[2], " \t\n\r\0\x0B:");
 	$ret['zone3_class'] = $tab[3];
@@ -122,10 +122,10 @@ function ParseHppFile($filename)
 	$ret['nested_classes'] = array();
 
 	$nestedClassPattern = 
-		'/'.
+	'/'.
 		"class$spnl*($identifier)$spnl*($inheritances)?".
 		'{'."$spnl*".
-			"($bodyBetweenMatchingBrackets)".
+		"($bodyBetweenMatchingBrackets)".
 		'}'."$spnl*;".
 		'/s';
 
@@ -156,9 +156,9 @@ function ParseHppFile($filename)
 	function trim_variable($rawText)
 	{
 		$variableName = "([a-zA-Z_][a-zA-Z_0-9]*)\s*".
-						'((?:\['.
-							'[^\[\]]*'.
-						'\]\s*)*)';
+			'((?:\['.
+			'[^\[\]]*'.
+			'\]\s*)*)';
 		$replacements = array();
 		
 		if (preg_match("/\bstatic\b/", $rawText, $tab))
@@ -182,7 +182,7 @@ function ParseHppFile($filename)
 		$ret['raw'] = $rawPrototype;
 		$parenthesisContent = '[^\(\)]*';
 		$throwAndContent =	'\bthrow\s*'.
-							'\(('.$parenthesisContent.')\)';
+			'\(('.$parenthesisContent.')\)';
 		if (preg_match("/$throwAndContent/", $rawPrototype, $tab))
 		{
 			$rawPrototype = preg_replace("/".preg_quote($tab[0])."/", '', $rawPrototype);
@@ -190,11 +190,11 @@ function ParseHppFile($filename)
 			$ret['throwArgs'] = $tab;
 		}
 		$funcNameAndContent =	'\b(\w*)\s*'.
-								'\(('.$parenthesisContent.')\)'.
-								'('.$parenthesisContent.')';
+			'\(('.$parenthesisContent.')\)'.
+			'('.$parenthesisContent.')';
 		$operatorNameAndContent =	'\boperator\s*([\-\+\*\/\=\[\]\<\>]*)\s*'.
-									'\(('.$parenthesisContent.')\)'.
-									'('.$parenthesisContent.')';
+			'\(('.$parenthesisContent.')\)'.
+			'('.$parenthesisContent.')';
 		// $ret['raw2'] = $rawPrototype;
 		if (preg_match("/$operatorNameAndContent/", $rawPrototype, $tab))
 			$ret['isOperator'] = true;
@@ -239,7 +239,7 @@ function ParseHppFile($filename)
 	
 	function trim_class_content($content, $bodyBetweenMatchingBrackets, $className)
 	{
-	//#5 splitting class by encapsulation
+		//#5 splitting class by encapsulation
 		$encapsulationKeyword = '(?:public|private|protected)'; //redef
 		$sp = '[ \t]'; //redef
 		$spnl = '[ \t\r\n]'; //redef
@@ -251,12 +251,12 @@ function ParseHppFile($filename)
 		$nextSticker = "";
 		$trim_result = array();
 
-	//matching 0-3 first
+		//matching 0-3 first
 		while (preg_match(
 			'/^'.
-			"(.*?)".
-			"($encapsulationSpacer)".
-			'/s', $content, $tab))
+				"(.*?)".
+				"($encapsulationSpacer)".
+				'/s', $content, $tab))
 		{
 			$curSticker;
 			if ($nextSticker === "")
@@ -271,12 +271,12 @@ function ParseHppFile($filename)
 			else
 				$trim_result[$curSticker] = $tab[1];
 			$content = preg_replace('/^'.
-			"(.*?)".
-			"($encapsulationSpacer)".
-			'/s', '', $content, 1);
+				"(.*?)".
+				"($encapsulationSpacer)".
+				'/s', '', $content, 1);
 		}
 
-	//matching trailing encapsulation
+		//matching trailing encapsulation
 		if ($nextSticker === "")
 			$curSticker = "private";
 		else
@@ -287,30 +287,30 @@ function ParseHppFile($filename)
 			$trim_result[$curSticker] = $content;
 
 
-	//#6 splitting encapsulation zones by instructions
+		//#6 splitting encapsulation zones by instructions
 		$functionDefinition = '{'."$bodyBetweenMatchingBrackets".'}';
 
 		if (isset($trim_result['private']) &&
-				strlen(trim($trim_result['private'])) === 0)
-			unset($trim_result['private']);
-			
+			strlen(trim($trim_result['private'])) === 0)
+				unset($trim_result['private']);
+		
 		if (isset($trim_result['protected']) &&
-				strlen(trim($trim_result['protected'])) === 0)
-			unset($trim_result['protected']);
-			
+			strlen(trim($trim_result['protected'])) === 0)
+				unset($trim_result['protected']);
+		
 		if (isset($trim_result['public']) &&
-				strlen(trim($trim_result['public'])) === 0)
-			unset($trim_result['public']);
-			
+			strlen(trim($trim_result['public'])) === 0)
+				unset($trim_result['public']);
+		
 		foreach ($trim_result as $k => $v)
 		{
 			preg_match_all(
 				'/'.
-				"[^\{\}\;]*(?:$functionDefinition|\;)".
-				'/s', $v, $matches);
+					"[^\{\}\;]*(?:$functionDefinition|\;)".
+					'/s', $v, $matches);
 			foreach ($matches[0] as $l => $w)
 				$matches[0][$l] = trim(preg_replace("/[ \n\v\r\t]+/s", ' ', $w));
-	//removing defined functions
+			//removing defined functions
 			foreach ($matches[0] as $l => $w)
 			{
 				if (substr($w, -1) === '}')
@@ -319,7 +319,7 @@ function ParseHppFile($filename)
 			$trim_result[$k] = $matches[0];
 		}
 		
-	//#7 sort instructions:
+		//#7 sort instructions:
 		//external overload
 		
 		//static variable
@@ -412,7 +412,7 @@ function ParseHppFile($filename)
 							$trim_result[$encapsK]['member_function'] = array();
 						$trim_result[$encapsK]['member_function'][] = trim_function_prototype($v);
 					}
-						
+					
 				}
 				unset($trim_result[$encapsK][$k]);
 			}
@@ -427,7 +427,7 @@ function ParseHppFile($filename)
 	foreach($ret['nested_classes'] as $k => $v)
 	{
 		$ret['nested_classes'][$k]['body'] =
-			trim_class_content($v['body'], $bodyBetweenMatchingBrackets, $v['name']);
+		trim_class_content($v['body'], $bodyBetweenMatchingBrackets, $v['name']);
 	}
 
 	$functionDefinition = '{'."$bodyBetweenMatchingBrackets".'}'; //redef
@@ -435,8 +435,8 @@ function ParseHppFile($filename)
 	//getting external overloads
 	preg_match_all(
 		'/'.
-		"[^\{\}\;]*(?:$functionDefinition|\;)".
-		'/s', $ret['zone4_postClass'], $matches);
+			"[^\{\}\;]*(?:$functionDefinition|\;)".
+			'/s', $ret['zone4_postClass'], $matches);
 	foreach ($matches[0] as $l => $w)
 		$matches[0][$l] = trim(preg_replace("/[ \n\v\r\t]+/s", ' ', $w));
 	foreach ($matches[0] as $l => $w)
@@ -452,8 +452,8 @@ function ParseHppFile($filename)
 	}
 	preg_match_all(
 		'/'.
-		"[^\{\}\;]*(?:$functionDefinition|\;)".
-		'/s', $ret['zone1_preClass'], $matches);
+			"[^\{\}\;]*(?:$functionDefinition|\;)".
+			'/s', $ret['zone1_preClass'], $matches);
 	foreach ($matches[0] as $l => $w)
 		$matches[0][$l] = trim(preg_replace("/[ \n\v\r\t]+/s", ' ', $w));
 	foreach ($matches[0] as $l => $w)

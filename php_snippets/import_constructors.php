@@ -18,7 +18,7 @@ function import_constructors($infos, $p)
 	// return ;
 	foreach($ctors as $v)
 	{
-		put_member($v, $infos['filename_class']);
+		put_member($v, $infos['filename_class'], "ctor");
 	}
 }
 ?>

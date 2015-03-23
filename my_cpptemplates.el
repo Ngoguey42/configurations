@@ -6,7 +6,7 @@
 ;    By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2015/03/05 07:55:56 by ngoguey           #+#    #+#              ;
-;    Updated: 2015/03/23 09:58:45 by ngoguey          ###   ########.fr        ;
+;    Updated: 2015/03/23 10:27:39 by ngoguey          ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 
@@ -261,9 +261,8 @@
   (shell-command (concat "php ~/configurations/coplien_cpp.php " buffer-file-name) (current-buffer))
   (sit-for 0.1)
   (header-insert)
-  (goto-line 33)
-  (push-mark)
-  (goto-line 40)
+  (goto-line 17)
+  (move-end-of-line 1)
   )
 
 (global-set-key (kbd "<f10>")

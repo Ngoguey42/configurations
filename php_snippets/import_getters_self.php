@@ -1,6 +1,6 @@
 <?php
 
-function import_setters($infos, $p)
+function import_getters_self($infos, $p)
 {
 	$vars = array();
 	
@@ -28,39 +28,34 @@ function import_setters($infos, $p)
 		if (preg_match("/((\:\:)|([A-Z]))/", $v['type']))
 			$addref = true;
 
+		echo "\t";
 
-		$str = "void";
+		$str = $v['type'];
+		if ($v['typeSuffix'] != "" ||
+								($addref && !preg_match("/\bconst\b/", $v['type'])))
+									$str .= " const";
 		echo $str;
-		indent_line(CPP_INDENT_COL, strlen($str));
-		$len = max(CPP_INDENT_COL, strlen($str));
-		
+		indent_line(HPP_INDENT_COL, 4 + strlen($str));
+		$len = max(HPP_INDENT_COL, 4 + strlen($str));
 		
 		$str  = "";
-		$str .= "set";
-		if (preg_match("/^_/", $v['name']))
-			$str .= strtoupper(substr($v['name'], 1, 2)).substr($v['name'], 2);
-		else
-			$str .= strtoupper(substr($v['name'], 0, 1)).substr($v['name'], 1);
-		/* $str .= "(void) const"; */
-		$str .= "(";
-		$str .= $v['type'];
-		if ($v['typeSuffix'] != "" || ($addref && !preg_match("/\bconst\b/", $v['type'])))
-			$str .= " const";
-		$str .= " ";
 		if ($v['typeSuffix'] != "")
 			$str .= $v['typeSuffix'];
 		elseif ($addref)
 			$str .= "&";
-		$str .= "c";
-		
-		$str .= ")";
+		$str .= "get";
+		if (preg_match("/^_/", $v['name']))
+			$str .= strtoupper(substr($v['name'], 1, 2)).substr($v['name'], 2);
+		else
+			$str .= strtoupper(substr($v['name'], 0, 1)).substr($v['name'], 1);
+		$str .= "(void) const";
 		
 		echo $str;
 		$len += strlen($str);
 
-		/* echo ";\n"; */
-		/* continue ; */
-		$str = '{this->'.$v['name'].'=c;}';
+		echo ";\n";
+		continue ;
+		$str = '{return this->'.$v['name'].';}';
 
 		if (strlen($str) + $len > 80)
 			echo "\n";

@@ -8,6 +8,8 @@ function indent_line($column_number, $already_inputed)
 {
 	$column_number -= (int)((int)$already_inputed / (int)4 * (int)4);
 	$column_number /= 4;
+	if ($column_number == 0)
+		echo " ";
 	while ($column_number-- > 0)
 		echo "\t";
 }
@@ -92,7 +94,7 @@ function put_parenthesis_content_and_end_throw($tab, $len)
 	return ($len);
 }
 
-function put_member($v, $class)
+function put_member($v, $class, $putDebug = "", $putFunContent = true)
 {
 	$str = "";
 	$len = 0;
@@ -111,16 +113,19 @@ function put_member($v, $class)
 	echo $str;
 	
 	$len = put_parenthesis_content_and_end($v['funargs'], $len);
-	
-	if (strlen($v['postFun']) + $len + 1 <= 80)
+
+	if (isset($v['postFun']) && strlen($v['postFun']) != 0)
 	{
-		echo " ".$v['postFun'];
-		$len += strlen($v['postFun']) + 1;
-	}
-	else
-	{
-		echo "\n\t".$v['postFun'];
-		$len = 4 + strlen($v['postFun']);
+		if (strlen($v['postFun']) + $len + 1 <= 80)
+		{
+			echo " ".$v['postFun'];
+			$len += strlen($v['postFun']) + 1;
+		}
+		else
+		{
+			echo "\n\t".$v['postFun'];
+			$len = 4 + strlen($v['postFun']);
+		}
 	}
 	if (isset($v['throwArgs']))
 	{
@@ -137,16 +142,32 @@ function put_member($v, $class)
 		}
 		$len = put_parenthesis_content_and_end_throw($v['throwArgs'], $len);
 	}
-	echo "\n{\n";
-	foreach ($v['funargs'] as $w)
+	if ($putFunContent)
 	{
-		if ($w['name'] != "void")
-			echo "\t(void)".$w['name'].";\n";
+		echo "\n";
+		echo "{\n";
+		if ($putDebug === "ctor")
+		{
+			echo "\t// std::cout << \"[$class](";
+			foreach ($v['funargs'] as &$w)
+			{
+				echo $w['type'].$w['typeSuffix'];
+				if ($w != end($v['funargs']))
+					echo ",";
+			}		
+			echo ") Ctor called\" << std::endl\n";
+		}
+		foreach ($v['funargs'] as $w)
+		{
+			if ($w['name'] != "void")
+				echo "\t(void)".$w['name'].";\n";
+		}
+		echo "\treturn ";
+		if ($v['type'] != "void" && $v['type'] != "")
+			echo "()";
+		echo ";\n}\n";
 	}
-	echo "\treturn ";
-	if ($v['type'] != "void" && $v['type'] != "")
-		echo "()";
-	echo ";\n}\n";
+	return ($len);
 }
 
 //$argv[1]		origin file name
@@ -171,6 +192,12 @@ else if ($tab[4] === '.cpp' || $tab[4] === '.c')
 	if ($infos == null)
 		$infos = ParseHppFile($tab[1].$tab[2].$tab[3].'.h');
 }
+else if ($tab[4] === '.hpp' || $tab[4] === '.h')
+{
+	$infos = ParseHppFile($tab[0]);
+	if ($infos == null)
+		$infos = ParseHppFile($tab[0]);
+}
 if ($infos == null)
 	exit ;
 $infos['orig_filename_full'] = $tab[0];
@@ -180,13 +207,13 @@ $infos['orig_filename_preextension'] = $tab[3];
 $infos['orig_filename_extension'] = $tab[4];
 
 $p['parenthesisContent'] =	'[^\(\)\,]*'.
-							'(?:\,[^\(\)\,]*)*';
+	'(?:\,[^\(\)\,]*)*';
 $p['matchParenthesisContent'] =	'([^\(\)\,]*)'.
-								'(?:\,([^\(\)\,]*))*';
+	'(?:\,([^\(\)\,]*))*';
 $p['throwAndContent'] =	'\bthrow\s*'.
-								'\('.
-									$p['parenthesisContent'].
-								'\)';
+	'\('.
+	$p['parenthesisContent'].
+	'\)';
 if ($argv[3] === 'statics')
 {
 	include("import_statics.php");
@@ -204,13 +231,29 @@ if ($argv[3] === 'operators')
 }
 if ($argv[3] === 'getters')
 {
-	include("import_getters.php");
-	import_getters($infos, $p);
+	if ($infos['orig_filename_extension'] === ".cpp" || $infos['orig_filename_extension'] === ".c")
+	{
+		include("import_getters.php");
+		import_getters($infos, $p);
+	}
+	else
+	{
+		include("import_getters_self.php");
+		import_getters_self($infos, $p);
+	}
 }
 if ($argv[3] === 'setters')
 {
-	include("import_setters.php");
-	import_setters($infos, $p);
+	if ($infos['orig_filename_extension'] === ".cpp" || $infos['orig_filename_extension'] === ".c")
+	{
+		include("import_setters.php");
+		import_setters($infos, $p);
+	}
+	else
+	{
+		include("import_setters_self.php");
+		import_setters_self($infos, $p);
+	}
 }
 if ($argv[3] === 'member_functions')
 {
