@@ -34,12 +34,16 @@ function import_init_list($infos, $p)
 			$vars = array_merge($vars, $infos['encaps_zones']['public']['variable']);
 	}
 
+	function cmp_vars($a, $b)
+	{
+		return ($a['index'] > $b['index']);
+		
+	}
+	
+	usort($vars, "cmp_vars");
 	
 	foreach ($vars as $v)
-	{
-		/* echo $v['name']."\n"; */
 		$toPrint[] =  $v['name'];
-	}
 	foreach($toPrint as &$v)
 	{
 		if ($v != $toPrint[0])

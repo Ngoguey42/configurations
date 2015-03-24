@@ -76,9 +76,9 @@ export PATH="/nfs/zfs-student-2/users/2014/ngoguey/mamp/php/bin:/nfs/zfs-student
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias zshconf="emacs ~/.zshrc"
+alias zshconf="e ~/configurations/zsh_conf.sh"
 alias matrix="source ~/.zshrc"
-alias econf="emacs ~/.emacs"
+alias econf="emacs ~/configurations/my_config.el"
 
 alias cddown="cd ~/Downloads/"
 alias cddesk="cd ~/Desktop/"
@@ -154,6 +154,7 @@ alias gitac="git add \`ls -1 **/*.(cpp|hpp|c|h|php)\` ; git status"
 alias gitpom="git pull origin master"
 alias gits="git status"
 alias gitcm="git commit -m"
+alias gitcmf="git commit -F"
 alias gitck="git checkout"
 alias gitf="git fetch ; git status"
 

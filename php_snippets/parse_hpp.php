@@ -259,6 +259,7 @@ function ParseHppFile($filename)
 				'/s', $content, $tab))
 		{
 			$curSticker;
+			
 			if ($nextSticker === "")
 				$curSticker = "private";
 			else
@@ -282,7 +283,12 @@ function ParseHppFile($filename)
 		else
 			$curSticker = $nextSticker;
 		if (isset($trim_result[$curSticker]))
-			$trim_result[$curSticker] .= "\n".$content;
+		{
+			//doing this trick to keep variables index in the right order
+			$t = $trim_result[$curSticker];
+			unset($trim_result[$curSticker]);
+			$trim_result[$curSticker] = $t."\n".$content;
+		}
 		else
 			$trim_result[$curSticker] = $content;
 
@@ -334,6 +340,7 @@ function ParseHppFile($filename)
 		//setter			//set[A-Z]
 		//method			//is virtual
 		//member function	//is function
+		$varIndex = 0;
 		foreach ($trim_result as $encapsK => $encapsV)
 		{
 			foreach($encapsV as $k => $v)
@@ -350,7 +357,10 @@ function ParseHppFile($filename)
 					{
 						if (!isset($trim_result[$encapsK]['variable']))
 							$trim_result[$encapsK]['variable'] = array();
-						$trim_result[$encapsK]['variable'][] = trim_variable($v);
+						$t = trim_variable($v);
+						$varIndex++;
+						$t['index'] = $varIndex;
+						$trim_result[$encapsK]['variable'][] = $t;
 					}
 				}
 				else

@@ -44,9 +44,9 @@ function import_getters($infos, $p)
 			$str .= "&";
 		$str .= "get";
 		if (preg_match("/^_/", $v['name']))
-			$str .= strtoupper(substr($v['name'], 1, 2)).substr($v['name'], 2);
+			$str .= strtoupper(substr($v['name'], 1, 1)).substr($v['name'], 2);
 		else
-			$str .= strtoupper(substr($v['name'], 0, 1)).substr($v['name'], 1);
+			$str .= strtoupper(substr($v['name'], 0, 0)).substr($v['name'], 1);
 		$str .= "(void) const";
 		
 		echo $str;

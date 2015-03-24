@@ -19,11 +19,10 @@ function import_pure_methods($infos, $p)
 		if (isset($infos['encaps_zones']['public']['pure_method']))
 			$pure_methods = array_merge($pure_methods, $infos['encaps_zones']['public']['pure_method']);
 	}
-	// var_dump($pure_methods);
-	// return ;
+
 	foreach($pure_methods as $v)
 	{
-		put_member($v, $infos['filename_class']);
+		put_member($v, $infos['orig_filename_class']); //using orig_ class instead of file's.
 	}
 }
 ?>

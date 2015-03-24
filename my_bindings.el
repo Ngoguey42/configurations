@@ -6,7 +6,7 @@
 ;    By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2015/02/12 07:41:24 by ngoguey           #+#    #+#              ;
-;    Updated: 2015/03/13 08:38:28 by ngoguey          ###   ########.fr        ;
+;    Updated: 2015/03/24 07:41:21 by ngoguey          ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 
@@ -24,9 +24,9 @@
 (global-set-key (kbd "<kp-9>") 'goto-line)
 
 (global-set-key (kbd "<kp-1>") "\C-a\C-k\177\C-a\C-n")
-(global-set-key (kbd "<kp-4>") "\C-y")
-(global-set-key (kbd "<kp-0>") "\C-a\C-m\C-b\C-y\C-a")
-(global-set-key (kbd "<kp-5>") 'yank-pop)
+;; (global-set-key (kbd "<kp-4>") "\C-y")
+(global-set-key (kbd "<kp-0>") "\C-a\C-m\C-a\C-b\C-y\C-a")
+;; (global-set-key (kbd "<kp-5>") 'yank-pop)
 
 (global-set-key (kbd "<kp-3>") 'toggle-comment-on-line)
 (global-set-key (kbd "<kp-6>") 'comment-or-uncomment-region)

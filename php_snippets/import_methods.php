@@ -23,7 +23,7 @@ function import_methods($infos, $p)
 	// return ;
 	foreach($methods as $v)
 	{
-		put_member($v, $infos['filename_class']);
+		put_member($v, $infos['orig_filename_class']); // using orig_ filename instead of hpp's
 	}
 }
 ?>
