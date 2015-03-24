@@ -98,17 +98,21 @@ function put_member($v, $class, $putDebug = "", $putFunContent = true)
 {
 	$str = "";
 	$len = 0;
+
 	if ($v['type'] !== '')
 	{
 		echo $v['type'];
 		indent_line(CPP_INDENT_COL, strlen($v['type']));
 		$str .= $v['typeSuffix'];
+
 		if (!isset($v['isExternalOperator']))
 			$str .= $class.'::';
 		if (isset($v['isOperator']))
 			$str .= "operator";
 		$len = max(CPP_INDENT_COL, strlen($v['type']));
 	}
+	else
+		$str .= $class.'::';		
 	$str .= $v['funName'].'(';
 	$len += strlen($str);
 	echo $str;

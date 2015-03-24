@@ -12,7 +12,7 @@ if (!preg_match("/^(.+?)([\*\&])?$/", $argv[1], $tab))
 	exit;
 
 $tab[1] = trim($tab[1]);
-$tab[2] = trim($tab[2]);
+$tab[2] = trim(isset($tab[2]) ? trim($tab[2]) : "");
 
 echo $tab[1];
 input_tabs(28, strlen($tab[1]));

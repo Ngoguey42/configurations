@@ -18,7 +18,7 @@ if (!preg_match("/\/([^\/]*?)(\.class)?\.(hpp|cpp|c|h)$/", $filepath, $tab_filen
 	exit;
 
 $tab_vartype[1] = trim($tab_vartype[1]);
-$tab_vartype[2] = trim($tab_vartype[2]);
+$tab_vartype[2] = trim(isset($tab_vartype[2]) ? trim($tab_vartype[2]) : "");
 
 $cur_col = (int)$argv[2];
 $aligncol = 28;

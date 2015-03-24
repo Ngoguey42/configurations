@@ -6,7 +6,7 @@
 ;    By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2015/03/05 07:55:56 by ngoguey           #+#    #+#              ;
-;    Updated: 2015/03/23 14:53:13 by ngoguey          ###   ########.fr        ;
+;    Updated: 2015/03/24 08:40:29 by ngoguey          ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 
@@ -250,10 +250,8 @@
   (shell-command (concat "~/php ~/configurations/coplien_hpp.php " buffer-file-name) (current-buffer))
   (sit-for 0.1)
   (header-insert)
-  (goto-line 27)
-  (move-end-of-line 1)
-  (backward-char)
-  (backward-char)
+  (goto-line 23)
+  (beginning-of-line 1)
   )
 (defun canonical-cpp ()
   "canonical-cpp"
