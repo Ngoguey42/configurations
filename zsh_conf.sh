@@ -86,6 +86,7 @@ alias cddocs="cd ~/Documents/"
 
 alias cdapache="cd /nfs/zfs-student-2/users/2014/ngoguey/mamp/apache2/conf/bitnami/"
 alias cdapps="cd /nfs/zfs-student-2/users/2014/ngoguey/mamp/apps/"
+alias cdmamp="cd /nfs/zfs-student-2/users/2014/ngoguey/mamp"
 
 alias nvcc="/usr/local/cuda/bin/nvcc"
 alias wcc="gcc -Wall -Werror -Wextra"
@@ -209,3 +210,7 @@ alias chp="chmod 755 *.php"
 
 alias mysql="/nfs/zfs-student-2/users/2014/ngoguey/mamp/mysql/bin/mysql"
 alias mysqlu="/nfs/zfs-student-2/users/2014/ngoguey/mamp/mysql/bin/mysql -uroot -p"
+
+alias mampr="sh /nfs/zfs-student-2/users/2014/ngoguey/mamp/ctlscript.sh restart"
+alias mampu="sh /nfs/zfs-student-2/users/2014/ngoguey/mamp/ctlscript.sh status"
+
