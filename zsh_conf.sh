@@ -213,4 +213,5 @@ alias mysqlu="/nfs/zfs-student-2/users/2014/ngoguey/mamp/mysql/bin/mysql -uroot 
 
 alias mampr="sh /nfs/zfs-student-2/users/2014/ngoguey/mamp/ctlscript.sh restart"
 alias mampu="sh /nfs/zfs-student-2/users/2014/ngoguey/mamp/ctlscript.sh status"
+alias mamp="sh /nfs/zfs-student-2/users/2014/ngoguey/mamp/ctlscript.sh"
 
