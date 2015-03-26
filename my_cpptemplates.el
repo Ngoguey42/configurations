@@ -6,7 +6,7 @@
 ;    By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2015/03/05 07:55:56 by ngoguey           #+#    #+#              ;
-;    Updated: 2015/03/24 08:40:29 by ngoguey          ###   ########.fr        ;
+;    Updated: 2015/03/26 08:09:38 by ngoguey          ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 
@@ -346,6 +346,10 @@
 					   (function-c arg)
 					 (if (string= (file-name-extension (buffer-file-name)) "hpp")
 						 (variable_hpp arg)
-					   ))
+					   (if (string= (file-name-extension (buffer-file-name)) "c")
+						   (function-c arg)
+						 (if (string= (file-name-extension (buffer-file-name)) "h")
+							 (variable_hpp arg)
+						   ))))
 				   )
 				)
