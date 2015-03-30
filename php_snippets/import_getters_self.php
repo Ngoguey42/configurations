@@ -24,16 +24,23 @@ function import_getters_self($infos, $p)
 	// return ;
 	foreach($vars as $v)
 	{
+		echo "\t";
+		$str = $v['type'];
+
 		$addref = false;
-		if (preg_match("/((\:\:)|([A-Z]))/", $v['type']))
+		if (preg_match("/((\:\:)|([A-Z]))/", $v['type']) || $v['typeSuffix'] != "")
 			$addref = true;
 
-		echo "\t";
+		$hasConst = false;
+		if (preg_match("/\bconst\b/", $v['type']))
+			$hasConst = true;
 
-		$str = $v['type'];
-		if ($v['typeSuffix'] != "" ||
-								($addref && !preg_match("/\bconst\b/", $v['type'])))
-									$str .= " const";
+		if ($addref && !$hasConst)
+			$str .= " const";
+		else if (!$addref && $hasConst)
+			$str = preg_replace("/\s*\bconst\b\s*/", '', $str);
+
+
 		echo $str;
 		indent_line(HPP_INDENT_COL, 4 + strlen($str));
 		$len = max(HPP_INDENT_COL, 4 + strlen($str));
