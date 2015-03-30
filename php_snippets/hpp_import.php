@@ -160,7 +160,7 @@ function put_member($v, $class, $putDebug = "", $putFunContent = true)
 				if ($w != end($v['funargs']))
 					echo ",";
 			}		
-			echo ") Ctor called\" << std::endl\n";
+			echo ") Ctor called\" << std::endl;\n";
 		}
 		foreach ($v['funargs'] as $w)
 		{

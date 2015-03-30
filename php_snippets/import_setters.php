@@ -36,6 +36,8 @@ function import_setters($infos, $p)
 		
 		
 		$str  = "";
+		$str .= $infos['filename_class'].'::';
+
 		$str .= "set";
 		if (preg_match("/^_/", $v['name']))
 			$str .= strtoupper(substr($v['name'], 1, 1)).substr($v['name'], 2);

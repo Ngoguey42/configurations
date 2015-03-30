@@ -37,11 +37,14 @@ function import_getters($infos, $p)
 		indent_line(CPP_INDENT_COL, strlen($str));
 		$len = max(CPP_INDENT_COL, strlen($str));
 		
-		$str  = "";
+		$str = "";
 		if ($v['typeSuffix'] != "")
 			$str .= $v['typeSuffix'];
 		elseif ($addref)
 			$str .= "&";
+
+		$str .= $infos['filename_class'].'::';
+		
 		$str .= "get";
 		if (preg_match("/^_/", $v['name']))
 			$str .= strtoupper(substr($v['name'], 1, 1)).substr($v['name'], 2);
