@@ -158,6 +158,8 @@ alias gitcm="git commit -m"
 alias gitcmf="git commit -F"
 alias gitck="git checkout"
 alias gitf="git fetch ; git status"
+alias gitcl="git clean -xn"
+alias gitclF="git clean -xf"
 
 #sh nm.sh binnary
 #nm $@ | grep ' [^tT] ' | cut -c 18- | sort

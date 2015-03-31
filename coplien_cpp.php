@@ -8,26 +8,15 @@ function input_tabs($align_chars, $already_inputed)
 		echo "\t";
 }
 
-function input_starter($str)
+function input_starter($str, $iter = 1)
 {
 	echo '// ';
-	echo str_repeat('*', 80 - 6 - strlen($str) * 3 - 5 * 3);
-	echo '** '.$str.' *';
-	echo '** '.$str.' *';
-	echo '** '.$str.' *';
+	$i = 0;
+	while ($i++ < $iter)
+		echo '* '.$str.' **';
+	echo str_repeat('*', 80 - 6 - strlen($str) * $iter - 5 * $iter);
 	echo ' //'.PHP_EOL;
 }
-function input_ender($str)
-{
-	return ;
-	echo '// ';
-	echo '/ '.$str.' //';
-	/* echo '/ '.$str.' //'; */
-	/* echo '/ '.$str.' //'; */
-	echo str_repeat('/', 80 - 6 - strlen($str) * 1 - 5 * 1);
-	echo ' //'.PHP_EOL;
-}
-
 
 $filepath = $argv[1];
 
@@ -60,7 +49,7 @@ echo PHP_EOL;
 input_starter('OPERATORS');
 input_starter('GETTERS');
 input_starter('SETTERS');
-input_starter('FUNCTIONS');
+input_starter('MEMBER FUNCTIONS / METHODS');
 input_starter('NESTED_CLASSES');
 
 ?>

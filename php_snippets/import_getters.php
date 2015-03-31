@@ -52,10 +52,10 @@ function import_getters($infos, $p)
 		$str .= $infos['filename_class'].'::';
 		
 		$str .= "get";
-		if (preg_match("/^_/", $v['name']))
+		if (substr($v['name'], 0, 0) == '_')
 			$str .= strtoupper(substr($v['name'], 1, 1)).substr($v['name'], 2);
 		else
-			$str .= strtoupper(substr($v['name'], 0, 0)).substr($v['name'], 1);
+			$str .= strtoupper(substr($v['name'], 0, 1)).substr($v['name'], 1);
 		$str .= "(void) const";
 		
 		echo $str;

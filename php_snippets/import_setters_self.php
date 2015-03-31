@@ -41,7 +41,7 @@ function import_setters_self($infos, $p)
 		if (preg_match("/^_/", $v['name']))
 			$str .= strtoupper(substr($v['name'], 1, 1)).substr($v['name'], 2);
 		else
-			$str .= strtoupper(substr($v['name'], 0, 0)).substr($v['name'], 1);
+			$str .= strtoupper(substr($v['name'], 0, 1)).substr($v['name'], 1);
 		/* $str .= "(void) const"; */
 		$str .= "(";
 		$str .= $v['type'];

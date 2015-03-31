@@ -6,7 +6,7 @@
 ;    By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2015/03/05 07:55:56 by ngoguey           #+#    #+#              ;
-;    Updated: 2015/03/26 08:09:38 by ngoguey          ###   ########.fr        ;
+;    Updated: 2015/03/31 07:17:04 by ngoguey          ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 
@@ -353,3 +353,29 @@
 						   ))))
 				   )
 				)
+
+
+(global-set-key [(f3)]
+				'(lambda(choice)
+				   "Spacersn"
+				   (interactive "n(1)all (2)Stic (3)Nest (4)CDtor (5)Ope (6)GSet (7)Funcs (8)Att: ")
+				   (if (= choice 1)
+					   (insert "// * STATICS ******************** //
+\t// * NESTED CLASSES ************* //
+\t// * CTORS / DTORS ************** //
+\t// * OPERATORS ****************** //
+\t// * GETTERS / SETTERS ********** //
+\t// * MEMBER FUNCTIONS / METHODS * //
+\t// * ATTRIBUTES ***************** //
+")
+					 )
+				   (if (= choice 2) (insert "// * STATICS ******************** //"))
+				   (if (= choice 3) (insert "// * NESTED CLASSES ************* //"))
+				   (if (= choice 4) (insert "// * CTORS / DTORS ************** //"))
+				   (if (= choice 5) (insert "// * OPERATORS ****************** //"))
+				   (if (= choice 6) (insert "// * GETTERS / SETTERS ********** //"))
+				   (if (= choice 7) (insert "// * MEMBER FUNCTIONS / METHODS * //"))
+				   (if (= choice 8) (insert "// * ATTRIBUTES ***************** //"))
+				   )
+				)
+
