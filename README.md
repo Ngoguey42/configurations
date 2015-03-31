@@ -41,7 +41,7 @@ Installation process from scratch (at school)
 - git submodule update
 - cp dotemacs ~/.emacs
 - brew install emacs
-- Create '~/php' (symbolic link to php bin)
+- Update defvar phpBin.
 
 - cp dotzshrc ~/.zshrc
 - curl -L http://install.ohmyz.sh | sh

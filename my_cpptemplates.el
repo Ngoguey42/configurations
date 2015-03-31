@@ -6,11 +6,20 @@
 ;    By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2015/03/05 07:55:56 by ngoguey           #+#    #+#              ;
-;    Updated: 2015/03/31 07:17:04 by ngoguey          ###   ########.fr        ;
+;    Updated: 2015/03/31 07:38:06 by ngoguey          ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 
+(defvar phpBin "~/mamp/php/bin/php")
 
+(global-set-key [(f2)]
+				'(lambda()
+				   "Test"
+				   (interactive)
+				   (insert "test:")
+				   (insert phpBin)
+				   )
+				)
 
 ;; Statics f1
 (global-set-key [(f1)]
@@ -18,7 +27,7 @@
 				   "Statics"
 				   (interactive)
 				   (shell-command
-					(concat "~/php ~/configurations/php_snippets/hpp_import.php '"
+					(concat phpBin " ~/configurations/php_snippets/hpp_import.php '"
 							(buffer-file-name)
 							"' '' 'statics'"
 							)
@@ -33,63 +42,63 @@
 				   (interactive "n(1)Stic (2)Ctor (3)Ope (4)Get (5)Set (6)Memb (7)Met (8)Pur (9)Init-l : ")
 				   (if (= choice 1)
 					   (shell-command
-						(concat "~/php "
+						(concat phpBin " "
 								"~/configurations/php_snippets/hpp_import.php"
 								" '"
 								(buffer-file-name) "' '' '" "statics" "'") t)
 					 )
 				   (if (= choice 2)
 					   (shell-command
-						(concat "~/php "
+						(concat phpBin " "
 								"~/configurations/php_snippets/hpp_import.php"
 								" '"
 								(buffer-file-name) "' '' '" "constructors" "'") t)
 					 )
 				   (if (= choice 3)
 					   (shell-command
-						(concat "~/php "
+						(concat phpBin " "
 								"~/configurations/php_snippets/hpp_import.php"
 								" '"
 								(buffer-file-name) "' '' '" "operators" "'") t)
 					 )
 				   (if (= choice 4)
 					   (shell-command
-						(concat "~/php "
+						(concat phpBin " "
 								"~/configurations/php_snippets/hpp_import.php"
 								" '"
 								(buffer-file-name) "' '' '" "getters" "'") t)
 					 )
 				   (if (= choice 5)
 					   (shell-command
-						(concat "~/php "
+						(concat phpBin " "
 								"~/configurations/php_snippets/hpp_import.php"
 								" '"
 								(buffer-file-name) "' '' '" "setters" "'") t)
 					 )
 				   (if (= choice 6)
 					   (shell-command
-						(concat "~/php "
+						(concat phpBin " "
 								"~/configurations/php_snippets/hpp_import.php"
 								" '"
 								(buffer-file-name) "' '' '" "member_functions" "'") t)
 					 )
 				   (if (= choice 7)
 					   (shell-command
-						(concat "~/php "
+						(concat phpBin " "
 								"~/configurations/php_snippets/hpp_import.php"
 								" '"
 								(buffer-file-name) "' '' '" "methods" "'") t)
 					 )
 				   (if (= choice 8)
 					   (shell-command
-						(concat "~/php "
+						(concat phpBin " "
 								"~/configurations/php_snippets/hpp_import.php"
 								" '"
 								(buffer-file-name) "' '' '" "pure_methods" "'") t)
 					 )
 				   (if (= choice 9)
 					   (shell-command
-						(concat "~/php "
+						(concat phpBin " "
 								"~/configurations/php_snippets/hpp_import.php"
 								" '"
 								(buffer-file-name) "' '' '" "init_list" "'") t)
@@ -110,63 +119,63 @@
 				   
 				   (if (= choice 1)
 					   (shell-command
-						(concat "~/php "
+						(concat phpBin " "
 								"~/configurations/php_snippets/hpp_import.php"
 								" '"
 								(buffer-file-name) "' '" hppfilename "' '" "statics" "'") t)
 					 )
 				   (if (= choice 2)
 					   (shell-command
-						(concat "~/php "
+						(concat phpBin " "
 								"~/configurations/php_snippets/hpp_import.php"
 								" '"
 								(buffer-file-name) "' " hppfilename " '" "constructors" "'") t)
 					 )
 				   (if (= choice 3)
 					   (shell-command
-						(concat "~/php "
+						(concat phpBin " "
 								"~/configurations/php_snippets/hpp_import.php"
 								" '"
 								(buffer-file-name) "' " hppfilename " '" "operators" "'") t)
 					 )
 				   (if (= choice 4)
 					   (shell-command
-						(concat "~/php "
+						(concat phpBin " "
 								"~/configurations/php_snippets/hpp_import.php"
 								" '"
 								(buffer-file-name) "' " hppfilename " '" "getters" "'") t)
 					 )
 				   (if (= choice 5)
 					   (shell-command
-						(concat "~/php "
+						(concat phpBin " "
 								"~/configurations/php_snippets/hpp_import.php"
 								" '"
 								(buffer-file-name) "' " hppfilename " '" "setters" "'") t)
 					 )
 				   (if (= choice 6)
 					   (shell-command
-						(concat "~/php "
+						(concat phpBin " "
 								"~/configurations/php_snippets/hpp_import.php"
 								" '"
 								(buffer-file-name) "' " hppfilename " '" "member_functions" "'") t)
 					 )
 				   (if (= choice 7)
 					   (shell-command
-						(concat "~/php "
+						(concat phpBin " "
 								"~/configurations/php_snippets/hpp_import.php"
 								" '"
 								(buffer-file-name) "' " hppfilename " '" "methods" "'") t)
 					 )
 				   (if (= choice 8)
 					   (shell-command
-						(concat "~/php "
+						(concat phpBin " "
 								"~/configurations/php_snippets/hpp_import.php"
 								" '"
 								(buffer-file-name) "' " hppfilename " '" "pure_methods" "'") t)
 					 )
 				   (if (= choice 9)
 					   (shell-command
-						(concat "~/php "
+						(concat phpBin " "
 								"~/configurations/php_snippets/hpp_import.php"
 								" '"
 								(buffer-file-name) "' " hppfilename " '" "init_list" "'") t)
@@ -247,7 +256,7 @@
 (defun canonical-hpp ()
   "canonical-hpp"
   (interactive)
-  (shell-command (concat "~/php ~/configurations/coplien_hpp.php " buffer-file-name) (current-buffer))
+  (shell-command (concat phpBin " ~/configurations/coplien_hpp.php " buffer-file-name) (current-buffer))
   (sit-for 0.1)
   (header-insert)
   (goto-line 23)
@@ -256,7 +265,7 @@
 (defun canonical-cpp ()
   "canonical-cpp"
   (interactive)
-  (shell-command (concat "~/php ~/configurations/coplien_cpp.php " buffer-file-name) (current-buffer))
+  (shell-command (concat phpBin " ~/configurations/coplien_cpp.php " buffer-file-name) (current-buffer))
   (sit-for 0.1)
   (header-insert)
   (goto-line 17)
@@ -313,7 +322,7 @@
   (interactive "*")
   (shell-command
    (concat
-	(concat "~/php ~/configurations/function_minimum.php '" arg)
+	(concat phpBin " ~/configurations/function_minimum.php '" arg)
 	"'")
    t)
   (move-end-of-line 1)
@@ -325,7 +334,7 @@
   (interactive "*")
   (shell-command
    (concat
-	"~/php ~/configurations/new_var.php "
+	phpBin " ~/configurations/new_var.php "
 	buffer-file-name
 	" "
 	(number-to-string (current-column))
