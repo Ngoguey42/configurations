@@ -6,7 +6,7 @@
 ;    By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2015/02/12 07:33:57 by ngoguey           #+#    #+#              ;
-;    Updated: 2015/03/23 14:34:10 by ngoguey          ###   ########.fr        ;
+;    Updated: 2015/04/02 11:22:27 by ngoguey          ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 
@@ -17,7 +17,6 @@
 (load "header.el")
 (load "my_cpptemplates.el")
 ;; (load "comments.el")
-
 
 ;;nasm-mode, not mine
 (autoload 'nasm-mode "~/configurations/Matthieu-Hauglustaine-nasm-mode.el" "" t)
@@ -46,3 +45,5 @@
 
 (setq line-number-mode t)
 (setq column-number-mode t)
+
+(c-set-offset 'innamespace 0)
