@@ -218,3 +218,4 @@ alias mampu="sh /nfs/zfs-student-2/users/2014/ngoguey/mamp/ctlscript.sh status"
 alias mamp="sh /nfs/zfs-student-2/users/2014/ngoguey/mamp/ctlscript.sh"
 
 alias sfmlenv='export DYLD_FRAMEWORK_PATH=`pwd`"/SFML/Frameworks"'
+export DYLD_FRAMEWORK_PATH='/nfs/zfs-student-2/users/2014/ngoguey/ft_gkrellm/SFML/Frameworks'

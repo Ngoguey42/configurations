@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/13 16:06:23 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/13 16:26:28 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/04/04 14:35:08 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -25,6 +25,8 @@ test
 # include <iostream> //lol
 # include <stdexcept>
 
+namespace bordel
+{
 class Form : virtual public TrucMachin , public lol
 {
 	int salutlol;
@@ -101,5 +103,5 @@ private:
 	bool						_isSigned;
 };
 std::ostream					&operator<<(std::ostream &o, Form const &rhs);
-
+}
 #endif // ********************************************************** FORM_HPP //

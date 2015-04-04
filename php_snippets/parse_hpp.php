@@ -97,6 +97,24 @@ function ParseHppFile($filename)
 	// '[^\{\}]*'.
 	// '(?:\{(?:R)\}*)*'.
 	// '[^\{\}]*?';
+
+
+	
+	
+	if (preg_match(
+		'/'.
+			'^(.*?)'.
+			"\bnamespace\b$spnl*\b$identifier\b$spnl*".
+			'{'.
+			"($bodyBetweenMatchingBrackets)".
+			"}".
+			"(.*?)".
+			'$'.
+			'/s'
+			, $content, $tab))
+				$content = $tab[1].$tab[2].$tab[3];
+
+
 	
 	$tab = array();
 	if (!preg_match(
