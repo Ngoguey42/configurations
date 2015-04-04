@@ -6,7 +6,7 @@
 ;    By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2015/03/05 07:55:56 by ngoguey           #+#    #+#              ;
-;    Updated: 2015/03/31 07:38:06 by ngoguey          ###   ########.fr        ;
+;    Updated: 2015/04/04 15:20:22 by ngoguey          ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 
@@ -14,10 +14,9 @@
 
 (global-set-key [(f2)]
 				'(lambda()
-				   "Test"
+				   "tab shortcut"
 				   (interactive)
-				   (insert "test:")
-				   (insert phpBin)
+				   (insert "\t")
 				   )
 				)
 
@@ -370,7 +369,7 @@
 				   (interactive "n(1)all (2)Stic (3)Nest (4)CDtor (5)Ope (6)GSet (7)Funcs (8)Att: ")
 				   (if (= choice 1)
 					   (insert "// * STATICS ******************** //
-\t// * NESTED CLASSES ************* //
+\t// * NESTED OBJECTS ************* //
 \t// * CTORS / DTORS ************** //
 \t// * OPERATORS ****************** //
 \t// * GETTERS / SETTERS ********** //
@@ -379,7 +378,7 @@
 ")
 					 )
 				   (if (= choice 2) (insert "// * STATICS ******************** //"))
-				   (if (= choice 3) (insert "// * NESTED CLASSES ************* //"))
+				   (if (= choice 3) (insert "// * NESTED OBJECTS ************* //"))
 				   (if (= choice 4) (insert "// * CTORS / DTORS ************** //"))
 				   (if (= choice 5) (insert "// * OPERATORS ****************** //"))
 				   (if (= choice 6) (insert "// * GETTERS / SETTERS ********** //"))
