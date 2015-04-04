@@ -25,9 +25,14 @@ function import_setters_self($infos, $p)
 	foreach($vars as $v)
 	{
 		$addref = false;
-		if (preg_match("/((\:\:)|([A-Z]))/", $v['type']))
-			$addref = true;
+		if (preg_match("/((\:\:)|([A-Z]))/", $v['type']) ||
+			$v['typeSuffix'] != "")
+				$addref = true;
 
+		$hasConst = false;
+		if (preg_match("/\bconst\b/", $v['type']))
+			            $hasConst = true;
+		
 		echo "\t";
 
 		$str = "void";
@@ -46,6 +51,9 @@ function import_setters_self($infos, $p)
 		$str .= "(";
 		$str .= $v['type'];
 		$str .= " ";
+
+		if ($addref && !$hasConst)
+			            $str .= "const ";
 		if ($v['typeSuffix'] != "")
 			$str .= $v['typeSuffix'];
 		elseif ($addref)

@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/13 16:06:23 by ngoguey           #+#    #+#             //
-//   Updated: 2015/04/04 14:35:08 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/04/04 14:43:34 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -97,6 +97,7 @@ private:
 	Form(Form const &src);
 
 	std::string const			_name;
+	std::string					_data;
 	int const					_sGrade;
 	int constatic				_sGrade;
 	int const					_eGrade;

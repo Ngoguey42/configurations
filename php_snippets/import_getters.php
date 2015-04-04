@@ -27,7 +27,8 @@ function import_getters($infos, $p)
 		$str = $v['type'];
 		
 		$addref = false;
-		if (preg_match("/((\:\:)|([A-Z]))/", $v['type']) || $v['typeSuffix'] != "")
+		if (preg_match("/((\:\:)|([A-Z]))/", $v['type']) ||
+			$v['typeSuffix'] != "")
 			$addref = true;
 
 		$hasConst = false;
@@ -52,7 +53,7 @@ function import_getters($infos, $p)
 		$str .= $infos['filename_class'].'::';
 		
 		$str .= "get";
-		if (substr($v['name'], 0, 0) == '_')
+		if (substr($v['name'], 0, 1) == '_')
 			$str .= strtoupper(substr($v['name'], 1, 1)).substr($v['name'], 2);
 		else
 			$str .= strtoupper(substr($v['name'], 0, 1)).substr($v['name'], 1);
