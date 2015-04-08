@@ -90,7 +90,7 @@ alias cdmamp="cd /nfs/zfs-student-2/users/2014/ngoguey/mamp"
 
 alias nvcc="/usr/local/cuda/bin/nvcc"
 alias wcc="gcc -Wall -Werror -Wextra"
-alias wpp="g++ -Wall -Werror -Wextra"
+alias wpp="clang++ -Wall -Werror -Wextra"
 alias e="emacs"
 alias lret="echo $?"
 
@@ -160,6 +160,8 @@ alias gitck="git checkout"
 alias gitf="git fetch ; git status"
 alias gitcl="git clean -xn"
 alias gitclF="git clean -xf"
+alias gitcld="git clean -xdn"
+alias gitcldF="git clean -xdf"
 
 #sh nm.sh binnary
 #nm $@ | grep ' [^tT] ' | cut -c 18- | sort
@@ -219,3 +221,7 @@ alias mamp="sh /nfs/zfs-student-2/users/2014/ngoguey/mamp/ctlscript.sh"
 
 alias sfmlenv='export DYLD_FRAMEWORK_PATH=`pwd`"/SFML/Frameworks"'
 export DYLD_FRAMEWORK_PATH='/nfs/zfs-student-2/users/2014/ngoguey/ft_gkrellm/SFML/Frameworks'
+
+alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --kiosk --args 'file://'`pwd`'/' 2>/dev/null"
+
+alias php="~/mamp/php/bin/php"
