@@ -182,7 +182,7 @@ function ParseHppFile($filename)
 		if (preg_match("/\bstatic\b/", $rawText, $tab))
 		{
 			$replacements['isStatic'] = true;
-			$rawText = preg_replace("/".preg_quote($tab[0])."/", '', $rawText);
+			$rawText = preg_replace("/".preg_quote($tab[0], '/')."/", '', $rawText);
 		}
 		$rawText = trim($rawText, " \t\n\r\0\x0B;");
 		$replacements['full'] = $rawText;
@@ -203,7 +203,7 @@ function ParseHppFile($filename)
 			'\(('.$parenthesisContent.')\)';
 		if (preg_match("/$throwAndContent/", $rawPrototype, $tab))
 		{
-			$rawPrototype = preg_replace("/".preg_quote($tab[0])."/", '', $rawPrototype);
+			$rawPrototype = preg_replace("/".preg_quote($tab[0], '/')."/", '', $rawPrototype);
 			$tab = rawArgumentsToTab2($tab[1]);
 			$ret['throwArgs'] = $tab;
 		}
@@ -220,29 +220,33 @@ function ParseHppFile($filename)
 			;
 		else
 			return (null);
-		$rawPrototype = preg_replace("/".preg_quote($tab[0])."/", '', $rawPrototype);
+
+		$rawPrototype = preg_replace("/".preg_quote($tab[0], '/').
+			"/", '', $rawPrototype);
+		
+		
 		$ret['funName'] = trim($tab[1]);
 		$ret['funargs'] = rawArgumentsToTab2($tab[2]);
 		$ret['postFun'] = trim($tab[3], " \t\n\r\0\x0B;");
 		if (preg_match("/\=\s*0/", $ret['postFun'], $tab))
 		{
 			$ret['isPure'] = true;
-			$ret['postFun'] = trim(preg_replace("/".preg_quote($tab[0])."/", '', $ret['postFun']));
+			$ret['postFun'] = trim(preg_replace("/".preg_quote($tab[0], '/')."/", '', $ret['postFun']));
 		}
 		if (preg_match("/\bstatic\b/", $rawPrototype, $tab))
 		{
 			$ret['isStatic'] = true;
-			$rawPrototype = preg_replace("/".preg_quote($tab[0])."/", '', $rawPrototype);
+			$rawPrototype = preg_replace("/".preg_quote($tab[0], '/')."/", '', $rawPrototype);
 		}
 		if (preg_match("/\bvirtual\b/", $rawPrototype, $tab))
 		{
 			$ret['isVirtual'] = true;
-			$rawPrototype = preg_replace("/".preg_quote($tab[0])."/", '', $rawPrototype);
+			$rawPrototype = preg_replace("/".preg_quote($tab[0], '/')."/", '', $rawPrototype);
 		}
 		if (preg_match("/[\&\*]/", $rawPrototype, $tab))
 		{
 			$ret['typeSuffix'] = $tab[0];
-			$rawPrototype = preg_replace("/".preg_quote($tab[0])."/", '', $rawPrototype);
+			$rawPrototype = preg_replace("/".preg_quote($tab[0], '/')."/", '', $rawPrototype);
 		}
 		else
 			$ret['typeSuffix'] = '';
