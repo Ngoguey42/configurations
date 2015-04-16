@@ -6,7 +6,7 @@
 ;    By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2015/02/12 07:33:57 by ngoguey           #+#    #+#              ;
-;    Updated: 2015/04/06 09:16:40 by ngoguey          ###   ########.fr        ;
+;    Updated: 2015/04/14 11:46:11 by ngoguey          ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 
@@ -18,6 +18,7 @@
 (load "my_cpptemplates.el")
 ;; (load "comments.el")
 (add-to-list 'auto-mode-alist '("\\.cu$" . c-mode))
+(add-to-list 'auto-mode-alist '("\\.tpp$" . c++-mode))
 
 ;;nasm-mode, not mine
 (autoload 'nasm-mode "~/configurations/Matthieu-Hauglustaine-nasm-mode.el" "" t)

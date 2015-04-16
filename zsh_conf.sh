@@ -87,6 +87,7 @@ alias cddocs="cd ~/Documents/"
 alias cdapache="cd /nfs/zfs-student-2/users/2014/ngoguey/mamp/apache2/conf/bitnami/"
 alias cdapps="cd /nfs/zfs-student-2/users/2014/ngoguey/mamp/apps/"
 alias cdmamp="cd /nfs/zfs-student-2/users/2014/ngoguey/mamp"
+alias cdas="cd /nfs/zfs-student-2/users/2014/ngoguey/mamp/apps/Awesome_Starship_Battles/htdocs"
 
 alias nvcc="/usr/local/cuda/bin/nvcc"
 alias wcc="gcc -Wall -Werror -Wextra"
@@ -116,7 +117,7 @@ tail -n 1"
 alias rr="rm **/*~; rm **/\#* ;rm **/*.stackdump; rm **/.\#*"
 alias rrlft="(rr) ; (cd includes && rr) ; (cd srcs && rr) ; (cd srcs/printf && rr)"
 
-alias ch="chmod 644 \`ls -1d *.c\` ; chmod 644 \`ls -1d *.h\`; chmod 744 Makefile ; chmod 644 auteur ; ls -lFhG"
+alias ch="chmod 644 \`ls -1d *.(c|cpp|hpp)\` ; chmod 644 \`ls -1d *.h\`; chmod 744 Makefile ; chmod 644 auteur ; ls -lFhG"
 
 alias makej="make fclean ; make -j"
 alias makejl="make -C libft/ fclean ; make -C libft/ -j"
