@@ -50,8 +50,6 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-
-export PATH="/nfs/zfs-student-2/users/2014/ngoguey/mamp/php/bin:/nfs/zfs-student-2/users/2014/ngoguey/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/texbin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -98,9 +96,6 @@ alias lret="echo $?"
 alias save="pwd | cat > ~/.save_pwd"
 alias go="cd \`cat ~/.save_pwd\` ; clear"
 
-alias ack="~/.brew/bin/ack"
-alias ackf="~/.brew/bin/ack \"^[\t\# ].*[a-z0-9_]+\(\""
-alias acki="~/.brew/bin/ack \"^\#[\t ]*include[\t ]+\<\""
 alias grepclasses="grep -h 'class ' **/*.hpp | grep -v ';'"
 alias vg="~/bin/valgrind/bin/valgrind"
 
@@ -225,4 +220,23 @@ export DYLD_FRAMEWORK_PATH='/nfs/zfs-student-2/users/2014/ngoguey/ft_gkrellm/SFM
 
 alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --kiosk --args 'file://'`pwd`'/' 2>/dev/null"
 
-alias php="~/mamp/php/bin/php"
+alias php="php"
+# alias php="~/mamp/php/bin/php"
+
+UNAME=`uname | cut -c1-6`
+
+if [ "$UNAME" = "CYGWIN" ]
+then
+	alias open="cygstart.exe"
+	alias clear='printf "\033c"'
+	export PATH="/usr/bin:/bin:/usr/sbin:/sbin"
+	alias ackf="ack \"^[\t\# ].*[a-z0-9_]+\(\""
+	alias acki="ack \"^\#[\t ]*include[\t ]+\<\""
+else
+	export PATH="/nfs/zfs-student-2/users/2014/ngoguey/mamp/php/bin:/nfs/zfs-student-2/users/2014/ngoguey/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/texbin"
+	alias ack="~/.brew/bin/ack"
+	alias ackf="~/.brew/bin/ack \"^[\t\# ].*[a-z0-9_]+\(\""
+	alias acki="~/.brew/bin/ack \"^\#[\t ]*include[\t ]+\<\""
+fi
+
+
