@@ -40,12 +40,8 @@ Installation process from scratch (at school)
 - git submodule init
 - git submodule update
 - cp dotemacs ~/.emacs
-- brew install emacs
-- Update defvar phpBin.
 
 - cp dotzshrc ~/.zshrc
 - curl -L http://install.ohmyz.sh | sh
-- brew install ack
-- brew install tig
-- (install bitnami mamp)
 - (install spectacles)
+- time (brew update && brew upgrade && brew install ack && brew install homebrew/versions/glfw3 && brew install nasm && brew install sdl2 && brew install sfml && brew install emacs && brew install tig && brew update && brew upgrade)
