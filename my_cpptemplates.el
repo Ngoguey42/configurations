@@ -6,11 +6,12 @@
 ;    By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2015/03/05 07:55:56 by ngoguey           #+#    #+#              ;
-;    Updated: 2015/04/04 15:20:22 by ngoguey          ###   ########.fr        ;
+;    Updated: 2015/05/11 08:56:14 by ngoguey          ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 
-(defvar phpBin "~/mamp/php/bin/php")
+(defvar phpBin "php")
+;; (defvar phpBin "~/mamp/php/bin/php")
 
 (global-set-key [(f2)]
 				'(lambda()

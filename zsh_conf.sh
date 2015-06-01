@@ -82,10 +82,10 @@ alias cddown="cd ~/Downloads/"
 alias cddesk="cd ~/Desktop/"
 alias cddocs="cd ~/Documents/"
 
-alias cdapache="cd /nfs/zfs-student-2/users/2014/ngoguey/mamp/apache2/conf/bitnami/"
-alias cdapps="cd /nfs/zfs-student-2/users/2014/ngoguey/mamp/apps/"
-alias cdmamp="cd /nfs/zfs-student-2/users/2014/ngoguey/mamp"
-alias cdas="cd /nfs/zfs-student-2/users/2014/ngoguey/mamp/apps/Awesome_Starship_Battles/htdocs"
+alias cdapache="cd /nfs/zfs-student-3/users/2014/ngoguey/mamp/apache2/conf/bitnami/"
+alias cdapps="cd /nfs/zfs-student-3/users/2014/ngoguey/mamp/apps/"
+alias cdmamp="cd /nfs/zfs-student-3/users/2014/ngoguey/mamp"
+alias cdas="cd /nfs/zfs-student-3/users/2014/ngoguey/mamp/apps/Awesome_Starship_Battles/htdocs"
 
 alias nvcc="/usr/local/cuda/bin/nvcc"
 alias wcc="gcc -Wall -Werror -Wextra"
@@ -100,19 +100,19 @@ alias grepclasses="grep -h 'class ' **/*.hpp | grep -v ';'"
 alias vg="~/bin/valgrind/bin/valgrind"
 
 alias l="ls -gohFG"
-alias lsc="ls -gohGF **/*.(cpp|hpp|c|h|php) 1>&1 1>&2 |
-wc ; wc **/*.(cpp|hpp|c|h|php) |
+alias lsc="ls -gohGF **/*.(cpp|hpp|c|h|php|tpp) 1>&1 1>&2 |
+wc ; wc **/*.(cpp|hpp|c|h|php|tpp) |
 tail -n 1"
 
-alias lscs="ls -gohGFS **/*.(cpp|hpp|c|h|php) 1>&1 1>&2 |
-wc ; wc **/*.(cpp|hpp|c|h|php) |
+alias lscs="ls -gohGFS **/*.(cpp|hpp|c|h|php|tpp) 1>&1 1>&2 |
+wc ; wc **/*.(cpp|hpp|c|h|php|tpp) |
 tail -n 1"
 
 
 alias rr="rm **/*~; rm **/\#* ;rm **/*.stackdump; rm **/.\#*"
 alias rrlft="(rr) ; (cd includes && rr) ; (cd srcs && rr) ; (cd srcs/printf && rr)"
 
-alias ch="chmod 644 \`ls -1d *.(c|cpp|hpp)\` ; chmod 644 \`ls -1d *.h\`; chmod 744 Makefile ; chmod 644 auteur ; ls -lFhG"
+alias ch="chmod 644 \`ls -1d *.(c|cpp|hpp|tpp)\` ; chmod 644 \`ls -1d *.h\`; chmod 744 Makefile ; chmod 644 auteur ; ls -lFhG"
 
 alias makej="make fclean ; make -j"
 alias makejl="make -C libft/ fclean ; make -C libft/ -j"
@@ -147,7 +147,7 @@ export MAIL="ngoguey@student.42.fr"
 alias tig="~/.brew/bin/tig/"
 alias gitals="git add \`git ls-files\` ; git status"
 alias gitls="git ls-files"
-alias gitac="git add \`ls -1 **/*.(cpp|hpp|c|h|php)\` ; git status"
+alias gitac="git add \`ls -1 **/*.(cpp|hpp|c|h|php|tpp)\` ; git status"
 alias gitpom="git pull origin master"
 alias gits="git status"
 alias gitcm="git commit -m"
@@ -208,15 +208,15 @@ kill -$1 $(ps | grep -v "grep" | grep "ft_minishell1" | cut -c -5)
 alias kmsh="\`sigmsh KILL\`"
 alias chp="chmod 755 *.php"
 
-alias mysql="/nfs/zfs-student-2/users/2014/ngoguey/mamp/mysql/bin/mysql"
-alias mysqlu="/nfs/zfs-student-2/users/2014/ngoguey/mamp/mysql/bin/mysql -uroot -p"
+alias mysql="/nfs/zfs-student-3/users/2014/ngoguey/mamp/mysql/bin/mysql"
+alias mysqlu="/nfs/zfs-student-3/users/2014/ngoguey/mamp/mysql/bin/mysql -uroot -p"
 
-alias mampr="sh /nfs/zfs-student-2/users/2014/ngoguey/mamp/ctlscript.sh restart"
-alias mampu="sh /nfs/zfs-student-2/users/2014/ngoguey/mamp/ctlscript.sh status"
-alias mamp="sh /nfs/zfs-student-2/users/2014/ngoguey/mamp/ctlscript.sh"
+alias mampr="sh /nfs/zfs-student-3/users/2014/ngoguey/mamp/ctlscript.sh restart"
+alias mampu="sh /nfs/zfs-student-3/users/2014/ngoguey/mamp/ctlscript.sh status"
+alias mamp="sh /nfs/zfs-student-3/users/2014/ngoguey/mamp/ctlscript.sh"
 
 alias sfmlenv='export DYLD_FRAMEWORK_PATH=`pwd`"/SFML/Frameworks"'
-export DYLD_FRAMEWORK_PATH='/nfs/zfs-student-2/users/2014/ngoguey/ft_gkrellm/SFML/Frameworks'
+export DYLD_FRAMEWORK_PATH='/nfs/zfs-student-3/users/2014/ngoguey/ft_gkrellm/SFML/Frameworks'
 
 alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --kiosk --args 'file://'`pwd`'/' 2>/dev/null"
 
@@ -233,7 +233,7 @@ then
 	alias ackf="ack \"^[\t\# ].*[a-z0-9_]+\(\""
 	alias acki="ack \"^\#[\t ]*include[\t ]+\<\""
 else
-	export PATH="/nfs/zfs-student-2/users/2014/ngoguey/mamp/php/bin:/nfs/zfs-student-2/users/2014/ngoguey/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/texbin"
+	export PATH="/nfs/zfs-student-3/users/2014/ngoguey/mamp/php/bin:/nfs/zfs-student-3/users/2014/ngoguey/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/texbin"
 	alias ack="~/.brew/bin/ack"
 	alias ackf="~/.brew/bin/ack \"^[\t\# ].*[a-z0-9_]+\(\""
 	alias acki="~/.brew/bin/ack \"^\#[\t ]*include[\t ]+\<\""
