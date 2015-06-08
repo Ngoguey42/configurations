@@ -6,12 +6,12 @@
 ;    By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2015/02/12 07:33:57 by ngoguey           #+#    #+#              ;
-;    Updated: 2015/04/14 11:46:11 by ngoguey          ###   ########.fr        ;
+;    Updated: 2015/06/08 14:58:16 by ngoguey          ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 
 (add-to-list 'load-path "/usr/share/emacs/site-lisp/")
-(add-to-list 'load-path "~/configurations/web-mode/")
+
 
 (load "my_bindings.el")
 (load "header.el")
@@ -29,6 +29,7 @@
 
 
 ;;web-mode, not mine
+(add-to-list 'load-path "~/configurations/web-mode/")
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.php$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html$" . web-mode))
@@ -38,6 +39,22 @@
 (set-face-attribute 'web-mode-html-tag-bracket-face nil :foreground "SteelBlue")
 ;;/web-mode
 
+
+;;tuareg
+(add-to-list 'load-path "~/configurations/tuareg/")
+
+(autoload 'tuareg-mode "tuareg" "Major mode for editing Caml code" t)
+(autoload 'camldebug "camldebug" "Run the Caml debugger" t)
+(autoload 'tuareg-imenu-set-imenu "tuareg-imenu"
+  "Configuration of imenu for tuareg" t)
+
+(add-hook 'tuareg-mode-hook 'tuareg-imenu-set-imenu)
+
+(setq auto-mode-alist
+	  (append '(("\\.ml[ily]?$" . tuareg-mode)
+				("\\.topml$" . tuareg-mode))
+			  auto-mode-alist))
+;;/tuareg
 
 (setq-default tab-width 4)
 (setq-default indent-tabs-mode t)
