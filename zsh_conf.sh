@@ -232,6 +232,41 @@ then
 	export PATH="/usr/bin:/bin:/usr/sbin:/sbin"
 	alias ackf="ack \"^[\t\# ].*[a-z0-9_]+\(\""
 	alias acki="ack \"^\#[\t ]*include[\t ]+\<\""
+	alias syncgithub='
+	cd; mkdir -p sync; cd sync; 
+	chmod 755 *
+	export reponame="proj14_algo_lem-in";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
+	export reponame="proj13_graph_nibbler";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
+	export reponame="piscine_ocaml";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
+	export reponame="ocamltest";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
+	export reponame="configurations";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
+	export reponame="proj01_algo_libft";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
+	export reponame="proj10_algo_pushswap";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
+	export reponame="ftconstexpr";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
+	export reponame="vanilla_addons";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
+	export reponame="piscine_cpp";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
+	export reponame="proj12_unix_philosophers";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
+	export reponame="ft_minishop";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
+	export reponame="ft_retro";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
+	export reponame="piscine_php";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
+	export reponame="ft_gkrellm";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
+	export reponame="tests_cpp";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
+	export reponame="Awesome_Starship_Battles";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
+	export reponame="proj04_graph_fdf";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
+	export reponame="c_exams";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
+	export reponame="gnl_testdir";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
+	export reponame="proj08_unix_sh";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
+	export reponame="libftasm_testdir";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
+	export reponame="proj11_algo_libftasm";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
+	export reponame="proj06_graph_fractol";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
+	export reponame="proj05_algo_printf";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
+	export reponame="proj03_unix_ls";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
+	export reponame="proj09_graph_wolf3d";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
+	export reponame="proj02_algo_getnextline";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
+	export reponame="libft_testdir";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
+	chmod 000 *
+	unset reponame
+	'
 else
 	export PATH="/nfs/zfs-student-3/users/2014/ngoguey/mamp/php/bin:/nfs/zfs-student-3/users/2014/ngoguey/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/texbin"
 	alias ack="~/.brew/bin/ack"
