@@ -239,4 +239,6 @@ else
 	alias acki="~/.brew/bin/ack \"^\#[\t ]*include[\t ]+\<\""
 fi
 
-
+alias o="rlwrap --prompt-colour=green ocaml"
+alias of="rlwrap --prompt-colour=green ocaml -init "
+alias oc="ocamlopt"
