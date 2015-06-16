@@ -1,14 +1,14 @@
-;******************************************************************************;
-;                                                                              ;
-;                                                         :::      ::::::::    ;
-;    my_cpptemplates.el                                 :+:      :+:    :+:    ;
-;                                                     +:+ +:+         +:+      ;
-;    By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+         ;
-;                                                 +#+#+#+#+#+   +#+            ;
-;    Created: 2015/03/05 07:55:56 by ngoguey           #+#    #+#              ;
-;    Updated: 2015/05/11 08:56:14 by ngoguey          ###   ########.fr        ;
-;                                                                              ;
-;******************************************************************************;
+										;******************************************************************************;
+										;                                                                              ;
+										;                                                         :::      ::::::::    ;
+										;    my_cpptemplates.el                                 :+:      :+:    :+:    ;
+										;                                                     +:+ +:+         +:+      ;
+										;    By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+         ;
+										;                                                 +#+#+#+#+#+   +#+            ;
+										;    Created: 2015/03/05 07:55:56 by ngoguey           #+#    #+#              ;
+;    Updated: 2015/06/16 09:58:55 by ngoguey          ###   ########.fr        ;
+										;                                                                              ;
+										;******************************************************************************;
 
 (defvar phpBin "php")
 ;; (defvar phpBin "~/mamp/php/bin/php")
@@ -180,8 +180,8 @@
 								" '"
 								(buffer-file-name) "' " hppfilename " '" "init_list" "'") t)
 					 )
-					 )
 				   )
+				)
 
 
 
@@ -233,6 +233,19 @@
   (backward-char)
   (backward-char)
   )
+(defun ocaml-debug-func()
+  "ocaml-debug-func"
+  (interactive)
+  (insert
+   "Printf.printf \"\\n%!\";")
+  (indent-according-to-mode)
+  (backward-char)
+  (backward-char)
+  (backward-char)
+  (backward-char)
+  (backward-char)
+  (backward-char)
+  )
 
 (global-set-key (kbd "<f1>")
 				'(lambda()
@@ -247,7 +260,9 @@
 						 (php-debug-func)
 					   (if (string= (file-name-extension (buffer-file-name)) "c")
 						   (c-debug-func)
-						 )))
+						 (if (string= (file-name-extension (buffer-file-name)) "ml")
+							 (ocaml-debug-func)
+						   ))))
 				   )
 				)
 

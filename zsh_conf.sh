@@ -11,7 +11,7 @@ ZSH_THEME="robbyrussell"
 # CASE_SENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
@@ -26,7 +26,7 @@ DISABLE_LS_COLORS="true"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -71,78 +71,66 @@ source $ZSH/oh-my-zsh.sh
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
+
+# CONFIG FILES EDITION
 alias zshconf="e ~/configurations/zsh_conf.sh"
 alias matrix="source ~/.zshrc"
 alias econf="emacs ~/configurations/my_config.el"
 
+# CD ALIASES
 alias cddown="cd ~/Downloads/"
 alias cddesk="cd ~/Desktop/"
 alias cddocs="cd ~/Documents/"
 
-alias cdapache="cd /nfs/zfs-student-3/users/2014/ngoguey/mamp/apache2/conf/bitnami/"
-alias cdapps="cd /nfs/zfs-student-3/users/2014/ngoguey/mamp/apps/"
-alias cdmamp="cd /nfs/zfs-student-3/users/2014/ngoguey/mamp"
-alias cdas="cd /nfs/zfs-student-3/users/2014/ngoguey/mamp/apps/Awesome_Starship_Battles/htdocs"
-
-alias nvcc="/usr/local/cuda/bin/nvcc"
-alias wcc="gcc -Wall -Werror -Wextra"
-alias wpp="clang++ -Wall -Werror -Wextra"
+#BINARY SHORTCUTS
 alias e="emacs"
-alias lret="echo $?"
-
-alias save="pwd | cat > ~/.save_pwd"
-alias go="cd \`cat ~/.save_pwd\` ; clear"
-
-alias grepclasses="grep -h 'class ' **/*.hpp | grep -v ';'"
 alias vg="~/bin/valgrind/bin/valgrind"
 
+# FILES EXPLORATION
 alias l="ls -gohFG"
+alias lr='l -R * | grep -vE "^$" | grep -vE "^total "'
 alias lsc="ls -gohGF **/*.(cpp|hpp|c|h|php|tpp) 1>&1 1>&2 |
 wc ; wc **/*.(cpp|hpp|c|h|php|tpp) |
 tail -n 1"
-
 alias lscs="ls -gohGFS **/*.(cpp|hpp|c|h|php|tpp) 1>&1 1>&2 |
 wc ; wc **/*.(cpp|hpp|c|h|php|tpp) |
 tail -n 1"
 
-
-alias rr="rm **/*~; rm **/\#* ;rm **/*.stackdump; rm **/.\#*"
-alias rrlft="(rr) ; (cd includes && rr) ; (cd srcs && rr) ; (cd srcs/printf && rr)"
-
-alias ch="chmod 644 \`ls -1d *.(c|cpp|hpp|tpp)\` ; chmod 644 \`ls -1d *.h\`; chmod 744 Makefile ; chmod 644 auteur ; ls -lFhG"
-
-alias makej="make fclean ; make -j"
-alias makejl="make -C libft/ fclean ; make -C libft/ -j"
-alias makeja="makejl ; makej"
-
-alias makejg="make fclean ; make -j g"
-alias makejgl="make -C libft/ fclean ; make -C libft/ -j g"
-alias makejga="makejgl ; makejg"
-
-alias kic='ls -dltu /nfs/z*/*/*/* |  awk  '"'"'{printf "%15s (%s) %3s %2s %s\n", $3, $4, $6, $7, $8}'"'"' | rev | uniq -f4 | rev'
-alias qui='_(){ ldapsearch uid="$1" ; }; _'
-
+alias grepclasses="grep -h 'class ' **/*.hpp | grep -v ';'"
 alias findman='_(){
 echo -e "Looking for /usr/share/man/man*/$1.*:";
 ls -godFGhSd /usr/share/man/man*/$1.*;
 echo -e "\nExtented, looking for /usr/share/man/man*/*$1.*:";
 ls -godFGhSd /usr/share/man/man*/*$1*;
 }; _'
-
 alias findlib='_(){
 ack $@ libft/includes/libft.h /usr/include/*.h
 }; _'
+alias headervalidity='for i in *.[hc]
+do
+echo $i
+cat $i | head -n 4 | tail -n 1 | cut -c 6- | cut -c -30
+done'
 
-alias ppxt='_(){
-echo "<$1 $2 | $3 >$4"
-echo "<$1 `echo $2` | `echo $3` >$4
-echo -e "\n./pipex \"$1\" \"$2\"  \"$3\" \"$4\""
-./pipex "$1" "$2" "$3" "$4"
-}; _'
+#COMPILATION
+alias wcc="gcc -Wall -Werror -Wextra"
+alias wpp="clang++ -Wall -Werror -Wextra"
+alias makej="make fclean ; make -j"
+alias makejl="make -C libft/ fclean ; make -C libft/ -j"
+alias makeja="makejl ; makej"
+alias makejg="make fclean ; make -j g"
+alias makejgl="make -C libft/ fclean ; make -C libft/ -j g"
+alias makejga="makejgl ; makejg"
 
+# OCAML
+alias o="rlwrap --prompt-colour=green ocaml -open Printf"
+alias of="rlwrap --prompt-colour=green ocaml  -open Printf -init "
+alias oc="ocamlopt"
+alias ocl="echo 'rm -f ./*.cmi ./*.cmo ./*.cmx ./*.o' | sh 2>/dev/null"
+alias ok='ocamlopt -i *.ml && ocamlopt *.ml && ocl && ./a.out'
+alias okt='ocamlopt -i *.ml && ocamlopt *.ml && ocl && time ./a.out'
+
+# GIT RELATED
 export MAIL="ngoguey@student.42.fr"
 alias tig="~/.brew/bin/tig/"
 alias gitals="git add \`git ls-files\` ; git status"
@@ -159,11 +147,13 @@ alias gitclF="git clean -xf"
 alias gitcld="git clean -xdn"
 alias gitcldF="git clean -xdf"
 
-#sh nm.sh binnary
-#nm $@ | grep ' [^tT] ' | cut -c 18- | sort
-alias nm2="sh /nfs/sgoinfre/goinfre/Misc/nm.sh"
+# MISC
+alias lret="echo $?"
+alias save="pwd | cat > ~/.save_pwd"
+alias go="cd \`cat ~/.save_pwd\` ; clear"
+alias rr="rm **/*~; rm **/\#*; rm **/*.stackdump; rm **/.\#*"
+alias ch="chmod 644 \`ls -1d *.(c|cpp|hpp|tpp)\` ; chmod 644 \`ls -1d *.h\`; chmod 744 Makefile ; chmod 644 auteur ; ls -lFhG"
 
-#ps interessant
 alias psi='ps | grep -v zsh | grep -v emacs'
 
 alias sht='_(){
@@ -195,34 +185,14 @@ rm -f log.txt
 
 };_'
 
-alias headervalidity='for i in *.[hc]
-do
-echo $i
-cat $i | head -n 4 | tail -n 1 | cut -c 6- | cut -c -30
-done'
-
 alias sigmsh='_(){
 kill -$1 $(ps | grep -v "grep" | grep "ft_minishell1" | cut -c -5)
 };_'
 
 alias kmsh="\`sigmsh KILL\`"
-alias chp="chmod 755 *.php"
 
-alias mysql="/nfs/zfs-student-3/users/2014/ngoguey/mamp/mysql/bin/mysql"
-alias mysqlu="/nfs/zfs-student-3/users/2014/ngoguey/mamp/mysql/bin/mysql -uroot -p"
 
-alias mampr="sh /nfs/zfs-student-3/users/2014/ngoguey/mamp/ctlscript.sh restart"
-alias mampu="sh /nfs/zfs-student-3/users/2014/ngoguey/mamp/ctlscript.sh status"
-alias mamp="sh /nfs/zfs-student-3/users/2014/ngoguey/mamp/ctlscript.sh"
-
-alias sfmlenv='export DYLD_FRAMEWORK_PATH=`pwd`"/SFML/Frameworks"'
-export DYLD_FRAMEWORK_PATH='/nfs/zfs-student-3/users/2014/ngoguey/ft_gkrellm/SFML/Frameworks'
-
-alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --kiosk --args 'file://'`pwd`'/' 2>/dev/null"
-
-alias php="php"
-# alias php="~/mamp/php/bin/php"
-
+# LOCATION SPECIFIC
 UNAME=`uname | cut -c1-6`
 
 if [ "$UNAME" = "CYGWIN" ]
@@ -269,11 +239,15 @@ then
 	'
 else
 	export PATH="/nfs/zfs-student-3/users/2014/ngoguey/mamp/php/bin:/nfs/zfs-student-3/users/2014/ngoguey/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/texbin"
-	alias ack="~/.brew/bin/ack"
+	export DYLD_FRAMEWORK_PATH='/nfs/zfs-student-3/users/2014/ngoguey/ft_gkrellm/SFML/Frameworks'	alias ack="~/.brew/bin/ack"
 	alias ackf="~/.brew/bin/ack \"^[\t\# ].*[a-z0-9_]+\(\""
 	alias acki="~/.brew/bin/ack \"^\#[\t ]*include[\t ]+\<\""
-fi
+	alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --kiosk --args 'file://'`pwd`'/' 2>/dev/null"
+	alias kic='ls -dltu /nfs/z*/*/*/* |  awk  '"'"'{printf "%15s (%s) %3s %2s %s\n", $3, $4, $6, $7, $8}'"'"' | rev | uniq -f4 | rev'
+	alias qui='_(){ ldapsearch uid="$1" ; }; _'
 
-alias o="rlwrap --prompt-colour=green ocaml"
-alias of="rlwrap --prompt-colour=green ocaml -init "
-alias oc="ocamlopt"
+	#sh nm.sh binnary
+	#nm $@ | grep ' [^tT] ' | cut -c 18- | sort
+	alias nm2="sh /nfs/sgoinfre/goinfre/Misc/nm.sh"
+
+fi
