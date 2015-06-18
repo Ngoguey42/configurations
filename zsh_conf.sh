@@ -123,8 +123,8 @@ alias makejgl="make -C libft/ fclean ; make -C libft/ -j g"
 alias makejga="makejgl ; makejg"
 
 # OCAML
-alias o="rlwrap --prompt-colour=green ocaml -open Printf"
-alias of="rlwrap --prompt-colour=green ocaml  -open Printf -init "
+alias o="rlwrap --prompt-colour=green ocaml"
+alias of="rlwrap --prompt-colour=green ocaml -init "
 alias oc="ocamlopt"
 alias ocl="echo 'rm -f ./*.cmi ./*.cmo ./*.cmx ./*.o' | sh 2>/dev/null"
 alias ok='ocamlopt -i *.ml && ocamlopt *.ml && ocl && ./a.out'
