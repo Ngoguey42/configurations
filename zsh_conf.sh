@@ -127,7 +127,7 @@ alias o="rlwrap --prompt-colour=green ocaml"
 alias of="rlwrap --prompt-colour=green ocaml -init "
 alias oc="ocamlopt"
 alias ocl="echo 'rm -f ./*.cmi ./*.cmo ./*.cmx ./*.o' | sh 2>/dev/null"
-alias ok='ocamlopt -i *.ml && ocamlopt *.ml && ocl && ./a.out'
+alias ok='ocamlopt graphics.cmxa -i *.ml && ocamlopt graphics.cmxa *.ml && ocl && ./a.out'
 alias okt='ocamlopt -i *.ml && ocamlopt *.ml && ocl && time ./a.out'
 
 # GIT RELATED
