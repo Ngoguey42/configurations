@@ -45,4 +45,4 @@ Installation process from scratch (at school)
 - curl -L http://install.ohmyz.sh | sh
 - (install spectacles)
 - time (rm -rf ~/.brew && rm -rf ~/Library/Caches/Homebrew/ && brew update && brew upgrade --all && mkdir ~/Library/Caches/Homebrew/ && brew install ack && brew install homebrew/versions/glfw3 && brew install nasm && brew install sdl2 && brew install sfml && brew install emacs && brew install tig && brew update && brew upgrade --all)
-- time (rm -rf ~/.brew && rm -rf ~/Library/Caches/Homebrew/ && brew update && brew upgrade --all && mkdir ~/Library/Caches/Homebrew/ && brew install ack && brew install emacs && brew install tig && brew install julow/tap/makemake && brew update && brew upgrade --all)
+- time (rm -rf ~/.brew && rm -rf ~/Library/Caches/Homebrew/ && brew update && brew upgrade --all && mkdir ~/Library/Caches/Homebrew/ && brew install ack emacs tig julow/tap/makemake && brew update && brew upgrade --all)
