@@ -6,7 +6,7 @@
 ;    By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2015/02/12 07:33:57 by ngoguey           #+#    #+#              ;
-;    Updated: 2015/06/08 14:58:16 by ngoguey          ###   ########.fr        ;
+;    Updated: 2015/06/30 14:50:41 by ngoguey          ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 
@@ -55,6 +55,18 @@
 				("\\.topml$" . tuareg-mode))
 			  auto-mode-alist))
 ;;/tuareg
+
+
+;;glsl-mode
+(add-to-list 'load-path "~/configurations/glsl-mode/")
+
+(autoload 'glsl-mode "glsl-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.glsl\\'" . glsl-mode))
+(add-to-list 'auto-mode-alist '("\\.vert\\'" . glsl-mode))
+(add-to-list 'auto-mode-alist '("\\.frag\\'" . glsl-mode))
+(add-to-list 'auto-mode-alist '("\\.geom\\'" . glsl-mode))
+
+;;/glsl-mode
 
 (setq-default tab-width 4)
 (setq-default indent-tabs-mode t)
