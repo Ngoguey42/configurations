@@ -87,16 +87,21 @@ alias e="emacs"
 alias vg="~/bin/valgrind/bin/valgrind"
 
 # FILES EXPLORATION
-MYEXTENSIONS="cpp|hpp|c|h|php|tpp|ml|mli"
+MYEXTENSIONS="cpp|hpp|c|h|php|tpp|ml|mli|vert|frag"
 alias l="ls -gohFG"
 alias la="l -a"
 alias lr='l -R * | grep -vE "^$" | grep -vE "^total "'
-alias lsc="ls -gohGF **/*.($MYEXTENSIONS) 1>&1 1>&2 |
-wc ; wc **/*.($MYEXTENSIONS) |
-tail -n 1"
-alias lscs="ls -gohGFS **/*.($MYEXTENSIONS) 1>&1 1>&2 |
-wc ; wc **/*.($MYEXTENSIONS) |
-tail -n 1"
+alias lsc="_(){
+ls -gohGF ./\$@/**/*.($MYEXTENSIONS) 1>&1 1>&2 |
+wc ; wc ./\$@/**/*.($MYEXTENSIONS) |
+tail -n 1
+}; _"
+
+alias lscs="_(){
+ls -gohGFS ./\$@/**/*.($MYEXTENSIONS) 1>&1 1>&2 |
+wc ; wc ./\$@/**/*.($MYEXTENSIONS) |
+tail -n 1
+}; _"
 
 alias grepclasses="grep -h 'class ' **/*.hpp | grep -v ';'"
 alias findman='_(){
@@ -106,7 +111,7 @@ echo -e "\nExtented, looking for /usr/share/man/man*/*$1.*:";
 ls -godFGhSd /usr/share/man/man*/*$1*;
 }; _'
 alias findlib='_(){
-ack $@ libft/includes/libft.h /usr/include/*.h
+ack $@ ~/*/libft/includes/*.h /usr/include/*.h
 }; _'
 alias headervalidity='for i in *.[hc]
 do
