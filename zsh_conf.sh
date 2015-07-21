@@ -158,7 +158,7 @@ alias gitcldF="git clean -xdf"
 alias lret="echo $?"
 alias save="pwd | cat > ~/.save_pwd"
 alias go="cd \`cat ~/.save_pwd\` ; clear"
-alias rr="rm **/*~; rm **/\#*; rm **/*.stackdump; rm **/.\#*"
+alias rr="rm **/*~; rm **/\#*; rm **/*.stackdump; rm **/.\#*; rm -r **/.DS_Store"
 alias ch="chmod 644 \`ls -1d *.($MYEXTENSIONS)\` ; chmod 644 \`ls -1d *.h\`; chmod 744 Makefile ; chmod 644 auteur ; ls -lFhG"
 
 alias psi='ps | grep -v zsh | grep -v emacs'
