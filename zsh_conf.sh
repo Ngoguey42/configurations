@@ -159,12 +159,13 @@ alias lret="echo $?"
 alias save="pwd | cat > ~/.save_pwd"
 alias go="cd \`cat ~/.save_pwd\` ; clear"
 alias rr="
-rm **/*~ 2>/dev/null && echo 'rm **/*~'
-rm **/\#* && echo 'rm **/\#*'
-rm **/*.stackdump && echo 'rm **/*.stackdump'
-rm **/.\#* && echo 'rm **/.\#*'
-rm -r **/.DS_Store && echo 'rm **/.DS_Store'
-rm -r **/*.dSYM && echo 'rm **/*.dSYM'"
+printf '\033[31m' ;rm **/*~ 2>/dev/null && echo '\033[32mrm **/*~'
+printf '\033[31m' ;rm **/\#* && echo '\033[32mrm **/\#*'
+printf '\033[31m' ;rm **/*.stackdump && echo '\033[32mrm **/*.stackdump'
+printf '\033[31m' ;rm **/.\#* && echo '\033[32mrm **/.\#*'
+printf '\033[31m' ;rm -r **/.DS_Store && echo '\033[32mrm **/.DS_Store'
+printf '\033[31m' ;rm -r **/*.dSYM && echo '\033[32mrm **/*.dSYM'
+printf '\033[0m'"
 alias ch="chmod 644 \`ls -1d *.($MYEXTENSIONS)\` ; chmod 644 \`ls -1d *.h\`; chmod 744 Makefile ; chmod 644 auteur ; ls -lFhG"
 
 alias psi='ps | grep -v zsh | grep -v emacs'
