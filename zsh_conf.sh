@@ -118,6 +118,7 @@ echo $i
 cat $i | head -n 4 | tail -n 1 | cut -c 6- | cut -c -30
 done'
 
+
 #COMPILATION
 alias wcc="gcc -Wall -Werror -Wextra"
 alias wpp="clang++ -Wall -Werror -Wextra"
@@ -246,6 +247,9 @@ UNAME=`uname | cut -c1-6`
 
 if [ "$UNAME" = "Linux" ]
 then
+	nm2(){
+	nm $@ | grep ' [^tT] ' | cut -c 10- | sort | uniq
+	}
 	alias e="emacs"
 	export PATH="$HOME/.linuxbrew/bin:$PATH"
 	export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
@@ -255,6 +259,9 @@ fi
 
 if [ "$UNAME" = "CYGWIN" ]
 then
+	nm2(){
+	nm $@ | grep ' [^tT] ' | cut -c 10- | sort | uniq
+	}
 	alias e='~/configurations/notepadpp.sh'
 	alias open="cygstart.exe"
 	alias makemake="python ~/makemake/makemake.py"
@@ -266,6 +273,9 @@ fi
 
 if [ "$UNAME" = "Darwin" ]
 then
+	nm2(){
+	nm $@ | grep ' [^tT] ' | cut -c 18- | sort | uniq
+	}
 	alias e="emacs"
 	export PATH="/nfs/zfs-student-3/users/2014/ngoguey/mamp/php/bin:/nfs/zfs-student-3/users/2014/ngoguey/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/texbin"
 	export DYLD_FRAMEWORK_PATH='/nfs/zfs-student-3/users/2014/ngoguey/ft_gkrellm/SFML/Frameworks'	alias ack="~/.brew/bin/ack"
@@ -274,9 +284,4 @@ then
 	alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --kiosk --args 'file://'`pwd`'/' 2>/dev/null"
 	alias kic='ls -dltu /nfs/z*/*/*/* |  awk  '"'"'{printf "%15s (%s) %3s %2s %s\n", $3, $4, $6, $7, $8}'"'"' | rev | uniq -f4 | rev'
 	alias qui='_(){ ldapsearch uid="$1" ; }; _'
-
-	#sh nm.sh binnary
-	#nm $@ | grep ' [^tT] ' | cut -c 18- | sort
-	alias nm2="sh /nfs/sgoinfre/goinfre/Misc/nm.sh"
-
 fi
