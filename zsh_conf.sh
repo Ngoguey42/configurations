@@ -256,6 +256,7 @@ fi
 if [ "$UNAME" = "CYGWIN" ]
 then
 	alias open="cygstart.exe"
+	alias makemake="python ~/makemake/makemake.py"
 	alias clear='printf "\033c"'
 	export PATH="/usr/bin:/bin:/usr/sbin:/sbin"
 	alias ackf="ack \"^[\t\# ].*[a-z0-9_]+\(\""
