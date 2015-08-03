@@ -83,7 +83,6 @@ alias cddesk="cd ~/Desktop/"
 alias cddocs="cd ~/Documents/"
 
 #BINARY SHORTCUTS
-alias e="emacs"
 alias vg="~/bin/valgrind/bin/valgrind"
 
 # FILES EXPLORATION
@@ -247,6 +246,7 @@ UNAME=`uname | cut -c1-6`
 
 if [ "$UNAME" = "Linux" ]
 then
+	alias e="emacs"
 	export PATH="$HOME/.linuxbrew/bin:$PATH"
 	export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
 	export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
@@ -255,6 +255,7 @@ fi
 
 if [ "$UNAME" = "CYGWIN" ]
 then
+	alias e='~/configurations/notepadpp.sh'
 	alias open="cygstart.exe"
 	alias makemake="python ~/makemake/makemake.py"
 	alias clear='printf "\033c"'
@@ -265,6 +266,7 @@ fi
 
 if [ "$UNAME" = "Darwin" ]
 then
+	alias e="emacs"
 	export PATH="/nfs/zfs-student-3/users/2014/ngoguey/mamp/php/bin:/nfs/zfs-student-3/users/2014/ngoguey/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/texbin"
 	export DYLD_FRAMEWORK_PATH='/nfs/zfs-student-3/users/2014/ngoguey/ft_gkrellm/SFML/Frameworks'	alias ack="~/.brew/bin/ack"
 	alias ackf="~/.brew/bin/ack \"^[\t\# ].*[a-z0-9_]+\(\""
