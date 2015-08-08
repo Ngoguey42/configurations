@@ -155,6 +155,13 @@ alias gitcld="git clean -xdn"
 alias gitcldF="git clean -xdf"
 
 # MISC
+alias scopcog="
+cog.py -I conf -rU srcs/configuration/cogconf.c
+cog.py -I conf -rU srcs/configuration/mesh_fill1.c
+cog.py -I conf -rU srcs/configuration/mesh_fill2.c
+cog.py -I conf -rU include/scop_cogconf_meshfill.h
+cog.py -I conf -rU include/scop_cogconf_enums.h"
+
 alias lret="echo $?"
 alias save="pwd | cat > ~/.save_pwd"
 alias go="cd \`cat ~/.save_pwd\` ; clear"
