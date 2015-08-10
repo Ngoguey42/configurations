@@ -86,7 +86,7 @@ alias cddocs="cd ~/Documents/"
 alias vg="~/bin/valgrind/bin/valgrind"
 
 # FILES EXPLORATION
-MYEXTENSIONS="cpp|hpp|c|h|php|tpp|ml|mli|vert|frag"
+MYEXTENSIONS="cpp|hpp|c|h|php|tpp|ml|mli|vert|frag|py"
 alias l="ls -gohFG"
 alias la="l -a"
 alias lr='l -R * | grep -vE "^$" | grep -vE "^total "'
@@ -156,9 +156,10 @@ alias gitcldF="git clean -xdf"
 
 # MISC
 alias scopcog="
-cog.py -I conf -rU srcs/configuration/cogconf.c
-cog.py -I conf -rU srcs/configuration/mesh_fill1.c
-cog.py -I conf -rU srcs/configuration/mesh_fill2.c
+cog.py -I conf -rU srcs/configuration/cogconf1.c
+cog.py -I conf -rU srcs/configuration/cogconf2.c
+cog.py -I conf -rU srcs/configuration/cogconf_mesh_fill1.c
+cog.py -I conf -rU srcs/configuration/cogconf_mesh_fill2.c
 cog.py -I conf -rU include/scop_cogconf_meshfill.h
 cog.py -I conf -rU include/scop_cogconf_enums.h"
 
