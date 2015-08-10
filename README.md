@@ -35,15 +35,23 @@ Emacs shortcuts:
 
 Installation process from scratch (at school)
 
+
+- (install spectacles)
+
+- curl -L http://install.ohmyz.sh | sh
+
+Reload xterm
+
+- git config --global credential.helper "cache --timeout=10800"
+- git config --global user.name "Ngoguey42"
+- git config --global user.email "ngoguey@student.42.fr"
 - cd ; git clone https://github.com/Ngoguey42/configurations
 - cd configurations
 - git submodule init
 - git submodule update
 - cp dotemacs ~/.emacs
-
 - cp dotzshrc ~/.zshrc
-- curl -L http://install.ohmyz.sh | sh
-- (install spectacles)
+
 - time (rm -rf ~/.brew && rm -rf ~/Library/Caches/Homebrew/ && brew update && brew upgrade --all && mkdir ~/Library/Caches/Homebrew/ && brew install ack && brew install homebrew/versions/glfw3 && brew install nasm && brew install sdl2 && brew install sfml && brew install emacs && brew install tig && brew update && brew upgrade --all)
 - time (rm -rf ~/.brew && rm -rf ~/Library/Caches/Homebrew/ && brew update && brew upgrade --all && mkdir ~/Library/Caches/Homebrew/ && brew install ack emacs tig julow/tap/makemake && brew update && brew upgrade --all)
 - time (rm -rf ~/.brew && rm -rf ~/Library/Caches/Homebrew/ && brew update && brew upgrade --all && mkdir ~/Library/Caches/Homebrew/ && brew install ack emacs tig julow/tap/makemake python homebrew/versions/glfw3 && brew update && brew upgrade --all)
