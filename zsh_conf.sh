@@ -76,6 +76,7 @@ source $ZSH/oh-my-zsh.sh
 alias zshconf="e ~/configurations/zsh_conf.sh"
 alias matrix="source ~/.zshrc"
 alias econf="emacs ~/configurations/my_config.el"
+alias reloadconf="cd ~/configurations/; gitpom; sleep 2; matrix; cd -"
 
 # CD ALIASES
 alias cddown="cd ~/Downloads/"
