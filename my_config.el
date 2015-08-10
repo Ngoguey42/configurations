@@ -6,7 +6,7 @@
 ;    By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2015/02/12 07:33:57 by ngoguey           #+#    #+#              ;
-;    Updated: 2015/06/30 14:50:41 by ngoguey          ###   ########.fr        ;
+;    Updated: 2015/08/10 14:38:31 by ngoguey          ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 
@@ -67,6 +67,12 @@
 (add-to-list 'auto-mode-alist '("\\.geom\\'" . glsl-mode))
 
 ;;/glsl-mode
+
+(add-hook 'python-mode-hook
+		  (lambda ()
+			(setq indent-tabs-mode t)
+			(setq tab-width 4)
+			(setq python-indent 4)))
 
 (setq-default tab-width 4)
 (setq-default indent-tabs-mode t)
