@@ -36,7 +36,7 @@ Emacs shortcuts:
 Installation process from scratch (at school)
 
 
-- (install spectacles)
+- install: spectacles, spotify, blender, office, gimp, sublime, adium
 
 - curl -L http://install.ohmyz.sh | sh
 
