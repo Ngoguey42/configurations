@@ -75,7 +75,7 @@ source $ZSH/oh-my-zsh.sh
 # CONFIG FILES EDITION
 alias zshconf="e ~/configurations/zsh_conf.sh"
 alias matrix="source ~/.zshrc"
-alias econf="emacs ~/configurations/my_config.el"
+alias econf="e ~/configurations/my_config.el"
 alias reloadconf="cd ~/configurations/; gitpom; sleep 2; matrix; cd -"
 
 # CD ALIASES
@@ -259,7 +259,9 @@ then
 	nm2(){
 	nm $@ | grep ' [^tT] ' | cut -c 10- | sort | uniq
 	}
-	alias e="emacs"
+	alias e="emacs -nw"
+	alias termvert6="nohup terminator -b -l vert6 &"
+	alias termhoriz6="nohup terminator -b -l horiz6 &"
 	export PATH="$HOME/.linuxbrew/bin:$PATH"
 	export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
 	export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
