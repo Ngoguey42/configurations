@@ -157,8 +157,8 @@ alias gitcldF="git clean -xdf"
 
 # MISC
 alias scopcog="
-cog.py -I conf -rU include/cog_enums.h
-cog.py -I conf -rU include/cog_meshfill.h
+cog.py -I conf -rU include/configuration/cog_enums.h
+cog.py -I conf -rU include/configuration/cog_meshfill.h
 cog.py -I conf -rU srcs/configuration/cog_loadconf1.c
 cog.py -I conf -rU srcs/configuration/cog_loadconf2.c
 cog.py -I conf -rU srcs/configuration/cog_meshfill1.c
