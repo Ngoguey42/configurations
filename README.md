@@ -43,6 +43,7 @@ Installation process from scratch (at school)
 Reload xterm
 
 - git config --global credential.helper "cache --timeout=10800"
+- git config --global core.editor "emacs"
 - git config --global user.name "Ngoguey42"
 - git config --global user.email "ngoguey@student.42.fr"
 - cd ; git clone https://github.com/Ngoguey42/configurations
