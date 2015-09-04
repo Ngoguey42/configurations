@@ -140,7 +140,6 @@ alias okt='ocamlopt -i *.ml && ocamlopt *.ml && ocl && time ./a.out'
 
 # GIT RELATED
 export MAIL="ngoguey@student.42.fr"
-alias tig="~/.brew/bin/tig/"
 alias gitals="git add \`git ls-files\` ; git status"
 alias gitls="git ls-files"
 alias gitac="git add \`ls -1 **/*.($MYEXTENSIONS)\` ; git status"
@@ -287,6 +286,7 @@ then
 	nm2(){
 	nm $@ | grep ' [^tT] ' | cut -c 18- | sort | uniq
 	}
+	alias tig="~/.brew/bin/tig/"
 	alias e="emacs"
 	export PATH="/nfs/zfs-student-3/users/2014/ngoguey/mamp/php/bin:/nfs/zfs-student-3/users/2014/ngoguey/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/texbin"
 	export DYLD_FRAMEWORK_PATH='/nfs/zfs-student-3/users/2014/ngoguey/ft_gkrellm/SFML/Frameworks'	alias ack="~/.brew/bin/ack"
