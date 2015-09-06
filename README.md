@@ -38,22 +38,23 @@ Installation process from scratch (at school)
 
 - install: spectacles, spotify, blender, office, gimp, sublime, adium
 
-- curl -L http://install.ohmyz.sh | sh
-
+```sh
+curl -L http://install.ohmyz.sh | sh
+```
 Reload xterm
+```sh
+git config --global credential.helper "cache --timeout=10800"
+git config --global core.editor "emacs"
+git config --global user.name "Ngoguey42"
+git config --global user.email "ngoguey@student.42.fr"
+cd ; git clone https://github.com/Ngoguey42/configurations
+cd configurations
+git submodule init
+git submodule update
+cp dotemacs ~/.emacs
+cp dotzshrc ~/.zshrc
 
-- git config --global credential.helper "cache --timeout=10800"
-- git config --global core.editor "emacs"
-- git config --global user.name "Ngoguey42"
-- git config --global user.email "ngoguey@student.42.fr"
-- cd ; git clone https://github.com/Ngoguey42/configurations
-- cd configurations
-- git submodule init
-- git submodule update
-- cp dotemacs ~/.emacs
-- cp dotzshrc ~/.zshrc
+time (rm -rf ~/.brew && rm -rf ~/Library/Caches/Homebrew/ && brew update && brew upgrade --all && mkdir ~/Library/Caches/Homebrew/ && brew install ack emacs tig julow/tap/makemake python homebrew/versions/glfw3 && brew update && brew upgrade --all)
 
-- time (rm -rf ~/.brew && rm -rf ~/Library/Caches/Homebrew/ && brew update && brew upgrade --all && mkdir ~/Library/Caches/Homebrew/ && brew install ack emacs tig julow/tap/makemake python homebrew/versions/glfw3 && brew update && brew upgrade --all)
-
-
-- (brew install ack emacs tig julow/tap/makemake)
+(brew install ack emacs tig julow/tap/makemake)
+```
