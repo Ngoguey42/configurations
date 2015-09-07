@@ -170,6 +170,7 @@ alias rr="
 printf '\033[31m' ;rm **/*~ 2>/dev/null && echo '\033[32mrm **/*~'
 printf '\033[31m' ;rm **/\#* && echo '\033[32mrm **/\#*'
 printf '\033[31m' ;rm **/*.stackdump && echo '\033[32mrm **/*.stackdump'
+printf '\033[31m' ;rm **/nohup.out && echo '\033[32mrm **/nohup.out'
 printf '\033[31m' ;rm **/.\#* && echo '\033[32mrm **/.\#*'
 printf '\033[31m' ;rm -r **/.DS_Store && echo '\033[32mrm **/.DS_Store'
 printf '\033[31m' ;rm -r **/*.dSYM && echo '\033[32mrm **/*.dSYM'
@@ -258,7 +259,9 @@ then
 	nm2(){
 	nm $@ | grep ' [^tT] ' | cut -c 10- | sort | uniq
 	}
-	alias e="emacs -nw"
+	alias spotify="nohup spotify &"
+	alias e="/usr/bin/emacs -nw"
+	alias makemake="python ~/makemake/makemake.py"
 	alias termvert6="nohup terminator -b -l vert6 &"
 	alias termhoriz6="nohup terminator -b -l horiz6 &"
 	export PATH="$HOME/.linuxbrew/bin:$PATH"
