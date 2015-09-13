@@ -175,7 +175,8 @@ printf '\033[31m' ;rm **/.\#* && echo '\033[32mrm **/.\#*'
 printf '\033[31m' ;rm -r **/.DS_Store && echo '\033[32mrm **/.DS_Store'
 printf '\033[31m' ;rm -r **/*.dSYM && echo '\033[32mrm **/*.dSYM'
 printf '\033[0m'"
-alias ch="chmod 644 \`ls -1d *.($MYEXTENSIONS)\` ; chmod 644 \`ls -1d *.h\`; chmod 744 Makefile ; chmod 644 auteur ; ls -lFhG"
+alias ch="chmod 644 \`ls -1d *.($MYEXTENSIONS)\` ; chmod 644 \`ls -1d *.h\`; chmod 744 Makefile ; chmod 644 auteur ; l"
+alias chr="chmod 644 \`ls -1d **/*.($MYEXTENSIONS)\` ; chmod 744 Makefile ; chmod 644 auteur ; lr"
 
 alias psi='ps | grep -v zsh | grep -v emacs'
 
