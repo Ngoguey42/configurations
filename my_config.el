@@ -12,7 +12,6 @@
 
 (add-to-list 'load-path "/usr/share/emacs/site-lisp/")
 
-
 (load "my_bindings.el")
 ;; (load "header.el")
 (load "my_cpptemplates.el")
@@ -65,6 +64,8 @@
 (add-to-list 'auto-mode-alist '("\\.vert\\'" . glsl-mode))
 (add-to-list 'auto-mode-alist '("\\.frag\\'" . glsl-mode))
 (add-to-list 'auto-mode-alist '("\\.geom\\'" . glsl-mode))
+(add-to-list 'auto-mode-alist '("\\.tesc\\'" . glsl-mode))
+(add-to-list 'auto-mode-alist '("\\.tese\\'" . glsl-mode))
 
 ;;/glsl-mode
 
