@@ -87,7 +87,7 @@ alias cddocs="cd ~/Documents/"
 alias vg="~/bin/valgrind/bin/valgrind"
 
 # FILES EXPLORATION
-MYEXTENSIONS="cpp|hpp|c|h|php|tpp|ml|mli|vert|frag|geom|tesc|tese|xml|lua|py"
+MYEXTENSIONS="cpp|hpp|c|h|php|tpp|ml|mli|vert|frag|geom|tesc|tese|glsl|xml|lua|py"
 alias l="ls -gohFG"
 alias la="l -a"
 alias lr='l -R * | grep -vE "^$" | grep -vE "^total "'
