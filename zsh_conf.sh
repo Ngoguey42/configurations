@@ -72,6 +72,10 @@ source $ZSH/oh-my-zsh.sh
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 
+export C_INCLUDE_PATH="$HOME/.brew/include"
+export CPLUS_INCLUDE_PATH="$HOME/.brew/include"
+export LIBRARY_PATH="$HOME/.brew/lib"
+
 # CONFIG FILES EDITION
 alias zshconf="e ~/configurations/zsh_conf.sh"
 alias matrix="source ~/.zshrc"
