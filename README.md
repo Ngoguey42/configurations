@@ -32,6 +32,7 @@ cp dotemacs ~/.emacs
 cp dotzshrc ~/.zshrc
 mkdir ~/Library/Caches/Homebrew/
 brew update
+brew upgrade makemake
 
 time (rm -rf ~/.brew && rm -rf ~/Library/Caches/Homebrew/ && brew update && brew upgrade --all && mkdir ~/Library/Caches/Homebrew/ && brew install ack emacs tig julow/tap/makemake python homebrew/versions/glfw3 && brew update && brew upgrade --all)
 
