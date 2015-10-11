@@ -259,6 +259,8 @@ alias kmsh="\`sigmsh KILL\`"
 # LOCATION SPECIFIC
 UNAME=`uname | cut -c1-6`
 
+alias dumpsizeof="sh ~/configurations/dump_sizeof.sh"
+
 if [ "$UNAME" = "Linux" ]
 then
 	nm2(){
