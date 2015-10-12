@@ -72,6 +72,10 @@ source $ZSH/oh-my-zsh.sh
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 
+export C_INCLUDE_PATH="$HOME/.brew/include:$HOME/lua/src"
+export CPLUS_INCLUDE_PATH="$HOME/.brew/include:$HOME/lua/src"
+export LIBRARY_PATH="$HOME/.brew/lib:$HOME/lua/src"
+
 # CONFIG FILES EDITION
 alias zshconf="e ~/configurations/zsh_conf.sh"
 alias matrix="source ~/.zshrc"
@@ -254,6 +258,8 @@ alias kmsh="\`sigmsh KILL\`"
 
 # LOCATION SPECIFIC
 UNAME=`uname | cut -c1-6`
+
+alias dumpsizeof="sh ~/configurations/dump_sizeof.sh"
 
 if [ "$UNAME" = "Linux" ]
 then
