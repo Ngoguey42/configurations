@@ -138,7 +138,13 @@ alias makejga="makejgl ; makejg"
 alias o="rlwrap --prompt-colour=green ocaml"
 alias of="rlwrap --prompt-colour=green ocaml -init "
 alias oc="ocamlopt"
-alias ocl="echo 'rm -f ./*.cmi ./*.cmo ./*.cmx ./*.o' | sh 2>/dev/null"
+alias ocl="
+printf '\033[31m' ;rm -r ./*.cmi && echo '\033[32mrm ./*.cmi'
+printf '\033[31m' ;rm -r ./*.cmo && echo '\033[32mrm ./*.cmo'
+printf '\033[31m' ;rm -r ./*.cmx && echo '\033[32mrm ./*.cmx'
+printf '\033[31m' ;rm -r ./*.o && echo '\033[32mrm ./*.o'
+printf '\033[0m'"
+
 alias ok='ocamlopt graphics.cmxa -i *.ml && ocamlopt graphics.cmxa *.ml && ocl && ./a.out'
 alias okt='ocamlopt -i *.ml && ocamlopt *.ml && ocl && time ./a.out'
 
