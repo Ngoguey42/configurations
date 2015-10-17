@@ -13,7 +13,7 @@
 (add-to-list 'load-path "/usr/share/emacs/site-lisp/")
 
 (load "my_bindings.el")
-;; (load "header.el")
+(load "header.el")
 (load "my_cpptemplates.el")
 ;; (load "comments.el")
 (add-to-list 'auto-mode-alist '("\\.cu$" . c-mode))

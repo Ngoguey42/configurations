@@ -72,8 +72,8 @@ source $ZSH/oh-my-zsh.sh
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 
-export C_INCLUDE_PATH="$HOME/.brew/include:$HOME/lua/src"
-export CPLUS_INCLUDE_PATH="$HOME/.brew/include:$HOME/lua/src"
+export C_INCLUDE_PATH="$HOME/.brew/include:$HOME/.brew/include/freetype2:$HOME/lua/src"
+export CPLUS_INCLUDE_PATH="$HOME/.brew/include:$HOME/.brew/include/freetype2:$HOME/lua/src"
 export LIBRARY_PATH="$HOME/.brew/lib:$HOME/lua/src"
 
 # CONFIG FILES EDITION
