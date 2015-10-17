@@ -14,7 +14,7 @@ CC=clang
 
 printf "uname: "
 uname
-echo compiled with $CC:
+echo compiled with \'$CC\':
 $CC -v
 echo '
 #include <stdio.h>
@@ -36,6 +36,7 @@ PRINTSIZEOF(long long);
 printf("\\n");
 PRINTSIZEOF(int);
 PRINTSIZEOF(ssize_t);
+PRINTSIZEOF(void*);
 printf("\\n");
 PRINTSIZEOF(intmax_t);
 PRINTSIZEOF(int8_t);

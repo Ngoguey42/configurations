@@ -270,6 +270,7 @@ then
 	alias e="/usr/bin/emacs -nw"
 	alias makemake="python ~/makemake/makemake.py"
 	alias termvert6="nohup terminator -b -l vert6 &"
+	alias termvert2="nohup terminator -b -l vert2 &"
 	alias termhoriz6="nohup terminator -b -l horiz6 &"
 	export PATH="$HOME/.linuxbrew/bin:$PATH"
 	export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
