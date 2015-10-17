@@ -25,7 +25,7 @@ git config --global core.editor "emacs"
 git config --global user.name "Ngoguey42"
 git config --global user.email "ngoguey@student.42.fr"
 cd ; git clone https://github.com/Ngoguey42/configurations
-cd configurations
+cd configurations ; git pull origin master
 git submodule init
 git submodule update
 cp dotemacs ~/.emacs
