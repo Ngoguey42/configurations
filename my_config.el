@@ -6,7 +6,7 @@
 ;    By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2015/02/12 07:33:57 by ngoguey           #+#    #+#              ;
-;    Updated: 2015/08/10 14:38:31 by ngoguey          ###   ########.fr        ;
+;    Updated: 2015/10/18 13:14:42 by ngoguey          ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 
@@ -84,3 +84,5 @@
 (setq column-number-mode t)
 
 (c-set-offset 'innamespace 0)
+
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
