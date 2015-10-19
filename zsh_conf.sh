@@ -137,7 +137,7 @@ alias makejga="makejgl ; makejg"
 # OCAML
 alias o="rlwrap --prompt-colour=green ocaml"
 alias of="rlwrap --prompt-colour=green ocaml -init "
-alias oc="ocamlopt"
+alias oc="ocamlopt.opt"
 alias ocl="
 printf '\033[31m' ;rm -r ./*.cmi && echo '\033[32mrm ./*.cmi'
 printf '\033[31m' ;rm -r ./*.cmo && echo '\033[32mrm ./*.cmo'
@@ -146,7 +146,7 @@ printf '\033[31m' ;rm -r ./*.o && echo '\033[32mrm ./*.o'
 printf '\033[0m'"
 
 alias ok='ocamlopt graphics.cmxa -i *.ml && ocamlopt graphics.cmxa *.ml && ocl && ./a.out'
-alias okt='ocamlopt -i *.ml && ocamlopt *.ml && ocl && time ./a.out'
+alias okt='rr ; ocamlopt -i *.ml && ocamlopt.opt *.ml && ocl && time ./a.out && rm a.out'
 
 # GIT RELATED
 export MAIL="ngoguey@student.42.fr"
@@ -192,7 +192,7 @@ alias psi='ps | grep -v zsh | grep -v emacs'
 
 alias sht='_(){
 
-echo "SH:" 
+echo "SH:"
 env -i sh -c $@ 1>sht1 2>sht2
 echo -n "\033[33m"
 cat sht1
@@ -213,7 +213,7 @@ cat log.txt
 exec 5>&-
 
 rm -f sht1
-rm -f sht2 
+rm -f sht2
 rm -f log.txt
 
 
@@ -225,7 +225,7 @@ kill -$1 $(ps | grep -v "grep" | grep "ft_minishell1" | cut -c -5)
 
 alias kmsh="\`sigmsh KILL\`"
 	alias syncgithub='
-	cd; mkdir -p sync; cd sync; 
+	cd; mkdir -p sync; cd sync;
 	chmod 755 *
 	export reponame="scop";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
 	export reponame="proj01_algo_libft";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
@@ -255,7 +255,7 @@ alias kmsh="\`sigmsh KILL\`"
 	export reponame="proj09_graph_wolf3d";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
 	export reponame="proj02_algo_getnextline";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
 	export reponame="libft_testdir";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
-	
+
 	export reponame="ocamltest";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
 	export reponame="tests_cpp";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
 	export reponame="Awesome_Starship_Battles";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
