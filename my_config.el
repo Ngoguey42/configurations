@@ -6,7 +6,7 @@
 ;    By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2015/02/12 07:33:57 by ngoguey           #+#    #+#              ;
-;    Updated: 2015/10/18 13:14:42 by ngoguey          ###   ########.fr        ;
+;    Updated: 2015/10/28 12:47:38 by ngoguey          ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 
@@ -86,3 +86,8 @@
 (c-set-offset 'innamespace 0)
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+(setq completion-ignored-extensions
+	  (append completion-ignored-extensions
+			  (quote
+			   (".cmx"  ".cmi"  ".cmo" ))))
