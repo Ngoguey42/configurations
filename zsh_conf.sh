@@ -107,6 +107,8 @@ wc ; wc ./\$@/**/*.($MYEXTENSIONS) |
 tail -n 1
 }; _"
 
+alias cloc='cloc --force-lang="C++",tpp --force-lang="HLSL",glsl --force-lang="HLSL",frag --force-lang="HLSL",geom --force-lang="HLSL",tese --force-lang="HLSL",tesc --force-lang="HLSL",vert'
+
 alias grepclasses="grep -h 'class ' **/*.hpp | grep -v ';'"
 alias findman='_(){
 echo -e "Looking for /usr/share/man/man*/$1.*:";
