@@ -67,10 +67,13 @@ source $ZSH/oh-my-zsh.sh
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
-
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
+
+
+# ZSH CONFIG
+zstyle ':completion:*:*:emacs:*:*files' ignored-patterns '*.o' '*.cmx' '*.cmi' '*.cmo'
 
 export C_INCLUDE_PATH="$HOME/.brew/include:$HOME/.brew/include/freetype2:$HOME/lua/src"
 export CPLUS_INCLUDE_PATH="$HOME/.brew/include:$HOME/.brew/include/freetype2:$HOME/lua/src"
@@ -312,6 +315,7 @@ then
 	alias ackf="~/.brew/bin/ack \"^[\t\# ].*[a-z0-9_]+\(\""
 	alias acki="~/.brew/bin/ack \"^\#[\t ]*include[\t ]+\<\""
 	alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --kiosk --args 'file://'`pwd`'/' 2>/dev/null"
+	alias chromegit="~/configurations/chromegit.sh"
 	alias kic='ls -dltu /nfs/z*/*/*/* |  awk  '"'"'{printf "%15s (%s) %3s %2s %s\n", $3, $4, $6, $7, $8}'"'"' | rev | uniq -f4 | rev'
 	alias qui='_(){ ldapsearch uid="$1" ; }; _'
 fi
