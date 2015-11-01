@@ -149,6 +149,12 @@ printf '\033[31m' ;rm -r ./*.cmo && echo '\033[32mrm ./*.cmo'
 printf '\033[31m' ;rm -r ./*.cmx && echo '\033[32mrm ./*.cmx'
 printf '\033[31m' ;rm -r ./*.o && echo '\033[32mrm ./*.o'
 printf '\033[0m'"
+alias oclr="
+printf '\033[31m' ;rm -r **/*.cmi && echo '\033[32mrm **/*.cmi'
+printf '\033[31m' ;rm -r **/*.cmo && echo '\033[32mrm **/*.cmo'
+printf '\033[31m' ;rm -r **/*.cmx && echo '\033[32mrm **/*.cmx'
+printf '\033[31m' ;rm -r **/*.o && echo '\033[32mrm **/*.o'
+printf '\033[0m'"
 
 alias ok='ocamlopt graphics.cmxa -i *.ml && ocamlopt graphics.cmxa *.ml && ocl && ./a.out'
 alias okt='rr ; ocamlopt -i *.ml && ocamlopt.opt *.ml && ocl && time ./a.out && rm a.out'
