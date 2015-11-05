@@ -157,7 +157,7 @@ printf '\033[31m' ;rm -r **/*.o && echo '\033[32mrm **/*.o'
 printf '\033[0m'"
 
 alias ok='ocamlopt graphics.cmxa -i *.ml && ocamlopt graphics.cmxa *.ml && ocl && ./a.out'
-alias okt='rr ; ocamlopt.opt *.ml && time ./a.out && rm a.out && printf "\033[33m" && ocamlopt -i *.ml && printf "\033[0m" && ocl'
+alias okt='rr ; ocamlopt.opt *.ml && printf "\033[33m" && ocamlopt -i *.ml && printf "\033[0m" && time ./a.out && rm a.out && ocl'
 
 # GIT RELATED
 export MAIL="ngoguey@student.42.fr"

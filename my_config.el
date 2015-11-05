@@ -6,7 +6,7 @@
 ;    By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2015/02/12 07:33:57 by ngoguey           #+#    #+#              ;
-;    Updated: 2015/10/28 12:47:38 by ngoguey          ###   ########.fr        ;
+;    Updated: 2015/11/05 13:41:35 by ngoguey          ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 
@@ -69,6 +69,15 @@
 
 ;;/glsl-mode
 
+
+;;lua-mode
+(add-to-list 'load-path "~/configurations/lua-mode/")
+
+(autoload 'lua-mode "lua-mode" "Lua editing mode." t)
+(add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
+(add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
+;;/lua-mode
+
 (add-hook 'python-mode-hook
 		  (lambda ()
 			(setq indent-tabs-mode t)
@@ -91,3 +100,4 @@
 	  (append completion-ignored-extensions
 			  (quote
 			   (".cmx"  ".cmi"  ".cmo" ))))
+(c-set-offset 'inextern-lang 0)
