@@ -75,9 +75,9 @@ source $ZSH/oh-my-zsh.sh
 # ZSH CONFIG
 zstyle ':completion:*:*:emacs:*:*files' ignored-patterns '*.o' '*.cmx' '*.cmi' '*.cmo'
 
-export C_INCLUDE_PATH="$HOME/.brew/include:$HOME/.brew/include/freetype2:$HOME/lua/src"
-export CPLUS_INCLUDE_PATH="$HOME/.brew/include:$HOME/.brew/include/freetype2:$HOME/lua/src"
-export LIBRARY_PATH="$HOME/.brew/lib:$HOME/lua/src"
+export C_INCLUDE_PATH="$HOME/.brew/include:$HOME/.brew/include/freetype2"
+export CPLUS_INCLUDE_PATH="$HOME/.brew/include:$HOME/.brew/include/freetype2"
+export LIBRARY_PATH="$HOME/.brew/lib"
 
 # CONFIG FILES EDITION
 alias zshconf="e ~/configurations/zsh_conf.sh"

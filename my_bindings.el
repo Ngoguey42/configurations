@@ -6,7 +6,7 @@
 ;    By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2015/02/12 07:41:24 by ngoguey           #+#    #+#              ;
-;    Updated: 2015/08/10 09:43:41 by ngoguey          ###   ########.fr        ;
+;    Updated: 2015/11/11 15:21:49 by ngoguey          ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 
@@ -102,3 +102,18 @@
 
 
 
+(global-set-key (kbd "C-x C-y ")
+				(lambda()
+				  "replace spaces"
+				  (interactive)
+				  (setq colnb (current-column))
+				  (setq linenb (line-number-at-pos))
+				  (replace-string "    " "\t")
+				  (goto-line linenb) (move-to-column linenb)
+				  (replace-string "   " "\t")
+				  (goto-line linenb) (move-to-column linenb)
+				  (replace-string "  " "\t")
+				  (goto-line linenb) (move-to-column linenb)
+				  (replace-string "\t " "\t")
+				  (goto-line linenb) (move-to-column linenb)
+				  ))
