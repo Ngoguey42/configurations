@@ -24,7 +24,8 @@ git config --global credential.helper "cache --timeout=10800"
 git config --global core.editor "emacs"
 git config --global user.name "Ngoguey42"
 git config --global user.email "ngoguey@student.42.fr"
-cd ; git clone https://github.com/Ngoguey42/configurations
+#cd ; git clone https://github.com/Ngoguey42/configurations
+cd /goinfre/ngoguey ; git clone https://github.com/Ngoguey42/configurations
 cd configurations ; git pull origin master
 git submodule init
 git submodule update
