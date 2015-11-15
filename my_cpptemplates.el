@@ -6,12 +6,14 @@
 ;    By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2015/10/17 14:30:46 by ngoguey           #+#    #+#              ;
-;    Updated: 2015/10/17 14:30:53 by ngoguey          ###   ########.fr        ;
+;    Updated: 2015/11/15 08:55:44 by ngoguey          ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 
 (defvar phpBin "php")
 ;; (defvar phpBin "~/mamp/php/bin/php")
+(defvar hpp_import_path (concat confPath "/php_snippets/hpp_import.php'"))
+
 
 (global-set-key [(f2)]
 				'(lambda()
@@ -27,7 +29,9 @@
 				   "Statics"
 				   (interactive)
 				   (shell-command
-					(concat phpBin " ~/configurations/php_snippets/hpp_import.php '"
+					(concat phpBin " "
+							hpp_import_path
+							" '"
 							(buffer-file-name)
 							"' '' 'statics'"
 							)
@@ -43,63 +47,63 @@
 				   (if (= choice 1)
 					   (shell-command
 						(concat phpBin " "
-								"~/configurations/php_snippets/hpp_import.php"
+								hpp_import_path
 								" '"
 								(buffer-file-name) "' '' '" "statics" "'") t)
 					 )
 				   (if (= choice 2)
 					   (shell-command
 						(concat phpBin " "
-								"~/configurations/php_snippets/hpp_import.php"
+								hpp_import_path
 								" '"
 								(buffer-file-name) "' '' '" "constructors" "'") t)
 					 )
 				   (if (= choice 3)
 					   (shell-command
 						(concat phpBin " "
-								"~/configurations/php_snippets/hpp_import.php"
+								hpp_import_path
 								" '"
 								(buffer-file-name) "' '' '" "operators" "'") t)
 					 )
 				   (if (= choice 4)
 					   (shell-command
 						(concat phpBin " "
-								"~/configurations/php_snippets/hpp_import.php"
+								hpp_import_path
 								" '"
 								(buffer-file-name) "' '' '" "getters" "'") t)
 					 )
 				   (if (= choice 5)
 					   (shell-command
 						(concat phpBin " "
-								"~/configurations/php_snippets/hpp_import.php"
+								hpp_import_path
 								" '"
 								(buffer-file-name) "' '' '" "setters" "'") t)
 					 )
 				   (if (= choice 6)
 					   (shell-command
 						(concat phpBin " "
-								"~/configurations/php_snippets/hpp_import.php"
+								hpp_import_path
 								" '"
 								(buffer-file-name) "' '' '" "member_functions" "'") t)
 					 )
 				   (if (= choice 7)
 					   (shell-command
 						(concat phpBin " "
-								"~/configurations/php_snippets/hpp_import.php"
+								hpp_import_path
 								" '"
 								(buffer-file-name) "' '' '" "methods" "'") t)
 					 )
 				   (if (= choice 8)
 					   (shell-command
 						(concat phpBin " "
-								"~/configurations/php_snippets/hpp_import.php"
+								hpp_import_path
 								" '"
 								(buffer-file-name) "' '' '" "pure_methods" "'") t)
 					 )
 				   (if (= choice 9)
 					   (shell-command
 						(concat phpBin " "
-								"~/configurations/php_snippets/hpp_import.php"
+								hpp_import_path
 								" '"
 								(buffer-file-name) "' '' '" "init_list" "'") t)
 					 )
@@ -115,68 +119,68 @@
 				   (interactive (list (read-file-name "Hpp file: ")
 									  (read-number "(1)Stic (2)Ctor (3)Ope (4)Get (5)Set (6)Memb (7)Met (8)Pur (9)Init-l: ")
 									  ))
-				   
-				   
+
+
 				   (if (= choice 1)
 					   (shell-command
 						(concat phpBin " "
-								"~/configurations/php_snippets/hpp_import.php"
+								hpp_import_path
 								" '"
 								(buffer-file-name) "' '" hppfilename "' '" "statics" "'") t)
 					 )
 				   (if (= choice 2)
 					   (shell-command
 						(concat phpBin " "
-								"~/configurations/php_snippets/hpp_import.php"
+								hpp_import_path
 								" '"
 								(buffer-file-name) "' " hppfilename " '" "constructors" "'") t)
 					 )
 				   (if (= choice 3)
 					   (shell-command
 						(concat phpBin " "
-								"~/configurations/php_snippets/hpp_import.php"
+								hpp_import_path
 								" '"
 								(buffer-file-name) "' " hppfilename " '" "operators" "'") t)
 					 )
 				   (if (= choice 4)
 					   (shell-command
 						(concat phpBin " "
-								"~/configurations/php_snippets/hpp_import.php"
+								hpp_import_path
 								" '"
 								(buffer-file-name) "' " hppfilename " '" "getters" "'") t)
 					 )
 				   (if (= choice 5)
 					   (shell-command
 						(concat phpBin " "
-								"~/configurations/php_snippets/hpp_import.php"
+								hpp_import_path
 								" '"
 								(buffer-file-name) "' " hppfilename " '" "setters" "'") t)
 					 )
 				   (if (= choice 6)
 					   (shell-command
 						(concat phpBin " "
-								"~/configurations/php_snippets/hpp_import.php"
+								hpp_import_path
 								" '"
 								(buffer-file-name) "' " hppfilename " '" "member_functions" "'") t)
 					 )
 				   (if (= choice 7)
 					   (shell-command
 						(concat phpBin " "
-								"~/configurations/php_snippets/hpp_import.php"
+								hpp_import_path
 								" '"
 								(buffer-file-name) "' " hppfilename " '" "methods" "'") t)
 					 )
 				   (if (= choice 8)
 					   (shell-command
 						(concat phpBin " "
-								"~/configurations/php_snippets/hpp_import.php"
+								hpp_import_path
 								" '"
 								(buffer-file-name) "' " hppfilename " '" "pure_methods" "'") t)
 					 )
 				   (if (= choice 9)
 					   (shell-command
 						(concat phpBin " "
-								"~/configurations/php_snippets/hpp_import.php"
+								hpp_import_path
 								" '"
 								(buffer-file-name) "' " hppfilename " '" "init_list" "'") t)
 					 )
@@ -233,6 +237,15 @@
   (backward-char)
   (backward-char)
   )
+(defun lua-debug-func()
+  "lua-debug-func"
+  (interactive)
+  (insert
+   "print();")
+  (indent-according-to-mode)
+  (backward-char)
+  (backward-char)
+  )
 (defun ocaml-debug-func()
   "ocaml-debug-func"
   (interactive)
@@ -256,13 +269,17 @@
 				   (newline)
 				   (if (string= (file-name-extension (buffer-file-name)) "cpp")
 					   (cpp-debug-func)
-					 (if (string= (file-name-extension (buffer-file-name)) "php")
-						 (php-debug-func)
-					   (if (string= (file-name-extension (buffer-file-name)) "c")
-						   (c-debug-func)
-						 (if (string= (file-name-extension (buffer-file-name)) "ml")
-							 (ocaml-debug-func)
-						   ))))
+					 (if (string= (file-name-extension (buffer-file-name)) "hpp")
+						 (cpp-debug-func)
+					   (if (string= (file-name-extension (buffer-file-name)) "lua")
+						   (lua-debug-func)
+						 (if (string= (file-name-extension (buffer-file-name)) "php")
+							 (php-debug-func)
+						   (if (string= (file-name-extension (buffer-file-name)) "c")
+							   (c-debug-func)
+							 (if (string= (file-name-extension (buffer-file-name)) "ml")
+								 (ocaml-debug-func)
+							   ))))))
 				   )
 				)
 
@@ -271,7 +288,9 @@
 (defun canonical-hpp ()
   "canonical-hpp"
   (interactive)
-  (shell-command (concat phpBin " ~/configurations/coplien_hpp.php " buffer-file-name) (current-buffer))
+  (shell-command (concat phpBin " "
+						 confPath "/coplien_hpp.php"
+						 " " buffer-file-name) (current-buffer))
   (sit-for 0.1)
   (header-insert)
   (goto-line 23)
@@ -280,7 +299,9 @@
 (defun canonical-cpp ()
   "canonical-cpp"
   (interactive)
-  (shell-command (concat phpBin " ~/configurations/coplien_cpp.php " buffer-file-name) (current-buffer))
+  (shell-command (concat phpBin " "
+						 confPath "/coplien_cpp.php"
+						 " " buffer-file-name) (current-buffer))
   (sit-for 0.1)
   (header-insert)
   (goto-line 17)
@@ -337,19 +358,19 @@
   (interactive "*")
   (shell-command
    (concat
-	(concat phpBin " ~/configurations/function_minimum.php '" arg)
+	(concat phpBin " " confPath "/function_minimum.php" " '" arg)
 	"'")
    t)
   (move-end-of-line 1)
   (backward-char)
-  (backward-char)  
+  (backward-char)
   )
 (defun variable_hpp(arg)
   "new variable"
   (interactive "*")
   (shell-command
    (concat
-	phpBin " ~/configurations/new_var.php "
+	phpBin " " confPath "/new_var.php" " "
 	buffer-file-name
 	" "
 	(number-to-string (current-column))
@@ -402,4 +423,3 @@
 				   (if (= choice 8) (insert "// * ATTRIBUTES ***************** //"))
 				   )
 				)
-

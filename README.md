@@ -28,8 +28,8 @@ cd ; git clone https://github.com/Ngoguey42/configurations
 cd configurations ; git pull origin master
 git submodule init
 git submodule update
-cp dotemacs ~/.emacs
-cp dotzshrc ~/.zshrc
+cp dotemacs.el ~/.emacs
+cp dotzshrc.sh ~/.zshrc
 
 time (mkdir ~/Library/Caches/Homebrew/ ; brew update ; brew upgrade makemake)
 

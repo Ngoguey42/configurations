@@ -80,10 +80,10 @@ export CPLUS_INCLUDE_PATH="$HOME/.brew/include:$HOME/.brew/include/freetype2"
 export LIBRARY_PATH="$HOME/.brew/lib"
 
 # CONFIG FILES EDITION
-alias zshconf="e ~/configurations/zsh_conf.sh"
+alias zshconf="e $NGOCONF_PATH/zsh_conf.sh"
 alias matrix="source ~/.zshrc"
-alias econf="e ~/configurations/my_config.el"
-alias reloadconf="cd ~/configurations/; gitpom; sleep 2; matrix; cd -"
+alias econf="e $NGOCONF_PATH/my_config.el"
+alias reloadconf="cd $NGOCONF_PATH/; gitpom; sleep 2; matrix; cd -"
 
 # CD ALIASES
 alias cddown="cd ~/Downloads/"
@@ -276,7 +276,7 @@ alias kmsh="\`sigmsh KILL\`"
 # LOCATION SPECIFIC
 UNAME=`uname | cut -c1-6`
 
-alias dumpsizeof="sh ~/configurations/dump_sizeof.sh"
+alias dumpsizeof="sh $NGOCONF_PATH/dump_sizeof.sh"
 
 if [ "$UNAME" = "Linux" ]
 then
@@ -300,7 +300,7 @@ then
 	nm2(){
 	nm $@ | grep ' [^tT] ' | cut -c 10- | sort | uniq
 	}
-	alias e='~/configurations/notepadpp.sh'
+	alias e='$NGOCONF_PATH/notepadpp.sh'
 	alias open="cygstart.exe"
 	alias makemake="python ~/makemake/makemake.py"
 	alias clear='printf "\033c"'
@@ -321,7 +321,7 @@ then
 	alias ackf="~/.brew/bin/ack \"^[\t\# ].*[a-z0-9_]+\(\""
 	alias acki="~/.brew/bin/ack \"^\#[\t ]*include[\t ]+\<\""
 	alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --kiosk --args 'file://'`pwd`'/' 2>/dev/null"
-	alias chromegit="~/configurations/chromegit.sh"
+	alias chromegit="$NGOCONF_PATH/chromegit.sh"
 	alias kic='ls -dltu /nfs/z*/*/*/* |  awk  '"'"'{printf "%15s (%s) %3s %2s %s\n", $3, $4, $6, $7, $8}'"'"' | rev | uniq -f4 | rev'
 	alias qui='_(){ ldapsearch uid="$1" ; }; _'
 fi

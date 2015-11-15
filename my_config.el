@@ -6,7 +6,7 @@
 ;    By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2015/02/12 07:33:57 by ngoguey           #+#    #+#              ;
-;    Updated: 2015/11/05 13:41:35 by ngoguey          ###   ########.fr        ;
+;    Updated: 2015/11/15 08:58:17 by ngoguey          ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 
@@ -19,16 +19,18 @@
 (add-to-list 'auto-mode-alist '("\\.cu$" . c-mode))
 (add-to-list 'auto-mode-alist '("\\.tpp$" . c++-mode))
 
-;;nasm-mode, not mine
-(autoload 'nasm-mode "~/configurations/Matthieu-Hauglustaine-nasm-mode.el" "" t)
+;;nasm-mode
+(defvar nasmmode_path (concat confPath "/Matthieu-Hauglustaine-nasm-mode.el"))
+(autoload 'nasm-mode nasmmode_path "" t)
 (add-to-list 'auto-mode-alist '("\\.\\(asm\\|s\\)$" . nasm-mode))
 (add-hook 'nasm-mode-hook
 		  (lambda () (setq-default nasm-basic-offset 4)))
 ;;/nasm-mode
 
 
-;;web-mode, not mine
-(add-to-list 'load-path "~/configurations/web-mode/")
+;;web-mode
+(defvar webmode_path (concat confPath "/web-mode/"))
+(add-to-list 'load-path webmode_path)
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.php$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html$" . web-mode))
@@ -40,7 +42,8 @@
 
 
 ;;tuareg
-(add-to-list 'load-path "~/configurations/tuareg/")
+(defvar tuareg_path (concat confPath "/tuareg/"))
+(add-to-list 'load-path tuareg_path)
 
 (autoload 'tuareg-mode "tuareg" "Major mode for editing Caml code" t)
 (autoload 'camldebug "camldebug" "Run the Caml debugger" t)
@@ -57,7 +60,8 @@
 
 
 ;;glsl-mode
-(add-to-list 'load-path "~/configurations/glsl-mode/")
+(defvar glslmode_path (concat confPath "/glsl-mode/"))
+(add-to-list 'load-path glslmode_path)
 
 (autoload 'glsl-mode "glsl-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.glsl\\'" . glsl-mode))
@@ -71,11 +75,14 @@
 
 
 ;;lua-mode
-(add-to-list 'load-path "~/configurations/lua-mode/")
+(defvar luamode_path (concat confPath "/lua-mode/"))
+(add-to-list 'load-path luamode_path)
 
 (autoload 'lua-mode "lua-mode" "Lua editing mode." t)
 (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
 (add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
+(setq lua-indent-level 2)
+
 ;;/lua-mode
 
 (add-hook 'python-mode-hook
