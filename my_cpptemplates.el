@@ -6,7 +6,7 @@
 ;    By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2015/10/17 14:30:46 by ngoguey           #+#    #+#              ;
-;    Updated: 2015/11/15 08:55:44 by ngoguey          ###   ########.fr        ;
+;    Updated: 2015/11/22 09:29:11 by ngoguey          ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 
@@ -23,18 +23,13 @@
 				   )
 				)
 
-;; Statics f1
-(global-set-key [(f1)]
-				'(lambda()
-				   "Statics"
-				   (interactive)
+;; namespace
+(global-set-key [(f4)]
+				'(lambda(choice)
+				   "Namespace"
+				   (interactive "sNamespace: ")
 				   (shell-command
-					(concat phpBin " "
-							hpp_import_path
-							" '"
-							(buffer-file-name)
-							"' '' 'statics'"
-							)
+					(concat phpBin " " confPath "/php_snippets/namespace.php " choice)
 					t)
 				   )
 				)
@@ -271,15 +266,17 @@
 					   (cpp-debug-func)
 					 (if (string= (file-name-extension (buffer-file-name)) "hpp")
 						 (cpp-debug-func)
-					   (if (string= (file-name-extension (buffer-file-name)) "lua")
-						   (lua-debug-func)
-						 (if (string= (file-name-extension (buffer-file-name)) "php")
-							 (php-debug-func)
-						   (if (string= (file-name-extension (buffer-file-name)) "c")
-							   (c-debug-func)
-							 (if (string= (file-name-extension (buffer-file-name)) "ml")
-								 (ocaml-debug-func)
-							   ))))))
+					   (if (string= (file-name-extension (buffer-file-name)) "tpp")
+						   (cpp-debug-func)
+						 (if (string= (file-name-extension (buffer-file-name)) "lua")
+							 (lua-debug-func)
+						   (if (string= (file-name-extension (buffer-file-name)) "php")
+							   (php-debug-func)
+							 (if (string= (file-name-extension (buffer-file-name)) "c")
+								 (c-debug-func)
+							   (if (string= (file-name-extension (buffer-file-name)) "ml")
+								   (ocaml-debug-func)
+								 )))))))
 				   )
 				)
 
