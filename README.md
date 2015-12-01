@@ -34,7 +34,8 @@ cp dotzshrc.sh ~/.zshrc
 
 time (mkdir ~/Library/Caches/Homebrew/ ; brew update ; brew upgrade makemake)
 
-time (rm -rf ~/.brew && rm -rf ~/Library/Caches/Homebrew/ && brew update && brew upgrade --all && mkdir ~/Library/Caches/Homebrew/ && brew install ack emacs tig julow/tap/makemake python homebrew/versions/glfw3 && brew update && brew upgrade --all)
+time (rm -rf ~/.brew && rm -rf ~/Library/Caches/Homebrew/ && mkdir -p ~/Library/Caches/Homebrew/ && /usr/local/bin/brew update)
+time (brew upgrade --all && brew install ack emacs tig julow/tap/makemake rlwrap homebrew/versions/glfw3 && brew install ocaml --HEAD && brew update && brew upgrade --all)
 
 (type cog || type cog.py) || (cd; curl -O https://pypi.python.org/packages/source/c/cogapp/cogapp-2.4.tar.gz && tar -zxvf cogapp-2.4.tar.gz && cd cogapp-2.4 && python setup.py install && cd && rm -rf cogapp-2.4 cogapp-2.4.tar.gz)
 
