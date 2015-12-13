@@ -316,8 +316,9 @@ then
 	}
 	alias tig="~/.brew/bin/tig/"
 	alias e="emacs"
-	export PATH="/Volumes/Data/nfs/zfs-student-4/users/ngoguey/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/texbin"
-	export HOMEBREW_TEMP="/tmp"
+	export PATH="$HOME/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/texbin"
+	export HOMEBREW_TEMP="/tmp/ngobrewtmp"
+	export HOMEBREW_CACHE="/tmp/ngobrewcache"
 	alias ack="~/.brew/bin/ack"
 	alias ackf="~/.brew/bin/ack \"^[\t\# ].*[a-z0-9_]+\(\""
 	alias acki="~/.brew/bin/ack \"^\#[\t ]*include[\t ]+\<\""
