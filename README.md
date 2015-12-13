@@ -36,7 +36,9 @@ time (mkdir ~/Library/Caches/Homebrew/ ; brew update ; brew upgrade makemake)
 
 export HOMEBREW_TEMP="/tmp/ngobrewtmp"
 export HOMEBREW_CACHE="/tmp/ngobrewcache"
-time (rm -rf ~/.brew ; rm -rf ~/Library/* ; mkdir -p ~/Library/Caches/Homebrew/ /tmp/ngobrewtmp /tmp/ngobrewcache; /usr/local/bin/brew update ; rm -rf ~/Library/*)
+time (rm -rf ~/.brew ~/Library/* /tmp/ngobrewtmp /tmp/ngobrewcache)
+time (mkdir -p ~/Library/Caches/Homebrew/ /tmp/ngobrewtmp /tmp/ngobrewcache;)
+time (/usr/local/bin/brew update ; rm -rf ~/Library/*)
 export BREWTMP="$HOME/.brew/bin/brew"
 time ($BREWTMP upgrade --all && $BREWTMP install ack python tree cloc freetype emacs tig julow/tap/makemake rlwrap homebrew/versions/glfw3 && $BREWTMP install ocaml --HEAD && $BREWTMP update && $BREWTMP upgrade --all)
 
