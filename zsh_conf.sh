@@ -319,6 +319,7 @@ then
 	export PATH="$HOME/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/texbin"
 	export HOMEBREW_TEMP="/tmp/ngobrewtmp"
 	export HOMEBREW_CACHE="/tmp/ngobrewcache"
+	~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 	alias ack="~/.brew/bin/ack"
 	alias ackf="~/.brew/bin/ack \"^[\t\# ].*[a-z0-9_]+\(\""
 	alias acki="~/.brew/bin/ack \"^\#[\t ]*include[\t ]+\<\""

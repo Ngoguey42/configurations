@@ -31,6 +31,12 @@ git submodule init
 git submodule update
 cp dotemacs.el ~/.emacs
 cp dotzshrc.sh ~/.zshrc
+mkdir -p ~/Library/Caches/Homebrew/ /tmp/ngobrewtmp /tmp/ngobrewcache
+echo ' let () =
+	try Topdirs.dir_directory (Sys.getenv "OCAML_TOPLEVEL_PATH")
+		with Not_found -> ()
+;;' > ~/.ocamlinit
+
 
 time (mkdir ~/Library/Caches/Homebrew/ ; brew update ; brew upgrade makemake)
 
