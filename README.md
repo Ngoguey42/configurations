@@ -1,4 +1,4 @@
-My config files...
+`>My config files...
 
 <BR>
 
@@ -31,6 +31,7 @@ git submodule init
 git submodule update
 cp dotemacs.el ~/.emacs
 cp dotzshrc.sh ~/.zshrc
+cp dotocamlinit ~/.ocamlinit
 mkdir -p ~/Library/Caches/Homebrew/ /tmp/ngobrewtmp /tmp/ngobrewcache
 echo ' let () =
 	try Topdirs.dir_directory (Sys.getenv "OCAML_TOPLEVEL_PATH")
