@@ -158,6 +158,8 @@ printf '\033[0m'"
 
 alias ok='ocamlopt graphics.cmxa -i *.ml && ocamlopt graphics.cmxa *.ml && ocl && ./a.out'
 alias okt='rr ; ocamlopt.opt *.ml && printf "\033[33m" && ocamlopt -i *.ml && printf "\033[0m" && time ./a.out && rm a.out && ocl'
+alias oktf='rr ; ocamlfind ocamlcp *.ml -package core -thread -linkpkg && printf "\033[33m" && ocamlfind ocamlc -i *.ml -package core -thread -linkpkg && printf "\033[0m" && time ./a.out && rm a.out && ocl'
+
 
 # GIT RELATED
 export MAIL="ngoguey@student.42.fr"
