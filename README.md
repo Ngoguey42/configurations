@@ -36,6 +36,7 @@ mkdir -p ~/Library/Caches/Homebrew/ /tmp/ngobrewtmp /tmp/ngobrewcache
 echo ' let () =
 	try Topdirs.dir_directory (Sys.getenv "OCAML_TOPLEVEL_PATH")
 		with Not_found -> ()
+;;
 	#use "topfind"
 	#thread
 	#require "dynlink"
