@@ -54,15 +54,33 @@ echo ' let () =
 ;;' > ~/.ocamlinit
 
 
-time (mkdir ~/Library/Caches/Homebrew/ ; brew update ; brew upgrade makemake)
+
+# Nuke brew and opam, reinstall
 
 export HOMEBREW_TEMP="/tmp/ngobrewtmp"
 export HOMEBREW_CACHE="/tmp/ngobrewcache"
-time (rm -rf ~/.brew ~/Library/* /tmp/ngobrewtmp /tmp/ngobrewcache)
-time (mkdir -p ~/Library/Caches/Homebrew/ /tmp/ngobrewtmp /tmp/ngobrewcache;)
-time (/usr/local/bin/brew update ; rm -rf ~/Library/*)
 export BREWTMP="$HOME/.brew/bin/brew"
-time ($BREWTMP upgrade --all && $BREWTMP install ack python tree cloc freetype emacs tig julow/tap/makemake rlwrap homebrew/versions/glfw3 && $BREWTMP install ocaml --HEAD && $BREWTMP update && $BREWTMP upgrade --all)
+export OPAMTMP="$HOME/.brew/bin/opam"
+time (
+rm -rf ~/.brew ~/Library/* /tmp/ngobrewtmp /tmp/ngobrewcache ~/.opam; echo "RM done"
+mkdir -p ~/Library/Caches/Homebrew/ /tmp/ngobrewtmp /tmp/ngobrewcache; echo "MKDIR done"
+/usr/local/bin/brew update ; rm -rf ~/Library/*; echo "init done"
+
+$BREWTMP upgrade --all
+$BREWTMP install --build-from-source ocaml
+$BREWTMP install rlwrap opam
+$BREWTMP install ack tree cloc tig emacs julow/tap/makemake
+$BREWTMP install freetype homebrew/versions/glfw3 python
+$BREWTMP update && $BREWTMP update && $BREWTMP upgrade --all
+
+
+$OPAMTMP init -n #check que le -n fonctionne
+~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true ; eval `opam config env`
+$OPAMTMP switch 4.02.3
+~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true ; eval `opam config env`
+$OPAMTMP install -y core yojson
+)
+
 
 (type cog || type cog.py) || (cd; curl -O https://pypi.python.org/packages/source/c/cogapp/cogapp-2.4.tar.gz && tar -zxvf cogapp-2.4.tar.gz && cd cogapp-2.4 && python setup.py install && cd && rm -rf cogapp-2.4 cogapp-2.4.tar.gz)
 
