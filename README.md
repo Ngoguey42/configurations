@@ -57,13 +57,13 @@ echo ' let () =
 
 # Nuke brew and opam, reinstall
 
-export HOMEBREW_TEMP="/tmp/ngobrewtmp"
-export HOMEBREW_CACHE="/tmp/ngobrewcache"
+export HOMEBREW_TEMP="/tmp/$USERbrewtmp"
+export HOMEBREW_CACHE="/tmp/$USERbrewcache"
+time (
 export BREWTMP="$HOME/.brew/bin/brew"
 export OPAMTMP="$HOME/.brew/bin/opam"
-time (
-rm -rf ~/.brew ~/Library/* /tmp/ngobrewtmp /tmp/ngobrewcache ~/.opam; echo "RM done"
-mkdir -p ~/Library/Caches/Homebrew/ /tmp/ngobrewtmp /tmp/ngobrewcache; echo "MKDIR done"
+rm -rf ~/.brew ~/Library/* $HOMEBREW_TEMP $HOMEBREW_CACHE ~/.opam; echo "RM done"
+mkdir -p ~/Library/Caches/Homebrew/ $HOMEBREW_TEMP $HOMEBREW_CACHE; echo "MKDIR done"
 /usr/local/bin/brew update ; rm -rf ~/Library/*; echo "init done"
 
 $BREWTMP upgrade --all
@@ -74,7 +74,7 @@ $BREWTMP install freetype homebrew/versions/glfw3 python
 $BREWTMP update && $BREWTMP update && $BREWTMP upgrade --all
 
 
-$OPAMTMP init -n #check que le -n fonctionne
+$OPAMTMP init -n #TODO: check que le -n fonctionne
 ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true ; eval `opam config env`
 $OPAMTMP switch 4.02.3
 ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true ; eval `opam config env`
