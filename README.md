@@ -20,19 +20,12 @@ curl -L http://install.ohmyz.sh | sh
 ```
 Reload xterm
 ```sh
+# Install config on new home
+
 git config --global credential.helper "cache --timeout=10800"
 git config --global core.editor "emacs"
 git config --global user.name "Ngoguey42"
 git config --global user.email "ngoguey@student.42.fr"
-#cd ; git clone https://github.com/Ngoguey42/configurations
-cd /goinfre/ngoguey ; git clone https://github.com/Ngoguey42/configurations
-cd configurations ; git pull origin master
-git submodule init
-git submodule update
-cp dotemacs.el ~/.emacs
-cp dotzshrc.sh ~/.zshrc
-cp dotocamlinit ~/.ocamlinit
-mkdir -p ~/Library/Caches/Homebrew/ /tmp/ngobrewtmp /tmp/ngobrewcache
 echo ' let () =
 	try Topdirs.dir_directory (Sys.getenv "OCAML_TOPLEVEL_PATH")
 		with Not_found -> ()
@@ -55,6 +48,19 @@ echo ' let () =
 
 
 
+# Install config on new mac
+
+cd /goinfre/ngoguey ; git clone https://github.com/Ngoguey42/configurations
+cd configurations ; git pull origin master
+git submodule init
+git submodule update
+cp dotemacs.el ~/.emacs
+cp dotzshrc.sh ~/.zshrc
+cp dotocamlinit ~/.ocamlinit
+mkdir -p ~/Library/Caches/Homebrew/ /tmp/ngobrewtmp /tmp/ngobrewcache
+
+
+
 # Nuke brew and opam, reinstall
 
 export HOMEBREW_TEMP="/tmp/$USERbrewtmp"
@@ -73,7 +79,6 @@ $BREWTMP install ack tree cloc tig emacs julow/tap/makemake
 $BREWTMP install freetype homebrew/versions/glfw3 python
 $BREWTMP update && $BREWTMP update && $BREWTMP upgrade --all
 
-
 $OPAMTMP init -n #TODO: check que le -n fonctionne
 ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true ; eval `opam config env`
 $OPAMTMP switch 4.02.3
@@ -81,6 +86,9 @@ $OPAMTMP switch 4.02.3
 $OPAMTMP install -y core yojson
 )
 
+
+
+# install cog with python installed through brew
 
 (type cog || type cog.py) || (cd; curl -O https://pypi.python.org/packages/source/c/cogapp/cogapp-2.4.tar.gz && tar -zxvf cogapp-2.4.tar.gz && cd cogapp-2.4 && python setup.py install && cd && rm -rf cogapp-2.4 cogapp-2.4.tar.gz)
 
