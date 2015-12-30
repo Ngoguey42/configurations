@@ -44,8 +44,8 @@ mkdir -p ~/Library/Caches/Homebrew/ /tmp/ngobrewtmp /tmp/ngobrewcache
 
 # Nuke brew and opam, reinstall
 
-export HOMEBREW_TEMP="/tmp/$USERbrewtmp"
-export HOMEBREW_CACHE="/tmp/$USERbrewcache"
+export HOMEBREW_TEMP="/tmp/""$USER""brewtmp"
+export HOMEBREW_CACHE="/tmp/""$USER""brewcache"
 time (
 export BREWTMP="$HOME/.brew/bin/brew"
 export OPAMTMP="$HOME/.brew/bin/opam"
