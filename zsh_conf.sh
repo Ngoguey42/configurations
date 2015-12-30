@@ -1,4 +1,4 @@
-# Path to your oh-my-zsh installation.
+# path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
@@ -204,6 +204,7 @@ alias chr="chmod 644 \`ls -1d **/*.($MYEXTENSIONS)\` ; chmod 744 Makefile ; chmo
 
 alias psi='ps | grep -v zsh | grep -v emacs'
 
+alias ev="type emacs; echo ; emacs -version ; echo"
 alias sht='_(){
 
 echo "SH:"
