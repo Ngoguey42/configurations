@@ -26,25 +26,6 @@ git config --global credential.helper "cache --timeout=10800"
 git config --global core.editor "emacs"
 git config --global user.name "Ngoguey42"
 git config --global user.email "ngoguey@student.42.fr"
-echo ' let () =
-	try Topdirs.dir_directory (Sys.getenv "OCAML_TOPLEVEL_PATH")
-		with Not_found -> ()
-;;
-	#use "topfind"
-	#thread
-	#require "dynlink"
-	#camlp4o
-	#require "bin_prot.syntax"
-	#require "sexplib.syntax"
-	#require "variantslib.syntax"
-	#require "fieldslib.syntax"
-	#require "comparelib.syntax"
-	#require "core"
-	#require "async"
-	#require "core_extended"
-	#require "core.top"
-	open Core.Std
-;;' > ~/.ocamlinit
 
 
 
