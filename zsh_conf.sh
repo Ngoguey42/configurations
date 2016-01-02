@@ -179,6 +179,7 @@ alias gitcld="git clean -xdn"
 alias gitcldF="git clean -xdf"
 
 # MISC
+alias makevar='make -pn | grep -A1 "^# makefile"| grep -v "^#\|^--" | sort | uniq'
 alias scopcog="
 cog.py -I conf -rU include/configuration/cog_enums.h
 cog.py -I conf -rU include/configuration/cog_meshfill.h
