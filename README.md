@@ -19,7 +19,7 @@ Installation process from scratch (at school)
 # Install config on new home
 
 curl -L http://install.ohmyz.sh | sh
-# Reload xterm
+# Reload iterm2
 git config --global credential.helper "cache --timeout=10800"
 git config --global core.editor "emacs"
 git config --global user.name "Ngoguey42"
@@ -37,7 +37,7 @@ cp dotemacs.el ~/.emacs
 cp dotzshrc.sh ~/.zshrc
 cp dotocamlinit ~/.ocamlinit
 mkdir -p ~/Library/Caches/Homebrew/ /tmp/ngobrewtmp /tmp/ngobrewcache
-
+# Reload iterm2
 
 
 # Nuke brew and opam, reinstall
