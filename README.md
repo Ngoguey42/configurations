@@ -13,15 +13,13 @@
 <BR>
 Installation process from scratch (at school)
 
-- install: spectacles, spotify, blender, office, gimp, sublime, adium
+- install: spectacles, spotify, blender, office, gimp, sublime3
 
-```sh
-curl -L http://install.ohmyz.sh | sh
-```
-Reload xterm
 ```sh
 # Install config on new home
 
+curl -L http://install.ohmyz.sh | sh
+# Reload xterm
 git config --global credential.helper "cache --timeout=10800"
 git config --global core.editor "emacs"
 git config --global user.name "Ngoguey42"
