@@ -55,10 +55,10 @@ $BREWTMP upgrade --all
 $BREWTMP install --build-from-source ocaml
 $BREWTMP install rlwrap opam
 $BREWTMP install ack tree cloc tig emacs julow/tap/makemake
-$BREWTMP install freetype homebrew/versions/glfw3 python
+$BREWTMP install freetype homebrew/versions/glfw3 python3
 $BREWTMP update && $BREWTMP update && $BREWTMP upgrade --all
 
-$OPAMTMP init -n #TODO: check que le -n fonctionne
+$OPAMTMP init -n
 ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true ; eval `opam config env`
 $OPAMTMP switch 4.02.3
 ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true ; eval `opam config env`
