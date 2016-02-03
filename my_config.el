@@ -6,7 +6,7 @@
 ;    By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2015/02/12 07:33:57 by ngoguey           #+#    #+#              ;
-;    Updated: 2015/11/15 08:58:17 by ngoguey          ###   ########.fr        ;
+;    Updated: 2016/02/03 16:22:18 by ngoguey          ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 
@@ -108,3 +108,15 @@
 			  (quote
 			   (".cmx"  ".cmi"  ".cmo" ))))
 (c-set-offset 'inextern-lang 0)
+
+
+
+(global-set-key (kbd "C-c C-t")
+				(lambda()
+				  "replace spaces"
+				  (interactive)
+				  (revert-buffer t t)
+				  (read-only-mode 1)
+				  (custom-set-faces
+				   '(default ((t (:inherit nil :stipple nil :background "color-234" :foreground "unspecified-fg" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 1 :width normal :foundry "default" :family "default")))))
+				  ))
