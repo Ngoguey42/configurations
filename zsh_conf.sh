@@ -75,10 +75,6 @@ source $ZSH/oh-my-zsh.sh
 # ZSH CONFIG
 zstyle ':completion:*:*:emacs:*:*files' ignored-patterns '*.o' '*.cmx' '*.cmi' '*.cmo'
 
-export C_INCLUDE_PATH="$HOME/.brew/include:$HOME/.brew/include/freetype2"
-export CPLUS_INCLUDE_PATH="$HOME/.brew/include:$HOME/.brew/include/freetype2"
-export LIBRARY_PATH="$HOME/.brew/lib"
-
 # CONFIG FILES EDITION
 alias zshconf="e $NGOCONF_PATH/zsh_conf.sh"
 alias matrix="source ~/.zshrc"
@@ -290,7 +286,7 @@ then
 	}
 	alias spotify="nohup spotify &"
 	alias e="/usr/bin/emacs -nw"
-	alias makemake="python ~/makemake/makemake.py"
+	alias makemake="python ~/makemake/old/makemake.py"
 	alias termvert6="nohup terminator -b -l vert6 &"
 	alias termvert2="nohup terminator -b -l vert2 &"
 	alias termhoriz6="nohup terminator -b -l horiz6 &"
@@ -307,7 +303,7 @@ then
 	}
 	alias e='$NGOCONF_PATH/notepadpp.sh'
 	alias open="cygstart.exe"
-	alias makemake="python ~/makemake/makemake.py"
+	alias makemake="python ~/makemake/old/makemake.py"
 	alias clear='printf "\033c"'
 	export PATH="/usr/bin:/bin:/usr/sbin:/sbin"
 	alias ackf="ack \"^[\t\# ].*[a-z0-9_]+\(\""
@@ -319,6 +315,12 @@ then
 	nm2(){
 	nm $@ | grep ' [^tT] ' | cut -c 18- | sort | uniq
 	}
+	
+	# TODO: check those 3 lines under macos
+	export C_INCLUDE_PATH="$HOME/.brew/include:$HOME/.brew/include/freetype2"
+	export CPLUS_INCLUDE_PATH="$HOME/.brew/include:$HOME/.brew/include/freetype2"
+	export LIBRARY_PATH="$HOME/.brew/lib"
+
 	alias tig="~/.brew/bin/tig/"
 	alias e="emacs"
 	export PATH="$HOME/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/texbin"

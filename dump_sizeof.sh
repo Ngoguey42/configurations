@@ -19,8 +19,7 @@ $CC -v
 echo '
 #include <stdio.h>
 #include <stdint.h>
-#  define PRINTSIZEOF(T) printf("sizeof(%20s) = %2dBytes (%3dbits) \\n"	\\
-		, #T, (int)sizeof(T), (int)sizeof(T) * 8)
+#  define PRINTSIZEOF(T) printf("sizeof(%20s) = %2dBytes (%3dbits) \n", #T, (int)sizeof(T), (int)sizeof(T) * 8)
 
 int main()
 {
@@ -28,16 +27,16 @@ int main()
 PRINTSIZEOF(float);
 PRINTSIZEOF(double);
 PRINTSIZEOF(long double);
-printf("\\n");
+printf("\n");
 PRINTSIZEOF(char);
 PRINTSIZEOF(short);
 PRINTSIZEOF(long);
 PRINTSIZEOF(long long);
-printf("\\n");
+printf("\n");
 PRINTSIZEOF(int);
 PRINTSIZEOF(ssize_t);
 PRINTSIZEOF(void*);
-printf("\\n");
+printf("\n");
 PRINTSIZEOF(intmax_t);
 PRINTSIZEOF(int8_t);
 PRINTSIZEOF(int16_t);
