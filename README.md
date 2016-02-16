@@ -26,7 +26,6 @@ git config --global user.name "Ngoguey42"
 git config --global user.email "ngoguey@student.42.fr"
 
 
-
 # Install config on new mac
 
 cd /goinfre/ngoguey ; git clone https://github.com/Ngoguey42/configurations
@@ -38,6 +37,7 @@ cp dotzshrc.sh ~/.zshrc
 cp dotocamlinit ~/.ocamlinit
 mkdir -p ~/Library/Caches/Homebrew/ /tmp/ngobrewtmp /tmp/ngobrewcache
 # Reload iterm2
+# rm -rf "$HOME/Library/Application Support/Google/"
 
 
 # Nuke brew and opam, reinstall
