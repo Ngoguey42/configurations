@@ -323,7 +323,7 @@ then
 
 	alias tig="~/.brew/bin/tig/"
 	alias e="emacs"
-	export PATH="$HOME/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/texbin"
+	export PATH="$HOME/.brew/bin:$NGOCONF_ROOT/mkgen:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/texbin"
 	export HOMEBREW_TEMP="/tmp/ngobrewtmp"
 	export HOMEBREW_CACHE="/tmp/ngobrewcache"
 	~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
