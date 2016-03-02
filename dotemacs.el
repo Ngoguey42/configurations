@@ -12,7 +12,8 @@
 
 ;; (setq config_files "~/configurations/")
 ;; (defvar confPath "~/configurations")
-(defvar confPath "/goinfre/ngoguey/configurations")
+;; (defvar confPath "/goinfre/ngoguey/configurations")
+(defvar confPath "/nfs/2014/n/ngoguey/goinfre/configurations")
 ;; (setq load-path (append (list nil config_files) load-path))
 (setq load-path (append (list nil confPath) load-path))
 (load "my_config.el")
