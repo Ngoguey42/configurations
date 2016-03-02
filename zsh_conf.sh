@@ -175,7 +175,7 @@ alias gitcld="git clean -xdn"
 alias gitcldF="git clean -xdf"
 
 # MISC
-alias makevar='make -pn | grep -A1 "^# makefile"| grep -v "^#\|^--" | sort | uniq'
+alias makevar='make -pn nosuchrule 2>/dev/null | grep -A1 "^# makefile"| grep -v "^#\|^--" | sort | uniq'
 alias scopcog="
 cog.py -I conf -rU include/configuration/cog_enums.h
 cog.py -I conf -rU include/configuration/cog_meshfill.h
@@ -315,7 +315,7 @@ then
 	nm2(){
 	nm $@ | grep ' [^tT] ' | cut -c 18- | sort | uniq
 	}
-	
+
 	# TODO: check those 3 lines under macos
 	export C_INCLUDE_PATH="$HOME/.brew/include:$HOME/.brew/include/freetype2"
 	export CPLUS_INCLUDE_PATH="$HOME/.brew/include:$HOME/.brew/include/freetype2"
