@@ -11,6 +11,7 @@
 # **************************************************************************** #
 
 # export NGOCONF_PATH="$HOME/configurations"
-export NGOCONF_PATH="/goinfre/ngoguey/configurations"
+# export NGOCONF_PATH="/goinfre/ngoguey/configurations"
+export NGOCONF_PATH="/nfs/2014/n/ngoguey/goinfre/configurations"
 
 source $NGOCONF_PATH/zsh_conf.sh
