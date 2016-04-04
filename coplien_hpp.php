@@ -42,12 +42,12 @@ echo "\t// $class() = delete;"."\n";
 echo "\t$class($class const &src) = delete;"."\n";
 echo "\t$class($class &&src) = delete;"."\n";
 
-echo "\t$class";
-input_tabs(28, 4 + strlen($class));
+echo "\t$class ";
+#input_tabs(28, 4 + strlen($class));
 echo "&operator=($class const &rhs) = delete;"."\n";
 
-echo "\t$class";
-input_tabs(28, 4 + strlen($class));
+echo "\t$class ";
+#input_tabs(28, 4 + strlen($class));
 echo "&operator=($class &&rhs) = delete;"."\n";
 
 echo "\n";
