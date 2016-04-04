@@ -6,7 +6,7 @@
 ;    By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2015/02/12 07:33:57 by ngoguey           #+#    #+#              ;
-;    Updated: 2016/02/03 16:22:18 by ngoguey          ###   ########.fr        ;
+;    Updated: 2016/04/04 06:53:07 by ngoguey          ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 
@@ -47,10 +47,17 @@
 
 (autoload 'tuareg-mode "tuareg" "Major mode for editing Caml code" t)
 (autoload 'camldebug "camldebug" "Run the Caml debugger" t)
-(autoload 'tuareg-imenu-set-imenu "tuareg-imenu"
-  "Configuration of imenu for tuareg" t)
+;; (autoload 'tuareg-imenu-set-imenu "tuareg-imenu"
+;;   "Configuration of imenu for tuareg" t)
 
-(add-hook 'tuareg-mode-hook 'tuareg-imenu-set-imenu)
+;; (add-hook 'tuareg-mode-hook 'tuareg-imenu-set-imenu)
+(add-hook 'tuareg-mode-hook
+		  (lambda ()
+			(setq-default indent-tabs-mode nil)
+			(setq-default tab-width 2)
+			;; (setq-default py-indent-tabs-mode t)
+			;; (add-to-list 'write-file-functions 'delete-trailing-whitespace)
+			))
 
 (setq auto-mode-alist
 	  (append '(("\\.ml[ily]?$" . tuareg-mode)
