@@ -6,16 +6,17 @@
 ;    By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2015/02/12 07:33:57 by ngoguey           #+#    #+#              ;
-;    Updated: 2016/04/04 06:53:07 by ngoguey          ###   ########.fr        ;
+;    Updated: 2016/04/19 09:46:14 by ngoguey          ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 
 
 ;;42 site-lisp
-(defvar siteLispDir42 "/usr/share/emacs/site-lisp/")
+(defvar siteLispDir42 (concat confPath "/davidGironLisp"))
 (add-to-list 'load-path siteLispDir42)
-(when (file-exists-p (concat siteLispDir42 "header.el"))
-  (load "header.el"))
+;; (when (file-exists-p (concat siteLispDir42 "header.el"))
+(load "header.el")
+;; )
 ;;/42 site-lisp
 
 
