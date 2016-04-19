@@ -36,7 +36,7 @@ git submodule init
 git submodule update
 cp dotemacs.el ~/.emacs
 cp dotzshrc.sh ~/.zshrc
-cp dotocamlinit ~/.ocamlinit
+cp dotocamlinit.ml ~/.ocamlinit
 mkdir -p ~/Library/Caches/Homebrew/ /tmp/ngobrewtmp /tmp/ngobrewcache
 # Reload iterm2
 # rm -rf "$HOME/Library/Application Support/Google/"

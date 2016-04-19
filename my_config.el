@@ -1,15 +1,14 @@
-;******************************************************************************;
-;                                                                              ;
-;                                                         :::      ::::::::    ;
-;    my_config.el                                       :+:      :+:    :+:    ;
-;                                                     +:+ +:+         +:+      ;
-;    By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+         ;
-;                                                 +#+#+#+#+#+   +#+            ;
-;    Created: 2015/02/12 07:33:57 by ngoguey           #+#    #+#              ;
-;    Updated: 2016/04/19 09:46:14 by ngoguey          ###   ########.fr        ;
-;                                                                              ;
-;******************************************************************************;
-
+;;****************************************************************************;;
+;;                                                                            ;;
+;;                                                        :::      ::::::::   ;;
+;;   my_config.el                                       :+:      :+:    :+:   ;;
+;;                                                    +:+ +:+         +:+     ;;
+;;   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        ;;
+;;                                                +#+#+#+#+#+   +#+           ;;
+;;   Created: 2016/04/19 09:50:58 by ngoguey           #+#    #+#             ;;
+;;   Updated: 2016/04/19 09:51:59 by ngoguey          ###   ########.fr       ;;
+;;                                                                            ;;
+;;****************************************************************************;;
 
 ;;42 site-lisp
 (defvar siteLispDir42 (concat confPath "/davidGironLisp"))
@@ -28,7 +27,7 @@
 (add-to-list 'auto-mode-alist '("\\.tpp$" . c++-mode))
 
 ;;nasm-mode
-(defvar nasmmode_path (concat confPath "/Matthieu-Hauglustaine-nasm-mode.el"))
+(defvar nasmmode_path (concat confPath "/nasm-mode/Matthieu-Hauglustaine-nasm-mode.el"))
 (autoload 'nasm-mode nasmmode_path "" t)
 (add-to-list 'auto-mode-alist '("\\.\\(asm\\|s\\)$" . nasm-mode))
 (add-hook
@@ -53,6 +52,7 @@
 (add-hook
  'emacs-lisp-mode-hook
  (lambda ()
+   (setq comment-start ";;")
    (setq indent-tabs-mode nil)
    (setq tab-width 2)
    ))
