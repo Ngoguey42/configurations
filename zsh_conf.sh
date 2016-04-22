@@ -301,7 +301,8 @@ then
 	nm2(){
 	nm $@ | grep ' [^tT] ' | cut -c 10- | sort | uniq
 	}
-	alias e='$NGOCONF_PATH/notepadpp.sh'
+	# alias e='$NGOCONF_PATH/notepadpp.sh'
+	alias e="emacs"
 	alias open="cygstart.exe"
 	alias makemake="python ~/makemake/old/makemake.py"
 	alias clear='printf "\033c"'
