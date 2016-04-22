@@ -76,4 +76,5 @@ $OPAMTMP install -y core yojson
 ```
 
 ##### Cygwin specific:
+- shortcut: `C:\cygwin64\bin\mintty.exe -i /Cygwin-Terminal.ico  /bin/zsh --login`
 - font: CONSOLAS8 
