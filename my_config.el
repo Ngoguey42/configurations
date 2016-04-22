@@ -6,9 +6,12 @@
 ;;   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        ;;
 ;;                                                +#+#+#+#+#+   +#+           ;;
 ;;   Created: 2016/04/19 09:50:58 by ngoguey           #+#    #+#             ;;
-;;   Updated: 2016/04/19 09:51:59 by ngoguey          ###   ########.fr       ;;
+;;   Updated: 2016/04/22 15:39:50 by Ngo              ###   ########.fr       ;;
 ;;                                                                            ;;
 ;;****************************************************************************;;
+
+(setq shell-file-name "zsh")
+(setq shell-command-switch "-ic")
 
 ;;42 site-lisp
 (defvar siteLispDir42 (concat confPath "/davidGironLisp"))
