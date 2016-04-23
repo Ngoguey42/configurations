@@ -6,12 +6,9 @@
 ;;   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        ;;
 ;;                                                +#+#+#+#+#+   +#+           ;;
 ;;   Created: 2016/04/19 09:50:58 by ngoguey           #+#    #+#             ;;
-;;   Updated: 2016/04/22 15:39:50 by Ngo              ###   ########.fr       ;;
+;;   Updated: 2016/04/23 08:10:49 by ngoguey          ###   ########.fr       ;;
 ;;                                                                            ;;
 ;;****************************************************************************;;
-
-(setq shell-file-name "zsh")
-(setq shell-command-switch "-ic")
 
 ;;42 site-lisp
 (defvar siteLispDir42 (concat confPath "/davidGironLisp"))
@@ -21,14 +18,6 @@
 ;; )
 ;;/42 site-lisp
 
-
-(load "my_bindings.el")
-;; (load "header.el")
-(load "my_cpptemplates.el")
-;; (load "comments.el")
-(add-to-list 'auto-mode-alist '("\\.cu$" . c-mode))
-(add-to-list 'auto-mode-alist '("\\.tpp$" . c++-mode))
-
 ;;nasm-mode
 (defvar nasmmode_path (concat confPath "/nasm-mode/Matthieu-Hauglustaine-nasm-mode.el"))
 (autoload 'nasm-mode nasmmode_path "" t)
@@ -37,7 +26,6 @@
  'nasm-mode-hook
  (lambda () (setq-default nasm-basic-offset 4)))
 ;;/nasm-mode
-
 
 ;;web-mode
 (defvar webmode_path (concat confPath "/web-mode/"))
@@ -61,7 +49,6 @@
    ))
 
 ;;/emacs-lisp-mode-hook
-
 
 ;;tuareg
 (defvar tuareg_path (concat confPath "/tuareg/"))
@@ -89,7 +76,6 @@
   auto-mode-alist))
 ;;/tuareg
 
-
 ;;glsl-mode
 (defvar glslmode_path (concat confPath "/glsl-mode/"))
 (add-to-list 'load-path glslmode_path)
@@ -104,7 +90,6 @@
 
 ;;/glsl-mode
 
-
 ;;lua-mode
 (defvar luamode_path (concat confPath "/lua-mode/"))
 (add-to-list 'load-path luamode_path)
@@ -116,12 +101,87 @@
 
 ;;/lua-mode
 
+;;python
 (add-hook
  'python-mode-hook
  (lambda ()
    (setq indent-tabs-mode t)
    (setq tab-width 4)
    (setq python-indent 4)))
+;;/python
+
+;;cuda
+(add-to-list 'auto-mode-alist '("\\.cu$" . c-mode))
+;;/cuda
+
+;;c++
+(add-to-list 'auto-mode-alist '("\\.tpp$" . c++-mode))
+(load "my_cpptemplates.el")
+;;/c++
+
+;; (ido-mode 1)
+;; (setq ido-separator "\n")
+
+
+;; ARROWS CONFIGURATION ***************************************************** ;;
+
+;; (control x) (up)                  ??
+;; (control x) (down)                ??
+;; (control x) (right)               next-buffer(default)
+;; (control x) (left)                prev-buffer(default)
+
+;; (control c) (up)                  windmove-up
+;; (control c) (down)                windmove-down
+;; (control c) (right)               windmove-right
+;; (control c) (left)                windmove-left
+
+;; (control c) (control x) (up)      ??
+;; (control c) (control x) (down)    ??
+;; (control c) (control x) (right)   ??
+;; (control c) (control x) (left)    ??
+
+;; (meta x) (up)                     ??
+;; (meta x) (down)                   ??
+;; (meta x) (right)                  right word(default)
+;; (meta x) (left)                   left word(default)
+
+;; (shift up)                        selection(default)
+;; (shift down)                      selection(default)
+;; (shift right)                     selection(default)
+;; (shift left)                      selection(default)
+
+;; (control up)                      none(macos hook)
+;; (control down)                    none(macos hook)
+;; (control right)                   none(macos hook)
+;; (control left)                    none(macos hook)
+
+
+;;buffer-move
+;; (load "buffer-move/buffer-move.el")
+;; (global-set-key [(control c) (up)]   'buf-move-up)
+;; (global-set-key [(control c) (down)]   'buf-move-down)
+;; (global-set-key [(control c) (right)]   'buf-move-right)
+;; (global-set-key [(control c) (left)]   'buf-move-left)
+;;/buffer-move
+
+;;windmove
+;; (windmove-default-keybindings)
+(global-set-key [(control c) (up)]   'windmove-up)
+(global-set-key [(control c) (down)]   'windmove-down)
+(global-set-key [(control c) (right)]   'windmove-right)
+(global-set-key [(control c) (left)]   'windmove-left)
+;;/windmove
+
+
+;; /ARROWS CONFIGURATION **************************************************** ;;
+
+
+(load "my_bindings.el")
+
+
+(setq shell-file-name "zsh")
+(setq shell-command-switch "-ic")
+
 
 (setq-default tab-width 4)
 (setq-default indent-tabs-mode t)
@@ -142,7 +202,6 @@
   (quote
    (".cmx"  ".cmi"  ".cmo" ))))
 (c-set-offset 'inextern-lang 0)
-
 
 
 (global-set-key
