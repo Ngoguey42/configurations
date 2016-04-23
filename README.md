@@ -1,29 +1,42 @@
 #My config files
 
+##Emacs
 ##### Some emacs functions
 - f1 input debug minimal code (adaptative c cpp php)
 - f8 c-main ac/av
 - shift-f8 c-main void
 - f10 hpp/cpp file initialization
 
-## School
+##At school Macos
 
-##### Managed Software Center:
-1. spectacle, spotify
-2. excel, slack, macdown
-3. blender, gimp
-4. XQuartz
+#### New home
+##### Macos
+- keyboard
+- mouse
+- session lock
 
-##### Shell on new home
+##### Iterm 2
+- keyboard with keypad
+- command-left, command-right
+
+##### shell
 ```sh
 curl -L http://install.ohmyz.sh | sh
 git config --global credential.helper "cache --timeout=10800"
 git config --global core.editor "emacs"
 git config --global user.name "Ngoguey42"
 git config --global user.email "ngoguey@student.42.fr"
-
 ```
-##### Shell on new mac
+---
+---
+#### New mac
+##### Managed Software Center
+1. spectacle, spotify
+2. excel, slack, macdown
+3. blender, gimp
+4. XQuartz
+
+##### shell
 ```sh
 cd /nfs/2014/n/ngoguey/goinfre
 git clone https://github.com/Ngoguey42/mkgen
@@ -38,7 +51,9 @@ mkdir -p ~/Library/Caches/Homebrew/ /tmp/ngobrewtmp /tmp/ngobrewcache
 # rm -rf "$HOME/Library/Application Support/Google/"
 
 ```
-##### Nuke brew and opam, reinstall
+---
+---
+#### Nuke brew and opam, reinstall
 ```sh
 export HOMEBREW_TEMP="/tmp/""$USER""brewtmp"
 export HOMEBREW_CACHE="/tmp/""$USER""brewcache"
@@ -65,16 +80,18 @@ $OPAMTMP install -y core yojson
 
 
 ```
-##### Cog (python required in brew)
+---
+---
+#### Cog (python required in brew)
 ```sh
 (type cog || type cog.py) || (cd; curl -O https://pypi.python.org/packages/source/c/cogapp/cogapp-2.4.tar.gz && tar -zxvf cogapp-2.4.tar.gz && cd cogapp-2.4 && python3 setup.py install && cd && rm -rf cogapp-2.4 cogapp-2.4.tar.gz)
 
 ```
 
-## Home cygwin
+## At home Cygwin
 
 ##### mintty setup
 - shortcut: `C:\cygwin64\bin\mintty.exe -i /Cygwin-Terminal.ico  /bin/zsh --login`
-- font: CONSOLAS8
+- font: consolas, pt8
 
-## Home linux
+## At home Linux
