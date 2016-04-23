@@ -6,17 +6,13 @@
 ;;   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        ;;
 ;;                                                +#+#+#+#+#+   +#+           ;;
 ;;   Created: 2016/04/19 09:50:58 by ngoguey           #+#    #+#             ;;
-;;   Updated: 2016/04/23 08:10:49 by ngoguey          ###   ########.fr       ;;
+;;   Updated: 2016/04/23 09:04:41 by ngoguey          ###   ########.fr       ;;
 ;;                                                                            ;;
 ;;****************************************************************************;;
 
-;;42 site-lisp
-(defvar siteLispDir42 (concat confPath "/davidGironLisp"))
-(add-to-list 'load-path siteLispDir42)
-;; (when (file-exists-p (concat siteLispDir42 "header.el"))
-(load "header.el")
-;; )
-;;/42 site-lisp
+;; ************************************************************************** ;;
+;; modes ******************************************************************** ;;
+;; ************************************************************************** ;;
 
 ;;nasm-mode
 (defvar nasmmode_path (concat confPath "/nasm-mode/Matthieu-Hauglustaine-nasm-mode.el"))
@@ -47,7 +43,6 @@
    (setq indent-tabs-mode nil)
    (setq tab-width 2)
    ))
-
 ;;/emacs-lisp-mode-hook
 
 ;;tuareg
@@ -55,7 +50,7 @@
 (add-to-list 'load-path tuareg_path)
 
 (autoload 'tuareg-mode "tuareg" "Major mode for editing Caml code" t)
-(autoload 'camldebug "camldebug" "Run the Caml debugger" t)
+;; (autoload 'camldebug "camldebug" "Run the Caml debugger" t)
 ;; (autoload 'tuareg-imenu-set-imenu "tuareg-imenu"
 ;;   "Configuration of imenu for tuareg" t)
 
@@ -65,7 +60,6 @@
  (lambda ()
    (setq-default indent-tabs-mode nil)
    (setq-default tab-width 2)
-   ;; (add-to-list 'write-file-functions 'delete-trailing-whitespace)
    ))
 
 (setq
@@ -116,14 +110,29 @@
 
 ;;c++
 (add-to-list 'auto-mode-alist '("\\.tpp$" . c++-mode))
+(c-set-offset 'innamespace 0)
 (load "my_cpptemplates.el")
 ;;/c++
 
-;; (ido-mode 1)
-;; (setq ido-separator "\n")
+;;fci-mode (minor)
+(defvar fci_path (concat confPath "/Fill-Column-Indicator/"))
+(add-to-list 'load-path fci_path)
+(require 'fill-column-indicator)
+(define-globalized-minor-mode
+  global-fci-mode fci-mode (lambda () (fci-mode 1)))
+(setq fci-rule-column 80)
+(setq fci-rule-color "#111")
+(global-fci-mode t)
+;;/fci-mode (minor)
 
+;; ************************************************************************** ;;
+;; /modes ******************************************************************* ;;
+;; ************************************************************************** ;;
 
+;;TODO: move to my_bindings.el
+;; ************************************************************************** ;;
 ;; ARROWS CONFIGURATION ***************************************************** ;;
+;; ************************************************************************** ;;
 
 ;; (control x) (up)                  ??
 ;; (control x) (down)                ??
@@ -135,10 +144,15 @@
 ;; (control c) (right)               windmove-right
 ;; (control c) (left)                windmove-left
 
-;; (control c) (control x) (up)      ??
-;; (control c) (control x) (down)    ??
-;; (control c) (control x) (right)   ??
-;; (control c) (control x) (left)    ??
+;; (control h) (up)                  ??
+;; (control h) (down)                ??
+;; (control h) (right)               ??
+;; (control h) (left)                ??
+
+;; (control c) (control x) (up)      buf-move-up
+;; (control c) (control x) (down)    buf-move-down
+;; (control c) (control x) (right)   buf-move-right
+;; (control c) (control x) (left)    buf-move-left
 
 ;; (meta x) (up)                     ??
 ;; (meta x) (down)                   ??
@@ -157,32 +171,42 @@
 
 
 ;;buffer-move
-;; (load "buffer-move/buffer-move.el")
-;; (global-set-key [(control c) (up)]   'buf-move-up)
-;; (global-set-key [(control c) (down)]   'buf-move-down)
-;; (global-set-key [(control c) (right)]   'buf-move-right)
-;; (global-set-key [(control c) (left)]   'buf-move-left)
+(load "buffer-move/buffer-move.el")
+(global-set-key [(control c) (control x) (up)]   'buf-move-up)
+(global-set-key [(control c) (control x) (down)]   'buf-move-down)
+(global-set-key [(control c) (control x) (right)]   'buf-move-right)
+(global-set-key [(control c) (control x) (left)]   'buf-move-left)
 ;;/buffer-move
 
 ;;windmove
-;; (windmove-default-keybindings)
 (global-set-key [(control c) (up)]   'windmove-up)
 (global-set-key [(control c) (down)]   'windmove-down)
 (global-set-key [(control c) (right)]   'windmove-right)
 (global-set-key [(control c) (left)]   'windmove-left)
 ;;/windmove
 
-
+;; ************************************************************************** ;;
 ;; /ARROWS CONFIGURATION **************************************************** ;;
+;; ************************************************************************** ;;
 
+;;42 site-lisp
+(defvar siteLispDir42 (concat confPath "/davidGironLisp"))
+(add-to-list 'load-path siteLispDir42)
+(load "header.el")
+;;/42 site-lisp
+
+;; shell-command configuration
+(setq shell-file-name "zsh")
+(setq shell-command-switch "-ic")
+;; /shell-command configuration
+
+;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Choosing-Window-Options.html
+(setq split-height-threshold nil)
+(setq split-width-threshold 80)
 
 (load "my_bindings.el")
 
-
-(setq shell-file-name "zsh")
-(setq shell-command-switch "-ic")
-
-
+;;TODO: set those 4 lines as c-mode only
 (setq-default tab-width 4)
 (setq-default indent-tabs-mode t)
 (setq-default c-basic-offset 4)
@@ -190,8 +214,6 @@
 
 (setq line-number-mode t)
 (setq column-number-mode t)
-
-(c-set-offset 'innamespace 0)
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
@@ -203,7 +225,7 @@
    (".cmx"  ".cmi"  ".cmo" ))))
 (c-set-offset 'inextern-lang 0)
 
-
+;;TODO: move to my_bindings.el
 (global-set-key
  (kbd "C-c C-t")
  (lambda()
@@ -214,3 +236,7 @@
    (custom-set-faces
     '(default ((t (:inherit nil :stipple nil :background "color-234" :foreground "unspecified-fg" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 1 :width normal :foundry "default" :family "default")))))
    ))
+
+
+;; (ido-mode 1)
+;; (setq ido-separator "\n")
