@@ -48,6 +48,7 @@ cp dotemacs.el ~/.emacs
 cp dotzshrc.sh ~/.zshrc
 cp dotocamlinit.ml ~/.ocamlinit
 mkdir -p ~/Library/Caches/Homebrew/ /tmp/ngobrewtmp /tmp/ngobrewcache
+. ~/.zshrc
 # rm -rf "$HOME/Library/Application Support/Google/"
 
 ```
