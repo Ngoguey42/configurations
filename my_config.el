@@ -6,13 +6,26 @@
 ;;   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        ;;
 ;;                                                +#+#+#+#+#+   +#+           ;;
 ;;   Created: 2016/04/19 09:50:58 by ngoguey           #+#    #+#             ;;
-;;   Updated: 2016/04/23 09:04:41 by ngoguey          ###   ########.fr       ;;
+;;   Updated: 2016/04/26 09:40:56 by ngoguey          ###   ########.fr       ;;
 ;;                                                                            ;;
 ;;****************************************************************************;;
 
 ;; ************************************************************************** ;;
 ;; modes ******************************************************************** ;;
 ;; ************************************************************************** ;;
+
+;;markdown-mode(major)
+(defvar markdownmode_path (concat confPath "/markdown-mode/"))
+(add-to-list 'load-path markdownmode_path)
+(require 'markdown-mode)
+;; (defvar markdownmode_path (concat confPath "/markdown-mode/"))
+;; (autoload 'markdown-mode markdownmode_path "" t)
+;; (autoload 'markdown-mode "markdown-mode"
+;;   "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+;;/markdown-mode
 
 ;;nasm-mode
 (defvar nasmmode_path (concat confPath "/nasm-mode/Matthieu-Hauglustaine-nasm-mode.el"))

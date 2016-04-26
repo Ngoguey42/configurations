@@ -13,3 +13,6 @@
 [submodule "Fill-Column-Indicator"]
 	path = Fill-Column-Indicator
 	url = https://github.com/alpaker/Fill-Column-Indicator
+[submodule "markdown-mode"]
+	path = markdown-mode
+	url = https://github.com/jrblevin/markdown-mode
