@@ -79,7 +79,12 @@ $OPAMTMP switch 4.02.3
 $OPAMTMP install -y core yojson
 )
 
-
+```
+---
+---
+#### Misc
+```sh
+rm -f /tmp/slock /tmp/lock ~/.opam/lock ~/.opam/system/lock; touch /tmp/slock; touch /tmp/lock; ln -s /tmp/lock ~/.opam/lock; ln -s /tmp/slock ~/.opam/system/lock
 ```
 ---
 ---
