@@ -6,7 +6,7 @@
 ;;   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        ;;
 ;;                                                +#+#+#+#+#+   +#+           ;;
 ;;   Created: 2016/04/19 09:50:58 by ngoguey           #+#    #+#             ;;
-;;   Updated: 2016/04/26 09:40:56 by ngoguey          ###   ########.fr       ;;
+;;   Updated: 2016/05/11 06:32:08 by ngoguey          ###   ########.fr       ;;
 ;;                                                                            ;;
 ;;****************************************************************************;;
 
@@ -134,7 +134,7 @@
 (define-globalized-minor-mode
   global-fci-mode fci-mode (lambda () (fci-mode 1)))
 (setq fci-rule-column 80)
-(setq fci-rule-color "#111")
+(setq fci-rule-color "#181818")
 (global-fci-mode t)
 ;;/fci-mode (minor)
 

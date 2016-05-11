@@ -186,6 +186,7 @@ cog.py -I conf -rU srcs/configuration/cog_meshfill2.c
 "
 alias lret="echo $?"
 alias save="pwd | cat > ~/.save_pwd"
+alias cdm='cd $(basename "$PWD")'
 alias go="cd \`cat ~/.save_pwd\` ; clear"
 alias rr="
 printf '\033[31m' ;rm **/*~ 2>/dev/null && echo '\033[32mrm **/*~'
