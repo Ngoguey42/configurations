@@ -6,7 +6,7 @@
 ;;   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        ;;
 ;;                                                +#+#+#+#+#+   +#+           ;;
 ;;   Created: 2016/04/19 09:50:58 by ngoguey           #+#    #+#             ;;
-;;   Updated: 2016/05/11 06:32:08 by ngoguey          ###   ########.fr       ;;
+;;   Updated: 2016/05/15 15:20:29 by ngoguey          ###   ########.fr       ;;
 ;;                                                                            ;;
 ;;****************************************************************************;;
 
@@ -120,6 +120,10 @@
 ;;cuda
 (add-to-list 'auto-mode-alist '("\\.cu$" . c-mode))
 ;;/cuda
+
+;;c
+(add-to-list 'auto-mode-alist '("\\.inl$" . c-mode))
+;;/c
 
 ;;c++
 (add-to-list 'auto-mode-alist '("\\.tpp$" . c++-mode))
