@@ -6,7 +6,7 @@
 ;;   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        ;;
 ;;                                                +#+#+#+#+#+   +#+           ;;
 ;;   Created: 2016/04/19 09:50:58 by ngoguey           #+#    #+#             ;;
-;;   Updated: 2016/05/15 15:20:29 by ngoguey          ###   ########.fr       ;;
+;;   Updated: 2016/05/20 09:57:17 by ngoguey          ###   ########.fr       ;;
 ;;                                                                            ;;
 ;;****************************************************************************;;
 
@@ -79,6 +79,7 @@
  auto-mode-alist
  (append
   '(("\\.ml[ily]?$" . tuareg-mode)
+    ("\\.eliom$" . tuareg-mode)
     ("\\.topml$" . tuareg-mode))
   auto-mode-alist))
 ;;/tuareg
