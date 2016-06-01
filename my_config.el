@@ -6,7 +6,7 @@
 ;;   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        ;;
 ;;                                                +#+#+#+#+#+   +#+           ;;
 ;;   Created: 2016/04/19 09:50:58 by ngoguey           #+#    #+#             ;;
-;;   Updated: 2016/05/20 09:57:17 by ngoguey          ###   ########.fr       ;;
+;;   Updated: 2016/06/01 13:47:47 by ngoguey          ###   ########.fr       ;;
 ;;                                                                            ;;
 ;;****************************************************************************;;
 
@@ -43,9 +43,18 @@
 (add-to-list 'auto-mode-alist '("\\.php$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.css$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.js$" . web-mode))
 
 (set-face-attribute 'web-mode-html-tag-face nil :foreground "MediumSlateBlue")
 (set-face-attribute 'web-mode-html-tag-bracket-face nil :foreground "SteelBlue")
+
+(setq web-mode-markup-indent-offset 2)
+
+(add-hook
+ 'web-mode-hook
+ (lambda ()
+   (setq-default indent-tabs-mode nil)
+   ))
 ;;/web-mode
 
 ;;emacs-lisp-mode-hook
@@ -133,14 +142,14 @@
 ;;/c++
 
 ;;fci-mode (minor)
-(defvar fci_path (concat confPath "/Fill-Column-Indicator/"))
-(add-to-list 'load-path fci_path)
-(require 'fill-column-indicator)
-(define-globalized-minor-mode
-  global-fci-mode fci-mode (lambda () (fci-mode 1)))
-(setq fci-rule-column 80)
-(setq fci-rule-color "#181818")
-(global-fci-mode t)
+;; (defvar fci_path (concat confPath "/Fill-Column-Indicator/"))
+;; (add-to-list 'load-path fci_path)
+;; (require 'fill-column-indicator)
+;; (define-globalized-minor-mode
+;;   global-fci-mode fci-mode (lambda () (fci-mode 1)))
+;; (setq fci-rule-column 80)
+;; (setq fci-rule-color "#181818")
+;; (global-fci-mode t)
 ;;/fci-mode (minor)
 
 ;; ************************************************************************** ;;
