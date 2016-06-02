@@ -6,7 +6,7 @@
 ;;   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        ;;
 ;;                                                +#+#+#+#+#+   +#+           ;;
 ;;   Created: 2016/04/19 09:50:58 by ngoguey           #+#    #+#             ;;
-;;   Updated: 2016/06/01 13:47:47 by ngoguey          ###   ########.fr       ;;
+;;   Updated: 2016/06/01 13:55:42 by ngoguey          ###   ########.fr       ;;
 ;;                                                                            ;;
 ;;****************************************************************************;;
 
@@ -49,6 +49,7 @@
 (set-face-attribute 'web-mode-html-tag-bracket-face nil :foreground "SteelBlue")
 
 (setq web-mode-markup-indent-offset 2)
+(setq web-mode-code-indent-offset 2)
 
 (add-hook
  'web-mode-hook
