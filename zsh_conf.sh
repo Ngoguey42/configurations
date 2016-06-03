@@ -307,7 +307,7 @@ then
 	alias open="cygstart.exe"
 	alias makemake="python ~/makemake/old/makemake.py"
 	alias clear='printf "\033c"'
-	export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/flexdll-bin-0.34"
+	export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/flexdll-bin-0.34:$PATH"
 	export CYGWIN_OCAML_PREFIX="/home/Ngo/ocaml"
 	export CYGWIN_OPAM_PREFIX="/home/Ngo/opam"
 	export OCAMLLIB="/home/Ngo/ocaml/lib/ocaml"

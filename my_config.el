@@ -6,7 +6,7 @@
 ;;   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        ;;
 ;;                                                +#+#+#+#+#+   +#+           ;;
 ;;   Created: 2016/04/19 09:50:58 by ngoguey           #+#    #+#             ;;
-;;   Updated: 2016/06/01 13:55:42 by ngoguey          ###   ########.fr       ;;
+;;   Updated: 2016/06/03 16:20:57 by Ngo              ###   ########.fr       ;;
 ;;                                                                            ;;
 ;;****************************************************************************;;
 
@@ -14,14 +14,17 @@
 ;; modes ******************************************************************** ;;
 ;; ************************************************************************** ;;
 
+;;dockerfile-mode(major)
+(defvar dockerfilemode_path (concat confPath "/dockerfile-mode/"))
+(add-to-list 'load-path dockerfilemode_path)
+(require 'dockerfile-mode)
+(add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
+;;/dockerfile-mode
+
 ;;markdown-mode(major)
 (defvar markdownmode_path (concat confPath "/markdown-mode/"))
 (add-to-list 'load-path markdownmode_path)
 (require 'markdown-mode)
-;; (defvar markdownmode_path (concat confPath "/markdown-mode/"))
-;; (autoload 'markdown-mode markdownmode_path "" t)
-;; (autoload 'markdown-mode "markdown-mode"
-;;   "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
