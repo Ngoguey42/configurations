@@ -6,117 +6,144 @@
 ;;   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        ;;
 ;;                                                +#+#+#+#+#+   +#+           ;;
 ;;   Created: 2016/04/19 09:55:30 by ngoguey           #+#    #+#             ;;
-;;   Updated: 2016/04/19 10:05:08 by ngoguey          ###   ########.fr       ;;
+;;   Updated: 2016/06/06 11:36:56 by ngoguey          ###   ########.fr       ;;
 ;;                                                                            ;;
 ;;****************************************************************************;;
 
-(global-set-key (kbd "DEL") 'backward-delete-char)
-(setq-default c-backspace-function 'backward-delete-char)
+(load "my_functions.el")
 
-(defun toggle-comment-on-line ()
-  "comment or uncomment current line"
-  (interactive)
-  (comment-or-uncomment-region (line-beginning-position) (line-end-position)))
+;; ************************************************************************** ;;
+;; ARROWS CONFIGURATION ***************************************************** ;;
+;; ************************************************************************** ;;
+
+;; (control x) (up)                  ??
+;; (control x) (down)                ??
+;; (control x) (right)               next-buffer(default)
+;; (control x) (left)                prev-buffer(default)
+
+;; (control c) (up)                  windmove-up
+;; (control c) (down)                windmove-down
+;; (control c) (right)               windmove-right
+;; (control c) (left)                windmove-left
+
+;; (control h) (up)                  ??
+;; (control h) (down)                ??
+;; (control h) (right)               ??
+;; (control h) (left)                ??
+
+;; (control c) (control x) (up)      buf-move-up
+;; (control c) (control x) (down)    buf-move-down
+;; (control c) (control x) (right)   buf-move-right
+;; (control c) (control x) (left)    buf-move-left
+
+;; (meta x) (up)                     ??
+;; (meta x) (down)                   ??
+;; (meta x) (right)                  right word(default)
+;; (meta x) (left)                   left word(default)
+
+;; (shift up)                        selection(default)
+;; (shift down)                      selection(default)
+;; (shift right)                     selection(default)
+;; (shift left)                      selection(default)
+
+;; (control up)                      (macos hook)(mintty )
+;; (control down)                    (macos hook)(mintty )
+;; (control right)                   (macos hook)(mintty )
+;; (control left)                    (macos hook)(mintty )
+
+
+;;buffer-move
+(load "buffer-move/buffer-move.el")
+(global-set-key [(control c) (control x) (up)] 'buf-move-up)
+(global-set-key [(control c) (control x) (down)] 'buf-move-down)
+(global-set-key [(control c) (control x) (right)] 'buf-move-right)
+(global-set-key [(control c) (control x) (left)] 'buf-move-left)
+;;/buffer-move
+
+;;windmove
+(global-set-key [(control c) (up)] 'windmove-up)
+(global-set-key [(control c) (down)] 'windmove-down)
+(global-set-key [(control c) (right)] 'windmove-right)
+(global-set-key [(control c) (left)] 'windmove-left)
+;;/windmove
+
+;; ************************************************************************** ;;
+;; /ARROWS CONFIGURATION **************************************************** ;;
+;; ************************************************************************** ;;
+
+;; ************************************************************************** ;;
+;; F* KEYS ****************************************************************** ;;
+;; ************************************************************************** ;;
+
+;; (f1)                              ft-put-debug1
+;; (f2)                              tab
+;; (f3)                              comment line
+;; (f4)                              comment region
+;; (f5)                              replace-string
+;; (f6)                              goto-line
+;; (f7)                              ??
+;; (f8)                              ??
+;; (f9)                              ??
+;; (f10)                             ??
+;; (f11)                             ??
+;; (f12)                             ??
+
+;; (meta f1)                         show bindings(default)
+;; (meta f2)                         ??
+;; (meta f3)                         ft-swap-line-up
+;; (meta f4)                         ft-swap-line-down
+;; (meta f5)                         ??
+;; (meta f6)                         ??
+;; (meta f7)                         ??
+;; (meta f8)                         ??
+;; (meta f9)                         ??
+;; (meta f10)                        ??
+;; (meta f11)                        ??
+;; (meta f12)                        ??
+
+;; (control f1)                      ??
+;; (control f2)                      indent buffer
+;; (control f3)                      ??
+;; (control f4)                      ??
+;; (control f5)                      ??
+;; (control f6)                      ??
+;; (control f7)                      ??
+;; (control f8)                      ??
+;; (control f9)                      ft-star-to-80
+;; (control f10)                     ??
+;; (control f11)                     ??
+;; (control f12)                     ??
+
+
+(global-set-key [(f1)] 'ft-put-debug1)
+(global-set-key [(f2)] '(lambda() "tab shortcut" (interactive) (insert "\t")))
+(global-set-key [(f3)] 'ft-toggle-comment-on-line)
+(global-set-key [(f4)] 'comment-or-uncomment-region)
+(global-set-key [(f5)] 'replace-string)
+(global-set-key [(f6)] 'goto-line)
+
+(global-set-key [?\e f3] 'ft-swap-line-up)
+(global-set-key [?\e f4] 'ft-swap-line-down)
+
+(global-set-key [(control f2)] 'ft-indent-buffer)
+(global-set-key [(control f9)] 'ft-star-to-80)
 
 
 (global-set-key (kbd "<kp-7>") "\C-a\C- \C-n\M-w\C-y\C-p")
-(global-set-key (kbd "<kp-8>") 'replace-string)
-(global-set-key (kbd "<kp-9>") 'goto-line)
-
 (global-set-key (kbd "<kp-1>") "\C-a\C-k\177\C-a\C-n")
-;; (global-set-key (kbd "<kp-4>") "\C-y")
 (global-set-key (kbd "<kp-0>") "\C-a\C-m\C-a\C-b\C-y\C-a")
-;; (global-set-key (kbd "<kp-5>") 'yank-pop)
 
-(global-set-key (kbd "<kp-3>") 'toggle-comment-on-line)
-(global-set-key (kbd "<kp-6>") 'comment-or-uncomment-region)
-(global-set-key (kbd "<kp-5>") "\M-;")
-
+;; (global-set-key (kbd "<kp-5>") "\M-;")
 
 (global-set-key (kbd "<kp-add>") 'forward-paragraph)
 (global-set-key (kbd "<kp-subtract>") 'backward-paragraph)
+
+
+;; ************************************************************************** ;;
+;; /F* KEYS ***************************************************************** ;;
+;; ************************************************************************** ;;
+
 (global-set-key (kbd "<kp-enter>") "\C-m")
-
-(defun indent-buffer ()
-  (interactive)
-  (save-excursion
-    (indent-region (point-min) (point-max) nil)))
-
-(global-set-key (kbd "<kp-divide>") 'indent-buffer)
-
-(global-set-key
- [(control t)]
- (lambda()
-   "swap lines up"
-   (interactive)
-   (setq colnb (current-column))
-   (beginning-of-line)
-   (kill-line)
-   (delete-backward-char 1)
-   (beginning-of-line)
-   (newline)
-   (backward-char)
-   (yank)
-   (beginning-of-line)
-   (forward-char colnb)
-   ))
-
-(global-set-key
- [(control ^)]
- (lambda()
-   "swap lines down"
-   (interactive)
-   (setq colnb (current-column))
-   (beginning-of-line)
-   (kill-line)
-   (delete-backward-char 1)
-   (next-line)
-   (next-line)
-   (beginning-of-line)
-   (newline)
-   (previous-line)
-   (yank)
-   (beginning-of-line)
-   (forward-char colnb)
-   ))
-
-;; source: http://steve.yegge.googlepages.com/my-dot-emacs-file
-
-(global-set-key
- (kbd "C-x C-g")
- '(lambda(new-name)
-    "Renames both current buffer and file it's visiting to NEW-NAME."
-    (interactive "sNew name: ")
-
-    (let ((name (buffer-name))
-          (filename (buffer-file-name)))
-      (if (not filename)
-          (message "Buffer '%s' is not visiting a file!" name)
-        (if (get-buffer new-name)
-            (message "A buffer named '%s' already exists!" new-name)
-          (progn
-            (rename-file name new-name 1)
-            (rename-buffer new-name)
-            (set-visited-file-name new-name)
-            (set-buffer-modified-p nil)))))
-    )
- )
-
-
-
-(global-set-key
- (kbd "C-x C-y ")
- (lambda()
-   "replace spaces"
-   (interactive)
-   (setq colnb (current-column))
-   (setq linenb (line-number-at-pos))
-   (replace-string "    " "\t")
-   (goto-line linenb) (move-to-column linenb)
-   (replace-string "   " "\t")
-   (goto-line linenb) (move-to-column linenb)
-   (replace-string "  " "\t")
-   (goto-line linenb) (move-to-column linenb)
-   (replace-string "\t " "\t")
-   (goto-line linenb) (move-to-column linenb)
-   ))
+(global-set-key (kbd "DEL") 'backward-delete-char)
+(setq-default c-backspace-function 'backward-delete-char)
+(global-set-key (kbd "C-x C-g") 'ft-rename-file-and-buffer)

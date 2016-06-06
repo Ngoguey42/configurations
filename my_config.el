@@ -6,7 +6,7 @@
 ;;   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        ;;
 ;;                                                +#+#+#+#+#+   +#+           ;;
 ;;   Created: 2016/04/19 09:50:58 by ngoguey           #+#    #+#             ;;
-;;   Updated: 2016/06/03 16:20:57 by Ngo              ###   ########.fr       ;;
+;;   Updated: 2016/06/06 06:38:29 by ngoguey          ###   ########.fr       ;;
 ;;                                                                            ;;
 ;;****************************************************************************;;
 
@@ -160,64 +160,8 @@
 ;; /modes ******************************************************************* ;;
 ;; ************************************************************************** ;;
 
-;;TODO: move to my_bindings.el
 ;; ************************************************************************** ;;
-;; ARROWS CONFIGURATION ***************************************************** ;;
-;; ************************************************************************** ;;
-
-;; (control x) (up)                  ??
-;; (control x) (down)                ??
-;; (control x) (right)               next-buffer(default)
-;; (control x) (left)                prev-buffer(default)
-
-;; (control c) (up)                  windmove-up
-;; (control c) (down)                windmove-down
-;; (control c) (right)               windmove-right
-;; (control c) (left)                windmove-left
-
-;; (control h) (up)                  ??
-;; (control h) (down)                ??
-;; (control h) (right)               ??
-;; (control h) (left)                ??
-
-;; (control c) (control x) (up)      buf-move-up
-;; (control c) (control x) (down)    buf-move-down
-;; (control c) (control x) (right)   buf-move-right
-;; (control c) (control x) (left)    buf-move-left
-
-;; (meta x) (up)                     ??
-;; (meta x) (down)                   ??
-;; (meta x) (right)                  right word(default)
-;; (meta x) (left)                   left word(default)
-
-;; (shift up)                        selection(default)
-;; (shift down)                      selection(default)
-;; (shift right)                     selection(default)
-;; (shift left)                      selection(default)
-
-;; (control up)                      none(macos hook)
-;; (control down)                    none(macos hook)
-;; (control right)                   none(macos hook)
-;; (control left)                    none(macos hook)
-
-
-;;buffer-move
-(load "buffer-move/buffer-move.el")
-(global-set-key [(control c) (control x) (up)]   'buf-move-up)
-(global-set-key [(control c) (control x) (down)]   'buf-move-down)
-(global-set-key [(control c) (control x) (right)]   'buf-move-right)
-(global-set-key [(control c) (control x) (left)]   'buf-move-left)
-;;/buffer-move
-
-;;windmove
-(global-set-key [(control c) (up)]   'windmove-up)
-(global-set-key [(control c) (down)]   'windmove-down)
-(global-set-key [(control c) (right)]   'windmove-right)
-(global-set-key [(control c) (left)]   'windmove-left)
-;;/windmove
-
-;; ************************************************************************** ;;
-;; /ARROWS CONFIGURATION **************************************************** ;;
+;; MISC ********************************************************************* ;;
 ;; ************************************************************************** ;;
 
 ;;42 site-lisp
@@ -256,18 +200,9 @@
    (".cmx"  ".cmi"  ".cmo" ))))
 (c-set-offset 'inextern-lang 0)
 
-;;TODO: move to my_bindings.el
-(global-set-key
- (kbd "C-c C-t")
- (lambda()
-   "replace spaces"
-   (interactive)
-   (revert-buffer t t)
-   (read-only-mode 1)
-   (custom-set-faces
-    '(default ((t (:inherit nil :stipple nil :background "color-234" :foreground "unspecified-fg" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 1 :width normal :foundry "default" :family "default")))))
-   ))
-
-
 ;; (ido-mode 1)
 ;; (setq ido-separator "\n")
+
+;; ************************************************************************** ;;
+;; /MISC ******************************************************************** ;;
+;; ************************************************************************** ;;
