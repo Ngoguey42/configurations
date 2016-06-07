@@ -6,7 +6,7 @@
 ;;   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        ;;
 ;;                                                +#+#+#+#+#+   +#+           ;;
 ;;   Created: 2016/04/19 09:50:58 by ngoguey           #+#    #+#             ;;
-;;   Updated: 2016/06/06 06:38:29 by ngoguey          ###   ########.fr       ;;
+;;   Updated: 2016/06/07 09:29:32 by ngoguey          ###   ########.fr       ;;
 ;;                                                                            ;;
 ;;****************************************************************************;;
 
@@ -199,6 +199,22 @@
   (quote
    (".cmx"  ".cmi"  ".cmo" ))))
 (c-set-offset 'inextern-lang 0)
+
+
+;; (global-hl-line-mode 1)
+
+(set-face-attribute  'mode-line
+                     nil
+                     :foreground "blue"
+                     :background "snow2"
+                     :box '(:line-width 1 :style released-button))
+(set-face-attribute  'mode-line-inactive
+                     nil
+                     :foreground "snow2"
+                     :background "blue"
+                     :box '(:line-width 1 :style released-button))
+
+;; (transient-mark-mode 1)
 
 ;; (ido-mode 1)
 ;; (setq ido-separator "\n")
