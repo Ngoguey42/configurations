@@ -19,3 +19,6 @@
 [submodule "dockerfile-mode"]
 	path = dockerfile-mode
 	url = https://github.com/spotify/dockerfile-mode
+[submodule "buffer-move"]
+	path = buffer-move
+	url = https://github.com/lukhas/buffer-move
