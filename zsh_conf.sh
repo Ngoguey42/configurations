@@ -308,14 +308,15 @@ then
 	alias open="cygstart.exe"
 	alias makemake="python ~/makemake/old/makemake.py"
 	alias clear='printf "\033c"'
+	alias l="ls -gohFG --color"
 	export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/flexdll-bin-0.34:$PATH"
-	export CYGWIN_OCAML_PREFIX="/home/Ngo/ocaml"
-	export CYGWIN_OPAM_PREFIX="/home/Ngo/opam"
-	export OCAMLLIB="/home/Ngo/ocaml/lib/ocaml"
+	# export CYGWIN_OCAML_PREFIX="/home/Ngo/ocaml"
+	# export CYGWIN_OPAM_PREFIX="/home/Ngo/opam"
+	export OCAMLLIB="/lib/ocaml"
 	# export PATH=$CYGWIN_OCAML_PREFIX/bin:$PATH #Just temporarily, since once OPAM is installed you switch to MinGW OCaml.
-	export PATH=$CYGWIN_OPAM_PREFIX/bin:$PATH
-	. /home/Ngo/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-	export OPAM_ROOT=$(cygpath -m $HOME/.opam/4.03.0+beta2)
+	# export PATH=$CYGWIN_OPAM_PREFIX/bin:$PATH
+	# . /home/Ngo/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+	# export OPAM_ROOT=$(cygpath -m $HOME/.opam/4.03.0+beta2)
 	alias ackf="ack \"^[\t\# ].*[a-z0-9_]+\(\""
 	alias acki="ack \"^\#[\t ]*include[\t ]+\<\""
 fi
