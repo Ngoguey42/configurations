@@ -45,6 +45,7 @@ cd configurations ; git pull origin master
 git submodule init
 git submodule update
 cp dotemacs.el ~/.emacs
+cp dotminttyrc ~/.minttyrc
 cp dotzshrc.sh ~/.zshrc
 cp dotocamlinit.ml ~/.ocamlinit
 mkdir -p ~/Library/Caches/Homebrew/ /tmp/ngobrewtmp /tmp/ngobrewcache
