@@ -6,13 +6,25 @@
 ;;   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        ;;
 ;;                                                +#+#+#+#+#+   +#+           ;;
 ;;   Created: 2016/04/19 09:50:58 by ngoguey           #+#    #+#             ;;
-;;   Updated: 2016/06/08 14:37:52 by ngoguey          ###   ########.fr       ;;
+;;   Updated: 2016/07/05 12:52:36 by ngoguey          ###   ########.fr       ;;
 ;;                                                                            ;;
 ;;****************************************************************************;;
 
 ;; ************************************************************************** ;;
 ;; modes ******************************************************************** ;;
 ;; ************************************************************************** ;;
+
+;;erlang-mode(major)
+(defvar erlemacs_path_brew "~/.brew/opt/erlang/lib/erlang/lib/tools-2.8.3/emacs/")
+(if (file-exists-p erlemacs_path_brew)
+    (progn
+      (add-to-list 'load-path erlemacs_path_brew)
+      ;; (setq erlang-root-dir "/usr/local/otp")
+      ;; (setq exec-path (cons "/usr/local/otp/bin" exec-path))
+      (require 'erlang-start)
+      )
+  )
+;;/erlang-mode
 
 ;;dockerfile-mode(major)
 (defvar dockerfilemode_path (concat confPath "/dockerfile-mode/"))
