@@ -6,7 +6,7 @@
 ;;   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        ;;
 ;;                                                +#+#+#+#+#+   +#+           ;;
 ;;   Created: 2016/04/19 09:50:58 by ngoguey           #+#    #+#             ;;
-;;   Updated: 2016/07/21 12:11:20 by ngoguey          ###   ########.fr       ;;
+;;   Updated: 2016/07/21 12:44:09 by ngoguey          ###   ########.fr       ;;
 ;;                                                                            ;;
 ;;****************************************************************************;;
 
@@ -19,6 +19,7 @@
 (add-to-list 'load-path scalamode2_path)
 (require 'scala-mode2)
 (add-to-list 'auto-mode-alist '("\\.scala\\'" . scala-mode))
+(add-to-list 'auto-mode-alist '("\\.sc\\'" . scala-mode))
 ;;/scala-mode2
 
 ;;erlang-mode(major)
