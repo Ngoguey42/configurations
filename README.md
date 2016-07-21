@@ -2,10 +2,6 @@
 
 ##Emacs
 ##### Some emacs functions
-- f1 input debug minimal code (adaptative c cpp php)
-- f8 c-main ac/av
-- shift-f8 c-main void
-- f10 hpp/cpp file initialization
 
 ##At school Macos
 
