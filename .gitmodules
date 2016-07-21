@@ -22,3 +22,6 @@
 [submodule "buffer-move"]
 	path = buffer-move
 	url = https://github.com/lukhas/buffer-move
+[submodule "scala-mode2"]
+	path = scala-mode2
+	url = https://github.com/hvesalai/scala-mode2

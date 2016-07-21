@@ -6,13 +6,20 @@
 ;;   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        ;;
 ;;                                                +#+#+#+#+#+   +#+           ;;
 ;;   Created: 2016/04/19 09:50:58 by ngoguey           #+#    #+#             ;;
-;;   Updated: 2016/07/05 12:52:36 by ngoguey          ###   ########.fr       ;;
+;;   Updated: 2016/07/21 12:11:20 by ngoguey          ###   ########.fr       ;;
 ;;                                                                            ;;
 ;;****************************************************************************;;
 
 ;; ************************************************************************** ;;
 ;; modes ******************************************************************** ;;
 ;; ************************************************************************** ;;
+
+;;scala-mode2(major)
+(defvar scalamode2_path (concat confPath "/scala-mode2/"))
+(add-to-list 'load-path scalamode2_path)
+(require 'scala-mode2)
+(add-to-list 'auto-mode-alist '("\\.scala\\'" . scala-mode))
+;;/scala-mode2
 
 ;;erlang-mode(major)
 (defvar erlemacs_path_brew "~/.brew/opt/erlang/lib/erlang/lib/tools-2.8.3/emacs/")
@@ -131,7 +138,6 @@
 (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
 (add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
 (setq lua-indent-level 2)
-
 ;;/lua-mode
 
 ;;python
