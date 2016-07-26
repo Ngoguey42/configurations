@@ -28,9 +28,8 @@ git config --global user.email "ngoguey@student.42.fr"
 #### New mac
 ##### Managed Software Center
 1. spectacle, spotify
-2. excel, slack, macdown
-3. blender, gimp
-4. XQuartz
+2. excel, slack, docker
+3. blender, gimp, XQuartz
 
 ##### shell
 ```sh
