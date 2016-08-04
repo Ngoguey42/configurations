@@ -46,12 +46,14 @@ cp dotzshrc.sh ~/.zshrc
 cp dotocamlinit.ml ~/.ocamlinit
 mkdir -p ~/Library/Caches/Homebrew/ /tmp/ngobrewtmp /tmp/ngobrewcache
 . ~/.zshrc
+~/.brew/bin/brew install ack tree cloc tig emacs julow/tap/makemake
+
 # rm -rf "$HOME/Library/Application Support/Google/"
 
 ```
 ---
 ---
-#### Nuke brew and opam, reinstall
+#### Nuke brew and opam, reinstall (DEPRECATED)
 ```sh
 export HOMEBREW_TEMP="/tmp/""$USER""brewtmp"
 export HOMEBREW_CACHE="/tmp/""$USER""brewcache"
