@@ -25,3 +25,15 @@
 [submodule "scala-mode2"]
 	path = scala-mode2
 	url = https://github.com/hvesalai/scala-mode2
+[submodule "dart-mode"]
+	path = dart-mode
+	url = https://github.com/nex3/dart-mode
+[submodule "dash.el"]
+	path = dash.el
+	url = https://github.com/magnars/dash.el
+[submodule "flycheck"]
+	path = flycheck
+	url = https://github.com/flycheck/flycheck
+[submodule "seq.el"]
+	path = seq.el
+	url = https://github.com/NicolasPetton/seq.el

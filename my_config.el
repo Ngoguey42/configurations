@@ -6,13 +6,36 @@
 ;;   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        ;;
 ;;                                                +#+#+#+#+#+   +#+           ;;
 ;;   Created: 2016/04/19 09:50:58 by ngoguey           #+#    #+#             ;;
-;;   Updated: 2016/07/21 12:44:09 by ngoguey          ###   ########.fr       ;;
+;;   Updated: 2016/08/04 13:46:15 by ngoguey          ###   ########.fr       ;;
 ;;                                                                            ;;
 ;;****************************************************************************;;
 
 ;; ************************************************************************** ;;
 ;; modes ******************************************************************** ;;
 ;; ************************************************************************** ;;
+
+;;dart-mode(major)
+(defvar dashdotel_path (concat confPath "/dash.el/"))
+(add-to-list 'load-path dashdotel_path)
+
+(defvar flycheck_path (concat confPath "/flycheck/"))
+(add-to-list 'load-path flycheck_path)
+
+(defvar seqdotel_path (concat confPath "/seq.el/"))
+(add-to-list 'load-path seqdotel_path)
+
+
+
+(defvar let-alist_path (concat confPath "/let-alist-1.0.4/"))
+(add-to-list 'load-path let-alist_path)
+
+
+
+(defvar dartmode_path (concat confPath "/dart-mode/"))
+(add-to-list 'load-path dartmode_path)
+(require 'dart-mode)
+(add-to-list 'auto-mode-alist '("\\.dart\\'" . dart-mode))
+;;/dart-mode
 
 ;;scala-mode2(major)
 (defvar scalamode2_path (concat confPath "/scala-mode2/"))
