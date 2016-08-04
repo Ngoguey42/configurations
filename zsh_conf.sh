@@ -346,4 +346,7 @@ then
 	alias chromegit="$NGOCONF_PATH/chromegit.sh"
 	alias kic='ls -dltu /nfs/z*/*/*/* |  awk  '"'"'{printf "%15s (%s) %3s %2s %s\n", $3, $4, $6, $7, $8}'"'"' | rev | uniq -f4 | rev'
 	alias qui='_(){ ldapsearch uid="$1" ; }; _'
+
+	# Load Homebrew Fix script
+	source $HOME/.brew_fix.zsh
 fi
