@@ -46,10 +46,11 @@ cp dotzshrc.sh ~/.zshrc
 cp dotocamlinit.ml ~/.ocamlinit
 mkdir -p ~/Library/Caches/Homebrew/ /tmp/ngobrewtmp /tmp/ngobrewcache
 . ~/.zshrc
-~/.brew/bin/brew install ack tree cloc tig emacs julow/tap/makemake
+~/.brew/bin/brew install ack tree cloc tig emacs
+
 
 # rm -rf "$HOME/Library/Application Support/Google/"
-
+nohup "/Applications/Spotify.app/Contents/MacOS/Spotify"&
 ```
 ---
 ---
