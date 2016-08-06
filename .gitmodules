@@ -37,3 +37,6 @@
 [submodule "seq.el"]
 	path = seq.el
 	url = https://github.com/NicolasPetton/seq.el
+[submodule "yaml-mode"]
+	path = yaml-mode
+	url = https://github.com/yoshiki/yaml-mode

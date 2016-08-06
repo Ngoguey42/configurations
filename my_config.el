@@ -6,13 +6,21 @@
 ;;   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        ;;
 ;;                                                +#+#+#+#+#+   +#+           ;;
 ;;   Created: 2016/04/19 09:50:58 by ngoguey           #+#    #+#             ;;
-;;   Updated: 2016/08/04 13:46:15 by ngoguey          ###   ########.fr       ;;
+;;   Updated: 2016/08/06 09:29:49 by ngoguey          ###   ########.fr       ;;
 ;;                                                                            ;;
 ;;****************************************************************************;;
 
 ;; ************************************************************************** ;;
 ;; modes ******************************************************************** ;;
 ;; ************************************************************************** ;;
+
+;;yaml-mode(major)
+(defvar yamlmode_path (concat confPath "/yaml-mode/"))
+(add-to-list 'load-path yamlmode_path)
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
+(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+;;/yaml-mode
 
 ;;dart-mode(major)
 (defvar dashdotel_path (concat confPath "/dash.el/"))
@@ -25,10 +33,8 @@
 (add-to-list 'load-path seqdotel_path)
 
 
-
 (defvar let-alist_path (concat confPath "/let-alist-1.0.4/"))
 (add-to-list 'load-path let-alist_path)
-
 
 
 (defvar dartmode_path (concat confPath "/dart-mode/"))
