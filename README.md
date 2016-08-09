@@ -47,7 +47,7 @@ cp dotocamlinit.ml ~/.ocamlinit
 mkdir -p ~/Library/Caches/Homebrew/ /tmp/ngobrewtmp /tmp/ngobrewcache
 . ~/.zshrc
 ~/.brew/bin/brew install ack tree cloc tig emacs
-
+cd; ln -s /Users/Shared
 
 # rm -rf "$HOME/Library/Application Support/Google/"
 nohup "/Applications/Spotify.app/Contents/MacOS/Spotify"&
