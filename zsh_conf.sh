@@ -79,61 +79,12 @@ zstyle ':completion:*:*:emacs:*:*files' ignored-patterns '*.o' '*.cmx' '*.cmi' '
 alias zshconf="e $NGOCONF_PATH/zsh_conf.sh"
 alias matrix="source ~/.zshrc"
 alias econf="e $NGOCONF_PATH/my_config.el"
-alias reloadconf="cd $NGOCONF_PATH/; gitpom; sleep 2; matrix; cd -"
-
-# CD ALIASES
-alias cddown="cd ~/Downloads/"
-alias cddesk="cd ~/Desktop/"
-alias cddocs="cd ~/Documents/"
-
-#BINARY SHORTCUTS
-alias vg="~/bin/valgrind/bin/valgrind"
 
 # FILES EXPLORATION
 MYEXTENSIONS="cpp|hpp|c|h|php|tpp|ml|mli|vert|frag|geom|tesc|tese|glsl|xml|lua|py"
 alias l="ls -gohFG"
-alias la="l -a"
-alias lr='l -R * | grep -vE "^$" | grep -vE "^total "'
-alias lsc="_(){
-ls -gohGF ./\$@/**/*.($MYEXTENSIONS) 1>&1 1>&2 |
-wc ; wc ./\$@/**/*.($MYEXTENSIONS) |
-tail -n 1
-}; _"
-
-alias lscs="_(){
-ls -gohGFS ./\$@/**/*.($MYEXTENSIONS) 1>&1 1>&2 |
-wc ; wc ./\$@/**/*.($MYEXTENSIONS) |
-tail -n 1
-}; _"
 
 alias cloc='cloc --force-lang="C++",tpp --force-lang="HLSL",glsl --force-lang="HLSL",frag --force-lang="HLSL",geom --force-lang="HLSL",tese --force-lang="HLSL",tesc --force-lang="HLSL",vert'
-
-alias grepclasses="grep -h 'class ' **/*.hpp | grep -v ';'"
-alias findman='_(){
-echo -e "Looking for /usr/share/man/man*/$1.*:";
-ls -godFGhSd /usr/share/man/man*/$1.*;
-echo -e "\nExtented, looking for /usr/share/man/man*/*$1.*:";
-ls -godFGhSd /usr/share/man/man*/*$1*;
-}; _'
-alias findlib='_(){
-ack $@ ~/*/libft/includes/*.h /usr/include/*.h
-}; _'
-alias headervalidity='for i in *.[hc]
-do
-echo $i
-cat $i | head -n 4 | tail -n 1 | cut -c 6- | cut -c -30
-done'
-
-
-#COMPILATION
-alias wcc="gcc -Wall -Werror -Wextra"
-alias wpp="clang++ -Wall -Werror -Wextra"
-alias makej="make fclean ; make -j"
-alias makejl="make -C libft/ fclean ; make -C libft/ -j"
-alias makeja="makejl ; makej"
-alias makejg="make fclean ; make -j g"
-alias makejgl="make -C libft/ fclean ; make -C libft/ -j g"
-alias makejga="makejgl ; makejg"
 
 # OCAML
 alias o="rlwrap --prompt-colour=green ocaml"
@@ -174,6 +125,7 @@ alias gitcl="git clean -xn"
 alias gitclF="git clean -xf"
 alias gitcld="git clean -xdn"
 alias gitcldF="git clean -xdf"
+alias groot='git rev-parse --show-toplevel'
 
 # MISC
 alias makevar='make -pn nosuchrule 2>/dev/null | grep -A1 "^# makefile"| grep -v "^#\|^--" | sort | uniq'
@@ -187,7 +139,6 @@ cog.py -I conf -rU srcs/configuration/cog_meshfill2.c
 "
 alias lret="echo $?"
 alias save="pwd | cat > ~/.save_pwd"
-alias cdm='cd $(basename "$PWD")'
 alias go="cd \`cat ~/.save_pwd\` ; clear"
 alias rr="
 printf '\033[31m' ;rm **/*~ 2>/dev/null && echo '\033[32mrm **/*~'
@@ -204,82 +155,12 @@ alias chr="chmod 644 \`ls -1d **/*.($MYEXTENSIONS)\` ; chmod 744 Makefile ; chmo
 alias psi='ps | grep -v zsh | grep -v emacs'
 
 alias ev="type emacs; echo ; emacs -version ; echo"
-alias sht='_(){
 
-echo "SH:"
-env -i sh -c $@ 1>sht1 2>sht2
-echo -n "\033[33m"
-cat sht1
-echo -n "\033[31m"
-cat sht2
-echo -n "\033[0m"
-
-echo "MSH:"
-touch log.txt
-exec 5>./log.txt
-env -i ./ft_minishell2 -c $@ 1>sht1 2>sht2
-echo -n "\033[33m"
-cat sht1
-echo -n "\033[31m"
-cat sht2
-echo  "\033[0mLOG:"
-cat log.txt
-exec 5>&-
-
-rm -f sht1
-rm -f sht2
-rm -f log.txt
-
-
-};_'
-
-alias sigmsh='_(){
-kill -$1 $(ps | grep -v "grep" | grep "ft_minishell1" | cut -c -5)
-};_'
-
-alias kmsh="\`sigmsh KILL\`"
-	alias syncgithub='
-	cd; mkdir -p sync; cd sync;
-	chmod 755 *
-	export reponame="scop";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
-	export reponame="proj01_algo_libft";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
-	export reponame="configurations";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
-	export reponame="tic-tac-tic-tac-toe";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
-	export reponame="proj14_algo_lem-in";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
-	export reponame="proj13_graph_nibbler";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
-	export reponame="piscine_ocaml";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
-	export reponame="proj10_algo_pushswap";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
-	export reponame="ftconstexpr";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
-	export reponame="vanilla_addons";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
-	export reponame="piscine_cpp";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
-	export reponame="proj12_unix_philosophers";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
-	export reponame="ft_minishop";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
-	export reponame="ft_retro";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
-	export reponame="piscine_php";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
-	export reponame="ft_gkrellm";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
-	export reponame="proj04_graph_fdf";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
-	export reponame="c_exams";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
-	export reponame="gnl_testdir";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
-	export reponame="proj08_unix_sh";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
-	export reponame="libftasm_testdir";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
-	export reponame="proj11_algo_libftasm";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
-	export reponame="proj06_graph_fractol";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
-	export reponame="proj05_algo_printf";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
-	export reponame="proj03_unix_ls";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
-	export reponame="proj09_graph_wolf3d";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
-	export reponame="proj02_algo_getnextline";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
-	export reponame="libft_testdir";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
-
-	export reponame="ocamltest";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
-	export reponame="tests_cpp";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
-	export reponame="Awesome_Starship_Battles";	echo "######SAVING PROJECT: "$reponame; (cd $reponame 2>/dev/null && (git pull origin master || echo "could not pull")) || git clone https://github.com/Ngoguey42/$reponame
-	unset reponame
-	'
 
 # LOCATION SPECIFIC
 UNAME=`uname | cut -c1-6`
 
-alias dumpsizeof="sh $NGOCONF_PATH/dump_sizeof.sh"
+alias dumpsizeof="sh $NGOCONF_PATH/dump_sizeof.sh" #TODO: improve
 
 if [ "$UNAME" = "Linux" ]
 then
@@ -319,6 +200,8 @@ then
 	# export OPAM_ROOT=$(cygpath -m $HOME/.opam/4.03.0+beta2)
 	alias ackf="ack \"^[\t\# ].*[a-z0-9_]+\(\""
 	alias acki="ack \"^\#[\t ]*include[\t ]+\<\""
+	alias pub="/cygdrive/c/tools/dart-sdk/bin/pub.bat"
+	alias dart2js="/cygdrive/c/tools/dart-sdk/bin/dart2js.bat"
 fi
 
 if [ "$UNAME" = "Darwin" ]
@@ -349,4 +232,9 @@ then
 
 	# Load Homebrew Fix script
 	source $HOME/.brew_fix.zsh
+
+	alias cddown="cd ~/Downloads/"
+	alias cddesk="cd ~/Desktop/"
+	alias cddocs="cd ~/Documents/"
+
 fi
