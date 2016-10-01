@@ -185,6 +185,7 @@ then
 	nm $@ | grep ' [^tT] ' | cut -c 10- | sort | uniq
 	}
 	# alias e='$NGOCONF_PATH/notepadpp.sh'
+	export DISABLE_AUTO_TITLE=true
 	alias e="emacs"
 	alias open="cygstart.exe"
 	alias makemake="python ~/makemake/old/makemake.py"
