@@ -22,7 +22,17 @@ git config --global credential.helper "cache --timeout=10800"
 git config --global core.editor "emacs"
 git config --global user.name "Ngoguey42"
 git config --global user.email "ngoguey@student.42.fr"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/kube/42homebrewfix/master/install.sh)"
+/usr/local/bin/brew update
+/usr/local/bin/brew update
+~/.brew/bin/brew update
+~/.brew/bin/brew update
+~/.brew/bin/brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/ecc7bdd8435ec3965ac7095efdead3bb49f378ed/Formula/emacs.rb ack tree cloc tig tmux python3 libyaml
+~/.brew/bin/brew update
+~/.brew/bin/brew update
+~/.brew/bin/pip3 install tmuxp
+
+
+#sh -c "$(curl -fsSL https://raw.githubusercontent.com/kube/42homebrewfix/master/install.sh)"
 ```
 ---
 ---
@@ -46,7 +56,6 @@ cp dotzshrc.sh ~/.zshrc
 cp dotocamlinit.ml ~/.ocamlinit
 mkdir -p ~/Library/Caches/Homebrew/ /tmp/ngobrewtmp /tmp/ngobrewcache
 . ~/.zshrc
-~/.brew/bin/brew install ack tree cloc tig emacs
 cd; ln -s /Users/Shared
 
 # rm -rf "$HOME/Library/Application Support/Google/"
