@@ -211,6 +211,8 @@ then
 	nm $@ | grep ' [^tT] ' | cut -c 18- | sort | uniq
 	}
 
+	export PROMPT="$PROMPT\$(sh $NGOCONF_PATH/append_prompt.sh) "
+
 	# TODO: check those 3 lines under macos
 	export C_INCLUDE_PATH="$HOME/.brew/include:$HOME/.brew/include/freetype2"
 	export CPLUS_INCLUDE_PATH="$HOME/.brew/include:$HOME/.brew/include/freetype2"
