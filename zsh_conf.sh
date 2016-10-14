@@ -128,6 +128,7 @@ alias gitcldF="git clean -xdf"
 alias groot='git rev-parse --show-toplevel'
 
 # MISC
+export PROMPT="$PROMPT\$(sh $NGOCONF_PATH/append_prompt.sh) "
 alias makevar='make -pn nosuchrule 2>/dev/null | grep -A1 "^# makefile"| grep -v "^#\|^--" | sort | uniq'
 alias scopcog="
 cog.py -I conf -rU include/configuration/cog_enums.h
@@ -211,7 +212,6 @@ then
 	nm $@ | grep ' [^tT] ' | cut -c 18- | sort | uniq
 	}
 
-	export PROMPT="$PROMPT\$(sh $NGOCONF_PATH/append_prompt.sh) "
 
 	# TODO: check those 3 lines under macos
 	export C_INCLUDE_PATH="$HOME/.brew/include:$HOME/.brew/include/freetype2"
