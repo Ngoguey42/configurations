@@ -74,6 +74,9 @@ source $ZSH/oh-my-zsh.sh
 
 # ZSH CONFIG
 zstyle ':completion:*:*:emacs:*:*files' ignored-patterns '*.o' '*.cmx' '*.cmi' '*.cmo'
+export ZSH_THEME_GIT_PROMPT_PREFIX="%{\e[01;34m%}%{\e[31m%}"
+export ZSH_THEME_GIT_PROMPT_CLEAN="%{\e[34m%}"
+export ZSH_THEME_GIT_PROMPT_DIRTY="%{\e[33m%}"
 
 # CONFIG FILES EDITION
 alias zshconf="e $NGOCONF_PATH/zsh_conf.sh"

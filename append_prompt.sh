@@ -6,7 +6,7 @@
 #    By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/13 17:30:07 by ngoguey           #+#    #+#              #
-#    Updated: 2016/10/14 09:51:08 by ngoguey          ###   ########.fr        #
+#    Updated: 2016/10/14 13:19:30 by ngoguey          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ if [ "$UNAME" = "CYGWIN" ]
 then
 	THEN=`date --date="$(echo $(date +"%d-%B-%y")" $WHEN_TODAY")" +%s`
 else
-	THEN=`date -j -f "%d-%B-%y-%H:%M:%S" $(echo $(date +"%d-%B-%y")"-19:00:00") +%s`
+	THEN=`date -j -f "%d-%B-%y-%H:%M:%S" $(echo $(date +"%d-%B-%y")"-$WHEN_TODAY") +%s`
 fi
 
 let DIFF=$THEN-$NOW
