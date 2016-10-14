@@ -198,7 +198,7 @@ then
 	export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/flexdll-bin-0.34:$PATH"
 	# export CYGWIN_OCAML_PREFIX="/home/Ngo/ocaml"
 	# export CYGWIN_OPAM_PREFIX="/home/Ngo/opam"
-	export OCAMLLIB="/lib/ocaml"
+	# export OCAMLLIB="/lib/ocaml"
 	# export PATH=$CYGWIN_OCAML_PREFIX/bin:$PATH #Just temporarily, since once OPAM is installed you switch to MinGW OCaml.
 	# export PATH=$CYGWIN_OPAM_PREFIX/bin:$PATH
 	# . /home/Ngo/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
@@ -226,8 +226,8 @@ then
 	export PATH="$HOME/.brew/bin:$NGOCONF_ROOT/mkgen:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/texbin"
 	export HOMEBREW_TEMP="/tmp/ngobrewtmp"
 	export HOMEBREW_CACHE="/tmp/ngobrewcache"
-	. ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-	eval `opam config env`
+	# . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+	# eval `opam config env`
 	alias ack="~/.brew/bin/ack"
 	alias ackf="~/.brew/bin/ack \"^[\t\# ].*[a-z0-9_]+\(\""
 	alias acki="~/.brew/bin/ack \"^\#[\t ]*include[\t ]+\<\""
@@ -237,7 +237,7 @@ then
 	alias qui='_(){ ldapsearch uid="$1" ; }; _'
 
 	# Load Homebrew Fix script
-	source $HOME/.brew_fix.zsh
+	# source $HOME/.brew_fix.zsh
 
 	alias cddown="cd ~/Downloads/"
 	alias cddesk="cd ~/Desktop/"
