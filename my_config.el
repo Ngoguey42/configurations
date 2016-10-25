@@ -6,7 +6,7 @@
 ;;   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        ;;
 ;;                                                +#+#+#+#+#+   +#+           ;;
 ;;   Created: 2016/04/19 09:50:58 by ngoguey           #+#    #+#             ;;
-;;   Updated: 2016/09/30 13:41:12 by ngoguey          ###   ########.fr       ;;
+;;   Updated: 2016/10/25 12:13:12 by ngoguey          ###   ########.fr       ;;
 ;;                                                                            ;;
 ;;****************************************************************************;;
 
@@ -185,11 +185,28 @@
 
 ;;c
 (add-to-list 'auto-mode-alist '("\\.inl$" . c-mode))
+(add-hook
+ 'c-mode-hook
+ (lambda ()
+   (setq-default tab-width 4)
+   (setq-default indent-tabs-mode t)
+   (setq-default c-basic-offset 4)
+   (setq-default c-default-style "linux")
+   ))
+
+
+
 ;;/c
 
 ;;c++
 (add-to-list 'auto-mode-alist '("\\.tpp$" . c++-mode))
 (c-set-offset 'innamespace 0)
+(add-hook
+ 'c++-mode-hook
+ (lambda ()
+   (setq indent-tabs-mode nil)
+   (setq tab-width 2)
+   ))
 (load "my_cpptemplates.el")
 ;;/c++
 
@@ -230,10 +247,6 @@
 (load "my_bindings.el")
 
 ;;TODO: set those 4 lines as c-mode only
-(setq-default tab-width 4)
-(setq-default indent-tabs-mode t)
-(setq-default c-basic-offset 4)
-(setq-default c-default-style "linux")
 
 (setq line-number-mode t)
 (setq column-number-mode t)
