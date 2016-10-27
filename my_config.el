@@ -6,7 +6,7 @@
 ;;   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        ;;
 ;;                                                +#+#+#+#+#+   +#+           ;;
 ;;   Created: 2016/04/19 09:50:58 by ngoguey           #+#    #+#             ;;
-;;   Updated: 2016/10/25 12:13:12 by ngoguey          ###   ########.fr       ;;
+;;   Updated: 2016/10/27 13:56:08 by ngoguey          ###   ########.fr       ;;
 ;;                                                                            ;;
 ;;****************************************************************************;;
 
@@ -210,6 +210,32 @@
 (load "my_cpptemplates.el")
 ;;/c++
 
+;; minor perspective(minor)
+(defvar perspdotel_path (concat confPath "/persp-mode.el/"))
+(add-to-list 'load-path perspdotel_path)
+
+(with-eval-after-load "persp-mode"
+  (setq wg-morph-on nil)
+  (setq persp-autokill-buffer-on-remove 'kill-weak)
+  (setq persp-auto-resume-time -1
+        persp-auto-save-opt 0)
+  (setq persp-save-dir "./")
+  (persp-mode 1)
+  )
+
+(global-set-key [(f1)] 'ft-persp-activate)
+(defun ft-persp-activate (name)
+  "Switch to frame."
+  (interactive "sft-Perspective name to switch: ")
+  (if (member name (persp-names *persp-hash* nil))
+      (persp-activate (persp-add-new name) (selected-frame))
+    )
+  )
+
+(require 'persp-mode)
+;; /perspective(minor)
+
+
 ;;fci-mode (minor)
 ;; (defvar fci_path (concat confPath "/Fill-Column-Indicator/"))
 ;; (add-to-list 'load-path fci_path)
@@ -245,8 +271,6 @@
 (setq split-width-threshold 80)
 
 (load "my_bindings.el")
-
-;;TODO: set those 4 lines as c-mode only
 
 (setq line-number-mode t)
 (setq column-number-mode t)

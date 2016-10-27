@@ -40,3 +40,6 @@
 [submodule "yaml-mode"]
 	path = yaml-mode
 	url = https://github.com/yoshiki/yaml-mode
+[submodule "persp-mode.el"]
+	path = persp-mode.el
+	url = https://github.com/Bad-ptr/persp-mode.el

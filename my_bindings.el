@@ -6,7 +6,7 @@
 ;;   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        ;;
 ;;                                                +#+#+#+#+#+   +#+           ;;
 ;;   Created: 2016/04/19 09:55:30 by ngoguey           #+#    #+#             ;;
-;;   Updated: 2016/06/06 11:36:56 by ngoguey          ###   ########.fr       ;;
+;;   Updated: 2016/10/27 13:01:22 by ngoguey          ###   ########.fr       ;;
 ;;                                                                            ;;
 ;;****************************************************************************;;
 
@@ -74,6 +74,7 @@
 ;; ************************************************************************** ;;
 ;; F* KEYS ****************************************************************** ;;
 ;; ************************************************************************** ;;
+;; depredated, TODO: update
 
 ;; (f1)                              ft-put-debug1
 ;; (f2)                              tab
@@ -115,12 +116,13 @@
 ;; (control f12)                     ??
 
 
-(global-set-key [(f1)] 'ft-put-debug1)
 (global-set-key [(f2)] '(lambda() "tab shortcut" (interactive) (insert "\t")))
-(global-set-key [(f3)] 'ft-toggle-comment-on-line)
-(global-set-key [(f4)] 'comment-or-uncomment-region)
-(global-set-key [(f5)] 'replace-string)
-(global-set-key [(f6)] 'goto-line)
+(global-set-key [(f3)] 'ft-put-debug1)
+
+(global-set-key [(f5)] 'ft-toggle-comment-on-line)
+(global-set-key [(f6)] 'comment-or-uncomment-region)
+(global-set-key [(f7)] 'replace-string)
+(global-set-key [(f8)] 'goto-line)
 
 (global-set-key [?\e f3] 'ft-swap-line-up)
 (global-set-key [?\e f4] 'ft-swap-line-down)
@@ -129,14 +131,14 @@
 (global-set-key [(control f9)] 'ft-star-to-80)
 
 
-(global-set-key (kbd "<kp-7>") "\C-a\C- \C-n\M-w\C-y\C-p")
-(global-set-key (kbd "<kp-1>") "\C-a\C-k\177\C-a\C-n")
-(global-set-key (kbd "<kp-0>") "\C-a\C-m\C-a\C-b\C-y\C-a")
+;; (global-set-key (kbd "<kp-7>") "\C-a\C- \C-n\M-w\C-y\C-p")
+;; (global-set-key (kbd "<kp-1>") "\C-a\C-k\177\C-a\C-n")
+;; (global-set-key (kbd "<kp-0>") "\C-a\C-m\C-a\C-b\C-y\C-a")
 
 ;; (global-set-key (kbd "<kp-5>") "\M-;")
 
-(global-set-key (kbd "<kp-add>") 'forward-paragraph)
-(global-set-key (kbd "<kp-subtract>") 'backward-paragraph)
+(global-set-key [(f9)] 'forward-paragraph)
+(global-set-key [(f10)] 'backward-paragraph)
 
 
 ;; ************************************************************************** ;;
