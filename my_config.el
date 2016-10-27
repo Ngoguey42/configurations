@@ -6,7 +6,7 @@
 ;;   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        ;;
 ;;                                                +#+#+#+#+#+   +#+           ;;
 ;;   Created: 2016/04/19 09:50:58 by ngoguey           #+#    #+#             ;;
-;;   Updated: 2016/10/27 13:56:08 by ngoguey          ###   ########.fr       ;;
+;;   Updated: 2016/10/27 14:30:50 by ngoguey          ###   ########.fr       ;;
 ;;                                                                            ;;
 ;;****************************************************************************;;
 
@@ -229,6 +229,16 @@
   (interactive "sft-Perspective name to switch: ")
   (if (member name (persp-names *persp-hash* nil))
       (persp-activate (persp-add-new name) (selected-frame))
+    )
+  )
+
+(global-set-key [(control f1)] 'ft-persp-activate-new)
+(defun ft-persp-activate-new (name)
+  "Switch to frame."
+  (interactive "sft-Perspective name to create: ")
+  (unless (member name (persp-names *persp-hash* nil))
+    (persp-frame-switch name)
+    (switch-to-buffer (find-file "./"))
     )
   )
 
