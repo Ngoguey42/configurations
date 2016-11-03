@@ -6,7 +6,7 @@
 ;;   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        ;;
 ;;                                                +#+#+#+#+#+   +#+           ;;
 ;;   Created: 2016/04/19 09:50:58 by ngoguey           #+#    #+#             ;;
-;;   Updated: 2016/10/27 14:30:50 by ngoguey          ###   ########.fr       ;;
+;;   Updated: 2016/11/03 11:53:03 by ngoguey          ###   ########.fr       ;;
 ;;                                                                            ;;
 ;;****************************************************************************;;
 
@@ -204,6 +204,7 @@
 (add-hook
  'c++-mode-hook
  (lambda ()
+   (c-set-offset 'arglist-intro 0)
    (setq indent-tabs-mode nil)
    (setq tab-width 2)
    ))
@@ -221,6 +222,9 @@
         persp-auto-save-opt 0)
   (setq persp-save-dir "./")
   (persp-mode 1)
+  ;; (if (boundp 'ft-persp_init_file)
+      ;; (persp-load-state-from-file ft-persp_init_file)
+    ;; )
   )
 
 (global-set-key [(f1)] 'ft-persp-activate)
