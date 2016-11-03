@@ -88,6 +88,7 @@ MYEXTENSIONS="cpp|hpp|c|h|php|tpp|ml|mli|vert|frag|geom|tesc|tese|glsl|xml|lua|p
 alias l="ls -gohFG"
 
 alias cloc='cloc --force-lang="C++",tpp --force-lang="HLSL",glsl --force-lang="HLSL",frag --force-lang="HLSL",geom --force-lang="HLSL",tese --force-lang="HLSL",tesc --force-lang="HLSL",vert'
+alias wccool='_(){ cat $@ | ack -v "^\s*(//|/\*|\*)"| ack -v "^\s*$" | wc; }; _'
 
 # OCAML
 alias o="rlwrap --prompt-colour=green ocaml"
