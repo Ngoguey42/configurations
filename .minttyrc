@@ -1,6 +1,18 @@
 BoldAsFont=yes
+
+# # 84 lines
+FontHeight=7
+Font=Targa 
+
+# # 84 lines
+# FontHeight=7
+# Font=Targa MS Hand
+
+# # 68 lines
 FontHeight=13
 Font=NovaMono
+
+
 CursorColour=255,0,0
 CursorBlinks=no
 CursorType=block
