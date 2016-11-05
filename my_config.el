@@ -6,7 +6,7 @@
 ;;   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        ;;
 ;;                                                +#+#+#+#+#+   +#+           ;;
 ;;   Created: 2016/04/19 09:50:58 by ngoguey           #+#    #+#             ;;
-;;   Updated: 2016/11/03 11:53:03 by ngoguey          ###   ########.fr       ;;
+;;   Updated: 2016/11/05 18:44:19 by ngoguey          ###   ########.fr       ;;
 ;;                                                                            ;;
 ;;****************************************************************************;;
 
@@ -302,6 +302,19 @@
 ;; (global-hl-line-mode 1)
 ;; (set-face-background 'hl-line "purple")
 ;; (set-face-foreground 'highlight nil)
+
+(menu-bar-mode -1)
+
+;; Reverse colors for the border to have nicer line
+;; (set-face-inverse-video-p 'vertical-border nil)
+;; (set-face-background 'vertical-border (face-background 'default))
+
+;; Set symbol for the border
+;; (set-display-table-slot standard-display-table
+                        ;; 'vertical-border
+                        ;; 0
+                        ;; (make-glyph-code ? )
+                        ;; )
 
 
 (set-face-attribute  'mode-line

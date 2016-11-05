@@ -1,0 +1,13 @@
+BoldAsFont=yes
+FontHeight=13
+Font=NovaMono
+CursorColour=255,0,0
+CursorBlinks=no
+CursorType=block
+BellType=0
+Term=xterm-256color
+Scrollbar=none
+Columns=182
+Rows=68
+Transparency=low
+OpaqueWhenFocused=no
