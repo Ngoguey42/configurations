@@ -10,9 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-# export NGOCONF_PATH="$HOME/configurations"
-# export NGOCONF_PATH="/goinfre/ngoguey/configurations"
-export NGOCONF_ROOT="/nfs/2014/n/ngoguey/goinfre"
+export NGOCONF_ROOT="/Volumes/Storage/goinfre/ngoguey"
 export NGOCONF_PATH="$NGOCONF_ROOT/configurations"
 
 source $NGOCONF_PATH/zsh_conf.sh

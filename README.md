@@ -44,7 +44,7 @@ git config --global user.email "ngoguey@student.42.fr"
 
 ##### shell
 ```sh
-cd /nfs/2014/n/ngoguey/goinfre
+cd /Volumes/Storage/goinfre/ngoguey
 git clone https://github.com/Ngoguey42/mkgen
 git clone https://github.com/Ngoguey42/configurations
 cd configurations ; git pull origin master
