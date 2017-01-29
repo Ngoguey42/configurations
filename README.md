@@ -105,8 +105,37 @@ rm -f /tmp/slock /tmp/lock ~/.opam/lock ~/.opam/system/lock; touch /tmp/slock; t
 
 ## At home Cygwin
 
+##### Cygwin packages
+- python3
+- python3-setup tools
+- binutils
+- bzip2
+- coreutils
+- emacs
+- gcc-core
+- gdb
+- git
+- gnuplot
+- gzip
+- mingw64-x86_64-binutils
+- mingw64-x86_64-curl
+- mingw64-x86_64-gcc.core
+- mingw64-x86_64-gcc-g++
+- mintty
+- ocaml-base
+- rlwrap 
+- tree
+- wget
+- zsh
+
+
+
+
+
+
+
+
 ##### mintty setup
-- shortcut: `C:\cygwin64\bin\mintty.exe -i /Cygwin-Terminal.ico  /bin/zsh --login`
-- font: consolas, pt8
+
 
 ## At home Linux
