@@ -190,13 +190,13 @@ then
 	nm $@ | grep ' [^tT] ' | cut -c 10- | sort | uniq
 	}
 	# alias e='$NGOCONF_PATH/notepadpp.sh'
-	export DISABLE_AUTO_TITLE=true
+	# export DISABLE_AUTO_TITLE=true
 	alias e="emacs"
 	alias open="cygstart.exe"
 	alias makemake="python ~/makemake/old/makemake.py"
 	alias clear='printf "\033c"'
 	alias l="ls -gohFG --color"
-	export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/flexdll-bin-0.34:$PATH"
+	export PATH="/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 	# export CYGWIN_OCAML_PREFIX="/home/Ngo/ocaml"
 	# export CYGWIN_OPAM_PREFIX="/home/Ngo/opam"
 	# export OCAMLLIB="/lib/ocaml"
