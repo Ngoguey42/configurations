@@ -1,9 +1,10 @@
-#My config files
 
-##Emacs
-##### Some emacs functions
+<br/>
 
-##At school Macos
+----
+----
+
+## At school `Macos`
 
 #### New home
 ##### Macos
@@ -34,8 +35,10 @@ git config --global user.email "ngoguey@student.42.fr"
 
 #sh -c "$(curl -fsSL https://raw.githubusercontent.com/kube/42homebrewfix/master/install.sh)"
 ```
----
----
+
+----
+----
+
 #### New mac
 ##### Managed Software Center
 1. spectacle, spotify
@@ -51,18 +54,99 @@ cd configurations ; git pull origin master
 git submodule init
 git submodule update
 cp dotemacs.el ~/.emacs
-cp dotminttyrc ~/.minttyrc
-cp dotzshrc.sh ~/.zshrc
+cp dotminttyrc.conf ~/.minttyrc
 cp dotocamlinit.ml ~/.ocamlinit
+cp dotzshrc.sh ~/.zshrc
 mkdir -p ~/Library/Caches/Homebrew/ /tmp/ngobrewtmp /tmp/ngobrewcache
 . ~/.zshrc
 cd; ln -s /Users/Shared
+```
 
+##### Misc
+```
 # rm -rf "$HOME/Library/Application Support/Google/"
 nohup "/Applications/Spotify.app/Contents/MacOS/Spotify"&
 ```
----
----
+
+<br/>
+
+----
+----
+
+## At home `Cygwin`
+
+#### Windows install
+- chocolatey
+- cygwin64
+
+#### Install cygwin setup x86_64
+- zsh
+- tree
+- tig
+- rlwrap
+- nc
+- make
+- mintty
+- "gcc-core"+"gcc-g++" same version
+- mingw64?
+- emacs 25
+- curl
+- ncurses
+- wget
+- git
+
+<br/>
+
+- coreutils
+- binutils
+- pkg-config
+- terminfo
+- openssh
+- openssl
+- tar
+
+#### Chocolatey (choco list --local-only)
+- choco install dart-sdk
+- choco install python3
+
+#### Manual (`./configure && make && make install`)
+- ack https://beyondgrep.com/
+- winpty https://github.com/rprichard/winpty required for ipython
+- ocaml? todo
+- opencv? todo
+
+#### pip (use virtualenv?)
+- pip install ipython ipython jupyter numpy pandas
+- numpy
+ - "numpy+mkl" (Intel® Math Kernel Library) is required for scipy
+ - http://www.lfd.uci.edu/~gohlke/pythonlibs/#numpy
+ - 120MB !!!
+ - pip install PATHTOFILE
+- scipy
+ - http://stackoverflow.com/questions/28190534/windows-scipy-install-no-lapack-blas-resources-found
+ - http://www.lfd.uci.edu/~gohlke/pythonlibs/#scipy
+ - 12MB
+ - pip install PATHTOFILE
+- pip install pyreadline?
+
+#### opam
+- todo
+
+<br/>
+
+----
+----
+
+## At home `Linux`
+- todo
+
+<br/>
+
+----
+----
+
+## DEPRECATED
+
 #### Nuke brew and opam, reinstall (DEPRECATED)
 ```sh
 export HOMEBREW_TEMP="/tmp/""$USER""brewtmp"
@@ -87,55 +171,14 @@ $OPAMTMP switch 4.02.3
 ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true ; eval `opam config env`
 $OPAMTMP install -y core yojson
 )
-
 ```
----
----
-#### Misc
+
+##### Lock problems (DEPRECATED)
 ```sh
 rm -f /tmp/slock /tmp/lock ~/.opam/lock ~/.opam/system/lock; touch /tmp/slock; touch /tmp/lock; ln -s /tmp/lock ~/.opam/lock; ln -s /tmp/slock ~/.opam/system/lock
 ```
----
----
-#### Cog (python required in brew)
+
+##### Cog (python required in brew) (DEPRECATED)
 ```sh
 (type cog || type cog.py) || (cd; curl -O https://pypi.python.org/packages/source/c/cogapp/cogapp-2.4.tar.gz && tar -zxvf cogapp-2.4.tar.gz && cd cogapp-2.4 && python3 setup.py install && cd && rm -rf cogapp-2.4 cogapp-2.4.tar.gz)
-
 ```
-
-## At home Cygwin
-
-##### Cygwin packages
-- python3
-- python3-setup tools
-- binutils
-- bzip2
-- coreutils
-- emacs
-- gcc-core
-- gdb
-- git
-- gnuplot
-- gzip
-- mingw64-x86_64-binutils
-- mingw64-x86_64-curl
-- mingw64-x86_64-gcc.core
-- mingw64-x86_64-gcc-g++
-- mintty
-- ocaml-base
-- rlwrap 
-- tree
-- wget
-- zsh
-
-
-
-
-
-
-
-
-##### mintty setup
-
-
-## At home Linux
