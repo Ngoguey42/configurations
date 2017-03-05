@@ -6,7 +6,7 @@
 ;;   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        ;;
 ;;                                                +#+#+#+#+#+   +#+           ;;
 ;;   Created: 2016/04/19 09:50:58 by ngoguey           #+#    #+#             ;;
-;;   Updated: 2016/11/05 18:44:19 by ngoguey          ###   ########.fr       ;;
+;;   Updated: 2017/02/18 19:18:28 by ngoguey          ###   ########.fr       ;;
 ;;                                                                            ;;
 ;;****************************************************************************;;
 
@@ -174,9 +174,10 @@
 (add-hook
  'python-mode-hook
  (lambda ()
-   (setq indent-tabs-mode t)
+   (setq indent-tabs-mode nil)
    (setq tab-width 4)
-   (setq python-indent 4)))
+   (setq python-indent 4)
+   ))
 ;;/python
 
 ;;cuda
