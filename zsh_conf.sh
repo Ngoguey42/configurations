@@ -132,7 +132,7 @@ alias gitcldF="git clean -xdf"
 alias groot='git rev-parse --show-toplevel'
 
 # MISC
-export PROMPT="$PROMPT\$(sh $NGOCONF_PATH/append_prompt.sh) "
+# export PROMPT="$PROMPT\$(sh $NGOCONF_PATH/append_prompt.sh) "
 alias makevar='make -pn nosuchrule 2>/dev/null | grep -A1 "^# makefile"| grep -v "^#\|^--" | sort | uniq'
 alias scopcog="
 cog.py -I conf -rU include/configuration/cog_enums.h
@@ -161,12 +161,16 @@ alias psi='ps | grep -v zsh | grep -v emacs'
 
 alias ev="type emacs; echo ; emacs -version ; echo"
 
+# SHLVL ********************************************************************* **
+if [[ $SHLVL -ge 2 ]]; then
+    CHARS=`printf '+%.0s' {1..$(($SHLVL - 1))}`
+    export PROMPT="$CHARS $PROMPT"
+fi
 
-# LOCATION SPECIFIC
+# LOCATION SPECIFIC ********************************************************* **
 UNAME=`uname | cut -c1-6`
 
 alias dumpsizeof="sh $NGOCONF_PATH/dump_sizeof.sh" #TODO: improve
-
 if [ "$UNAME" = "Linux" ]
 then
 	nm2(){
@@ -244,4 +248,23 @@ then
 	alias cddesk="cd ~/Desktop/"
 	alias cddocs="cd ~/Documents/"
 
+fi
+
+# SSH *********************************************************************** **
+# export SSH_TIMEOUT_DEFAULT=$((10))
+export SSH_TIMEOUT_DEFAULT=$((5 * 60))
+if [[ -n "$SSH_AGENT_PID" ]]; then
+
+    if [[ -z "$SSHTO" ]]; then # SSHTO aka `ssh time out`
+	export SSHTO=$SSH_TIMEOUT_DEFAULT
+    fi
+    # UNAME=`uname | cut -c1-6`
+    SSHTO_FORMAT=`date -u -d@$SSHTO +"%T"`
+
+    echo "Enter passphrase valid for ($SSHTO_FORMAT)"
+    ssh-add -t $SSHTO || exit
+
+    NOW=`date +%s`
+    export SSH_TIMEOUT_THEN=$(($NOW + $SSHTO))
+    export PROMPT="\$(sh $NGOCONF_PATH/promptssh.sh) $PROMPT"
 fi
