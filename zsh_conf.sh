@@ -115,7 +115,9 @@ alias oktfna='rr ; ocamlfind ocamloptp *.ml -package yojson -package core -threa
 
 # GIT RELATED
 export USER="ngoguey"
-export MAIL="ngoguey@student.42.fr"
+export MAIL="ngoguey@airware.com"
+# export USER="ngoguey"
+# export MAIL="ngoguey@student.42.fr"
 alias gitals="git add \`git ls-files\` ; git status"
 alias gitls="git ls-files"
 alias gitac="git add \`ls -1 **/*.($MYEXTENSIONS)\` ; git status"
@@ -132,7 +134,6 @@ alias gitcldF="git clean -xdf"
 alias groot='git rev-parse --show-toplevel'
 
 # MISC
-# export PROMPT="$PROMPT\$(sh $NGOCONF_PATH/append_prompt.sh) "
 alias makevar='make -pn nosuchrule 2>/dev/null | grep -A1 "^# makefile"| grep -v "^#\|^--" | sort | uniq'
 alias scopcog="
 cog.py -I conf -rU include/configuration/cog_enums.h
@@ -173,19 +174,12 @@ UNAME=`uname | cut -c1-6`
 alias dumpsizeof="sh $NGOCONF_PATH/dump_sizeof.sh" #TODO: improve
 if [ "$UNAME" = "Linux" ]
 then
-	nm2(){
-	nm $@ | grep ' [^tT] ' | cut -c 10- | sort | uniq
-	}
 	alias spotify="nohup spotify &"
-	alias e="/usr/bin/emacs -nw"
-	alias makemake="python ~/makemake/old/makemake.py"
+	alias e="/usr/bin/emacs25 -nw"
 	alias termvert6="nohup terminator -b -l vert6 &"
 	alias termvert2="nohup terminator -b -l vert2 &"
 	alias termhoriz6="nohup terminator -b -l horiz6 &"
-	export PATH="$HOME/.linuxbrew/bin:$PATH"
-	export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
-	export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
-
+	alias l="ls -gohFG --color"
 fi
 
 if [ "$UNAME" = "CYGWIN" ]
