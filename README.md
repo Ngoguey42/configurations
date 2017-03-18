@@ -116,17 +116,17 @@ nohup "/Applications/Spotify.app/Contents/MacOS/Spotify"&
 - opencv? todo
 
 #### pip (use virtualenv?)
-- pip install ipython ipython jupyter numpy pandas
+- pip install ipython matplotlib jupyter numpy pandas
 - numpy
- - "numpy+mkl" (Intel® Math Kernel Library) is required for scipy
- - http://www.lfd.uci.edu/~gohlke/pythonlibs/#numpy
- - 120MB !!!
- - pip install PATHTOFILE
+  - "numpy+mkl" (Intel® Math Kernel Library) is required for scipy
+  - http://www.lfd.uci.edu/~gohlke/pythonlibs/#numpy
+  - 120MB !!!
+  - pip install PATHTOFILE
 - scipy
- - http://stackoverflow.com/questions/28190534/windows-scipy-install-no-lapack-blas-resources-found
- - http://www.lfd.uci.edu/~gohlke/pythonlibs/#scipy
- - 12MB
- - pip install PATHTOFILE
+  - http://stackoverflow.com/questions/28190534/windows-scipy-install-no-lapack-blas-resources-found
+  - http://www.lfd.uci.edu/~gohlke/pythonlibs/#scipy
+  - 12MB
+  - pip install PATHTOFILE
 - pip install pyreadline?
 
 #### opam
