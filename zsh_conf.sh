@@ -252,8 +252,13 @@ if [[ -n "$SSH_AGENT_PID" ]]; then
     if [[ -z "$SSHTO" ]]; then # SSHTO aka `ssh time out`
 	export SSHTO=$SSH_TIMEOUT_DEFAULT
     fi
-    # UNAME=`uname | cut -c1-6`
-    SSHTO_FORMAT=`date -u -d@$SSHTO +"%T"`
+    UNAME=`uname | cut -c1-6`
+    if [ "$UNAME" = "Darwin" ]
+    then
+	SSHTO_FORMAT=`date -u -r $SSHTO +"%T"`
+    else
+	SSHTO_FORMAT=`date -u -d@$SSHTO +"%T"`
+    fi
 
     echo "Enter passphrase valid for ($SSHTO_FORMAT)"
     ssh-add -t $SSHTO || exit
