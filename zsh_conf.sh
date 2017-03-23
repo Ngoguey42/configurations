@@ -175,7 +175,7 @@ alias dumpsizeof="sh $NGOCONF_PATH/dump_sizeof.sh" #TODO: improve
 if [ "$UNAME" = "Linux" ]
 then
 	alias spotify="nohup spotify &"
-	alias e="/usr/bin/emacs25 -nw"
+	EDITOR="/usr/bin/emacs25 -nw"
 	alias termvert6="nohup terminator -b -l vert6 &"
 	alias termvert2="nohup terminator -b -l vert2 &"
 	alias termhoriz6="nohup terminator -b -l horiz6 &"
@@ -189,7 +189,7 @@ then
 	}
 	# alias e='$NGOCONF_PATH/notepadpp.sh'
 	# export DISABLE_AUTO_TITLE=true
-	alias e="emacs"
+	EDITOR="emacs"
 	alias open="cygstart.exe"
 	alias makemake="python ~/makemake/old/makemake.py"
 	alias clear='printf "\033c"'
@@ -214,14 +214,13 @@ then
 	nm $@ | grep ' [^tT] ' | cut -c 18- | sort | uniq
 	}
 
-
 	# TODO: check those 3 lines under macos
 	export C_INCLUDE_PATH="$HOME/.brew/include:$HOME/.brew/include/freetype2"
 	export CPLUS_INCLUDE_PATH="$HOME/.brew/include:$HOME/.brew/include/freetype2"
 	export LIBRARY_PATH="$HOME/.brew/lib"
 
 	alias tig="~/.brew/bin/tig/"
-	alias e="emacs"
+	EDITOR="emacs"
 	export PATH="$HOME/.brew/bin:$NGOCONF_ROOT/mkgen:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/texbin"
 	export HOMEBREW_TEMP="/tmp/ngobrewtmp"
 	export HOMEBREW_CACHE="/tmp/ngobrewcache"
@@ -243,6 +242,9 @@ then
 	alias cddocs="cd ~/Documents/"
 
 fi
+
+# POST - LOCATION SPECIFIC ************************************************** **
+alias e="$EDITOR"
 
 # SSH *********************************************************************** **
 # export SSH_TIMEOUT_DEFAULT=$((10))
