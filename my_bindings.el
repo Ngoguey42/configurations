@@ -6,7 +6,7 @@
 ;;   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        ;;
 ;;                                                +#+#+#+#+#+   +#+           ;;
 ;;   Created: 2016/04/19 09:55:30 by ngoguey           #+#    #+#             ;;
-;;   Updated: 2016/10/27 13:01:22 by ngoguey          ###   ########.fr       ;;
+;;   Updated: 2017/03/24 11:24:08 by ngoguey          ###   ########.fr       ;;
 ;;                                                                            ;;
 ;;****************************************************************************;;
 
@@ -137,8 +137,8 @@
 
 ;; (global-set-key (kbd "<kp-5>") "\M-;")
 
-(global-set-key [(f9)] 'forward-paragraph)
-(global-set-key [(f10)] 'backward-paragraph)
+;; (global-set-key [(f9)] 'forward-paragraph)
+;; (global-set-key [(f10)] 'backward-paragraph)
 
 
 ;; ************************************************************************** ;;

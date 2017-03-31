@@ -6,7 +6,7 @@
 ;;   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        ;;
 ;;                                                +#+#+#+#+#+   +#+           ;;
 ;;   Created: 2016/06/06 06:42:59 by ngoguey           #+#    #+#             ;;
-;;   Updated: 2016/06/06 11:32:51 by ngoguey          ###   ########.fr       ;;
+;;   Updated: 2017/03/24 11:26:03 by ngoguey          ###   ########.fr       ;;
 ;;                                                                            ;;
 ;;****************************************************************************;;
 
@@ -113,7 +113,8 @@
   "pad with stars to column 80" (interactive)
   (move-end-of-line 1)
   (let ((to80 (- 80 (current-column))))
-    (if (< to80 78)
+    ;; (if (< to80 78)
         (insert (make-string (- to80 3) ?*) " **")
-    ))
+        ;; )
+  )
   )
