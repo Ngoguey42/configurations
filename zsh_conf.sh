@@ -180,6 +180,7 @@ then
 	alias termvert2="nohup terminator -b -l vert2 &"
 	alias termhoriz6="nohup terminator -b -l horiz6 &"
 	alias l="ls -gohFG --color"
+	alias open='gnome-open 2>/dev/null'
 fi
 
 if [ "$UNAME" = "CYGWIN" ]
