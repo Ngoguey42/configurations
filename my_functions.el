@@ -6,7 +6,7 @@
 ;;   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        ;;
 ;;                                                +#+#+#+#+#+   +#+           ;;
 ;;   Created: 2016/06/06 06:42:59 by ngoguey           #+#    #+#             ;;
-;;   Updated: 2017/03/24 11:26:03 by ngoguey          ###   ########.fr       ;;
+;;   Updated: 2017/04/09 16:22:14 by ngoguey                                  ;;
 ;;                                                                            ;;
 ;;****************************************************************************;;
 
@@ -92,11 +92,29 @@
         ("inl" . ("printf(\"\\n\");" 5))
         ("lua" . ("print();" 2))
         ("ml" . ("Printf.eprintf \"\\n%!\";" 6))
-        ("py" . ("print(\"\" % ())" 7))
+        ("py" . ("print()" 1))
+        ))
+
+(setq put-debug2-assoc
+      '(("py" . ("log()" 1))
+        ))
+
+(setq put-debug3-assoc
+      '(("py" . ("print(\"\" % ())" 7))
+        ))
+
+(setq put-debug4-assoc
+      '(("py" . ("print(\"\".format())" 11))
         ))
 
 (defun ft-put-debug1 ()
   "put debug 1" (interactive) (read-extension-and-put-debug put-debug1-assoc))
+(defun ft-put-debug2 ()
+  "put debug 2" (interactive) (read-extension-and-put-debug put-debug2-assoc))
+(defun ft-put-debug3 ()
+  "put debug 3" (interactive) (read-extension-and-put-debug put-debug3-assoc))
+(defun ft-put-debug4 ()
+  "put debug 4" (interactive) (read-extension-and-put-debug put-debug4-assoc))
 
 ;; ************************************************************************** **
 ;; COMMENTS FORMATING ******************************************************* **

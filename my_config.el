@@ -6,7 +6,7 @@
 ;;   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        ;;
 ;;                                                +#+#+#+#+#+   +#+           ;;
 ;;   Created: 2016/04/19 09:50:58 by ngoguey           #+#    #+#             ;;
-;;   Updated: 2017/02/18 19:18:28 by ngoguey          ###   ########.fr       ;;
+;;   Updated: 2017/04/09 16:51:14 by ngoguey                                  ;;
 ;;                                                                            ;;
 ;;****************************************************************************;;
 
@@ -194,9 +194,6 @@
    (setq-default c-basic-offset 4)
    (setq-default c-default-style "linux")
    ))
-
-
-
 ;;/c
 
 ;;c++
@@ -228,7 +225,6 @@
     ;; )
   )
 
-(global-set-key [(f1)] 'ft-persp-activate)
 (defun ft-persp-activate (name)
   "Switch to frame."
   (interactive "sft-Perspective name to switch: ")
@@ -237,7 +233,6 @@
     )
   )
 
-(global-set-key [(control f1)] 'ft-persp-activate-new)
 (defun ft-persp-activate-new (name)
   "Switch to frame."
   (interactive "sft-Perspective name to create: ")
