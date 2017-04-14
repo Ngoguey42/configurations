@@ -195,18 +195,13 @@ then
 	alias makemake="python ~/makemake/old/makemake.py"
 	alias clear='printf "\033c"'
 	alias l="ls -gohFG --color"
-	export PATH="/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
-	# export CYGWIN_OCAML_PREFIX="/home/Ngo/ocaml"
-	# export CYGWIN_OPAM_PREFIX="/home/Ngo/opam"
-	# export OCAMLLIB="/lib/ocaml"
-	# export PATH=$CYGWIN_OCAML_PREFIX/bin:$PATH #Just temporarily, since once OPAM is installed you switch to MinGW OCaml.
-	# export PATH=$CYGWIN_OPAM_PREFIX/bin:$PATH
+	export PATH="`/usr/bin/python -u $NGOCONF_PATH/clean_path.py`"
 	# . /home/Ngo/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-	# export OPAM_ROOT=$(cygpath -m $HOME/.opam/4.03.0+beta2)
 	alias ackf="ack \"^[\t\# ].*[a-z0-9_]+\(\""
 	alias acki="ack \"^\#[\t ]*include[\t ]+\<\""
 	alias pub="/cygdrive/c/tools/dart-sdk/bin/pub.bat"
 	alias dart2js="/cygdrive/c/tools/dart-sdk/bin/dart2js.bat"
+	alias ipython="winpty ipython"
 fi
 
 if [ "$UNAME" = "Darwin" ]
@@ -246,6 +241,21 @@ fi
 
 # POST - LOCATION SPECIFIC ************************************************** **
 alias e="$EDITOR"
+mywhere(){
+
+    f(){
+	for var in "$@"
+	do
+	    whence -aSv $var || true
+	done
+    }
+    f ocaml ocamlc opam \
+      pip pip3 python python3 ipython conda \
+      R rScript \
+      pub dart2js \
+      emacs emacs25 e
+}
+mywhere
 
 # SSH *********************************************************************** **
 # export SSH_TIMEOUT_DEFAULT=$((10))
