@@ -6,7 +6,7 @@
 ;;   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        ;;
 ;;                                                +#+#+#+#+#+   +#+           ;;
 ;;   Created: 2016/04/19 09:50:58 by ngoguey           #+#    #+#             ;;
-;;   Updated: 2017/04/14 16:53:48 by ngoguey                                  ;;
+;;   Updated: 2017/04/14 17:52:31 by ngoguey                                  ;;
 ;;                                                                            ;;
 ;;****************************************************************************;;
 
@@ -18,6 +18,11 @@
 (defvar rmode_path (concat confPath "/ESS/lisp/"))
 (add-to-list 'load-path rmode_path)
 (require 'ess-site)
+(add-hook
+ 'ess-mode-hook
+ (lambda ()
+   (setq comment-start "##")
+   ))
 ;; (add-to-list 'auto-mode-alist '("\\.r\\'" . r-mode))
 ;;/r-mode
 
