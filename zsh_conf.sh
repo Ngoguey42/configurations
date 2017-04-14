@@ -1,45 +1,17 @@
-# path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
 ZSH_THEME="robbyrussell"
+DISABLE_AUTO_UPDATE="true"
+DISABLE_LS_COLORS="true"
+COMPLETION_WAITING_DOTS="true"
+HIST_STAMPS="yyyy-mm-dd"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -48,29 +20,6 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
-
-# User configuration
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-
 
 # ZSH CONFIG
 zstyle ':completion:*:*:emacs:*:*files' ignored-patterns '*.o' '*.cmx' '*.cmi' '*.cmo'
@@ -84,9 +33,7 @@ alias matrix="source ~/.zshrc"
 alias econf="e $NGOCONF_PATH/my_config.el"
 
 # FILES EXPLORATION
-MYEXTENSIONS="cpp|hpp|c|h|php|tpp|ml|mli|vert|frag|geom|tesc|tese|glsl|xml|lua|py"
-alias l="ls -gohFG"
-
+MYEXTENSIONS="cpp|hpp|c|h|php|tpp|ml|mli|vert|frag|geom|tesc|tese|glsl|xml|lua|py|R|dart|sh|html|css"
 alias cloc='cloc --force-lang="C++",tpp --force-lang="HLSL",glsl --force-lang="HLSL",frag --force-lang="HLSL",geom --force-lang="HLSL",tese --force-lang="HLSL",tesc --force-lang="HLSL",vert'
 alias wccool='_(){ cat $@ | ack -v "^\s*(//|/\*|\*)"| ack -v "^\s*$" | wc; }; _'
 
@@ -106,17 +53,14 @@ printf '\033[31m' ;rm -r **/*.cmo && echo '\033[32mrm **/*.cmo'
 printf '\033[31m' ;rm -r **/*.cmx && echo '\033[32mrm **/*.cmx'
 printf '\033[31m' ;rm -r **/*.o && echo '\033[32mrm **/*.o'
 printf '\033[0m'"
-
 alias ok='ocamlopt graphics.cmxa -i *.ml && ocamlopt graphics.cmxa *.ml && ocl && ./a.out'
 alias okt='rr ; ocamlopt.opt *.ml && printf "\033[33m" && ocamlopt -i *.ml && printf "\033[0m" && time ./a.out && rm a.out && ocl'
 alias oktf='rr ; ocamlfind ocamlcp *.ml -package yojson -package core -thread -linkpkg && printf "\033[33m" && ocamlfind ocamlc -i *.ml -package yojson -package core -thread -linkpkg && printf "\033[0m" && time ./a.out && rm a.out && ocl'
 alias oktfna='rr ; ocamlfind ocamloptp *.ml -package yojson -package core -thread -linkpkg && printf "\033[33m" && ocamlfind ocamlc -i *.ml -package yojson -package core -thread -linkpkg && printf "\033[0m" && time ./a.out && rm a.out && ocl'
 
-
 # GIT RELATED
 export USER="ngoguey"
 export MAIL="ngoguey@airware.com"
-# export USER="ngoguey"
 # export MAIL="ngoguey@student.42.fr"
 alias gitals="git add \`git ls-files\` ; git status"
 alias gitls="git ls-files"
@@ -158,9 +102,43 @@ printf '\033[0m'"
 alias ch="chmod 644 \`ls -1d *.($MYEXTENSIONS)\` ; chmod 644 \`ls -1d *.h\`; chmod 744 Makefile ; chmod 644 auteur ; l"
 alias chr="chmod 644 \`ls -1d **/*.($MYEXTENSIONS)\` ; chmod 744 Makefile ; chmod 644 auteur ; lr"
 
-alias psi='ps | grep -v zsh | grep -v emacs'
+mywhere() {
+    f(){
+	for var in "$@"
+	do
+	    echo '********************'
+	    if ! whence $var 1>/dev/null; then
+		echo "$var not found"
+		continue
+	    fi
 
-alias ev="type emacs; echo ; emacs -version ; echo"
+	    whence_asv=()
+	    whence -aSv $var 2>/dev/null | while read line ; do
+		whence_asv+=($line)
+	    done
+
+	    whence_a=()
+	    whence -a $var | while read line ; do
+		whence_a+=($line)
+	    done
+
+	    for ((i=1;i<=${#whence_a[@]};i++)); do
+		p="${whence_a[$i]}"
+		desc="${whence_asv[$i]}"
+		v=$($p --version 2>&1 | grep -o '[0-9][^ \t]*\.[^ \t]*[0-9]' | head -c -1 | tr '\n' '/')
+		echo "$desc ($v)"
+	    done
+	done
+    }
+
+    f pub dart2js \
+      ocaml ocamlc opam \
+      pip pip3 python python3 ipython conda \
+      R rScript \
+      emacs emacs25 e
+
+    echo '********************'
+}
 
 # SHLVL ********************************************************************* **
 if [[ $SHLVL -ge 2 ]]; then
@@ -174,91 +152,62 @@ UNAME=`uname | cut -c1-6`
 alias dumpsizeof="sh $NGOCONF_PATH/dump_sizeof.sh" #TODO: improve
 if [ "$UNAME" = "Linux" ]
 then
-	alias spotify="nohup spotify &"
-	EDITOR="/usr/bin/emacs25 -nw"
-	alias termvert6="nohup terminator -b -l vert6 &"
-	alias termvert2="nohup terminator -b -l vert2 &"
-	alias termhoriz6="nohup terminator -b -l horiz6 &"
-	alias l="ls -gohFG --color"
-	alias open='gnome-open 2>/dev/null'
+    alias spotify="nohup spotify &"
+    EDITOR="/usr/bin/emacs25 -nw"
+    alias termvert6="nohup terminator -b -l vert6 &"
+    alias termvert2="nohup terminator -b -l vert2 &"
+    alias termhoriz6="nohup terminator -b -l horiz6 &"
+    alias l="ls -gohFG --color"
+    alias open='gnome-open 2>/dev/null'
 fi
 
 if [ "$UNAME" = "CYGWIN" ]
 then
-	nm2(){
-	nm $@ | grep ' [^tT] ' | cut -c 10- | sort | uniq
-	}
-	# alias e='$NGOCONF_PATH/notepadpp.sh'
-	# export DISABLE_AUTO_TITLE=true
-	EDITOR="emacs"
-	alias open="cygstart.exe"
-	alias makemake="python ~/makemake/old/makemake.py"
-	alias clear='printf "\033c"'
-	alias l="ls -gohFG --color"
-	export PATH="`/usr/bin/python -u $NGOCONF_PATH/clean_path.py`"
-	# . /home/Ngo/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-	alias ackf="ack \"^[\t\# ].*[a-z0-9_]+\(\""
-	alias acki="ack \"^\#[\t ]*include[\t ]+\<\""
-	alias pub="/cygdrive/c/tools/dart-sdk/bin/pub.bat"
-	alias dart2js="/cygdrive/c/tools/dart-sdk/bin/dart2js.bat"
-	alias ipython="winpty ipython"
+    # export DISABLE_AUTO_TITLE=true
+    EDITOR="emacs"
+    alias open="cygstart.exe"
+    alias clear='printf "\033c"'
+    alias l="ls -gohFG --color"
+    export PATH="`/usr/bin/python -u $NGOCONF_PATH/clean_path.py`"
+    # . /home/Ngo/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+    # eval `opam config env`
+    alias pub="/cygdrive/c/tools/dart-sdk/bin/pub.bat"
+    alias dart2js="/cygdrive/c/tools/dart-sdk/bin/dart2js.bat"
+    alias ipython="winpty ipython"
 fi
 
 if [ "$UNAME" = "Darwin" ]
 then
-	nm2(){
-	nm $@ | grep ' [^tT] ' | cut -c 18- | sort | uniq
-	}
+    alias l="ls -gohFG"
 
-	# TODO: check those 3 lines under macos
-	export C_INCLUDE_PATH="$HOME/.brew/include:$HOME/.brew/include/freetype2"
-	export CPLUS_INCLUDE_PATH="$HOME/.brew/include:$HOME/.brew/include/freetype2"
-	export LIBRARY_PATH="$HOME/.brew/lib"
+    # TODO: check those 3 lines under macos
+    export C_INCLUDE_PATH="$HOME/.brew/include:$HOME/.brew/include/freetype2"
+    export CPLUS_INCLUDE_PATH="$HOME/.brew/include:$HOME/.brew/include/freetype2"
+    export LIBRARY_PATH="$HOME/.brew/lib"
 
-	alias tig="~/.brew/bin/tig/"
-	EDITOR="emacs"
-	export PATH="$HOME/.brew/bin:$NGOCONF_ROOT/mkgen:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/texbin"
-	export HOMEBREW_TEMP="/tmp/ngobrewtmp"
-	export HOMEBREW_CACHE="/tmp/ngobrewcache"
-	# . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-	# eval `opam config env`
-	alias ack="~/.brew/bin/ack"
-	alias ackf="~/.brew/bin/ack \"^[\t\# ].*[a-z0-9_]+\(\""
-	alias acki="~/.brew/bin/ack \"^\#[\t ]*include[\t ]+\<\""
-	alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --kiosk --args 'file://'`pwd`'/' 2>/dev/null"
-	alias chromegit="$NGOCONF_PATH/chromegit.sh"
-	alias kic='ls -dltu /nfs/z*/*/*/* |  awk  '"'"'{printf "%15s (%s) %3s %2s %s\n", $3, $4, $6, $7, $8}'"'"' | rev | uniq -f4 | rev'
-	alias qui='_(){ ldapsearch uid="$1" ; }; _'
+    alias tig="~/.brew/bin/tig/"
+    EDITOR="emacs"
+    export PATH="$HOME/.brew/bin:$NGOCONF_ROOT/mkgen:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/texbin"
+    export HOMEBREW_TEMP="/tmp/ngobrewtmp"
+    export HOMEBREW_CACHE="/tmp/ngobrewcache"
+    # . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+    # eval `opam config env`
+    alias ack="~/.brew/bin/ack"
+    alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --kiosk --args 'file://'`pwd`'/' 2>/dev/null"
+    alias chromegit="$NGOCONF_PATH/chromegit.sh"
+    alias kic='ls -dltu /nfs/z*/*/*/* |  awk  '"'"'{printf "%15s (%s) %3s %2s %s\n", $3, $4, $6, $7, $8}'"'"' | rev | uniq -f4 | rev'
+    alias qui='_(){ ldapsearch uid="$1" ; }; _'
 
-	# Load Homebrew Fix script
-	# source $HOME/.brew_fix.zsh
-
-	alias cddown="cd ~/Downloads/"
-	alias cddesk="cd ~/Desktop/"
-	alias cddocs="cd ~/Documents/"
+    alias cddown="cd ~/Downloads/"
+    alias cddesk="cd ~/Desktop/"
+    alias cddocs="cd ~/Documents/"
 
 fi
 
 # POST - LOCATION SPECIFIC ************************************************** **
 alias e="$EDITOR"
-mywhere(){
-
-    f(){
-	for var in "$@"
-	do
-	    whence -aSv $var || true
-	done
-    }
-    f ocaml ocamlc opam \
-      pip pip3 python python3 ipython conda \
-      R rScript \
-      pub dart2js \
-      emacs emacs25 e
-}
-mywhere
 
 # SSH *********************************************************************** **
-# export SSH_TIMEOUT_DEFAULT=$((10))
 export SSH_TIMEOUT_DEFAULT=$((5 * 60))
 if [[ -n "$SSH_AGENT_PID" ]]; then
 
