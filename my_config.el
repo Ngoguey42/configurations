@@ -6,13 +6,20 @@
 ;;   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        ;;
 ;;                                                +#+#+#+#+#+   +#+           ;;
 ;;   Created: 2016/04/19 09:50:58 by ngoguey           #+#    #+#             ;;
-;;   Updated: 2017/04/09 16:51:14 by ngoguey                                  ;;
+;;   Updated: 2017/04/14 16:53:48 by ngoguey                                  ;;
 ;;                                                                            ;;
 ;;****************************************************************************;;
 
 ;; ************************************************************************** ;;
 ;; modes ******************************************************************** ;;
 ;; ************************************************************************** ;;
+
+;;r-mode(major)
+(defvar rmode_path (concat confPath "/ESS/lisp/"))
+(add-to-list 'load-path rmode_path)
+(require 'ess-site)
+;; (add-to-list 'auto-mode-alist '("\\.r\\'" . r-mode))
+;;/r-mode
 
 ;;yaml-mode(major)
 (defvar yamlmode_path (concat confPath "/yaml-mode/"))

@@ -43,3 +43,6 @@
 [submodule "persp-mode.el"]
 	path = persp-mode.el
 	url = https://github.com/Bad-ptr/persp-mode.el
+[submodule "ESS"]
+	path = ESS
+	url = https://github.com/emacs-ess/ESS
