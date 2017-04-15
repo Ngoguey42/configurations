@@ -6,35 +6,44 @@
 #    By: ngoguey <ngoguey@airware.com>                                         #
 #                                                                              #
 #    Created: 2017/04/14 21:04:24 by ngoguey                                   #
-#    Updated: 2017/04/15 09:36:49 by ngoguey                                   #
+#    Updated: 2017/04/15 13:50:05 by ngoguey                                   #
 #                                                                              #
 # **************************************************************************** #
 
 import subprocess, sys, os, collections
+
+home = os.environ['HOME']
 
 # 1. ************************************************************************ **
 # If present is removed
 blacklist = set([
     '/cygdrive/c/Python36/Scripts',
     '/cygdrive/c/Python36',
-    '/cygdrive/c/OCaml/bin',
     '/flexdll-bin-0.34',
 ])
 
 # 2. ************************************************************************ **
 # Present or not, those will be first, in list order
 head = [
-    # Languages
+    # Languages ************************************************************* **
+    # OCaml
+    home + '/.opam/system/bin',
+    '/usr/x86_64-w64-mingw32/sys-root/mingw/bin/',
+    '/cygdrive/c/OCaml/bin',
+
+    # Python
     '/cygdrive/c/Anaconda3',
     '/cygdrive/c/Anaconda3/Scripts',
     '/cygdrive/c/Anaconda3/Library/bin',
+
+    # Misc
     '/cygdrive/c/R/bin',
     '/cygdrive/c/tools/dart-sdk/bin',
     '/cygdrive/c/ProgramData/Oracle/Java/javapath',
-    # Soft
+    # Soft ****************************************************************** **
     '/cygdrive/c/ProgramData/chocolatey/bin',
     '/cygdrive/c/Program Files/Docker Toolbox',
-    # Cygwin
+    # Cygwin **************************************************************** **
     '/usr/local/bin',
     '/usr/bin',
     '/bin',

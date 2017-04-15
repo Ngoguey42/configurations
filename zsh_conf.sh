@@ -169,11 +169,16 @@ then
     alias clear='printf "\033c"'
     alias l="ls -gohFG --color"
     export PATH="`/usr/bin/python -u $NGOCONF_PATH/clean_path.py`"
+
+    export CAML_LD_LIBRARY_PATH="$HOME/.opam/system/lib/stublibs:/cygdrive/c/OCaml/lib/stublibs"
+    export MANPATH="$HOME/.opam/system/man:$MANPATH"
+    export CAMLP4LIB="C:/OCaml/lib/camlp4"
     # . /home/Ngo/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
     # eval `opam config env`
     alias pub="/cygdrive/c/tools/dart-sdk/bin/pub.bat"
     alias dart2js="/cygdrive/c/tools/dart-sdk/bin/dart2js.bat"
     alias ipython="winpty ipython"
+    alias ocaml="winpty ocaml"
 fi
 
 if [ "$UNAME" = "Darwin" ]
