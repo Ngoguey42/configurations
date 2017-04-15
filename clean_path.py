@@ -6,7 +6,7 @@
 #    By: ngoguey <ngoguey@airware.com>                                         #
 #                                                                              #
 #    Created: 2017/04/14 21:04:24 by ngoguey                                   #
-#    Updated: 2017/04/14 21:38:25 by ngoguey                                   #
+#    Updated: 2017/04/15 09:36:49 by ngoguey                                   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,12 +46,18 @@ head = [
 # All other will be appended to the path
 
 # CODE ********************************************************************** **
+def unique(self):
+    """http://stackoverflow.com/a/480227/4952173"""
+    seen = set()
+    return [x for x in self if not (x in seen or seen.add(x))]
+
 def create_tail_inplace(l):
     """Create tail, keeping it ordered as in original PATH"""
+    l = unique(l)
     s = set(l)
     s -= blacklist
     s -= set(head)
-    return [e for e in l if e in s]
+    return [x for x in l if x in s]
 
 l = os.environ['PATH'].split(':')
 tail = create_tail_inplace(l)
