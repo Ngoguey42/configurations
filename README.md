@@ -54,10 +54,11 @@ git clone https://github.com/Ngoguey42/configurations
 cd configurations ; git pull origin master
 git submodule init
 git submodule update
-cp dotemacs.el ~/.emacs
-cp dotminttyrc.conf ~/.minttyrc
-cp dotocamlinit.ml ~/.ocamlinit
-cp dotzshrc.sh ~/.zshrc
+ln -s dotemacs.el ~/ ; mv ~/dotemacs.el ~/.emacs
+ln -s dotgitconfig.el ~/ ; mv ~/dotgitconfig.el ~/.gitconfig
+ln -s dotminttyrc.conf ~/ ; mv ~/dotminttyrc.conf ~/.minttyrc
+ln -s dotocamlinit.ml ~/ ; mv ~/dotocamlinit.ml ~/.ocamlinit
+ln -s dotzshrc.sh ~/ ; mv ~/dotzshrc.sh ~/.zshrc
 mkdir -p ~/Library/Caches/Homebrew/ /tmp/ngobrewtmp /tmp/ngobrewcache
 . ~/.zshrc
 cd; ln -s /Users/Shared
