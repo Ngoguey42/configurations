@@ -15,6 +15,7 @@
 ##### Iterm 2
 - keyboard with keypad
 - command-left, command-right
+- Preferences -> Profiles -> Terminal tab -> Check "Silence bell"
 
 ##### shell
 ```sh

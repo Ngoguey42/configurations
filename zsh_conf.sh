@@ -125,7 +125,7 @@ mywhere() {
 	    for ((i=1;i<=${#whence_a[@]};i++)); do
 		p="${whence_a[$i]}"
 		desc="${whence_asv[$i]}"
-		v=$($p --version 2>&1 | grep -o '[0-9][^ \t]*\.[^ \t]*[0-9]' | head -c -1 | tr '\n' '/')
+		v=$($p --version 2>&1 | grep -o '[0-9][^ \t]*\.[^ \t]*[0-9]' | tr '\n' '/')
 		echo "$desc ($v)"
 	    done
 	done
@@ -135,7 +135,8 @@ mywhere() {
       ocaml ocamlc opam \
       pip pip3 python python3 ipython conda \
       R rScript \
-      emacs emacs25 e
+      emacs emacs25 e \
+      brew
 
     echo '********************'
 }

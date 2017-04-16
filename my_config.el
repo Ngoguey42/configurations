@@ -16,14 +16,17 @@
 
 ;;r-mode(major)
 (defvar rmode_path (concat confPath "/ESS/lisp/"))
-(add-to-list 'load-path rmode_path)
-(require 'ess-site)
-(add-hook
- 'ess-mode-hook
- (lambda ()
-   (setq comment-start "##")
-   ))
-;; (add-to-list 'auto-mode-alist '("\\.r\\'" . r-mode))
+(if (file-exists-p rmode_path)
+    (progn
+      (add-to-list 'load-path rmode_path)
+      (require 'ess-site)
+      (add-hook
+       'ess-mode-hook
+       (lambda ()
+	 (setq comment-start "##")
+	 ))
+      )
+  )
 ;;/r-mode
 
 ;;yaml-mode(major)
