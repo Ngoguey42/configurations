@@ -6,13 +6,14 @@
 #    By: ngoguey <ngoguey@airware.com>                                         #
 #                                                                              #
 #    Created: 2017/04/14 21:04:24 by ngoguey                                   #
-#    Updated: 2017/04/15 13:50:05 by ngoguey                                   #
+#    Updated: 2017/04/18 10:21:10 by ngoguey                                   #
 #                                                                              #
 # **************************************************************************** #
 
 import subprocess, sys, os, collections
 
 home = os.environ['HOME']
+uname = subprocess.check_output(["uname"]).decode('ascii')[0:5]
 
 # 1. ************************************************************************ **
 # If present is removed
@@ -24,32 +25,55 @@ blacklist = set([
 
 # 2. ************************************************************************ **
 # Present or not, those will be first, in list order
-head = [
-    # Languages ************************************************************* **
-    # OCaml
-    home + '/.opam/system/bin',
-    '/usr/x86_64-w64-mingw32/sys-root/mingw/bin/',
-    '/cygdrive/c/OCaml/bin',
+if uname == 'CYGWIN':
+    head = [
+        # Languages ********************************************************* **
+        # OCaml
+        home + '/.opam/system/bin',
+        '/usr/x86_64-w64-mingw32/sys-root/mingw/bin/',
+        '/cygdrive/c/OCaml/bin',
 
-    # Python
-    '/cygdrive/c/Anaconda3',
-    '/cygdrive/c/Anaconda3/Scripts',
-    '/cygdrive/c/Anaconda3/Library/bin',
+        # Python
+        '/cygdrive/c/Anaconda3',
+        '/cygdrive/c/Anaconda3/Scripts',
+        '/cygdrive/c/Anaconda3/Library/bin',
 
-    # Misc
-    '/cygdrive/c/R/bin',
-    '/cygdrive/c/tools/dart-sdk/bin',
-    '/cygdrive/c/ProgramData/Oracle/Java/javapath',
-    # Soft ****************************************************************** **
-    '/cygdrive/c/ProgramData/chocolatey/bin',
-    '/cygdrive/c/Program Files/Docker Toolbox',
-    # Cygwin **************************************************************** **
-    '/usr/local/bin',
-    '/usr/bin',
-    '/bin',
-    '/sbin',
-    '/usr/sbin',
-]
+        # Misc
+        '/cygdrive/c/R/bin',
+        '/cygdrive/c/tools/dart-sdk/bin',
+        '/cygdrive/c/ProgramData/Oracle/Java/javapath',
+        # Soft ************************************************************** **
+        '/cygdrive/c/ProgramData/chocolatey/bin',
+        '/cygdrive/c/Program Files/Docker Toolbox',
+        # Cygwin ************************************************************ **
+        '/usr/local/bin',
+        '/usr/bin',
+        '/bin',
+        '/sbin',
+        '/usr/sbin',
+    ]
+elif uname == 'Linux':
+    head = [
+        # Languages ********************************************************* **
+        # Python
+        home + '/anaconda3/bin',
+
+        # Soft ************************************************************** **
+        # Linux ************************************************************* **
+        home + '/bin',
+        home + '/.local/bin',
+        '/usr/local/sbin',
+        '/usr/local/bin',
+        '/usr/sbin',
+        '/usr/bin',
+        '/sbin',
+        '/bin',
+        '/usr/games',
+        '/usr/local/games',
+        '/snap/bin',
+    ]
+
+
 
 # 3. ************************************************************************ **
 # All other will be appended to the path

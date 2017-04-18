@@ -155,6 +155,8 @@ if [ "$UNAME" = "Linux" ]
 then
     alias spotify="nohup spotify &"
     EDITOR="/usr/bin/emacs25 -nw"
+    export PATH="`/usr/bin/python -u $NGOCONF_PATH/clean_path.py`"
+    source activate redbird
     alias termvert6="nohup terminator -b -l vert6 &"
     alias termvert2="nohup terminator -b -l vert2 &"
     alias termhoriz6="nohup terminator -b -l horiz6 &"
