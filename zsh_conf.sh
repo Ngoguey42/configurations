@@ -126,7 +126,7 @@ mywhere() {
 		p="${whence_a[$i]}"
 		desc="${whence_asv[$i]}"
 		v=$($p --version 2>&1 | grep -o '[0-9][^ \t]*\.[^ \t]*[0-9]' | tr '\n' '/')
-		echo "$desc ($v)"
+		echo "$desc \033[36m($v)\033[0m"
 	    done
 	done
     }
