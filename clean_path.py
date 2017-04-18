@@ -6,7 +6,7 @@
 #    By: ngoguey <ngoguey@airware.com>                                         #
 #                                                                              #
 #    Created: 2017/04/14 21:04:24 by ngoguey                                   #
-#    Updated: 2017/04/18 10:21:10 by ngoguey                                   #
+#    Updated: 2017/04/18 13:16:04 by ngoguey                                   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ import subprocess, sys, os, collections
 
 home = os.environ['HOME']
 uname = subprocess.check_output(["uname"]).decode('ascii')[0:5]
+confdir = os.environ['NGOCONF_PATH']
 
 # 1. ************************************************************************ **
 # If present is removed
@@ -51,6 +52,8 @@ if uname == 'CYGWIN':
         '/bin',
         '/sbin',
         '/usr/sbin',
+        # Scripts *********************************************************** **
+        confdir + '/scripts',
     ]
 elif uname == 'Linux':
     head = [
@@ -71,6 +74,8 @@ elif uname == 'Linux':
         '/usr/games',
         '/usr/local/games',
         '/snap/bin',
+        # Scripts *********************************************************** **
+        confdir + '/scripts',
     ]
 
 

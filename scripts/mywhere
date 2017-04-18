@@ -1,0 +1,38 @@
+#!/usr/bin/env zsh
+
+f(){
+    for var in "$@"
+    do
+	echo '********************'
+	if ! whence $var 1>/dev/null; then
+	    echo "$var not found"
+	    continue
+	fi
+
+	whence_asv=()
+	whence -aSv $var 2>/dev/null | while read line ; do
+	    whence_asv+=($line)
+	done
+
+	whence_a=()
+	whence -a $var | while read line ; do
+	    whence_a+=($line)
+	done
+
+	for ((i=1;i<=${#whence_a[@]};i++)); do
+	    p="${whence_a[$i]}"
+	    desc="${whence_asv[$i]}"
+	    v=$($p --version 2>&1 | grep -o '[0-9][^ \t]*\.[^ \t]*[0-9]' | tr '\n' '/')
+	    echo "$desc \033[36m($v)\033[0m"
+	done
+    done
+}
+
+f pub dart2js \
+  ocaml ocamlc opam \
+  pip pip3 python python3 ipython conda \
+  R rScript \
+  emacs emacs25 e \
+  brew
+
+echo '********************'
