@@ -18,6 +18,7 @@
 - Preferences -> Profiles -> Terminal tab -> Check "Silence bell"
 
 ##### shell
+
 ```sh
 curl -L http://install.ohmyz.sh | sh
 git config --global credential.helper "cache --timeout=10800"
@@ -54,11 +55,11 @@ git clone https://github.com/Ngoguey42/configurations
 cd configurations ; git pull origin master
 git submodule init
 git submodule update
-ln -s dotemacs.el ~/ ; mv ~/dotemacs.el ~/.emacs
-ln -s dotgitconfig.el ~/ ; mv ~/dotgitconfig.el ~/.gitconfig
-ln -s dotminttyrc.conf ~/ ; mv ~/dotminttyrc.conf ~/.minttyrc
-ln -s dotocamlinit.ml ~/ ; mv ~/dotocamlinit.ml ~/.ocamlinit
-ln -s dotzshrc.sh ~/ ; mv ~/dotzshrc.sh ~/.zshrc
+ln -s $NGOCONF_PATH/dotemacs.el ~/ ; mv dotemacs.el .emacs
+ln -s $NGOCONF_PATH/dotgitconfig.conf ~/ ; mv dotgitconfig.conf .gitconfig
+ln -s $NGOCONF_PATH/dotminttyrc.conf ~/ ; mv dotminttyrc.conf .minttyrc
+ln -s $NGOCONF_PATH/dotocamlinit.ml ~/ ; mv dotocamlinit.ml .ocamlinit
+ln -s $NGOCONF_PATH/dotzshrc.sh ~/ ; mv dotzshrc.sh .zshrc
 mkdir -p ~/Library/Caches/Homebrew/ /tmp/ngobrewtmp /tmp/ngobrewcache
 . ~/.zshrc
 cd; ln -s /Users/Shared
