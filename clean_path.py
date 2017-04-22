@@ -6,14 +6,15 @@
 #    By: ngoguey <ngoguey@airware.com>                                         #
 #                                                                              #
 #    Created: 2017/04/14 21:04:24 by ngoguey                                   #
-#    Updated: 2017/04/18 13:16:04 by ngoguey                                   #
+#    Updated: 2017/04/22 13:32:20 by ngoguey                                   #
 #                                                                              #
 # **************************************************************************** #
 
 import subprocess, sys, os, collections
 
 home = os.environ['HOME']
-uname = subprocess.check_output(["uname"]).decode('ascii')[0:5]
+uname_transform = lambda n: n[0:5].upper()
+uname = uname_transform(subprocess.check_output(["uname"]).decode('ascii'))
 confdir = os.environ['NGOCONF_PATH']
 
 # 1. ************************************************************************ **
@@ -26,7 +27,7 @@ blacklist = set([
 
 # 2. ************************************************************************ **
 # Present or not, those will be first, in list order
-if uname == 'CYGWIN':
+if uname == uname_transform('CYGWIN'):
     head = [
         # Languages ********************************************************* **
         # OCaml
@@ -55,7 +56,7 @@ if uname == 'CYGWIN':
         # Scripts *********************************************************** **
         confdir + '/scripts',
     ]
-elif uname == 'Linux':
+elif uname == uname_transform('LINUX'):
     head = [
         # Languages ********************************************************* **
         # Python
