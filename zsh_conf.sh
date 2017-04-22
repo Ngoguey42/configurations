@@ -175,6 +175,7 @@ fi
 
 # POST - LOCATION SPECIFIC ************************************************** **
 alias e="$EDITOR"
+export EDITOR="$EDITOR"
 
 # SSH *********************************************************************** **
 export SSH_TIMEOUT_DEFAULT=$((5 * 60))
