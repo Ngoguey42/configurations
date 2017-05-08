@@ -55,6 +55,8 @@ git clone https://github.com/Ngoguey42/configurations
 cd configurations ; git pull origin master
 git submodule init
 git submodule update
+. ./dotzshrc.sh
+cd
 ln -s $NGOCONF_PATH/dotemacs.el ~/ ; mv dotemacs.el .emacs
 ln -s $NGOCONF_PATH/dotgitconfig.conf ~/ ; mv dotgitconfig.conf .gitconfig
 ln -s $NGOCONF_PATH/dotminttyrc.conf ~/ ; mv dotminttyrc.conf .minttyrc
