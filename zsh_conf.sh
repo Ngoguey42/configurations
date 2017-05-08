@@ -156,7 +156,7 @@ then
 
     alias tig="~/.brew/bin/tig/"
     EDITOR="emacs"
-    export PATH="$HOME/.brew/bin:$NGOCONF_ROOT/mkgen:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/texbin"
+    export PATH="`/usr/bin/python -u $NGOCONF_PATH/clean_path.py`"
     export HOMEBREW_TEMP="/tmp/ngobrewtmp"
     export HOMEBREW_CACHE="/tmp/ngobrewcache"
     # . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true

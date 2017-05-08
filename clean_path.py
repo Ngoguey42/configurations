@@ -6,7 +6,7 @@
 #    By: ngoguey <ngoguey@airware.com>                                         #
 #                                                                              #
 #    Created: 2017/04/14 21:04:24 by ngoguey                                   #
-#    Updated: 2017/04/22 13:32:20 by ngoguey                                   #
+#    Updated: 2017/05/08 10:21:41 by ngoguey                                   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,8 +78,26 @@ elif uname == uname_transform('LINUX'):
         # Scripts *********************************************************** **
         confdir + '/scripts',
     ]
+elif uname == uname_transform('DARWIN'):
+    head = [
+        # Languages ********************************************************* **
+        # Python
 
+        # Soft ************************************************************** **
+        home + '/.brew/bin',
 
+        # Macos ************************************************************* **
+        '/usr/bin',
+        '/bin',
+        '/usr/sbin',
+        '/sbin',
+        '/usr/local/bin',
+        '/usr/local/munki',
+        '/opt/X11/bin',
+
+        # Scripts *********************************************************** **
+        confdir + '/scripts',
+    ]
 
 # 3. ************************************************************************ **
 # All other will be appended to the path
