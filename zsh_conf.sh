@@ -26,6 +26,7 @@ zstyle ':completion:*:*:emacs:*:*files' ignored-patterns '*.o' '*.cmx' '*.cmi' '
 export ZSH_THEME_GIT_PROMPT_PREFIX="%{\e[01;34m%}%{\e[31m%}"
 export ZSH_THEME_GIT_PROMPT_CLEAN="%{\e[34m%}"
 export ZSH_THEME_GIT_PROMPT_DIRTY="%{\e[33m%}"
+autoload -U colors && colors
 
 # CONFIG FILES EDITION
 alias zshconf="e $NGOCONF_PATH/zsh_conf.sh"
@@ -105,7 +106,7 @@ alias chr="chmod 644 \`ls -1d **/*.($MYEXTENSIONS)\` ; chmod 744 Makefile ; chmo
 # SHLVL ********************************************************************* **
 if [[ $SHLVL -ge 2 ]]; then
     CHARS=`printf '+%.0s' {1..$(($SHLVL - 1))}`
-    export PROMPT="$CHARS $PROMPT"
+    export PS1="$CHARS $PS1"
 fi
 
 # LOCATION SPECIFIC ********************************************************* **
@@ -178,6 +179,23 @@ alias e="$EDITOR"
 export EDITOR="$EDITOR"
 
 # SSH *********************************************************************** **
+function promptssh {
+    NOW="$(date +%s)"
+    DELTA=$(($SSH_TIMEOUT_THEN - $NOW))
+    if [ $DELTA -ge 0 ]; then
+	UNAME=`uname | cut -c1-6`
+	if [ "$UNAME" = "Darwin" ]
+	then
+	    DELTA_FORMAT=`date -u -r $DELTA +"%T"`
+	else
+	    DELTA_FORMAT=`date -u -d@$DELTA +"%T"`
+	fi
+	echo %{$fg[red]%}$DELTA_FORMAT%{$reset_color%}
+    else
+	echo %{$fg[red]%}timeout%{$reset_color%}
+    fi
+}
+
 export SSH_TIMEOUT_DEFAULT=$((5 * 60))
 if [[ -n "$SSH_AGENT_PID" ]]; then
 
@@ -197,5 +215,5 @@ if [[ -n "$SSH_AGENT_PID" ]]; then
 
     NOW=`date +%s`
     export SSH_TIMEOUT_THEN=$(($NOW + $SSHTO))
-    export PROMPT="\$(sh $NGOCONF_PATH/promptssh.sh) $PROMPT"
+    export PS1="\$(promptssh) $PS1"
 fi
