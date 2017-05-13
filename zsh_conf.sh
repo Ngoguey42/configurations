@@ -197,10 +197,16 @@ function promptssh {
 }
 
 export SSH_TIMEOUT_DEFAULT=$((5 * 60))
+export SSH_FILE_DEFAULT='id_rsa'
 if [[ -n "$SSH_AGENT_PID" ]]; then
 
     if [[ -z "$SSHTO" ]]; then # SSHTO aka `ssh time out`
 	export SSHTO=$SSH_TIMEOUT_DEFAULT
+    fi
+    if [[ -z "$SSHFILE" ]]; then # SSHTO aka `ssh file`
+	export SSHFILE="$HOME/.ssh/$SSH_FILE_DEFAULT"
+    else
+	export SSHFILE="$HOME/.ssh/$SSHFILE"
     fi
     UNAME=`uname | cut -c1-6`
     if [ "$UNAME" = "Darwin" ]
@@ -211,7 +217,7 @@ if [[ -n "$SSH_AGENT_PID" ]]; then
     fi
 
     echo "Enter passphrase valid for ($SSHTO_FORMAT)"
-    ssh-add -t $SSHTO || exit
+    ssh-add -t $SSHTO $SSHFILE || exit
 
     NOW=`date +%s`
     export SSH_TIMEOUT_THEN=$(($NOW + $SSHTO))
