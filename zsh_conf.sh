@@ -103,6 +103,9 @@ printf '\033[0m'"
 alias ch="chmod 644 \`ls -1d *.($MYEXTENSIONS)\` ; chmod 644 \`ls -1d *.h\`; chmod 744 Makefile ; chmod 644 auteur ; l"
 alias chr="chmod 644 \`ls -1d **/*.($MYEXTENSIONS)\` ; chmod 744 Makefile ; chmod 644 auteur ; lr"
 
+# LIBRARIES CONF ************************************************************ **
+export PYTEST_ADDOPTS="--color=yes"
+
 # SHLVL ********************************************************************* **
 if [[ $SHLVL -ge 2 ]]; then
     CHARS=`printf '+%.0s' {1..$(($SHLVL - 1))}`
@@ -144,6 +147,7 @@ then
     alias dart2js="/cygdrive/c/tools/dart-sdk/bin/dart2js.bat"
     alias ipython="winpty ipython"
     alias ocaml="winpty ocaml"
+    alias subl='/cygdrive/c/Program\ Files/Sublime\ Text\ 3/sublime_text.exe'
 fi
 
 if [ "$UNAME" = "Darwin" ]
