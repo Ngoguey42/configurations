@@ -65,6 +65,8 @@ ln -s $NGOCONF_PATH/dotzshrc.sh ~/ ; mv dotzshrc.sh .zshrc
 mkdir -p ~/Library/Caches/Homebrew/ /tmp/ngobrewtmp /tmp/ngobrewcache
 . ~/.zshrc
 cd; ln -s /Users/Shared
+
+sh ~/Downloads/Anaconda3-4.4.0-MacOSX-x86_64.sh -b -p /Volumes/Storage/goinfre/ngoguey/anaconda3 && /Volumes/Storage/goinfre/ngoguey/anaconda3/bin/conda create --yes -n rb python=3.6 gdal opencv scipy ipython matplotlib jupyter pandas pylint affine rasterio fiona pytest pytest-cov affine shapely pep8 cython scikit-learn
 ```
 
 ##### Misc
