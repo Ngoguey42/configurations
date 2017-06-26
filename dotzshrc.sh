@@ -26,3 +26,6 @@ fi
 export NGOCONF_PATH="$NGOCONF_ROOT/configurations"
 
 source $NGOCONF_PATH/zsh_conf.sh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

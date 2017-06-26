@@ -6,7 +6,7 @@
 ;;   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        ;;
 ;;                                                +#+#+#+#+#+   +#+           ;;
 ;;   Created: 2016/04/19 09:50:58 by ngoguey           #+#    #+#             ;;
-;;   Updated: 2017/04/14 17:52:31 by ngoguey                                  ;;
+;;   Updated: 2017/06/14 11:09:48 by ngoguey                                  ;;
 ;;                                                                            ;;
 ;;****************************************************************************;;
 
@@ -281,9 +281,9 @@
 ;; ************************************************************************** ;;
 
 ;;42 site-lisp
-(defvar siteLispDir42 (concat confPath "/davidGironLisp"))
-(add-to-list 'load-path siteLispDir42)
-(load "header.el")
+;; (defvar siteLispDir42 (concat confPath "/davidGironLisp"))
+;; (add-to-list 'load-path siteLispDir42)
+;; (load "header.el")
 ;;/42 site-lisp
 
 ;; shell-command configuration

@@ -90,7 +90,7 @@ cog.py -I conf -rU srcs/configuration/cog_meshfill2.c
 "
 alias lret="echo $?"
 alias save="pwd | cat > ~/.save_pwd"
-alias go="cd \`cat ~/.save_pwd\` ; clear"
+alias gogo="cd \`cat ~/.save_pwd\` ; clear"
 alias rr="
 printf '\033[31m' ;rm **/*~ 2>/dev/null && echo '\033[32mrm **/*~'
 printf '\033[31m' ;rm **/\#* && echo '\033[32mrm **/\#*'
@@ -121,7 +121,18 @@ then
     alias spotify="nohup spotify &"
     EDITOR="/usr/bin/emacs25 -nw"
     export PATH="`/usr/bin/python -u $NGOCONF_PATH/clean_path.py`"
-    source activate redbird
+    # source activate redbird
+    # export PYTHONPATH="$PYTHONPATH:/home/ngoguey/configurations/scripts"
+
+
+    export GOPATH=$HOME/gocode
+    export ODIN_HOME=$GOPATH/src/github.com/airware/odin
+    export NVM_DIR="/home/ngoguey/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+    export GOROOT=/home/ngoguey/go
+    export PATH=$GOPATH/bin:$GOROOT/bin:$ODIN_HOME/bin:$PATH
+
+
     alias termvert6="nohup terminator -b -l vert6 &"
     alias termvert2="nohup terminator -b -l vert2 &"
     alias termhoriz6="nohup terminator -b -l horiz6 &"
