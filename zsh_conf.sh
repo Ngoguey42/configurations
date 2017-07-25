@@ -127,9 +127,9 @@ then
 
     export GOPATH=$HOME/gocode
     export ODIN_HOME=$GOPATH/src/github.com/airware/odin
-    export NVM_DIR="/home/ngoguey/.nvm"
+    export NVM_DIR="$HOME/.nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-    export GOROOT=/home/ngoguey/go
+    export GOROOT=$HOME/go
     export PATH=$GOPATH/bin:$GOROOT/bin:$ODIN_HOME/bin:$PATH
 
 
