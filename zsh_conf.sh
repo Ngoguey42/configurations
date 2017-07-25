@@ -138,6 +138,10 @@ then
     alias termhoriz6="nohup terminator -b -l horiz6 &"
     alias l="ls -gohFG --color"
     alias open='gnome-open 2>/dev/null'
+
+    export D=/media/ngoguey/Donnees
+    export TS_CHAFFINCH=$D/ngoguey/ts_chaffinch
+    export HISTSIZE=20000
 fi
 
 if [ "$UNAME" = "CYGWIN" ]
