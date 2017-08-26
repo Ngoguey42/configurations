@@ -13,29 +13,31 @@
 - session lock
 
 ##### Iterm 2
-- keyboard with keypad
-- command-left, command-right
-- Preferences -> Profiles -> Terminal tab -> Check "Silence bell"
+- POMME + O -> edit profiles
+  - Keys
+    1. keyboard with keypad
+    2. command-left, command-right
+  - Terminal tab
+    - Check "Silence bell"
 
 ##### shell
-
 ```sh
 curl -L http://install.ohmyz.sh | sh
-git config --global credential.helper "cache --timeout=10800"
-git config --global core.editor "emacs"
-git config --global user.name "Ngoguey42"
-git config --global user.email "ngoguey@student.42.fr"
-/usr/local/bin/brew update
-/usr/local/bin/brew update
-~/.brew/bin/brew update
-~/.brew/bin/brew update
-~/.brew/bin/brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/ecc7bdd8435ec3965ac7095efdead3bb49f378ed/Formula/emacs.rb ack tree cloc tig tmux python3 libyaml
-~/.brew/bin/brew update
-~/.brew/bin/brew update
-~/.brew/bin/pip3 install tmuxp
-
-
-#sh -c "$(curl -fsSL https://raw.githubusercontent.com/kube/42homebrewfix/master/install.sh)"
+time (
+  echo 'Setting up brew' &&
+  mkdir -p ~/Library/Caches/Homebrew/ /tmp/ngobrewtmp /tmp/ngobrewcache &&
+  export HOMEBREW_TEMP="/tmp/ngobrewtmp" &&
+  export HOMEBREW_CACHE="/tmp/ngobrewcache" &&
+  rm -rf ~/.brew &&
+  /usr/local/bin/brew update &&
+  /usr/local/bin/brew update &&
+  ~/.brew/bin/brew update &&
+  ~/.brew/bin/brew update &&
+  ~/.brew/bin/brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/ecc7bdd8435ec3965ac7095efdead3bb49f378ed/Formula/emacs.rb ack tree cloc tig tmux &&
+  ~/.brew/bin/brew update &&
+  ~/.brew/bin/brew update &&
+  echo DONE
+)
 ```
 
 ----
@@ -49,24 +51,43 @@ git config --global user.email "ngoguey@student.42.fr"
 
 ##### shell
 ```sh
-cd /Volumes/Storage/goinfre/ngoguey
-git clone https://github.com/Ngoguey42/mkgen
-git clone https://github.com/Ngoguey42/configurations
-cd configurations ; git pull origin master
-git submodule init
-git submodule update
-. ./dotzshrc.sh
+time (
+  echo 'Downloading conf' &&
+  cd /Volumes/Storage/goinfre/ngoguey &&
+  git clone https://github.com/Ngoguey42/mkgen &&
+  git clone https://github.com/Ngoguey42/configurations &&
+  cd configurations &&
+  git pull origin master &&
+  git submodule init &&
+  git submodule update &&
+  git remote set-url origin git@github.com:Ngoguey42/configurations.git &&
+  echo DONE
+)
+time (
+  echo 'Setting up conf' &&
+  cd &&
+  . /Volumes/Storage/goinfre/ngoguey/configurations/dotzshrc.sh &&
+  ln -s $NGOCONF_PATH/dotemacs.el ~/ ; mv dotemacs.el .emacs &&
+  ln -s $NGOCONF_PATH/dotgitconfig.conf ~/ ; mv dotgitconfig.conf .gitconfig &&
+  ln -s $NGOCONF_PATH/dotminttyrc.conf ~/ ; mv dotminttyrc.conf .minttyrc &&
+  ln -s $NGOCONF_PATH/dotocamlinit.ml ~/ ; mv dotocamlinit.ml .ocamlinit &&
+  ln -s $NGOCONF_PATH/dotzshrc.sh ~/ ; mv dotzshrc.sh .zshrc &&
+  echo DONE
+)
 cd
-ln -s $NGOCONF_PATH/dotemacs.el ~/ ; mv dotemacs.el .emacs
-ln -s $NGOCONF_PATH/dotgitconfig.conf ~/ ; mv dotgitconfig.conf .gitconfig
-ln -s $NGOCONF_PATH/dotminttyrc.conf ~/ ; mv dotminttyrc.conf .minttyrc
-ln -s $NGOCONF_PATH/dotocamlinit.ml ~/ ; mv dotocamlinit.ml .ocamlinit
-ln -s $NGOCONF_PATH/dotzshrc.sh ~/ ; mv dotzshrc.sh .zshrc
-mkdir -p ~/Library/Caches/Homebrew/ /tmp/ngobrewtmp /tmp/ngobrewcache
 . ~/.zshrc
-cd; ln -s /Users/Shared
+mkdir -p ~/Library/Caches/Homebrew/ /tmp/ngobrewtmp /tmp/ngobrewcache
+ln -s /Users/Shared
 
-sh ~/Downloads/Anaconda3-4.4.0-MacOSX-x86_64.sh -b -p /Volumes/Storage/goinfre/ngoguey/anaconda3 && /Volumes/Storage/goinfre/ngoguey/anaconda3/bin/conda create --yes -n rb python=3.6 gdal opencv scipy ipython matplotlib jupyter pandas pylint affine rasterio fiona pytest pytest-cov affine shapely pep8 cython scikit-learn
+time (
+  echo 'Setting up python' &&
+  rm -rf ~/goinfre/anaconda3 ~/.conda &&
+  sh ~/Downloads/Anaconda3-4.4.0-MacOSX-x86_64.sh -b -p /Volumes/Storage/goinfre/ngoguey/anaconda3 &&
+  /Volumes/Storage/goinfre/ngoguey/anaconda3/bin/conda create --yes -n rb python=3.6 gdal opencv scipy ipython matplotlib jupyter pandas pylint affine pytest pytest-cov affine shapely pep8 cython &&
+  source ~/goinfre/anaconda3/bin/activate rb &&
+  pip install git+https://github.com/scikit-learn/scikit-learn@0.19.0 rasterio fiona &&
+  echo DONE
+) && source ~/goinfre/anaconda3/bin/activate rb
 ```
 
 ##### Misc
