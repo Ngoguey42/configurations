@@ -130,7 +130,7 @@
 (defun ft-star-to-80 ()
   "pad with stars to column 80" (interactive)
   (move-end-of-line 1)
-  (let ((to80 (- 80 (current-column))))
+  (let ((to80 (- 100 (current-column))))
     ;; (if (< to80 78)
         (insert (make-string (- to80 3) ?*) " **")
         ;; )

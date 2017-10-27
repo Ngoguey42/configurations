@@ -125,13 +125,14 @@ then
     # export PYTHONPATH="$PYTHONPATH:/home/ngoguey/configurations/scripts"
 
 
-    export GOPATH=$HOME/gocode
+    export GOPATH='/media/ngoguey/Donnees/ngoguey/gocode'
     export ODIN_HOME=$GOPATH/src/github.com/airware/odin
     export NVM_DIR="$HOME/.nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
     export GOROOT=$HOME/go
     export PATH=$GOPATH/bin:$GOROOT/bin:$ODIN_HOME/bin:$PATH
 
+    [ -f /home/ngoguey/.travis/travis.sh ] && source /home/ngoguey/.travis/travis.sh || True
 
     alias termvert6="nohup terminator -b -l vert6 &"
     alias termvert2="nohup terminator -b -l vert2 &"
