@@ -330,13 +330,51 @@
 
 (set-face-attribute  'mode-line
                      nil
-                     :foreground "blue"
+                     :foreground "forest green"
                      :background "snow2"
                      :box '(:line-width 1 :style released-button))
 (set-face-attribute  'mode-line-inactive
                      nil
-                     :foreground "black"
-                     :background "purple"
+                     :foreground "orange"
+                     :background "deep pink"
+                     ;; :background "purple"
+                     :box '(:line-width 1 :style released-button))
+(set-face-attribute  'font-lock-function-name-face
+                     nil
+                     :foreground "orange"
+                     ;; :background "deep pink"
+                     ;; :background "purple"
+                     :box '(:line-width 1 :style released-button))
+(set-face-attribute  'font-lock-keyword-face
+                     nil
+                     :foreground "purple1"
+                     ;; :background "deep pink"
+                     ;; :background "purple"
+                     :box '(:line-width 1 :style released-button))
+(set-face-attribute  'font-lock-builtin-face
+                     nil
+                     :foreground "LightBlue4"
+                     ;; :background "deep pink"
+                     ;; :background "purple"
+                     :box '(:line-width 1 :style released-button))
+
+(set-face-attribute  'font-lock-doc-face
+                     nil
+                     :foreground "orange red"
+                     ;; :background "deep pink"
+                     ;; :background "purple"
+                     :box '(:line-width 1 :style released-button))
+(set-face-attribute  'font-lock-string-face
+                     nil
+                     :foreground "salmon2"
+                     ;; :background "deep pink"
+                     ;; :background "purple"
+                     :box '(:line-width 1 :style released-button))
+(set-face-attribute  'minibuffer-prompt
+                     nil
+                     :foreground "orange"
+                     ;; :background "deep pink"
+                     ;; :background "purple"
                      :box '(:line-width 1 :style released-button))
 
 ;; (transient-mark-mode 1)
