@@ -158,6 +158,8 @@ then
     export MANPATH="$HOME/.opam/system/man:$MANPATH"
     export CAMLP4LIB="C:/OCaml/lib/camlp4"
     export CUDA_HOME='C:\\CUDA'
+    export GDAL_DATA=`cygpath -w '/cygdrive/c/Anaconda3/Library/share/gdal'`
+    export PYTHONPATH="`cygpath -w ~/buzz/buzzard`;`cygpath -w ~/nest/data-science/wip`"
 
     # . /home/Ngo/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
     # eval `opam config env`
