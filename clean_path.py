@@ -40,6 +40,18 @@ if uname == uname_transform('CYGWIN'):
         '/cygdrive/c/Anaconda3/Scripts',
         '/cygdrive/c/Anaconda3/Library/bin',
 
+        # Attempt cuda 1
+        # '/cygdrive/c/Anaconda3/DLLs',
+        # '/cygdrive/c/Anaconda3/pkgs/cudatoolkit-8.0-3/DLLs',
+        # '/cygdrive/c/Anaconda3/pkgs/cudnn-6.0-0/Library/lib/x64',
+        # '/cygdrive/c/Anaconda3/pkgs/cudnn-6.0-0/Library/bin',
+
+        # Attempt cuda 2
+        '/cygdrive/c/CUDA8/bin',
+        '/cygdrive/c/CUDA8/extras/CUPTI/libx64',
+        '/cygdrive/c/CUDA8/lib/x64',
+
+
         # Misc
         '/cygdrive/c/R/bin',
         '/cygdrive/c/tools/dart-sdk/bin',

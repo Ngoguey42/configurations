@@ -157,6 +157,8 @@ then
     export CAML_LD_LIBRARY_PATH="$HOME/.opam/system/lib/stublibs:/cygdrive/c/OCaml/lib/stublibs"
     export MANPATH="$HOME/.opam/system/man:$MANPATH"
     export CAMLP4LIB="C:/OCaml/lib/camlp4"
+    export CUDA_HOME='C:\\CUDA'
+
     # . /home/Ngo/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
     # eval `opam config env`
     alias pub="/cygdrive/c/tools/dart-sdk/bin/pub.bat"
