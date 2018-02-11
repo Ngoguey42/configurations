@@ -45,7 +45,7 @@ time (
 
 #### New mac
 ##### Managed Software Center
-1. spectacle, spotify
+1. spectacle, spotify, sublime
 2. excel, slack, docker
 3. blender, gimp, XQuartz
 
