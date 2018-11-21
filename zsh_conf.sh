@@ -225,27 +225,33 @@ export SSH_FILE_DEFAULT='id_rsa'
 if [[ -n "$SSH_AGENT_PID" ]]; then
     kill -0 $SSH_AGENT_PID 2>/dev/null 1>/dev/null
     if [[ $? -eq 0 ]]; then
-	    if [[ -z "$SSHTO" ]]; then # SSHTO aka `ssh time out`
+
+	export SSH_PARENT_PID=`ps -p $SSH_AGENT_PID -o ppid= | xargs`
+	export SSH_PARENT_NAME=`ps -p $SSH_PARENT_PID -o comm= | xargs`
+	if [ "$SSH_PARENT_NAME" = "zsh" ]; then
+
+            if [[ -z "$SSHTO" ]]; then # SSHTO aka `ssh time out`
 		export SSHTO=$SSH_TIMEOUT_DEFAULT
-	    fi
-	    if [[ -z "$SSHFILE" ]]; then # SSHTO aka `ssh file`
+            fi
+            if [[ -z "$SSHFILENAME" ]]; then # SSHTO aka `ssh file`
 		export SSHFILE="$HOME/.ssh/$SSH_FILE_DEFAULT"
-	    else
-		export SSHFILE="$HOME/.ssh/$SSHFILE"
-	    fi
-	    UNAME=`uname | cut -c1-6`
-	    if [ "$UNAME" = "Darwin" ]
-	    then
+            else
+		export SSHFILE="$HOME/.ssh/$SSHFILENAME"
+            fi
+            UNAME=`uname | cut -c1-6`
+            if [ "$UNAME" = "Darwin" ]
+            then
 		SSHTO_FORMAT=`date -u -r $SSHTO +"%T"`
-	    else
+            else
 		SSHTO_FORMAT=`date -u -d@$SSHTO +"%T"`
-	    fi
+            fi
 
-	    echo "Enter passphrase valid for ($SSHTO_FORMAT)"
-	    ssh-add -t $SSHTO $SSHFILE || exit
+            echo "Enter passphrase for $SSHFILE valid for ($SSHTO_FORMAT)"
+            ssh-add -t $SSHTO $SSHFILE || exit
 
-	    NOW=`date +%s`
-	    export SSH_TIMEOUT_THEN=$(($NOW + $SSHTO))
-	    export PS1="\$(promptssh) $PS1"
+            NOW=`date +%s`
+            export SSH_TIMEOUT_THEN=$(($NOW + $SSHTO))
+            export PS1="\$(promptssh) $PS1"
+	fi
     fi
 fi
