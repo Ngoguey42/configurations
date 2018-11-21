@@ -138,7 +138,8 @@ then
     alias termvert2="nohup terminator -b -l vert2 &"
     alias termhoriz6="nohup terminator -b -l horiz6 &"
     alias l="ls -gohFG --color"
-    alias open='gnome-open 2>/dev/null'
+    alias open='xdg-open 2>/dev/null'
+    # alias open='gnome-open 2>/dev/null'
 
     export D=/media/ngoguey/Donnees
     export TS_CHAFFINCH=$D/ngoguey/ts_chaffinch
