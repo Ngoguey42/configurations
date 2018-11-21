@@ -128,11 +128,11 @@ then
     export GOPATH='/media/ngoguey/Donnees/ngoguey/gocode'
     export ODIN_HOME=$GOPATH/src/github.com/airware/odin
     export NVM_DIR="$HOME/.nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+    # [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
     export GOROOT=$HOME/go
     export PATH=$GOPATH/bin:$GOROOT/bin:$ODIN_HOME/bin:$PATH
 
-    [ -f /home/ngoguey/.travis/travis.sh ] && source /home/ngoguey/.travis/travis.sh || True
+    # [ -f /home/ngoguey/.travis/travis.sh ] && source /home/ngoguey/.travis/travis.sh || True
 
     alias termvert6="nohup terminator -b -l vert6 &"
     alias termvert2="nohup terminator -b -l vert2 &"
@@ -223,27 +223,29 @@ function promptssh {
 export SSH_TIMEOUT_DEFAULT=$((5 * 60))
 export SSH_FILE_DEFAULT='id_rsa'
 if [[ -n "$SSH_AGENT_PID" ]]; then
+    kill -0 $SSH_AGENT_PID 2>/dev/null 1>/dev/null
+    if [[ $? -eq 0 ]]; then
+	    if [[ -z "$SSHTO" ]]; then # SSHTO aka `ssh time out`
+		export SSHTO=$SSH_TIMEOUT_DEFAULT
+	    fi
+	    if [[ -z "$SSHFILE" ]]; then # SSHTO aka `ssh file`
+		export SSHFILE="$HOME/.ssh/$SSH_FILE_DEFAULT"
+	    else
+		export SSHFILE="$HOME/.ssh/$SSHFILE"
+	    fi
+	    UNAME=`uname | cut -c1-6`
+	    if [ "$UNAME" = "Darwin" ]
+	    then
+		SSHTO_FORMAT=`date -u -r $SSHTO +"%T"`
+	    else
+		SSHTO_FORMAT=`date -u -d@$SSHTO +"%T"`
+	    fi
 
-    if [[ -z "$SSHTO" ]]; then # SSHTO aka `ssh time out`
-	export SSHTO=$SSH_TIMEOUT_DEFAULT
-    fi
-    if [[ -z "$SSHFILE" ]]; then # SSHTO aka `ssh file`
-	export SSHFILE="$HOME/.ssh/$SSH_FILE_DEFAULT"
-    else
-	export SSHFILE="$HOME/.ssh/$SSHFILE"
-    fi
-    UNAME=`uname | cut -c1-6`
-    if [ "$UNAME" = "Darwin" ]
-    then
-	SSHTO_FORMAT=`date -u -r $SSHTO +"%T"`
-    else
-	SSHTO_FORMAT=`date -u -d@$SSHTO +"%T"`
-    fi
+	    echo "Enter passphrase valid for ($SSHTO_FORMAT)"
+	    ssh-add -t $SSHTO $SSHFILE || exit
 
-    echo "Enter passphrase valid for ($SSHTO_FORMAT)"
-    ssh-add -t $SSHTO $SSHFILE || exit
-
-    NOW=`date +%s`
-    export SSH_TIMEOUT_THEN=$(($NOW + $SSHTO))
-    export PS1="\$(promptssh) $PS1"
+	    NOW=`date +%s`
+	    export SSH_TIMEOUT_THEN=$(($NOW + $SSHTO))
+	    export PS1="\$(promptssh) $PS1"
+    fi
 fi
