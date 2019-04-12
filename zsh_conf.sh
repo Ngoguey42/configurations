@@ -61,7 +61,8 @@ alias oktfna='rr ; ocamlfind ocamloptp *.ml -package yojson -package core -threa
 
 # GIT RELATED
 export USER="ngoguey"
-export MAIL="ngoguey@airware.com"
+export MAIL="nicolas.goguey@delair.aero"
+# export MAIL="ngoguey@airware.com"
 # export MAIL="ngoguey@student.42.fr"
 alias gitals="git add \`git ls-files\` ; git status"
 alias gitls="git ls-files"
@@ -125,12 +126,12 @@ then
     # export PYTHONPATH="$PYTHONPATH:/home/ngoguey/configurations/scripts"
 
 
-    export GOPATH='/media/ngoguey/Donnees/ngoguey/gocode'
-    export ODIN_HOME=$GOPATH/src/github.com/airware/odin
-    export NVM_DIR="$HOME/.nvm"
+    # export GOPATH='/media/ngoguey/Donnees/ngoguey/gocode'
+    # export ODIN_HOME=$GOPATH/src/github.com/airware/odin
+    # export NVM_DIR="$HOME/.nvm"
     # [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-    export GOROOT=$HOME/go
-    export PATH=$GOPATH/bin:$GOROOT/bin:$ODIN_HOME/bin:$PATH
+    # export GOROOT=$HOME/go
+    # export PATH=$GOPATH/bin:$GOROOT/bin:$ODIN_HOME/bin:$PATH
 
     # [ -f /home/ngoguey/.travis/travis.sh ] && source /home/ngoguey/.travis/travis.sh || True
 
@@ -144,6 +145,13 @@ then
     export D=/media/ngoguey/Donnees
     export TS_CHAFFINCH=$D/ngoguey/ts_chaffinch
     export HISTSIZE=20000
+    export NEST_HOME=$HOME/nest
+
+    export PATH=/usr/local/cuda-10.0/bin:$HOME/bin:$PATH
+    export LD_LIBRARY_PATH=/usr/local/cuda-10.0/lib64:/usr/local/cuda/extras/CUPTI/lib64:$LD_LIBRARY_PATH
+
+    export QT_STYLE_OVERRIDE=gtk2 # To silence `QGtkStyle could not resolve GTK` warning
+
 fi
 
 if [ "$UNAME" = "CYGWIN" ]

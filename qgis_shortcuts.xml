@@ -1,0 +1,14 @@
+<!DOCTYPE shortcuts>
+<qgsshortcuts locale="en_US" version="1.0">
+    <act shortcut="W" name="Add Polygon Feature"/>
+    <act shortcut="C" name="Add Ring"/>
+    <act shortcut="T" name="Deselect Features from All Layers"/>
+    <act shortcut="" name="Enable Tracing"/>
+    <act shortcut="E" name="Reshape Features"/>
+    <act shortcut="Shift+Q" name="Save Layer Edits"/>
+    <act shortcut="R" name="Select Feature(s)"/>
+    <act shortcut="X" name="Split Features"/>
+    <act shortcut="Q" name="Toggle Editing"/>
+    <act shortcut="Z" name="Toggle Snapping"/>
+    <act shortcut="V" name="Vertex Tool (All Layers)"/>
+</qgsshortcuts>
