@@ -177,7 +177,7 @@ then
     alias ipython="winpty ipython"
     alias ocaml="winpty ocaml"
     alias subl='/cygdrive/c/Program\ Files/Sublime\ Text\ 3/sublime_text.exe'
-    alias git="/cygdrive/c/Program\ Files/Git/mingw64/bin/git"
+    # alias git="/cygdrive/c/Program\ Files/Git/mingw64/bin/git"
 
     function sudo {
     	cygstart --action=runas "$@"
@@ -251,9 +251,11 @@ if [[ -n "$SSH_AGENT_PID" ]]; then
     kill -0 $SSH_AGENT_PID 2>/dev/null 1>/dev/null
     if [[ $? -eq 0 ]]; then
 
-	export SSH_PARENT_PID=`ps -p $SSH_AGENT_PID -o ppid= | xargs`
-	export SSH_PARENT_NAME=`ps -p $SSH_PARENT_PID -o comm= | xargs`
-	if [ "$SSH_PARENT_NAME" = "zsh" ]; then
+	# export SSH_PARENT_PID=`ps -p $SSH_AGENT_PID -o ppid= | xargs`
+	export SSH_PARENT_PID=`ps -p $SSH_AGENT_PID -f | tail -n1 | awk '{ print $3 }'`
+	# export SSH_PARENT_NAME=`ps -p $SSH_PARENT_PID -o comm= | xargs`
+	if ps -p $SSH_PARENT_PID | grep zsh >/dev/null ; then
+	# if [ "$SSH_PARENT_NAME" = "zsh" ]; then
 
             if [[ -z "$SSHTO" ]]; then # SSHTO aka `ssh time out`
 		export SSHTO=$SSH_TIMEOUT_DEFAULT

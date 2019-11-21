@@ -57,7 +57,7 @@ if uname == uname_transform('CYGWIN'):
         '/cygdrive/c/tools/dart-sdk/bin',
         '/cygdrive/c/ProgramData/Oracle/Java/javapath',
         # Soft ************************************************************** **
-        '/cygdrive/c/Program Files/Git/mingw64/bin/',
+        # '/cygdrive/c/Program Files/Git/mingw64/bin/',
         '/cygdrive/c/ProgramData/chocolatey/bin',
         '/cygdrive/c/Program Files/Docker Toolbox',
         # Cygwin ************************************************************ **
