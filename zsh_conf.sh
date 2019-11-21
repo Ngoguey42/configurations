@@ -177,6 +177,22 @@ then
     alias ipython="winpty ipython"
     alias ocaml="winpty ocaml"
     alias subl='/cygdrive/c/Program\ Files/Sublime\ Text\ 3/sublime_text.exe'
+    alias git="/cygdrive/c/Program\ Files/Git/mingw64/bin/git"
+
+    function sudo {
+    	cygstart --action=runas "$@"
+    }
+
+    function sudocmd {
+    	cygstart --action=runas cmd /C "$@"
+    }
+
+    function repairperms {
+	V=$(pwd -P)
+	V=$(cygpath -w $V)
+	sudocmd "takeown /F "$V" /R /A /D Y & icacls "$V" /reset /T /C /L /Q & icacls "$V" /grant "$USERNAME":(OI)(CI)F"
+    }
+
 fi
 
 if [ "$UNAME" = "Darwin" ]
