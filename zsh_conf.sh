@@ -61,7 +61,7 @@ alias oktfna='rr ; ocamlfind ocamloptp *.ml -package yojson -package core -threa
 
 # GIT RELATED
 export USER="ngoguey"
-export MAIL="nicolas.goguey@delair.aero"
+export MAIL="ngoguey@student.42.fr"
 # export MAIL="ngoguey@airware.com"
 # export MAIL="ngoguey@student.42.fr"
 alias gitals="git add \`git ls-files\` ; git status"
