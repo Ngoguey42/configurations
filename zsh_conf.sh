@@ -123,10 +123,14 @@ then
     UNAME="WSL"
 fi
 
-if [ "$UNAME" = "WSL" ]       
+if [ "$UNAME" = "WSL" ]
 then
     EDITOR="/usr/bin/emacs -nw"
-    
+    alias l="ls -gohFG --color"
+    open(){
+	explorer.exe `wslpath -aw $1`
+    }
+
 fi
 
 if [ "$UNAME" = "Linux" ]
