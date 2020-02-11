@@ -103,6 +103,8 @@ printf '\033[31m' ;rm -r **/*.dSYM && echo '\033[32mrm **/*.dSYM'
 printf '\033[0m'"
 alias ch="chmod 644 \`ls -1d *.($MYEXTENSIONS)\` ; chmod 644 \`ls -1d *.h\`; chmod 744 Makefile ; chmod 644 auteur ; l"
 alias chr="chmod 644 \`ls -1d **/*.($MYEXTENSIONS)\` ; chmod 744 Makefile ; chmod 644 auteur ; lr"
+alias dumpsizeof="sh $NGOCONF_PATH/dump_sizeof.sh" #TODO: improve
+export HISTSIZE=20000
 
 # LIBRARIES CONF ************************************************************ **
 export PYTEST_ADDOPTS="--color=yes"
@@ -116,35 +118,31 @@ fi
 # LOCATION SPECIFIC ********************************************************* **
 UNAME=`uname | cut -c1-6`
 
-alias dumpsizeof="sh $NGOCONF_PATH/dump_sizeof.sh" #TODO: improve
+if dmesg | grep -i microsoft >/dev/null
+then
+    UNAME="WSL"
+fi
+
+if [ "$UNAME" = "WSL" ]       
+then
+    EDITOR="/usr/bin/emacs -nw"
+    
+fi
+
 if [ "$UNAME" = "Linux" ]
 then
     alias spotify="nohup spotify &"
     EDITOR="/usr/bin/emacs25 -nw"
     export PATH="`/usr/bin/python -u $NGOCONF_PATH/clean_path.py`"
-    # source activate redbird
-    # export PYTHONPATH="$PYTHONPATH:/home/ngoguey/configurations/scripts"
-
-
-    # export GOPATH='/media/ngoguey/Donnees/ngoguey/gocode'
-    # export ODIN_HOME=$GOPATH/src/github.com/airware/odin
-    # export NVM_DIR="$HOME/.nvm"
-    # [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-    # export GOROOT=$HOME/go
-    # export PATH=$GOPATH/bin:$GOROOT/bin:$ODIN_HOME/bin:$PATH
-
-    # [ -f /home/ngoguey/.travis/travis.sh ] && source /home/ngoguey/.travis/travis.sh || True
 
     alias termvert6="nohup terminator -b -l vert6 &"
     alias termvert2="nohup terminator -b -l vert2 &"
     alias termhoriz6="nohup terminator -b -l horiz6 &"
     alias l="ls -gohFG --color"
     alias open='xdg-open 2>/dev/null'
-    # alias open='gnome-open 2>/dev/null'
 
     export D=/media/ngoguey/Donnees
     export TS_CHAFFINCH=$D/ngoguey/ts_chaffinch
-    export HISTSIZE=20000
     export NEST_HOME=$HOME/nest
 
     export PATH=/usr/local/cuda-10.0/bin:$HOME/bin:$PATH
