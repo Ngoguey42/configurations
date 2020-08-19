@@ -12,6 +12,7 @@ np.set_printoptions(linewidth=300)
 UP_TOKEN = "<up>"
 LEFT_TOKEN = "<left>"
 SPECIAL_TOKENS = [UP_TOKEN, LEFT_TOKEN]
+missing_files = set()
 
 # Step 1 - Read yaml and clean file paths ******************************************************* **
 def read(yamlpath):
@@ -25,7 +26,7 @@ def read(yamlpath):
         elif isinstance(p, (str, int, float)):
             q = os.path.normpath(os.path.join(yamldir, str(p)))
             if not os.path.exists(q):
-                print("Warning: {} (interpreted from {}) does not exist on the filesystem".format(q, p), file=sys.stderr)
+                missing_files.add(q)
             return q
         else:
             assert False, "bad buffer:\n{!s}".format(p)
@@ -329,6 +330,24 @@ def stringify(o):
     else:
         assert False, 'unknown primitive type: {}'.format(type(o))
 
+# Step 5 - Print shell code to mkdir / touch missing files ************************************** **
+def print_missings():
+    missing_dirs = set()
+    for p in missing_files:
+        prefixes = p.split(os.sep)[:-1]
+        for count in range(1, len(prefixes) + 1):
+            q = '/'.join(prefixes[:count])
+            if not q:
+                continue
+            if not os.path.exists(q):
+                missing_dirs.add(q)
+    if missing_files:
+        print("Missing files! You should:", file=sys.stderr)
+    for p in missing_dirs:
+        print("mkdir -p {}".format(p), file=sys.stderr)
+    for p in missing_files:
+        print("touch {}".format(p), file=sys.stderr)
+
 # Main ****************************************************************************************** **
 def main(args=sys.argv[1:]):
     p = argparse.ArgumentParser()
@@ -339,14 +358,11 @@ def main(args=sys.argv[1:]):
     perspectives = [
         Perspective(k, matrix, buffername_per_filepath)
         for k, matrix in data["perspectives"].items()
-        # if k in ["+0", "8"]
-        # if k in ["18"]
-        # if k in ["0"]
-        # if k in ["1"]
     ]
     sexpr_python = expand(perspectives)
     s = stringify(sexpr_python)
     print(s)
+    print_missings()
 
 if __name__ == "__main__":
     main()
