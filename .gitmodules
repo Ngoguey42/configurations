@@ -46,3 +46,6 @@
 [submodule "ESS"]
 	path = ESS
 	url = https://github.com/emacs-ess/ESS
+[submodule "PG"]
+	path = PG
+	url = https://github.com/ProofGeneral/PG

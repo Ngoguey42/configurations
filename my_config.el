@@ -14,6 +14,10 @@
 ;; modes ******************************************************************** ;;
 ;; ************************************************************************** ;;
 
+;;proof general(major);;
+(load (concat confPath "/PG/generic/proof-site"))
+;;/proof general;;
+
 ;;r-mode(major)
 (defvar rmode_path (concat confPath "/ESS/lisp/"))
 (if (file-exists-p rmode_path)
