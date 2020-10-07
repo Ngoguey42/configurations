@@ -1,14 +1,9 @@
-;;****************************************************************************;;
-;;                                                                            ;;
-;;                                                        :::      ::::::::   ;;
-;;   my_functions.el                                    :+:      :+:    :+:   ;;
-;;                                                    +:+ +:+         +:+     ;;
-;;   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        ;;
-;;                                                +#+#+#+#+#+   +#+           ;;
-;;   Created: 2016/06/06 06:42:59 by ngoguey           #+#    #+#             ;;
-;;   Updated: 2017/04/09 16:22:14 by ngoguey                                  ;;
-;;                                                                            ;;
-;;****************************************************************************;;
+(defun fake-module-reload (module)
+  (interactive "fReload Module file: ")
+  (let ((tmpfile (make-temp-file
+                  (file-name-nondirectory module) nil module-file-suffix)))
+    (copy-file module tmpfile t)
+    (module-load tmpfile)))
 
 (defun ft-indent-buffer ()
   (interactive)

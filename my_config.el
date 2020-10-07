@@ -33,6 +33,8 @@
 ;;   )
 ;; ;;/r-mode
 
+(require 'my-ecaml)
+
 ;;yaml-mode(major)
 (defvar yamlmode_path (concat confPath "/yaml-mode/"))
 (add-to-list 'load-path yamlmode_path)

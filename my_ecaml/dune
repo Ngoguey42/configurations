@@ -1,0 +1,14 @@
+(executable
+ (name plugin)
+ (public_name my-ecaml)
+ (libraries ecaml)
+ (preprocess
+  (pps ppx_jane -allow-unannotated-ignores))
+ (modes native shared_object))
+
+(rule
+ (copy plugin.so my-ecaml.so))
+
+(alias
+ (name install)
+ (deps my-ecaml.so))

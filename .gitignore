@@ -11,3 +11,6 @@
 .DS_Store
 ._.DS_Store
 a.out
+my_ecaml/_build
+!my_ecaml/_build/default/my-examl.so
+.merlin

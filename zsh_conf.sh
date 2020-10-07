@@ -125,7 +125,7 @@ fi
 
 if [ "$UNAME" = "WSL" ]
 then
-    EDITOR="/usr/bin/emacs -nw"
+    EDITOR="/usr/bin/emacs26 -nw"
     alias l="ls -gohFG --color"
     open(){
 	explorer.exe `wslpath -aw $1`
@@ -136,7 +136,7 @@ fi
 if [ "$UNAME" = "Linux" ]
 then
     alias spotify="nohup spotify &"
-    EDITOR="/usr/bin/emacs25 -nw"
+    EDITOR="/usr/bin/emacs -nw"
     export PATH="`/usr/bin/python -u $NGOCONF_PATH/clean_path.py`"
 
     alias termvert6="nohup terminator -b -l vert6 &"
