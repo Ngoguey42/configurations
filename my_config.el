@@ -14,24 +14,24 @@
 ;; modes ******************************************************************** ;;
 ;; ************************************************************************** ;;
 
-;;proof general(major);;
-(load (concat confPath "/PG/generic/proof-site"))
-;;/proof general;;
+;; ;;proof general(major);;
+;; (load (concat confPath "/PG/generic/proof-site"))
+;; ;;/proof general;;
 
-;;r-mode(major)
-(defvar rmode_path (concat confPath "/ESS/lisp/"))
-(if (file-exists-p rmode_path)
-    (progn
-      (add-to-list 'load-path rmode_path)
-      (require 'ess-site)
-      (add-hook
-       'ess-mode-hook
-       (lambda ()
-	 (setq comment-start "##")
-	 ))
-      )
-  )
-;;/r-mode
+;; ;;r-mode(major)
+;; (defvar rmode_path (concat confPath "/ESS/lisp/"))
+;; (if (file-exists-p rmode_path)
+;;     (progn
+;;       (add-to-list 'load-path rmode_path)
+;;       (require 'ess-site)
+;;       (add-hook
+;;        'ess-mode-hook
+;;        (lambda ()
+;; 	 (setq comment-start "##")
+;; 	 ))
+;;       )
+;;   )
+;; ;;/r-mode
 
 ;;yaml-mode(major)
 (defvar yamlmode_path (concat confPath "/yaml-mode/"))
