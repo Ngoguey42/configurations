@@ -149,6 +149,7 @@ def majormode_of_buffername(path):
         lambda: "fundamental-mode",
         py="python-mode",
         ml="tuareg-mode",
+        mli="tuareg-mode",
         md="markdown-mode",
         js="web-mode",
         html="web-mode",

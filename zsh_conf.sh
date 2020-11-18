@@ -118,7 +118,7 @@ fi
 # LOCATION SPECIFIC ********************************************************* **
 UNAME=`uname | cut -c1-6`
 
-if dmesg | grep -i microsoft >/dev/null
+if uname -r | grep -i microsoft >/dev/null
 then
     UNAME="WSL"
 fi

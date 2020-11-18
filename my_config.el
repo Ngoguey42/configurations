@@ -146,24 +146,37 @@
 (add-to-list 'load-path tuareg_path)
 
 (autoload 'tuareg-mode "tuareg" "Major mode for editing Caml code" t)
-;; (autoload 'camldebug "camldebug" "Run the Caml debugger" t)
-;; (autoload 'tuareg-imenu-set-imenu "tuareg-imenu"
-;;   "Configuration of imenu for tuareg" t)
 
-;; (add-hook 'tuareg-mode-hook 'tuareg-imenu-set-imenu)
+(setq tuareg-match-patterns-aligned t)
+(setq tuareg-indent-align-with-first-arg nil)
+
+
 (add-hook
  'tuareg-mode-hook
  (lambda ()
-   (setq-default indent-tabs-mode nil)
-   (setq-default tab-width 2)
+   ;; (setq-default indent-tabs-mode nil)
+   ;; (setq-default tab-width 2)
+
+   (setq show-trailing-whitespace t)
+   (setq indicate-empty-lines t)
+   (setq mode-name "🐫")
+
+   ;; Enable the representation of some keywords using fonts
+   (when (functionp 'prettify-symbols-mode)
+     (prettify-symbols-mode))
+
+   (when (functionp 'flyspell-prog-mode)
+     (flyspell-prog-mode))
+   ;; See README
+   ;;(setq tuareg-match-patterns-aligned t)
+      ;;(electric-indent-mode 0)
+
    ))
 
 (setq
  auto-mode-alist
  (append
-  '(("\\.ml[ily]?$" . tuareg-mode)
-    ("\\.eliom$" . tuareg-mode)
-    ("\\.topml$" . tuareg-mode))
+  '(("\\.ml[ily]?$" . tuareg-mode))
   auto-mode-alist))
 ;;/tuareg
 
