@@ -32,18 +32,24 @@ def read(yamlpath):
             assert False, "bad buffer:\n{!s}".format(p)
 
     def normalize_buffer_matrix(matrix):
-        assert isinstance(matrix, list), 'bad matrix:\n{!s}'.format(matrix)
-        assert all(isinstance(row, list) for row in matrix), 'bad type:\n{!s}'.format(matrix)
-        assert len(set(len(row) for row in matrix)) <= 1, 'bad row length:\n{!s}'.format(matrix)
+        if matrix is None:
+            matrix = []
+        matrix = np.atleast_1d(np.asarray(matrix))
+        assert 1 <= matrix.ndim <= 2, 'bad matrix:\n{!s}'.format(matrix)
+        if matrix.size > 0:
+            assert matrix.dtype.kind == "U", 'bad matrix dtype:\n{!s}'.format(matrix)
+        if matrix.ndim == 1:
+            matrix = matrix.reshape(1, -1)
         return tuple([
             tuple([normalize_buffer_path(p) for p in row])
             for row in matrix
         ])
 
     perspectives = {
-        k: normalize_buffer_matrix(matrix)
+        str(k): normalize_buffer_matrix(matrix)
         for k, matrix in data["perspectives"].items()
-        for k in [str(k)]
+        for matrix in [normalize_buffer_matrix(matrix)]
+        if matrix != ((),)
     }
     return {"perspectives": perspectives}
 

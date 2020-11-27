@@ -150,7 +150,6 @@
 (setq tuareg-match-patterns-aligned t)
 (setq tuareg-indent-align-with-first-arg nil)
 
-
 (add-hook
  'tuareg-mode-hook
  (lambda ()
@@ -161,9 +160,9 @@
    (setq indicate-empty-lines t)
    (setq mode-name "🐫")
 
-   ;; Enable the representation of some keywords using fonts
-   (when (functionp 'prettify-symbols-mode)
-     (prettify-symbols-mode))
+   ;; ;; Enable the representation of some keywords using fonts
+   ;; (when (functionp 'prettify-symbols-mode)
+   ;;   (prettify-symbols-mode))
 
    (when (functionp 'flyspell-prog-mode)
      (flyspell-prog-mode))
@@ -240,7 +239,6 @@
    (setq indent-tabs-mode nil)
    (setq tab-width 2)
    ))
-(load "my_cpptemplates.el")
 ;;/c++
 
 ;; minor perspective(minor)
@@ -264,6 +262,22 @@
   (interactive "sft-Perspective name to switch: ")
   (if (member name (persp-names *persp-hash* nil))
       (persp-activate (persp-add-new name) (selected-frame))
+    )
+  )
+
+(defun ft-persp-activate-f1 (name)
+  "Switch to frame."
+  (interactive "sft-Perspective name to switch: f1/")
+  (if (member (concatenate 'string "f1/" name) (persp-names *persp-hash* nil))
+      (persp-activate (persp-add-new (concatenate 'string "f1/" name)) (selected-frame))
+    )
+  )
+
+(defun ft-persp-activate-f2 (name)
+  "Switch to frame."
+  (interactive "sft-Perspective name to switch: f2/")
+  (if (member (concatenate 'string "f2/" name) (persp-names *persp-hash* nil))
+      (persp-activate (persp-add-new (concatenate 'string "f2/" name)) (selected-frame))
     )
   )
 

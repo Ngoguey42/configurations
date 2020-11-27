@@ -106,6 +106,42 @@ let dicho_move () =
   in
   move (`V (get_rows_min_max ()))
 
+
+let classify_filename s =
+  let open String in
+  let len = length s in
+  if len >= 8 && sub s (len - 8) 8 = "_intf.ml" then sub s 0 (len - 8), `Intf
+  else if len >= 4 && sub s (len - 4) 4 = ".mli" then sub s 0 (len - 4), `Mli
+  else if len >= 3 && sub s (len - 3) 3 = ".ml" then sub s 0 (len - 3), `Ml
+  else s, `None
+
+(** Cycle between: 1. .ml -> 2. _inf.ml (if any) -> 3. .mli -> 1. *)
+let my_find_alternate_file () =
+  match Ecaml.Current_buffer.file_name () with
+  | None -> ()
+  | Some s ->
+     let prefix, klass = classify_filename s in
+     let intf = prefix ^ "_intf.ml" in
+     let mli = prefix ^ ".mli" in
+     let ml = prefix ^ ".ml" in
+     let cycle = match klass with
+       | `Ml -> [intf; mli]
+       | `Intf -> [mli; ml]
+       | `Mli -> [ml; intf]
+       | `None -> []
+     in
+     let file_exists s =
+       let open Unix in
+       match access s [R_OK] with
+       | exception Unix_error _ -> false
+       | () -> true
+     in
+     match List.find_opt file_exists cycle with
+     | None -> Ecaml.message "No alternate file found"
+     | Some file ->
+        Ecaml.message ("Going to: " ^ file);
+        Ecaml.Selected_window.find_file file |> ignore
+
 let command_of_string s = Ecaml.Value.intern s |> Ecaml.Command.of_value_exn
 
 let () =
@@ -121,7 +157,6 @@ let () =
       (Entry.Command (command_of_string "del-forward-blanks"))
   );
 
-
   Ecaml.defun_nullary_nil
     ("dicho-move" |> Ecaml.Symbol.intern)
     [%here]
@@ -133,6 +168,19 @@ let () =
       (Ecaml.Key_sequence.create_exn "C-q")
       (Entry.Command (command_of_string "dicho-move"))
   );
+
+  Ecaml.defun_nullary_nil
+    ("my-find-alternate-file" |> Ecaml.Symbol.intern)
+    [%here]
+    ~interactive:No_arg
+    my_find_alternate_file;
+  Ecaml.Keymap.(
+    define_key
+      (global ())
+      (Ecaml.Key_sequence.create_exn "S-<f1>")
+      (Entry.Command (command_of_string "my-find-alternate-file"))
+  );
+
 
   Ecaml.provide ("my-ecaml" |> Ecaml.Symbol.intern);
 

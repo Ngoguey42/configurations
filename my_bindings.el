@@ -96,9 +96,10 @@
 ;; ************************************************************************** ;;
 ;; BLOCK 1/3 ******************************************** **
 
-(global-set-key [(f1)] 'ft-persp-activate)
+(global-set-key [(f1)] 'ft-persp-activate-f1)
+(global-set-key [(f2)] 'ft-persp-activate-f2)
 
-(global-set-key [(f2)] '(lambda() "tab shortcut" (interactive) (insert "\t")))
+;; (global-set-key [(f2)] '(lambda() "tab shortcut" (interactive) (insert "\t")))
 (global-set-key [(control f2)] 'ft-indent-buffer)
 
 (global-set-key [(f3)] 'ft-put-debug1)
