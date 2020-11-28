@@ -159,6 +159,7 @@
    (setq show-trailing-whitespace t)
    (setq indicate-empty-lines t)
    (setq mode-name "🐫")
+   (elide-head)
 
    ;; ;; Enable the representation of some keywords using fonts
    ;; (when (functionp 'prettify-symbols-mode)
@@ -241,9 +242,15 @@
    ))
 ;;/c++
 
+(require 'elide-head)
+(add-to-list 'elide-head-headers-to-hide
+             '("Copyright (c)" . "OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE."))
+
 ;; minor perspective(minor)
 (defvar perspdotel_path (concat confPath "/persp-mode.el/"))
 (add-to-list 'load-path perspdotel_path)
+
+
 
 (with-eval-after-load "persp-mode"
   (setq wg-morph-on nil)
