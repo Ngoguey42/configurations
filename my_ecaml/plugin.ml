@@ -106,13 +106,18 @@ let dicho_move () =
   in
   move (`V (get_rows_min_max ()))
 
+let string_endswith s suf =
+  let open String in
+  let len = length s in
+  let len' = length suf in
+  len >= len' && sub s (len - len') len' = suf
 
 let classify_filename s =
   let open String in
   let len = length s in
-  if len >= 8 && sub s (len - 8) 8 = "_intf.ml" then sub s 0 (len - 8), `Intf
-  else if len >= 4 && sub s (len - 4) 4 = ".mli" then sub s 0 (len - 4), `Mli
-  else if len >= 3 && sub s (len - 3) 3 = ".ml" then sub s 0 (len - 3), `Ml
+  if string_endswith s "_intf.ml" then sub s 0 (len - 8), `Intf
+  else if string_endswith s ".mli" then sub s 0 (len - 4), `Mli
+  else if string_endswith s ".ml" then sub s 0 (len - 3), `Ml
   else s, `None
 
 (** Cycle between: 1. .ml -> 2. _inf.ml (if any) -> 3. .mli -> 1. *)
