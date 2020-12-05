@@ -99,6 +99,10 @@
 (global-set-key [(f1)] 'ft-persp-activate-f1)
 (global-set-key [(f2)] 'ft-persp-activate-f2)
 
+(global-set-key [(meta f1)] 'hs-toggle-hiding)
+(global-set-key [?\e f1] 'hs-hide-all)
+(global-set-key [?\e f2] 'hs-show-all)
+
 ;; (global-set-key [(f2)] '(lambda() "tab shortcut" (interactive) (insert "\t")))
 (global-set-key [(control f2)] 'ft-indent-buffer)
 
