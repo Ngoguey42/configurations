@@ -175,6 +175,22 @@
  (append
   '(("\\.ml[ily]?$" . tuareg-mode))
   auto-mode-alist))
+;;/tuarzgeg
+
+;;merlin
+(defvar merlin_path (concat confPath "/merlin/emacs/"))
+(add-to-list 'load-path merlin_path)
+
+(let ((opam-share (ignore-errors (car (process-lines "opam" "config" "var" "share")))))
+  (when (and opam-share (file-directory-p opam-share))
+    (autoload 'merlin-mode "merlin" nil t nil)
+    (add-hook 'tuareg-mode-hook 'merlin-mode t)
+    (setq merlin-command 'opam)))
+
+;; (autoload 'merlin-mode "merlin" nil t nil)
+;; (add-hook 'tuareg-mode-hook 'merlin-mode t)
+;;/merlin
+
 
 ;;glsl-mode
 (defvar glslmode_path (concat confPath "/glsl-mode/"))

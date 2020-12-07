@@ -49,3 +49,6 @@
 [submodule "PG"]
 	path = PG
 	url = https://github.com/ProofGeneral/PG
+[submodule "merlin"]
+	path = merlin
+	url = https://github.com/ocaml/merlin
