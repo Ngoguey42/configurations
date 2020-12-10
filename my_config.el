@@ -34,6 +34,7 @@
 ;; ;;/r-mode
 
 (require 'my-ecaml)
+(add-hook 'merlin-mode-hook (lambda () (my-late-set-keys)))
 
 ;;yaml-mode(major)
 (defvar yamlmode_path (concat confPath "/yaml-mode/"))
@@ -185,6 +186,8 @@
   (when (and opam-share (file-directory-p opam-share))
     (autoload 'merlin-mode "merlin" nil t nil)
     (add-hook 'tuareg-mode-hook 'merlin-mode t)
+    (setq merlin-error-after-save nil)
+    (setq merlin-locate-in-new-window 0)
     (setq merlin-command 'opam)))
 
 ;; (autoload 'merlin-mode "merlin" nil t nil)
@@ -261,6 +264,10 @@
 ;; minor perspective(minor)
 (defvar perspdotel_path (concat confPath "/persp-mode.el/"))
 (add-to-list 'load-path perspdotel_path)
+
+;; (setq persp-add-buffer-on-after-change-major-mode t)
+;; (setq persp-add-buffer-on-find-file t)
+(setq persp-nil-name "default")
 
 
 
