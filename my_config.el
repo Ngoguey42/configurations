@@ -269,8 +269,6 @@
 ;; (setq persp-add-buffer-on-find-file t)
 (setq persp-nil-name "default")
 
-
-
 (with-eval-after-load "persp-mode"
   (setq wg-morph-on nil)
   (setq persp-autokill-buffer-on-remove 'kill-weak)
@@ -278,9 +276,6 @@
         persp-auto-save-opt 0)
   (setq persp-save-dir "./")
   (persp-mode 1)
-  ;; (if (boundp 'ft-persp_init_file)
-      ;; (persp-load-state-from-file ft-persp_init_file)
-    ;; )
   )
 
 (defun ft-persp-activate (name)

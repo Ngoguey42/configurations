@@ -30,3 +30,31 @@ let get_buffer_window_opt buffer =
     |> (Fun.flip Ecaml.Value.funcall1) (Ecaml.Buffer.to_value buffer)
   in
   if Ecaml.Value.is_window v then Some (Ecaml.Window.of_value_exn v) else None
+
+let same_path p q =
+  (Core.Filename.realpath p) = (Core.Filename.realpath q)
+
+let find_file_safe path =
+  let act =
+    match Ecaml.Selected_window.get () |> Ecaml.Window.buffer_exn
+          |> Ecaml.Buffer.file_name with
+    | None -> false
+    | Some path' -> not (same_path path path')
+  in
+  if act then
+    Ecaml.Value.Private.block_on_async [%here]
+      (fun () -> Ecaml.Selected_window.find_file path)
+
+let set_key ~command ~seq =
+  let gkm = Ecaml.Keymap.global () in
+  let command = Ecaml.Keymap.Entry.Command (command_of_string command) in
+  let seq = Ecaml.Key_sequence.create_exn seq in
+  let abs = Ecaml.Keymap.Entry.Absent in
+  (* Unset everywhere before *)
+  [ gkm ]
+  @ (Ecaml.Current_buffer.minor_mode_keymaps ())
+  @ (Ecaml.Current_buffer.local_keymap () |> Option.to_list)
+  |> List.iter (fun km -> Ecaml.Keymap.define_key km seq abs);
+  (* Set in global *)
+  Ecaml.Keymap.define_key gkm seq command;
+  ()
