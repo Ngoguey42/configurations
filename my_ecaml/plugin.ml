@@ -12,7 +12,7 @@ open Persp
 let del_forward_blanks () =
   let rec aux () =
     let start = Ecaml.Point.get () in
-    if Ecaml.Position.(start <= Ecaml.Point.max ()) then (
+    if Ecaml.Position.(start <= Ecaml.Point.max ()) then
       let end_ = Ecaml.Position.add start 1 in
       let s =
         Ecaml.Current_buffer.contents ~start ~end_ ()
@@ -20,14 +20,14 @@ let del_forward_blanks () =
       in
       match s with
       | " " | "\t" | "\n" ->
-         Ecaml.Current_buffer.delete_region ~start ~end_;
-         aux ()
+          Ecaml.Current_buffer.delete_region ~start ~end_;
+          aux ()
       | _ -> ()
-    )
   in
   aux ()
 
 type horizontal = [ `Left | `Right ]
+
 type vertical = [ `Up | `Down ]
 
 let dicho_move () =
@@ -49,56 +49,60 @@ let dicho_move () =
   in
 
   let line_count =
-    Ecaml.Point.count_lines ~start:(Ecaml.Point.min ()) ~end_:(Ecaml.Point.max ())
+    Ecaml.Point.count_lines ~start:(Ecaml.Point.min ())
+      ~end_:(Ecaml.Point.max ())
   in
 
   let get_cols_min_max () =
     let p = Ecaml.Point.column_number () in
-    let left = Ecaml.Point.beginning_of_line (); Ecaml.Point.column_number () in
-    let right = Ecaml.Point.end_of_line (); Ecaml.Point.column_number () in
+    let left =
+      Ecaml.Point.beginning_of_line ();
+      Ecaml.Point.column_number ()
+    in
+    let right =
+      Ecaml.Point.end_of_line ();
+      Ecaml.Point.column_number ()
+    in
     Ecaml.Point.goto_column p;
-    left, right
+    (left, right)
   in
 
-  let get_rows_min_max () = 1, line_count in
+  let get_rows_min_max () = (1, line_count) in
 
-  let (>>=) o f = Option.iter f o in
+  let ( >>= ) o f = Option.iter f o in
   let rec move history =
     input history >>= fun input ->
-
     match input with
-    | #horizontal as input ->
-       let a, z = match history with `H d -> d | `V _ -> get_cols_min_max () in
-       begin match input with
-       | `Left ->
-          let z = Ecaml.Point.column_number () in
-          if a <> z then (
-            Ecaml.Point.goto_column ((a + z) / 2);
-            move (`H (a, z))
-          )
-       | `Right ->
-          let a = Ecaml.Point.column_number () in
-          if a <> z then (
-            Ecaml.Point.goto_column ((a + z + 1) / 2);
-            move (`H (a, z))
-          )
-       end
-    | #vertical as input ->
-       let a, z = match history with `V d -> d | `H _ -> get_rows_min_max () in
-       begin match input with
-       | `Up ->
-          let z = Ecaml.Point.line_number () in
-          if a <> z then (
-            Ecaml.Point.goto_line ((a + z) / 2);
-            move (`V (a, z))
-          )
-       | `Down ->
-          let a = Ecaml.Point.line_number () in
-          if a <> z then (
-            Ecaml.Point.goto_line ((a + z + 1) / 2);
-            move (`V (a, z))
-          )
-       end
+    | #horizontal as input -> (
+        let a, z =
+          match history with `H d -> d | `V _ -> get_cols_min_max ()
+        in
+        match input with
+        | `Left ->
+            let z = Ecaml.Point.column_number () in
+            if a <> z then (
+              Ecaml.Point.goto_column ((a + z) / 2);
+              move (`H (a, z)) )
+        | `Right ->
+            let a = Ecaml.Point.column_number () in
+            if a <> z then (
+              Ecaml.Point.goto_column ((a + z + 1) / 2);
+              move (`H (a, z)) ) )
+    | #vertical as input -> (
+        let a, z =
+          match history with `V d -> d | `H _ -> get_rows_min_max ()
+        in
+        match input with
+        | `Up ->
+            let z = Ecaml.Point.line_number () in
+            if a <> z then (
+              Ecaml.Point.goto_line ((a + z) / 2);
+              move (`V (a, z)) )
+        | `Down ->
+            let a = Ecaml.Point.line_number () in
+            if a <> z then (
+              Ecaml.Point.goto_line ((a + z + 1) / 2);
+              move (`V (a, z)) ) )
   in
   move (`V (get_rows_min_max ()))
 
@@ -106,28 +110,29 @@ let dicho_move () =
 let my_find_alternate_file () =
   match Ecaml.Current_buffer.file_name () with
   | None -> ()
-  | Some s ->
-     let prefix, klass = classify_filename s in
-     let intf = prefix ^ "_intf.ml" in
-     let mli = prefix ^ ".mli" in
-     let ml = prefix ^ ".ml" in
-     let cycle = match klass with
-       | `Ml -> [intf; mli]
-       | `Intf -> [mli; ml]
-       | `Mli -> [ml; intf]
-       | `None -> []
-     in
-     let file_exists s =
-       let open Unix in
-       match access s [R_OK] with
-       | exception Unix_error _ -> false
-       | () -> true
-     in
-     match List.find_opt file_exists cycle with
-     | None -> Ecaml.message "No alternate file found"
-     | Some path ->
-        Ecaml.message ("Going to: " ^ path);
-        Ecaml.Selected_window.find_file path |> ignore
+  | Some s -> (
+      let prefix, klass = classify_filename s in
+      let intf = prefix ^ "_intf.ml" in
+      let mli = prefix ^ ".mli" in
+      let ml = prefix ^ ".ml" in
+      let cycle =
+        match klass with
+        | `Ml -> [ intf; mli ]
+        | `Intf -> [ mli; ml ]
+        | `Mli -> [ ml; intf ]
+        | `None -> []
+      in
+      let file_exists s =
+        let open Unix in
+        match access s [ R_OK ] with
+        | exception Unix_error _ -> false
+        | () -> true
+      in
+      match List.find_opt file_exists cycle with
+      | None -> Ecaml.message "No alternate file found"
+      | Some path ->
+          Ecaml.message ("Going to: " ^ path);
+          Ecaml.Selected_window.find_file path |> ignore )
 
 let my_merlin_locate () =
   print "Retrieving current location...";
@@ -135,7 +140,9 @@ let my_merlin_locate () =
   let window = Ecaml.Selected_window.get () in
   let buffer = Ecaml.Window.buffer_exn window in
   let path = Ecaml.Buffer.file_name buffer |> Option.get in
-  let line, column = Ecaml.Point.line_number (), Ecaml.Point.column_number () in
+  let line, column =
+    (Ecaml.Point.line_number (), Ecaml.Point.column_number ())
+  in
   let start = Some (Ecaml.Window.start window) in
   let oldloc = { pname; window; buffer; path; line; column; start } in
 
@@ -144,56 +151,61 @@ let my_merlin_locate () =
   let path', line', column' = locate_symbol_at_point_exn () in
   let path' = Core.Filename.realpath path' in
 
-  begin
-    match find_window_for_file path' with
-    | None ->
-       print @@ Printf.sprintf "Open %s %d %d (in current window)"
-                  path' line' column';
-       let pname' = pname in
-       let window' = window in
+  ( match find_window_for_file path' with
+  | None ->
+      print
+      @@ Printf.sprintf "Open %s %d %d (in current window)" path' line' column';
+      let pname' = pname in
+      let window' = window in
 
-       Ecaml.Value.Private.block_on_async [%here]
-         (fun () -> Ecaml.Selected_window.find_file path');
-       Ecaml.Point.goto_line_and_column Ecaml.Line_and_column.{
-           line = line'; column = column'
-       };
-       let buffer' = Ecaml.Window.buffer_exn window' in
-       let newloc = {
-           pname = pname'; window = window'; buffer = buffer'; path = path';
-           line = line'; column = column';
-           start = None
-         }
-       in
-       let a = { oldloc; newloc; volatile_buffer = true } in
-       Stack.push a action_history.a_done;
-       Stack.clear action_history.a_undone;
+      Ecaml.Value.Private.block_on_async [%here] (fun () ->
+          Ecaml.Selected_window.find_file path');
+      Ecaml.Point.goto_line_and_column
+        Ecaml.Line_and_column.{ line = line'; column = column' };
+      let buffer' = Ecaml.Window.buffer_exn window' in
+      let newloc =
+        {
+          pname = pname';
+          window = window';
+          buffer = buffer';
+          path = path';
+          line = line';
+          column = column';
+          start = None;
+        }
+      in
+      let a = { oldloc; newloc; volatile_buffer = true } in
+      Stack.push a action_history.a_done;
+      Stack.clear action_history.a_undone;
 
-       ()
+      ()
+  | Some (pname', window') ->
+      print
+      @@ Printf.sprintf "Gone to %s %d %d (found window for file)" path' line'
+           column';
+      activate_pname_safe pname';
+      Ecaml.Selected_window.set window';
+      find_file_safe path';
+      Ecaml.Point.goto_line_and_column
+        Ecaml.Line_and_column.{ line = line'; column = column' };
 
-    | Some (pname', window') ->
-       print @@ Printf.sprintf "Gone to %s %d %d (found window for file)"
-                  path' line' column';
-       activate_pname_safe pname';
-       Ecaml.Selected_window.set window';
-       find_file_safe path';
-       Ecaml.Point.goto_line_and_column Ecaml.Line_and_column.{
-           line = line'; column = column'
-       };
+      let buffer' = Ecaml.Window.buffer_exn window' in
+      let newloc =
+        {
+          pname = pname';
+          window = window';
+          buffer = buffer';
+          path = path';
+          line = line';
+          column = column';
+          start = None;
+        }
+      in
+      let a = { oldloc; newloc; volatile_buffer = false } in
+      Stack.push a action_history.a_done;
+      Stack.clear action_history.a_undone;
 
-       let buffer' = Ecaml.Window.buffer_exn window' in
-       let newloc = {
-           pname = pname'; window = window'; buffer = buffer'; path = path';
-           line = line'; column = column';
-           start = None
-         }
-       in
-       let a = { oldloc; newloc; volatile_buffer = false } in
-       Stack.push a action_history.a_done;
-       Stack.clear action_history.a_undone;
-
-       ()
-
-  end;
+      () );
 
   ()
 
@@ -207,48 +219,34 @@ let my_late_set_keys () =
 let () =
   Ecaml.defun_nullary_nil
     ("del-forward-blanks" |> Ecaml.Symbol.intern)
-    [%here]
-    ~interactive:No_arg
-    del_forward_blanks;
+    [%here] ~interactive:No_arg del_forward_blanks;
   set_key ~command:"del-forward-blanks" ~seq:"C-f";
 
   Ecaml.defun_nullary_nil
     ("dicho-move" |> Ecaml.Symbol.intern)
-    [%here]
-    ~interactive:No_arg
-    dicho_move;
+    [%here] ~interactive:No_arg dicho_move;
   set_key ~command:"dicho-move" ~seq:"C-q";
 
   Ecaml.defun_nullary_nil
     ("my-find-alternate-file" |> Ecaml.Symbol.intern)
-    [%here]
-    ~interactive:No_arg
-    my_find_alternate_file;
+    [%here] ~interactive:No_arg my_find_alternate_file;
   set_key ~command:"my-find-alternate-file" ~seq:"S-<f1>";
 
   Ecaml.defun_nullary_nil
     ("my-merlin-locate" |> Ecaml.Symbol.intern)
-    [%here]
-    ~interactive:No_arg
-    my_merlin_locate;
+    [%here] ~interactive:No_arg my_merlin_locate;
 
   Ecaml.defun_nullary_nil
     ("my-location-undo" |> Ecaml.Symbol.intern)
-    [%here]
-    ~interactive:No_arg
-    my_location_undo;
+    [%here] ~interactive:No_arg my_location_undo;
 
   Ecaml.defun_nullary_nil
     ("my-location-redo" |> Ecaml.Symbol.intern)
-    [%here]
-    ~interactive:No_arg
-    my_location_redo;
+    [%here] ~interactive:No_arg my_location_redo;
 
   Ecaml.defun_nullary_nil
     ("my-late-set-keys" |> Ecaml.Symbol.intern)
-    [%here]
-    ~interactive:No_arg
-    my_late_set_keys;
+    [%here] ~interactive:No_arg my_late_set_keys;
 
   Ecaml.provide ("my-ecaml" |> Ecaml.Symbol.intern);
   ()
