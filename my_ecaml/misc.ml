@@ -44,16 +44,20 @@ let find_file_safe path =
     Ecaml.Value.Private.block_on_async [%here] (fun () ->
         Ecaml.Selected_window.find_file path)
 
-let set_key ~command ~seq =
+let unset_key ~seq =
   let gkm = Ecaml.Keymap.global () in
-  let command = Ecaml.Keymap.Entry.Command (command_of_string command) in
   let seq = Ecaml.Key_sequence.create_exn seq in
   let abs = Ecaml.Keymap.Entry.Absent in
-  (* Unset everywhere before *)
   [ gkm ]
   @ Ecaml.Current_buffer.minor_mode_keymaps ()
   @ (Ecaml.Current_buffer.local_keymap () |> Option.to_list)
   |> List.iter (fun km -> Ecaml.Keymap.define_key km seq abs);
-  (* Set in global *)
+  ()
+
+let set_key ~command ~seq =
+  unset_key ~seq;
+  let seq = Ecaml.Key_sequence.create_exn seq in
+  let gkm = Ecaml.Keymap.global () in
+  let command = Ecaml.Keymap.Entry.Command (command_of_string command) in
   Ecaml.Keymap.define_key gkm seq command;
   ()

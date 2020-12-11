@@ -211,10 +211,17 @@ let my_merlin_locate () =
 
 let my_late_set_keys () =
   (* Set those shortcuts after merlin and such *)
+  unset_key ~seq:"C-c C-x"; (* A merlin shortcut that blocks my buf-move shortcuts *)
+  set_key ~command:"buf-move-right" ~seq:"C-c C-x <right>";
+  set_key ~command:"buf-move-left" ~seq:"C-c C-x <left>";
+  set_key ~command:"buf-move-up" ~seq:"C-c C-x <top>";
+  set_key ~command:"buf-move-down" ~seq:"C-c C-x <down>";
+
   set_key ~command:"merlin-occurrences" ~seq:"C-c C-o";
   set_key ~command:"my-merlin-locate" ~seq:"C-c C-l";
   set_key ~command:"my-location-undo" ~seq:"C-c [";
-  set_key ~command:"my-location-redo" ~seq:"C-c ]"
+  set_key ~command:"my-location-redo" ~seq:"C-c ]";
+  ()
 
 let () =
   Ecaml.defun_nullary_nil
