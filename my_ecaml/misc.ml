@@ -1,3 +1,12 @@
+type winloc = [ `Node of int * winloc | `Leaf ]
+
+let string_of_winloc wl =
+  let rec aux = function
+    | `Leaf -> []
+    | `Node (i, wl) -> (string_of_int i) :: aux wl
+  in
+  "[" ^ String.concat " ; " (aux wl) ^ "]"
+
 let print s =
   (* Ecaml.Point.insert (s ^ "\n"); *)
   Ecaml.message s
@@ -31,11 +40,15 @@ let get_buffer_window_opt buffer =
 
 let same_path p q = Core.Filename.realpath p = Core.Filename.realpath q
 
+let buffer_filename b = Ecaml.Buffer.file_name b |> Option.map Core.Filename.realpath
+
+let current_filename () = Ecaml.Current_buffer.file_name () |> Option.map Core.Filename.realpath
+
 let find_file_safe path =
   let act =
     match
       Ecaml.Selected_window.get ()
-      |> Ecaml.Window.buffer_exn |> Ecaml.Buffer.file_name
+      |> Ecaml.Window.buffer_exn |> buffer_filename
     with
     | None -> false
     | Some path' -> not (same_path path path')
@@ -61,3 +74,39 @@ let set_key ~command ~seq =
   let command = Ecaml.Keymap.Entry.Command (command_of_string command) in
   Ecaml.Keymap.define_key gkm seq command;
   ()
+
+let winloc_of_window_exn needle : winloc =
+  let open Ecaml.Window.Tree in
+  let rec fold_window_tree wintree k : winloc option =
+    match wintree with
+    | Window win when Ecaml.Window.eq win needle -> k (Some `Leaf)
+    | Window _ -> k None
+    | Combination { children; _ } -> fold_children children 0 k
+  and fold_children children i k : winloc option =
+    match children with
+    | [] -> k None
+    | hd::tl ->
+       fold_window_tree hd
+       @@ function
+         | Some winloc -> k (Some (`Node (i, winloc)))
+         | None -> fold_children tl (i + 1) k
+  in
+  match fold_window_tree Ecaml.Frame.(selected () |> window_tree) Fun.id with
+  | None -> failwith "Could not find window in wintree"
+  | Some winloc -> winloc
+
+let window_of_winloc_exn winloc : Ecaml.Window.t =
+  let open Ecaml.Window.Tree in
+  let rec aux winloc wintree =
+    match winloc, wintree with
+    | `Leaf, Window win -> win
+    | `Leaf, Combination _ ->
+       failwith "Could not find winloc in wintree (expected no Combination)"
+    | `Node _, Window _ ->
+       failwith "Could not find winloc in wintree (expected a Combination)"
+    | `Node (i, _), Combination { children; _ } when List.length children <= i ->
+       failwith "Could not find winloc in wintree (expected more children)"
+    | `Node (i, winloc), Combination { children; _ } ->
+       aux winloc (List.nth children i)
+  in
+  aux winloc Ecaml.Frame.(selected () |> window_tree)

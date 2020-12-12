@@ -108,7 +108,7 @@ let dicho_move () =
 
 (** Cycle between: 1. .ml -> 2. _inf.ml (if any) -> 3. .mli -> 1. *)
 let my_find_alternate_file () =
-  match Ecaml.Current_buffer.file_name () with
+  match current_filename () with
   | None -> ()
   | Some s -> (
       let prefix, klass = classify_filename s in
@@ -138,13 +138,17 @@ let my_merlin_locate () =
   print "Retrieving current location...";
   let pname = current_persp () |> pname_of_persp in
   let window = Ecaml.Selected_window.get () in
+  let winloc = winloc_of_window_exn window in
   let buffer = Ecaml.Window.buffer_exn window in
-  let path = Ecaml.Buffer.file_name buffer |> Option.get in
+  let path = match buffer_filename buffer with
+    | None -> failwith "Current buffer has no path"
+    | Some p -> p
+  in
   let line, column =
     (Ecaml.Point.line_number (), Ecaml.Point.column_number ())
   in
   let start = Some (Ecaml.Window.start window) in
-  let oldloc = { pname; window; buffer; path; line; column; start } in
+  let oldloc = { pname; winloc; buffer; path; line; column; start } in
 
   print "Waiting for (merlin/locate)...";
   (* let path', line', col' = "/home/nico/r/irmin/src/irmin/commit.mli", 20, 20 in *)
@@ -157,6 +161,7 @@ let my_merlin_locate () =
       @@ Printf.sprintf "Open %s %d %d (in current window)" path' line' column';
       let pname' = pname in
       let window' = window in
+      let winloc' = winloc in
 
       Ecaml.Value.Private.block_on_async [%here] (fun () ->
           Ecaml.Selected_window.find_file path');
@@ -166,7 +171,7 @@ let my_merlin_locate () =
       let newloc =
         {
           pname = pname';
-          window = window';
+          winloc = winloc';
           buffer = buffer';
           path = path';
           line = line';
@@ -180,9 +185,10 @@ let my_merlin_locate () =
 
       ()
   | Some (pname', window') ->
+      let winloc' = winloc_of_window_exn window' in
       print
-      @@ Printf.sprintf "Gone to %s %d %d (found window for file)" path' line'
-           column';
+      @@ Printf.sprintf "Gone to %s %s %s %d %d (found window for file)"
+           pname path' (string_of_winloc winloc') line' column';
       activate_pname_safe pname';
       Ecaml.Selected_window.set window';
       find_file_safe path';
@@ -193,7 +199,7 @@ let my_merlin_locate () =
       let newloc =
         {
           pname = pname';
-          window = window';
+          winloc = winloc';
           buffer = buffer';
           path = path';
           line = line';
@@ -211,7 +217,8 @@ let my_merlin_locate () =
 
 let my_late_set_keys () =
   (* Set those shortcuts after merlin and such *)
-  unset_key ~seq:"C-c C-x"; (* A merlin shortcut that blocks my buf-move shortcuts *)
+  unset_key ~seq:"C-c C-x";
+  (* A merlin shortcut that blocks my buf-move shortcuts *)
   set_key ~command:"buf-move-right" ~seq:"C-c C-x <right>";
   set_key ~command:"buf-move-left" ~seq:"C-c C-x <left>";
   set_key ~command:"buf-move-up" ~seq:"C-c C-x <top>";

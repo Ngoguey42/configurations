@@ -47,9 +47,9 @@ let buffers_of_persp (`Persp p) : _ list =
 let buffers_with_filename_of_persp p : (string * _) list =
   List.filter_map
     (fun buffer ->
-      match Ecaml.Buffer.file_name buffer with
+      match buffer_filename buffer with
       | None -> None
-      | Some s -> Some (Core.Filename.realpath s, buffer))
+      | Some s -> Some (s, buffer))
     (buffers_of_persp p)
 
 let activate_pname_safe pname =
@@ -68,7 +68,7 @@ let activate_pname_safe pname =
  *)
 type location = {
   pname : string;
-  window : window;
+  winloc : winloc;
   buffer : buffer;
   path : string;
   line : int;
@@ -76,17 +76,20 @@ type location = {
   start : position option;
 }
 
-let goto { pname; window; buffer; path; line; column; start } =
+let goto { pname; winloc; buffer; path; line; column; start } =
   activate_pname_safe pname;
+  let window = window_of_winloc_exn winloc in
+
   Ecaml.Selected_window.set window;
   if Ecaml.Buffer.is_live buffer then
     Ecaml.Selected_window.Blocking.switch_to_buffer buffer
   else find_file_safe path;
 
   Ecaml.Point.goto_line_and_column Ecaml.Line_and_column.{ line; column };
-  match start with
+  (match start with
   | None -> ()
-  | Some start -> Ecaml.Window.set_start window start
+  | Some start -> Ecaml.Window.set_start window start);
+  ()
 
 type action = { oldloc : location; newloc : location; volatile_buffer : bool }
 
@@ -100,10 +103,11 @@ let my_location_undo () =
   | Some ({ oldloc; newloc; volatile_buffer } as a) ->
       let kill = volatile_buffer && not (same_path oldloc.path newloc.path) in
       if kill then Ecaml.Buffer.Blocking.kill newloc.buffer;
-      goto oldloc;
       Stack.push a action_history.a_undone;
+      goto oldloc;
       print
-      @@ Printf.sprintf "Gone back to #%s %s %d %d%s" oldloc.pname oldloc.path
+      @@ Printf.sprintf "Gone back to #%s %s %s %d %d%s" oldloc.pname oldloc.path
+           (string_of_winloc oldloc.winloc)
            oldloc.line oldloc.column
            (if kill then " (and killed other)" else "")
 
@@ -111,10 +115,11 @@ let my_location_redo () =
   match Stack.pop_opt action_history.a_undone with
   | None -> print "Nothing to redo"
   | Some ({ newloc; _ } as a) ->
-      goto newloc;
       Stack.push a action_history.a_done;
+      goto newloc;
       print
-      @@ Printf.sprintf "Gone again to #%s %s %d %d" newloc.pname newloc.path
+      @@ Printf.sprintf "Gone again to #%s %s %s %d %d" newloc.pname newloc.path
+           (string_of_winloc newloc.winloc)
            newloc.line newloc.column
 
 (* Higher level helpers *)
@@ -137,23 +142,38 @@ let locate_symbol_at_point_exn () =
   (path, line, col)
 
 let find_window_for_file needle : (string * window) option =
-  (* Will change the perspective!!! Record previous state before calling *)
-  let nprefix, _nklass = classify_filename needle in
+  (* Will change the perspective because we are only looking for buffers with
+     a window attached.
+     Record previous state before calling. *)
+  let nprefix, nklass = classify_filename needle in
+
+  let pname0 = current_persp () |> pname_of_persp in
+  let buffer0_opt =
+    let b = Ecaml.Selected_window.get () |> Ecaml.Window.buffer_exn in
+    match buffer_filename b with None -> None | Some s -> Some (s, b)
+  in
 
   let folder pname path buffer previous_match =
-    let prefix, _klass = classify_filename path in
+    let prefix, klass = classify_filename path in
     if prefix <> nprefix then (
       print @@ Printf.sprintf "  %s doesnt match" path;
       (true, previous_match) )
     else (
       activate_pname_safe pname;
-      match get_buffer_window_opt buffer with
-      | None ->
+      match (get_buffer_window_opt buffer, klass = nklass, previous_match) with
+      | None, _, _ ->
           print @@ Printf.sprintf "  %s match but doesnt have a window" path;
           (true, previous_match)
-      | Some window ->
+      | Some window, true, _ ->
           print @@ Printf.sprintf "  %s match (stop iteration)" path;
-          (false, Some (pname, window)) )
+          (false, `Perfect (pname, window))
+      | Some window, false, `None ->
+          (* Only keep very first `Partial match *)
+          print @@ Printf.sprintf "  %s match (continue iteration)" path;
+          (false, `Partial (pname, window))
+      | Some _, false, _ ->
+          print @@ Printf.sprintf "  %s match but already have a partial" path;
+          (true, previous_match) )
   in
 
   let rec fold_buffers pname buffers acc k =
@@ -167,9 +187,24 @@ let find_window_for_file needle : (string * window) option =
     | [] -> acc
     | pname :: tl ->
         let buffers = persp_of_pname pname |> buffers_with_filename_of_persp in
+        let buffers =
+          (* Start with current buffer (if current persp) in order to give it a
+             higher priority *)
+          match (pname = pname0, buffer0_opt) with
+          | false, _ | _, None -> buffers
+          | true, Some buffer0 ->
+              let not_buffer0 b = not (Ecaml.Buffer.eq (snd buffer0) b) in
+              buffer0::List.filter (fun (_, b) -> not_buffer0 b) buffers
+        in
+
         print
         @@ Printf.sprintf "<%s> has %d buffers" pname (List.length buffers);
         (fold_buffers [@tailrec]) pname buffers acc @@ fun acc ->
         (fold_pnames [@tailrec]) tl acc
   in
-  (fold_pnames [@tailrec]) (pnames ()) None
+
+  (* Start with current persp in order to give it a higher priority *)
+  let pnames = pname0 :: (pnames () |> List.filter (( <> ) pname0)) in
+  match (fold_pnames [@tailrec]) pnames `None with
+  | `None -> None
+  | `Perfect tup | `Partial tup -> Some tup
