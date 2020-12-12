@@ -9,6 +9,7 @@
 open Misc
 open Persp
 
+(* My C-f ******************************************************************* *)
 let del_forward_blanks () =
   let rec aux () =
     let start = Ecaml.Point.get () in
@@ -25,6 +26,8 @@ let del_forward_blanks () =
       | _ -> ()
   in
   aux ()
+
+(* My dichotomy movement **************************************************** *)
 
 type horizontal = [ `Left | `Right ]
 
@@ -106,7 +109,9 @@ let dicho_move () =
   in
   move (`V (get_rows_min_max ()))
 
-(** Cycle between: 1. .ml -> 2. _inf.ml (if any) -> 3. .mli -> 1. *)
+(* Buffer cycle in window for ocaml ********************************************
+  Cycle between: 1. .ml -> 2. _inf.ml (if any) -> 3. .mli -> 1. *)
+
 let my_find_alternate_file () =
   match current_filename () with
   | None -> ()
@@ -134,13 +139,16 @@ let my_find_alternate_file () =
           Ecaml.message ("Going to: " ^ path);
           Ecaml.Selected_window.find_file path |> ignore )
 
+(* My `merlin-locate` support with persp ************************************ *)
+
 let my_merlin_locate () =
   print "Retrieving current location...";
   let pname = current_persp () |> pname_of_persp in
   let window = Ecaml.Selected_window.get () in
   let winloc = winloc_of_window_exn window in
   let buffer = Ecaml.Window.buffer_exn window in
-  let path = match buffer_filename buffer with
+  let path =
+    match buffer_filename buffer with
     | None -> failwith "Current buffer has no path"
     | Some p -> p
   in
@@ -187,8 +195,8 @@ let my_merlin_locate () =
   | Some (pname', window') ->
       let winloc' = winloc_of_window_exn window' in
       print
-      @@ Printf.sprintf "Gone to %s %s %s %d %d (found window for file)"
-           pname path' (string_of_winloc winloc') line' column';
+      @@ Printf.sprintf "Gone to %s %s %s %d %d (found window for file)" pname
+           path' (string_of_winloc winloc') line' column';
       activate_pname_safe pname';
       Ecaml.Selected_window.set window';
       find_file_safe path';
@@ -215,10 +223,12 @@ let my_merlin_locate () =
 
   ()
 
+(* The rest ***************************************************************** *)
+
+(** Set those shortcuts after merlin and such *)
 let my_late_set_keys () =
-  (* Set those shortcuts after merlin and such *)
+  (* Remove a merlin shortcut that blocks my buf-move shortcuts *)
   unset_key ~seq:"C-c C-x";
-  (* A merlin shortcut that blocks my buf-move shortcuts *)
   set_key ~command:"buf-move-right" ~seq:"C-c C-x <right>";
   set_key ~command:"buf-move-left" ~seq:"C-c C-x <left>";
   set_key ~command:"buf-move-up" ~seq:"C-c C-x <top>";
@@ -231,36 +241,12 @@ let my_late_set_keys () =
   ()
 
 let () =
-  Ecaml.defun_nullary_nil
-    ("del-forward-blanks" |> Ecaml.Symbol.intern)
-    [%here] ~interactive:No_arg del_forward_blanks;
-  set_key ~command:"del-forward-blanks" ~seq:"C-f";
-
-  Ecaml.defun_nullary_nil
-    ("dicho-move" |> Ecaml.Symbol.intern)
-    [%here] ~interactive:No_arg dicho_move;
-  set_key ~command:"dicho-move" ~seq:"C-q";
-
-  Ecaml.defun_nullary_nil
-    ("my-find-alternate-file" |> Ecaml.Symbol.intern)
-    [%here] ~interactive:No_arg my_find_alternate_file;
-  set_key ~command:"my-find-alternate-file" ~seq:"S-<f1>";
-
-  Ecaml.defun_nullary_nil
-    ("my-merlin-locate" |> Ecaml.Symbol.intern)
-    [%here] ~interactive:No_arg my_merlin_locate;
-
-  Ecaml.defun_nullary_nil
-    ("my-location-undo" |> Ecaml.Symbol.intern)
-    [%here] ~interactive:No_arg my_location_undo;
-
-  Ecaml.defun_nullary_nil
-    ("my-location-redo" |> Ecaml.Symbol.intern)
-    [%here] ~interactive:No_arg my_location_redo;
-
-  Ecaml.defun_nullary_nil
-    ("my-late-set-keys" |> Ecaml.Symbol.intern)
-    [%here] ~interactive:No_arg my_late_set_keys;
-
+  defun_noarg [%here] del_forward_blanks ~seq:"C-f" "del-forward-blanks";
+  defun_noarg [%here] dicho_move ~seq:"C-q" "dicho-move";
+  defun_noarg [%here] my_find_alternate_file ~seq:"S-<f1>"
+    "my-find-alternate-file";
+  defun_noarg [%here] my_location_undo "my-location-undo";
+  defun_noarg [%here] my_location_redo "my-location-redo";
+  defun_noarg [%here] my_late_set_keys "my-late-set-keys";
   Ecaml.provide ("my-ecaml" |> Ecaml.Symbol.intern);
   ()

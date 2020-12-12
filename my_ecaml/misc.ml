@@ -1,11 +1,4 @@
-type winloc = [ `Node of int * winloc | `Leaf ]
-
-let string_of_winloc wl =
-  let rec aux = function
-    | `Leaf -> []
-    | `Node (i, wl) -> (string_of_int i) :: aux wl
-  in
-  "[" ^ String.concat " ; " (aux wl) ^ "]"
+(* Misc ********************************************************************* *)
 
 let print s =
   (* Ecaml.Point.insert (s ^ "\n"); *)
@@ -29,33 +22,17 @@ let classify_filename s =
   else if string_endswith s ".ml" then (sub s 0 (len - 3), `Ml)
   else (s, `None)
 
-let command_of_string s = Ecaml.Value.intern s |> Ecaml.Command.of_value_exn
-
-let get_buffer_window_opt buffer =
-  let v =
-    Ecaml.Value.intern "get-buffer-window"
-    |> (Fun.flip Ecaml.Value.funcall1) (Ecaml.Buffer.to_value buffer)
-  in
-  if Ecaml.Value.is_window v then Some (Ecaml.Window.of_value_exn v) else None
+(* Real path manipulations ************************************************** *)
 
 let same_path p q = Core.Filename.realpath p = Core.Filename.realpath q
 
-let buffer_filename b = Ecaml.Buffer.file_name b |> Option.map Core.Filename.realpath
+let buffer_filename b =
+  Ecaml.Buffer.file_name b |> Option.map Core.Filename.realpath
 
-let current_filename () = Ecaml.Current_buffer.file_name () |> Option.map Core.Filename.realpath
+let current_filename () =
+  Ecaml.Current_buffer.file_name () |> Option.map Core.Filename.realpath
 
-let find_file_safe path =
-  let act =
-    match
-      Ecaml.Selected_window.get ()
-      |> Ecaml.Window.buffer_exn |> buffer_filename
-    with
-    | None -> false
-    | Some path' -> not (same_path path path')
-  in
-  if act then
-    Ecaml.Value.Private.block_on_async [%here] (fun () ->
-        Ecaml.Selected_window.find_file path)
+(* Set and unset commands and shortcuts ************************************* *)
 
 let unset_key ~seq =
   let gkm = Ecaml.Keymap.global () in
@@ -71,9 +48,29 @@ let set_key ~command ~seq =
   unset_key ~seq;
   let seq = Ecaml.Key_sequence.create_exn seq in
   let gkm = Ecaml.Keymap.global () in
-  let command = Ecaml.Keymap.Entry.Command (command_of_string command) in
+  let command =
+    Ecaml.Keymap.Entry.Command
+      (Ecaml.Value.intern command |> Ecaml.Command.of_value_exn)
+  in
   Ecaml.Keymap.define_key gkm seq command;
   ()
+
+let defun_noarg thingy f ?seq command =
+  Ecaml.defun_nullary_nil
+    (Ecaml.Symbol.intern command)
+    thingy ~interactive:No_arg f;
+  match seq with None -> () | Some seq -> set_key ~command ~seq
+
+(* Window location in frame ************************************************* *)
+
+type winloc = [ `Node of int * winloc | `Leaf ]
+
+let string_of_winloc wl =
+  let rec aux = function
+    | `Leaf -> []
+    | `Node (i, wl) -> string_of_int i :: aux wl
+  in
+  "[" ^ String.concat " ; " (aux wl) ^ "]"
 
 let winloc_of_window_exn needle : winloc =
   let open Ecaml.Window.Tree in
@@ -85,11 +82,10 @@ let winloc_of_window_exn needle : winloc =
   and fold_children children i k : winloc option =
     match children with
     | [] -> k None
-    | hd::tl ->
-       fold_window_tree hd
-       @@ function
-         | Some winloc -> k (Some (`Node (i, winloc)))
-         | None -> fold_children tl (i + 1) k
+    | hd :: tl -> (
+        fold_window_tree hd @@ function
+        | Some winloc -> k (Some (`Node (i, winloc)))
+        | None -> fold_children tl (i + 1) k )
   in
   match fold_window_tree Ecaml.Frame.(selected () |> window_tree) Fun.id with
   | None -> failwith "Could not find window in wintree"
@@ -98,15 +94,42 @@ let winloc_of_window_exn needle : winloc =
 let window_of_winloc_exn winloc : Ecaml.Window.t =
   let open Ecaml.Window.Tree in
   let rec aux winloc wintree =
-    match winloc, wintree with
+    match (winloc, wintree) with
     | `Leaf, Window win -> win
     | `Leaf, Combination _ ->
-       failwith "Could not find winloc in wintree (expected no Combination)"
+        failwith "Could not find winloc in wintree (expected no Combination)"
     | `Node _, Window _ ->
-       failwith "Could not find winloc in wintree (expected a Combination)"
-    | `Node (i, _), Combination { children; _ } when List.length children <= i ->
-       failwith "Could not find winloc in wintree (expected more children)"
+        failwith "Could not find winloc in wintree (expected a Combination)"
+    | `Node (i, _), Combination { children; _ } when List.length children <= i
+      ->
+        failwith "Could not find winloc in wintree (expected more children)"
     | `Node (i, winloc), Combination { children; _ } ->
-       aux winloc (List.nth children i)
+        aux winloc (List.nth children i)
   in
   aux winloc Ecaml.Frame.(selected () |> window_tree)
+
+(* Misc again *************************************************************** *)
+
+(* Safe version of ecaml's get_buffer_window
+   https://github.com/janestreet/ecaml/issues/10 *)
+let get_buffer_window_opt buffer =
+  let v =
+    Ecaml.Value.intern "get-buffer-window"
+    |> (Fun.flip Ecaml.Value.funcall1) (Ecaml.Buffer.to_value buffer)
+  in
+  if Ecaml.Value.is_window v then Some (Ecaml.Window.of_value_exn v) else None
+
+(* Safe and sync `find_file` *)
+let find_file_safe path =
+  let act =
+    match
+      Ecaml.Selected_window.get () |> Ecaml.Window.buffer_exn |> buffer_filename
+    with
+    | None -> false
+    | Some path' -> not (same_path path path')
+  in
+  if act then
+    Ecaml.Value.Private.block_on_async [%here] (fun () ->
+        Ecaml.Selected_window.find_file path)
+
+(* End ********************************************************************** *)

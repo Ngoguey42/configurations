@@ -2,7 +2,7 @@
 
 open Misc
 
-(* Type shortcuts *)
+(* Type shortcuts *********************************************************** *)
 type persp = [ `Persp of Ecaml.Value.t ]
 
 type window = Ecaml.Window.t
@@ -11,7 +11,7 @@ type buffer = Ecaml.Buffer.t
 
 type position = Ecaml.Position.t
 
-(* Helper function *)
+(* Helper function ********************************************************** *)
 let pnames () : string list =
   let pnames =
     Ecaml.Value.intern "persp-names"
@@ -62,7 +62,7 @@ let activate_pname_safe pname =
       (Ecaml.Value.intern "selected-frame" |> Ecaml.Value.funcall0)
     |> ignore
 
-(* Global states
+(* Location ********************************************************************
    `start` cannot reliably extracted after a point movement,
    so let's not save it for destination locations (doesn't change anything)
  *)
@@ -86,10 +86,12 @@ let goto { pname; winloc; buffer; path; line; column; start } =
   else find_file_safe path;
 
   Ecaml.Point.goto_line_and_column Ecaml.Line_and_column.{ line; column };
-  (match start with
+  ( match start with
   | None -> ()
-  | Some start -> Ecaml.Window.set_start window start);
+  | Some start -> Ecaml.Window.set_start window start );
   ()
+
+(* Global history for undo/redo actions ************************************* *)
 
 type action = { oldloc : location; newloc : location; volatile_buffer : bool }
 
@@ -106,7 +108,8 @@ let my_location_undo () =
       Stack.push a action_history.a_undone;
       goto oldloc;
       print
-      @@ Printf.sprintf "Gone back to #%s %s %s %d %d%s" oldloc.pname oldloc.path
+      @@ Printf.sprintf "Gone back to #%s %s %s %d %d%s" oldloc.pname
+           oldloc.path
            (string_of_winloc oldloc.winloc)
            oldloc.line oldloc.column
            (if kill then " (and killed other)" else "")
@@ -122,7 +125,7 @@ let my_location_redo () =
            (string_of_winloc newloc.winloc)
            newloc.line newloc.column
 
-(* Higher level helpers *)
+(* Higher level helpers ***************************************************** *)
 let locate_symbol_at_point_exn () =
   let res = Ecaml.Value.intern "merlin/locate" |> Ecaml.Value.funcall0 in
   let path =
@@ -194,7 +197,7 @@ let find_window_for_file needle : (string * window) option =
           | false, _ | _, None -> buffers
           | true, Some buffer0 ->
               let not_buffer0 b = not (Ecaml.Buffer.eq (snd buffer0) b) in
-              buffer0::List.filter (fun (_, b) -> not_buffer0 b) buffers
+              buffer0 :: List.filter (fun (_, b) -> not_buffer0 b) buffers
         in
 
         print
