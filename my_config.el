@@ -9,8 +9,6 @@
 ;;                                                                            ;;
 ;;****************************************************************************;;
 
-
-
 ;; ************************************************************************** ;;
 ;; modes ******************************************************************** ;;
 ;; ************************************************************************** ;;
@@ -55,10 +53,8 @@
 (defvar seqdotel_path (concat confPath "/seq.el/"))
 (add-to-list 'load-path seqdotel_path)
 
-
 (defvar let-alist_path (concat confPath "/let-alist-1.0.4/"))
 (add-to-list 'load-path let-alist_path)
-
 
 (defvar dartmode_path (concat confPath "/dart-mode/"))
 (add-to-list 'load-path dartmode_path)
@@ -159,8 +155,7 @@
    (setq indicate-empty-lines t)
    (setq mode-name "🐫")
    (elide-head)
-   (when (functionp 'flyspell-prog-mode)
-     (flyspell-prog-mode))
+   ;; (when (functionp 'flyspell-prog-mode) (flyspell-prog-mode))
 
    ;; Quick and dirty setup of HIDESHOW minor mode for ocaml. Seems to work perfectly
    (add-to-list 'hs-special-modes-alist
