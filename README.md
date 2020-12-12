@@ -1,3 +1,4 @@
+# DON'T READ THAT!!!
 
 <br/>
 
@@ -173,7 +174,7 @@ nohup "/Applications/Spotify.app/Contents/MacOS/Spotify"&
 ----
 ----
 
-## DEPRECATED
+# DEPRECATED
 
 #### Nuke brew and opam, reinstall (DEPRECATED)
 ```sh
