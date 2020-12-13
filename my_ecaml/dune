@@ -6,7 +6,7 @@
 (executable
  (name plugin)
  (public_name my-ecaml)
- (libraries ecaml)
+ (libraries ecaml str)
  (preprocess
   (pps ppx_jane -allow-unannotated-ignores))
  (modes native shared_object))

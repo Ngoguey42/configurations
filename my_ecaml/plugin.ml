@@ -8,6 +8,7 @@
 *)
 open Misc
 open Persp
+open Context_of_line
 
 (* My C-f ******************************************************************* *)
 let del_forward_blanks () =
@@ -223,15 +224,28 @@ let my_merlin_locate () =
 
   ()
 
+(* Context of line ********************************************************** *)
+
+let my_context_of_line () =
+  let lhs =
+    Ecaml.Current_buffer.file_name ()
+    |> Option.map (fun s -> s ^ " | ")
+    |> Option.value ~default:""
+  in
+  let rhs =
+    Ecaml.Current_buffer.contents ~end_:(Ecaml.Point.get ()) ()
+    |> Ecaml.Text.to_utf8_bytes |> String.split_on_char '\n' |> fold_lines
+    |> string_of_map
+  in
+  Ecaml.message (lhs ^ rhs)
+
 (* The rest ***************************************************************** *)
 
 let override_merlin_lighter () =
   let g () = " 🧙" in
   Ecaml.defun_nullary
     (Ecaml.Symbol.intern "merlin-lighter")
-    [%here]
-    (Ecaml.Defun.Returns.Returns Ecaml.Value.Type.string)
-    g
+    [%here] (Ecaml.Defun.Returns.Returns Ecaml.Value.Type.string) g
 
 (** Set those shortcuts after merlin and such *)
 let my_late_set_keys () =
@@ -252,7 +266,8 @@ let my_late_set_keys () =
 
 let () =
   defun_noarg [%here] del_forward_blanks ~seq:"C-f" "del-forward-blanks";
-  defun_noarg [%here] dicho_move ~seq:"C-q" "dicho-move";
+  (* defun_noarg [%here] dicho_move ~seq:"C-q" "dicho-move"; *)
+  defun_noarg [%here] my_context_of_line ~seq:"C-q" "my-context-of-line";
   defun_noarg [%here] my_find_alternate_file ~seq:"S-<f1>"
     "my-find-alternate-file";
   defun_noarg [%here] my_merlin_locate "my-merlin-locate";
