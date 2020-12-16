@@ -202,26 +202,26 @@ then
     alias l="ls -gohFG"
 
     # TODO: check those 3 lines under macos
-    export C_INCLUDE_PATH="$HOME/.brew/include:$HOME/.brew/include/freetype2"
-    export CPLUS_INCLUDE_PATH="$HOME/.brew/include:$HOME/.brew/include/freetype2"
-    export LIBRARY_PATH="$HOME/.brew/lib"
+    # export C_INCLUDE_PATH="$HOME/.brew/include:$HOME/.brew/include/freetype2"
+    # export CPLUS_INCLUDE_PATH="$HOME/.brew/include:$HOME/.brew/include/freetype2"
+    # export LIBRARY_PATH="$HOME/.brew/lib"
 
-    alias tig="~/.brew/bin/tig/"
+    # alias tig="~/.brew/bin/tig/"
     EDITOR="emacs"
     export PATH="`/usr/bin/python -u $NGOCONF_PATH/clean_path.py`"
-    export HOMEBREW_TEMP="/tmp/ngobrewtmp"
-    export HOMEBREW_CACHE="/tmp/ngobrewcache"
+    # export HOMEBREW_TEMP="/tmp/ngobrewtmp"
+    # export HOMEBREW_CACHE="/tmp/ngobrewcache"
     # . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
     # eval `opam config env`
-    alias ack="~/.brew/bin/ack"
-    alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --kiosk --args 'file://'`pwd`'/' 2>/dev/null"
-    alias chromegit="$NGOCONF_PATH/chromegit.sh"
-    alias kic='ls -dltu /nfs/z*/*/*/* |  awk  '"'"'{printf "%15s (%s) %3s %2s %s\n", $3, $4, $6, $7, $8}'"'"' | rev | uniq -f4 | rev'
-    alias qui='_(){ ldapsearch uid="$1" ; }; _'
+    # alias ack="~/.brew/bin/ack"
+    # alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --kiosk --args 'file://'`pwd`'/' 2>/dev/null"
+    # alias chromegit="$NGOCONF_PATH/chromegit.sh"
+    # alias kic='ls -dltu /nfs/z*/*/*/* |  awk  '"'"'{printf "%15s (%s) %3s %2s %s\n", $3, $4, $6, $7, $8}'"'"' | rev | uniq -f4 | rev'
+    # alias qui='_(){ ldapsearch uid="$1" ; }; _'
 
-    alias cddown="cd ~/Downloads/"
-    alias cddesk="cd ~/Desktop/"
-    alias cddocs="cd ~/Documents/"
+    # alias cddown="cd ~/Downloads/"
+    # alias cddesk="cd ~/Desktop/"
+    # alias cddocs="cd ~/Documents/"
 
 fi
 
