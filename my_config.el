@@ -256,6 +256,8 @@
 (require 'elide-head)
 (add-to-list 'elide-head-headers-to-hide
              '("Copyright (c)" . "OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE."))
+(add-to-list 'elide-head-headers-to-hide
+             '("The MIT License" . "all copies or substantial portions of the Software."))
 
 ;; minor perspective(minor)
 (defvar perspdotel_path (concat confPath "/persp-mode.el/"))

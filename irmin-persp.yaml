@@ -1,0 +1,536 @@
+# ./src/irmin/store_intf.ml
+# ./src/irmin/tree_intf.ml
+# ./src/irmin-layers/irmin_layers_intf.ml
+# ./src/irmin-pack/checks_intf.ml
+# ./src/irmin-pack/dict_intf.ml
+# ./src/irmin-pack/inode_intf.ml
+# ./src/irmin-pack/inode_layers_intf.ml
+# ./src/irmin-pack/pack_intf.ml
+# ./src/irmin-pack/store_intf.ml
+
+perspectives:
+
+# root **********************************************************************
+  "f1/07":
+    - ./dune-project
+    - ./Makefile
+  "f1/08":
+    - ./README.md
+    - ./README_PPX.md
+  "f1/09":
+    - ./CHANGES.md
+  "f1/04":
+    - ./.ocamlformat
+    - ./.ocamlformat-ignore
+  "f1/05":
+    - ./bench/irmin-pack/dune # ^^^
+    - ./bench/irmin-pack/layers.mli
+    - ./bench/irmin-pack/main.mli
+  "f1/06":
+  "f1/01":
+  "f1/02":
+  "f1/03":
+  "f1/00":
+  "f1/0":
+    - ./persp.yaml
+  "f1/0+":
+    - ./LICENSE.md
+
+# src/irmin **********************************************************************
+  "f1/17":
+    - ./src/irmin/dune # ^^^
+    - ./src/irmin/irmin.mli # $$$
+    - ./src/irmin/s.ml # %%%
+  "f1/18":
+    - [./src/irmin/type.mli, ./src/irmin/branch.mli, ./src/irmin/lock.mli ]
+    - [./src/irmin/path.mli, ./src/irmin/version.ml, ./src/irmin/stdlib_ext.mli]
+  "f1/19":
+    - ./src/irmin/slice.mli
+    - ./src/irmin/sync.mli
+    - ./src/irmin/sync_ext.mli
+  "f1/14":
+    - ./src/irmin/store_intf.ml
+    - ./src/irmin/tree_intf.ml
+  "f1/15":
+    - ./src/irmin/object_graph.mli
+    - ./src/irmin/node.mli
+  "f1/16":
+    - ./src/irmin/hash.mli
+    - ./src/irmin/commit.mli
+  "f1/11":
+    - ./src/irmin/contents.mli
+    - ./src/irmin/dot.mli
+    - ./src/irmin/watch.mli
+  "f1/12":
+  "f1/13":
+    - [./src/irmin/info.mli, ./src/irmin/merge.mli, ./src/irmin/conf.mli]
+    - [<up>, <up>, <up>]
+    - [<up>, <up>, <up>]
+    - [./src/irmin/diff.mli, <up>, <up>]
+  "f1/10":
+  "f1/1+":
+
+# src/irmin-pack **********************************************************************
+  # "f?/?7":
+  # "f?/?8":
+  # "f?/?9":
+  # "f?/?4":
+  # "f?/?5":
+  # "f?/?6":
+  # "f?/?1":
+  # "f?/?2":
+  # "f?/?3":
+  # "f?/?0":
+  # "f?/?+":
+    # - ./src/irmin-pack/dune # ^^^
+    # - ./src/irmin-pack/irmin_pack.ml # $$$
+    # - ./src/irmin-pack/s.ml # %%%
+    # - ./src/irmin-pack/checks.ml
+    # - ./src/irmin-pack/closeable.ml
+    # - ./src/irmin-pack/config.ml
+    # - ./src/irmin-pack/dict.ml
+    # - ./src/irmin-pack/inode.ml
+    # - ./src/irmin-pack/inode_layers.ml
+    # - ./src/irmin-pack/IO.ml
+    # - ./src/irmin-pack/IO_layers.ml
+    # - ./src/irmin-pack/irmin_pack_layers.ml
+    # - ./src/irmin-pack/layered_store.ml
+    # - ./src/irmin-pack/layout.ml
+    # - ./src/irmin-pack/lru.ml
+    # - ./src/irmin-pack/pack.ml
+    # - ./src/irmin-pack/pack_dict.ml
+    # - ./src/irmin-pack/pack_index.ml
+    # - ./src/irmin-pack/stats.ml
+    # - ./src/irmin-pack/store.ml
+    # - ./src/irmin-pack/utils.ml
+
+# src/irmin-unix **********************************************************************
+  # "f?/?7":
+  # "f?/?8":
+  # "f?/?9":
+  # "f?/?4":
+  # "f?/?5":
+  # "f?/?6":
+  # "f?/?1":
+  # "f?/?2":
+  # "f?/?3":
+  # "f?/?0":
+  # "f?/?+":
+    # - ./src/irmin-unix/dune # ^^^
+    # - ./src/irmin-unix/irmin_unix.ml # $$$
+    # - ./src/irmin-unix/bin/dune # ^^^
+    # - ./src/irmin-unix/bin/main.ml
+    # - ./src/irmin-unix/cli.ml
+    # - ./src/irmin-unix/fs.ml
+    # - ./src/irmin-unix/graphql.ml
+    # - ./src/irmin-unix/hook.ml
+    # - ./src/irmin-unix/http.ml
+    # - ./src/irmin-unix/info.ml
+    # - ./src/irmin-unix/resolver.ml
+    # - ./src/irmin-unix/xgit.ml
+
+# src/irmin-containers **********************************************************************
+  # "f?/?7":
+  # "f?/?8":
+  # "f?/?9":
+  # "f?/?4":
+  # "f?/?5":
+  # "f?/?6":
+  # "f?/?1":
+  # "f?/?2":
+  # "f?/?3":
+  # "f?/?0":
+  # "f?/?+":
+    # - ./src/irmin-containers/dune # ^^^
+    # - ./src/irmin-containers/irmin_containers.ml # $$$
+    # - ./src/irmin-containers/blob_log.ml
+    # - ./src/irmin-containers/counter.ml
+    # - ./src/irmin-containers/linked_log.ml
+    # - ./src/irmin-containers/lww_register.ml
+    # - ./src/irmin-containers/stores.ml
+    # - ./src/irmin-containers/time.ml
+
+# src/irmin-mirage **********************************************************************
+  # "f?/?7":
+  # "f?/?8":
+  # "f?/?9":
+  # "f?/?4":
+  # "f?/?5":
+  # "f?/?6":
+  # "f?/?1":
+  # "f?/?2":
+  # "f?/?3":
+  # "f?/?0":
+  # "f?/?+":
+    # - ./src/irmin-mirage/dune # ^^^
+    # - ./src/irmin-mirage/irmin_mirage.ml # $$$
+    # - ./src/irmin-mirage/git/dune # ^^^
+    # - ./src/irmin-mirage/git/irmin_mirage_git.ml
+    # - ./src/irmin-mirage/graphql/dune # ^^^
+    # - ./src/irmin-mirage/graphql/irmin_mirage_graphql.ml
+
+# src/irmin-http **********************************************************************
+  # "f?/?7":
+  # "f?/?8":
+  # "f?/?9":
+  # "f?/?4":
+  # "f?/?5":
+  # "f?/?6":
+  # "f?/?1":
+  # "f?/?2":
+  # "f?/?3":
+  # "f?/?0":
+  # "f?/?+":
+    # - ./src/irmin-http/dune # ^^^
+    # - ./src/irmin-http/irmin_http.ml # $$$
+    # - ./src/irmin-http/s.ml # %%%
+    # - ./src/irmin-http/closeable.ml
+    # - ./src/irmin-http/irmin_http_common.ml
+    # - ./src/irmin-http/irmin_http_server.ml
+
+# src/irmin-layers **********************************************************************
+  # "f?/?7":
+  # "f?/?8":
+  # "f?/?9":
+  # "f?/?4":
+  # "f?/?5":
+  # "f?/?6":
+  # "f?/?1":
+  # "f?/?2":
+  # "f?/?3":
+  # "f?/?0":
+  # "f?/?+":
+    # - ./src/irmin-layers/dune # ^^^
+    # - ./src/irmin-layers/irmin_layers.ml # $$$
+    # - ./src/irmin-layers/layered_store.ml
+    # - ./src/irmin-layers/stats.ml
+
+# src/irmin-git **********************************************************************
+  # "f?/?7":
+  # "f?/?8":
+  # "f?/?9":
+  # "f?/?4":
+  # "f?/?5":
+  # "f?/?6":
+  # "f?/?1":
+  # "f?/?2":
+  # "f?/?3":
+  # "f?/?0":
+  # "f?/?+":
+    # - ./src/irmin-git/dune # ^^^
+    # - ./src/irmin-git/irmin_git.ml # $$$
+    # - ./src/irmin-git/closeable.ml
+
+# src/irmin-graphql **********************************************************************
+  # "f?/?7":
+  # "f?/?8":
+  # "f?/?9":
+  # "f?/?4":
+  # "f?/?5":
+  # "f?/?6":
+  # "f?/?1":
+  # "f?/?2":
+  # "f?/?3":
+  # "f?/?0":
+  # "f?/?+":
+    # - ./src/irmin-graphql/dune # ^^^
+    # - ./src/irmin-graphql/server.ml
+
+# src/irmin-chunk **********************************************************************
+  # "f?/?7":
+  # "f?/?8":
+  # "f?/?9":
+  # "f?/?4":
+  # "f?/?5":
+  # "f?/?6":
+  # "f?/?1":
+  # "f?/?2":
+  # "f?/?3":
+  # "f?/?0":
+  # "f?/?+":
+    # - ./src/irmin-chunk/dune # ^^^
+    # - ./src/irmin-chunk/irmin_chunk.ml # $$$
+
+# src/irmin-fs **********************************************************************
+  # "f?/?7":
+  # "f?/?8":
+  # "f?/?9":
+  # "f?/?4":
+  # "f?/?5":
+  # "f?/?6":
+  # "f?/?1":
+  # "f?/?2":
+  # "f?/?3":
+  # "f?/?0":
+  # "f?/?+":
+    # - ./src/irmin-fs/dune # ^^^
+    # - ./src/irmin-fs/irmin_fs.ml # $$$
+
+# src/irmin-mem **********************************************************************
+  # "f?/?7":
+  # "f?/?8":
+  # "f?/?9":
+  # "f?/?4":
+  # "f?/?5":
+  # "f?/?6":
+  # "f?/?1":
+  # "f?/?2":
+  # "f?/?3":
+  # "f?/?0":
+  # "f?/?+":
+    # - ./src/irmin-mem/dune # ^^^
+    # - ./src/irmin-mem/irmin_mem.ml # $$$
+
+# src/ppx_irmin **********************************************************************
+  # "f?/?7":
+  # "f?/?8":
+  # "f?/?9":
+  # "f?/?4":
+  # "f?/?5":
+  # "f?/?6":
+  # "f?/?1":
+  # "f?/?2":
+  # "f?/?3":
+  # "f?/?0":
+  # "f?/?+":
+    # - ./src/ppx_irmin/dune # ^^^
+    # - ./src/ppx_irmin/ppx_irmin.ml # $$$
+
+# src/irmin-test **********************************************************************
+  # "f?/?7":
+    # - ./src/irmin-test/dune # ^^^
+    # - ./src/irmin-test/irmin_test.ml # $$$
+  # "f?/?8":
+  # "f?/?9":
+  # "f?/?4":
+  # "f?/?5":
+  # "f?/?6":
+  # "f?/?1":
+  # "f?/?2":
+  # "f?/?3":
+  # "f?/?0":
+  # "f?/?+":
+    # - ./src/irmin-test/common.ml
+    # - ./src/irmin-test/irmin_bench.ml
+    # - ./src/irmin-test/layered_store.ml
+    # - ./src/irmin-test/rusage.ml
+    # - ./src/irmin-test/rusage_stubs.c
+    # - ./src/irmin-test/store.ml
+
+
+
+
+
+
+
+
+
+# examples **********************************************************************
+  # "f?/?7":
+  # "f?/?8":
+  # "f?/?9":
+  # "f?/?4":
+  # "f?/?5":
+  # "f?/?6":
+  # "f?/?1":
+  # "f?/?2":
+  # "f?/?3":
+  # "f?/?0":
+  # "f?/?+":
+    # - ./examples/dune # ^^^
+    # - ./examples/config.ml
+    # - ./examples/custom_graphql.ml
+    # - ./examples/custom_merge.ml
+    # - ./examples/deploy.ml
+    # - ./examples/irmin_git_store.ml
+    # - ./examples/process.ml
+    # - ./examples/push.ml
+    # - ./examples/readme.ml
+    # - ./examples/sync.ml
+    # - ./examples/trees.ml
+
+# test/irmin-chunk **********************************************************************
+  # "f?/?7":
+  # "f?/?8":
+  # "f?/?9":
+  # "f?/?4":
+  # "f?/?5":
+  # "f?/?6":
+  # "f?/?1":
+  # "f?/?2":
+  # "f?/?3":
+  # "f?/?0":
+  # "f?/?+":
+    # - ./test/irmin-chunk/dune # ^^^
+    # - ./test/irmin-chunk/test.ml
+    # - ./test/irmin-chunk/test_chunk.ml
+
+# test/irmin-containers **********************************************************************
+  # "f?/?7":
+  # "f?/?8":
+  # "f?/?9":
+  # "f?/?4":
+  # "f?/?5":
+  # "f?/?6":
+  # "f?/?1":
+  # "f?/?2":
+  # "f?/?3":
+  # "f?/?0":
+  # "f?/?+":
+    # - ./test/irmin-containers/dune # ^^^
+    # - ./test/irmin-containers/test.ml
+    # - ./test/irmin-containers/blob_log.ml
+    # - ./test/irmin-containers/common.ml
+    # - ./test/irmin-containers/counter.ml
+    # - ./test/irmin-containers/linked_log.ml
+    # - ./test/irmin-containers/lww_register.ml
+
+# test/irmin-fs **********************************************************************
+  # "f?/?7":
+  # "f?/?8":
+  # "f?/?9":
+  # "f?/?4":
+  # "f?/?5":
+  # "f?/?6":
+  # "f?/?1":
+  # "f?/?2":
+  # "f?/?3":
+  # "f?/?0":
+  # "f?/?+":
+    # - ./test/irmin-fs/dune # ^^^
+    # - ./test/irmin-fs/test.ml
+    # - ./test/irmin-fs/test_fs.ml
+
+# test/irmin- **********************************************************************
+  # "f?/?7":
+  # "f?/?8":
+  # "f?/?9":
+  # "f?/?4":
+  # "f?/?5":
+  # "f?/?6":
+  # "f?/?1":
+  # "f?/?2":
+  # "f?/?3":
+  # "f?/?0":
+  # "f?/?+":
+    # - ./test/irmin-git/dune # ^^^
+    # - ./test/irmin-git/test.ml
+    # - ./test/irmin-git/test_git.ml
+
+# test/irmin-graphql **********************************************************************
+  # "f?/?7":
+  # "f?/?8":
+  # "f?/?9":
+  # "f?/?4":
+  # "f?/?5":
+  # "f?/?6":
+  # "f?/?1":
+  # "f?/?2":
+  # "f?/?3":
+  # "f?/?0":
+  # "f?/?+":
+    # - ./test/irmin-graphql/dune # ^^^
+    # - ./test/irmin-graphql/test.ml
+    # - ./test/irmin-graphql/common.ml
+
+# test/irmin-http **********************************************************************
+  # "f?/?7":
+  # "f?/?8":
+  # "f?/?9":
+  # "f?/?4":
+  # "f?/?5":
+  # "f?/?6":
+  # "f?/?1":
+  # "f?/?2":
+  # "f?/?3":
+  # "f?/?0":
+  # "f?/?+":
+    # - ./test/irmin-http/dune # ^^^
+    # - ./test/irmin-http/test.ml
+    # - ./test/irmin-http/test_http.ml
+
+# test/irmin-mem **********************************************************************
+  # "f?/?7":
+  # "f?/?8":
+  # "f?/?9":
+  # "f?/?4":
+  # "f?/?5":
+  # "f?/?6":
+  # "f?/?1":
+  # "f?/?2":
+  # "f?/?3":
+  # "f?/?0":
+  # "f?/?+":
+    # - ./test/irmin-mem/dune # ^^^
+    # - ./test/irmin-mem/test.ml
+    # - ./test/irmin-mem/test_mem.ml
+    # - ./test/irmin-mem/bench.ml
+
+# test/irmin-pack **********************************************************************
+  # "f?/?7":
+  # "f?/?8":
+  # "f?/?9":
+  # "f?/?4":
+  # "f?/?5":
+  # "f?/?6":
+  # "f?/?1":
+  # "f?/?2":
+  # "f?/?3":
+  # "f?/?0":
+  # "f?/?+":
+    # - ./test/irmin-pack/dune # ^^^
+    # - ./test/irmin-pack/test.ml
+    # - ./test/irmin-pack/test_existing_stores.ml
+    # - ./test/irmin-pack/test_pack.ml
+    # - ./test/irmin-pack/test_utils.ml
+    # - ./test/irmin-pack/common.ml
+    # - ./test/irmin-pack/layered.ml
+    # - ./test/irmin-pack/multiple_instances.ml
+
+# test/irmin-pack/cli **********************************************************************
+  # "f?/?7":
+  # "f?/?8":
+  # "f?/?9":
+  # "f?/?4":
+  # "f?/?5":
+  # "f?/?6":
+  # "f?/?1":
+  # "f?/?2":
+  # "f?/?3":
+  # "f?/?0":
+  # "f?/?+":
+    # - ./test/irmin-pack/cli/dune # ^^^
+    # - ./test/irmin-pack/cli/generate.ml
+    # - ./test/irmin-pack/cli/irmin_fsck.ml
+
+# test/irmin-unix **********************************************************************
+  # "f?/?7":
+  # "f?/?8":
+  # "f?/?9":
+  # "f?/?4":
+  # "f?/?5":
+  # "f?/?6":
+  # "f?/?1":
+  # "f?/?2":
+  # "f?/?3":
+  # "f?/?0":
+  # "f?/?+":
+    # - ./test/irmin-unix/dune # ^^^
+    # - ./test/irmin-unix/test.ml
+    # - ./test/irmin-unix/test_unix.ml
+
+# test/irmin **********************************************************************
+  # "f?/?7":
+  # "f?/?8":
+  # "f?/?9":
+  # "f?/?4":
+  # "f?/?5":
+  # "f?/?6":
+  # "f?/?1":
+  # "f?/?2":
+  # "f?/?3":
+  # "f?/?0":
+  # "f?/?+":
+    # - ./test/irmin/dune # ^^^
+    # - ./test/irmin/test.ml
+    # - ./test/irmin/test_tree.ml

@@ -1,0 +1,106 @@
+perspectives:
+
+# root **********************************************************************
+  # "f?/?7":
+  # "f?/?8":
+  # "f?/?9":
+  # "f?/?4":
+  # "f?/?5":
+  # "f?/?6":
+  # "f?/?1":
+  # "f?/?2":
+  # "f?/?3":
+  # "f?/?0":
+  # "f?/?+":    # - ./.ocamlformat
+    # - ./CHANGES.md
+    # - ./LICENSE
+    # - ./Makefile
+    # - ./README.md
+    # - ./bench/bench.ml
+    # - ./bench/bench.mli
+    # - ./bench/dune
+    # - ./dune-project
+    # - ./index-bench.opam
+    # - ./index.install
+    # - ./index.opam
+
+# src **********************************************************************
+  "f1/17":
+    - ./src/dune
+    - ./src/index_intf.ml
+  "f1/18":
+    - ./src/cache.ml
+    - ./src/fan.mli
+    - ./src/stats.mli
+  "f1/19":
+  "f1/14":
+    - ./src/checks_intf.ml
+    - ./src/layout.mli
+    - ./src/data.ml
+  "f1/15":
+    - ./src/io_array.mli
+    - ./src/search_intf.ml
+  "f1/16":
+    - ./src/io_intf.ml
+    - ./src/log.mli
+  "f1/11":
+  "f1/12":
+  "f1/13":
+  "f1/10":
+  "f1/1+":    
+
+# src/unix **********************************************************************
+  # "f?/?7":
+  # "f?/?8":
+  # "f?/?9":
+  # "f?/?4":
+  # "f?/?5":
+  # "f?/?6":
+  # "f?/?1":
+  # "f?/?2":
+  # "f?/?3":
+  # "f?/?0":
+  # "f?/?+":    # - ./src/unix/dune
+    # - ./src/unix/index_unix.mli
+    # - ./src/unix/pread.c
+    # - ./src/unix/pwrite.c
+    # - ./src/unix/raw.mli
+    # - ./src/unix/syscalls.mli
+
+# test **********************************************************************
+  # "f?/?7":
+  # "f?/?8":
+  # "f?/?9":
+  # "f?/?4":
+  # "f?/?5":
+  # "f?/?6":
+  # "f?/?1":
+  # "f?/?2":
+  # "f?/?3":
+  # "f?/?0":
+  # "f?/?+":    # - ./test/dune
+    # - ./test/cache.ml
+    # - ./test/main.ml
+    # - ./test/search.ml
+    # - ./test/cli/dune
+    # - ./test/cli/generate.ml
+    # - ./test/cli/index-fsck-help.txt
+    # - ./test/cli/index_fsck.ml
+    # - ./test/cli/stat.t/run.t
+    # - ./test/fuzz/fan/dune
+    # - ./test/fuzz/fan/main.ml
+    # - ./test/fuzz/fan/main.mli
+    # - ./test/fuzz/input/000
+    # - ./test/unix/common.ml
+    # - ./test/unix/common.mli
+    # - ./test/unix/dune
+    # - ./test/unix/flush_callback.ml
+    # - ./test/unix/flush_callback.mli
+    # - ./test/unix/force_merge.ml
+    # - ./test/unix/force_merge.mli
+    # - ./test/unix/io_array.ml
+    # - ./test/unix/io_array.mli
+    # - ./test/unix/log.ml
+    # - ./test/unix/log.mli
+    # - ./test/unix/main.ml
+    # - ./test/unix/main.mli
