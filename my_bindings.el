@@ -103,12 +103,12 @@
 (global-set-key [?\e f2] 'hs-show-all)
 
 ;; (global-set-key [(f2)] '(lambda() "tab shortcut" (interactive) (insert "\t")))
-(global-set-key [(control f2)] 'ft-indent-buffer)
+;; (global-set-key [(control f2)] 'ft-indent-buffer)
 
 (global-set-key [(f3)] 'ft-put-debug1)
-(global-set-key [(shift f3)] 'ft-put-debug2)
-(global-set-key [(control f3)] 'ft-put-debug3)
-(global-set-key [?\e f3] 'ft-put-debug4)
+;; (global-set-key [(shift f3)] 'ft-put-debug2)
+;; (global-set-key [(control f3)] 'ft-put-debug3)
+;; (global-set-key [?\e f3] 'ft-put-debug4)
 
 ;; BLOCK 2/3 ******************************************** **
 (global-set-key [(f5)] 'ft-toggle-comment-on-line)
