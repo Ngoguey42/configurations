@@ -72,38 +72,39 @@ perspectives:
   "f1/1+":
 
 # src/irmin-pack **********************************************************************
-  # "f?/?7":
-  # "f?/?8":
-  # "f?/?9":
-  # "f?/?4":
-  # "f?/?5":
-  # "f?/?6":
-  # "f?/?1":
-  # "f?/?2":
-  # "f?/?3":
-  # "f?/?0":
-  # "f?/?+":
-    # - ./src/irmin-pack/dune # ^^^
-    # - ./src/irmin-pack/irmin_pack.ml # $$$
-    # - ./src/irmin-pack/s.ml # %%%
-    # - ./src/irmin-pack/checks.ml
-    # - ./src/irmin-pack/closeable.ml
-    # - ./src/irmin-pack/config.ml
-    # - ./src/irmin-pack/dict.ml
-    # - ./src/irmin-pack/inode.ml
-    # - ./src/irmin-pack/inode_layers.ml
-    # - ./src/irmin-pack/IO.ml
-    # - ./src/irmin-pack/IO_layers.ml
-    # - ./src/irmin-pack/irmin_pack_layers.ml
-    # - ./src/irmin-pack/layered_store.ml
-    # - ./src/irmin-pack/layout.ml
-    # - ./src/irmin-pack/lru.ml
-    # - ./src/irmin-pack/pack.ml
-    # - ./src/irmin-pack/pack_dict.ml
-    # - ./src/irmin-pack/pack_index.ml
-    # - ./src/irmin-pack/stats.ml
-    # - ./src/irmin-pack/store.ml
-    # - ./src/irmin-pack/utils.ml
+  "f1/27":
+    - ./src/irmin-pack/dune # ^^^
+    - ./src/irmin-pack/irmin_pack.mli # $$$
+    - ./src/irmin-pack/s.ml # %%%
+  "f1/28":
+    - ./src/irmin-pack/lru.mli
+    - ./src/irmin-pack/pack_index.mli
+    - ./src/irmin-pack/stats.mli
+  "f1/29":
+    - ./src/irmin-pack/dict_intf.ml
+    - ./src/irmin-pack/pack_dict.mli
+    - ./src/irmin-pack/layout.mli
+    - ./src/irmin-pack/IO.mli
+  "f1/24":
+    - ./src/irmin-pack/pack_intf.ml
+    - ./src/irmin-pack/inode_intf.ml
+    - ./src/irmin-pack/store_intf.ml
+  "f1/25":
+    - ./src/irmin-pack/ext.mli
+    - ./src/irmin-pack/closeable.mli
+  "f1/26":
+    - ./src/irmin-pack/checks_intf.ml
+    - ./src/irmin-pack/config.mli
+    - ./src/irmin-pack/utils.ml
+  "f1/21":
+    - ./src/irmin-pack/irmin_pack_layers.mli
+    - ./src/irmin-pack/layered_store.mli
+  "f1/22":
+    - ./src/irmin-pack/inode_layers_intf.ml
+    - ./src/irmin-pack/IO_layers.mli
+  "f1/23":
+  "f1/20":
+  "f1/2+":
 
 # src/irmin-unix **********************************************************************
   # "f?/?7":
