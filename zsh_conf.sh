@@ -31,7 +31,7 @@ autoload -U colors && colors
 # CONFIG FILES EDITION
 alias zshconf="e $NGOCONF_PATH/zsh_conf.sh"
 alias matrix="source ~/.zshrc"
-alias econf="e $NGOCONF_PATH/my_config.el"
+alias econf="e $NGOCONF_PATH/my_config.el $NGOCONF_PATH/my_bindings.el"
 
 # FILES EXPLORATION
 MYEXTENSIONS="cpp|hpp|c|h|php|tpp|ml|mli|vert|frag|geom|tesc|tese|glsl|xml|lua|py|R|dart|sh|html|css"

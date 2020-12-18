@@ -127,7 +127,7 @@
 ;; ************************************************************************** ;;
 ;; /F* KEYS ***************************************************************** ;;
 ;; ************************************************************************** ;;
-
+(global-unset-key (kbd "ESC ESC ESC"))
 (global-set-key (kbd "<kp-enter>") "\C-m")
 (global-set-key (kbd "DEL") 'backward-delete-char)
 (setq-default c-backspace-function 'backward-delete-char)

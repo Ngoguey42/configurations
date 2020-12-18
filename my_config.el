@@ -255,9 +255,11 @@
 
 (require 'elide-head)
 (add-to-list 'elide-head-headers-to-hide
-             '("Copyright (c)" . "OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE."))
+             '("Copyright (c)" . "WITH THE USE OR PERFORMANCE OF THIS SOFTWARE."))
 (add-to-list 'elide-head-headers-to-hide
              '("The MIT License" . "all copies or substantial portions of the Software."))
+(add-to-list 'elide-head-headers-to-hide
+             '("Permission to use, copy, modify, and/or" . "WITH THE USE OR PERFORMANCE OF THIS SOFTWARE."))
 
 ;; minor perspective(minor)
 (defvar perspdotel_path (concat confPath "/persp-mode.el/"))
@@ -287,16 +289,16 @@
 (defun ft-persp-activate-f1 (name)
   "Switch to frame."
   (interactive "sft-Perspective name to switch: f1/")
-  (if (member (concatenate 'string "f1/" name) (persp-names *persp-hash* nil))
-      (persp-activate (persp-add-new (concatenate 'string "f1/" name)) (selected-frame))
+  (if (member (concat "f1/" name) (persp-names *persp-hash* nil))
+      (persp-activate (persp-add-new (concat "f1/" name)) (selected-frame))
     )
   )
 
 (defun ft-persp-activate-f2 (name)
   "Switch to frame."
   (interactive "sft-Perspective name to switch: f2/")
-  (if (member (concatenate 'string "f2/" name) (persp-names *persp-hash* nil))
-      (persp-activate (persp-add-new (concatenate 'string "f2/" name)) (selected-frame))
+  (if (member (concat "f2/" name) (persp-names *persp-hash* nil))
+      (persp-activate (persp-add-new (concat "f2/" name)) (selected-frame))
     )
   )
 

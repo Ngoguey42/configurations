@@ -33,6 +33,7 @@ perspectives:
   "f1/00":
   "f1/0":
     - ./persp.yaml
+    - .
   "f1/0+":
     - ./LICENSE.md
 
