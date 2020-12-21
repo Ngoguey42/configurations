@@ -71,6 +71,21 @@ perspectives:
   "f1/10":
   "f1/1+":
 
+# src/irmin-layers **********************************************************************
+  "f1/37":
+    - [./src/irmin-layers/dune, ./src/irmin-layers/irmin_layers_intf.ml, ./src/irmin-layers/stats.mli]
+    - [./src/irmin-layers/layered_store.mli, <up>, <up>]
+  "f1/38":
+  "f1/39":
+  "f1/34":
+  "f1/35":
+  "f1/36":
+  "f1/31":
+  "f1/32":
+  "f1/33":
+  "f1/30":
+  "f1/3+":
+
 # src/irmin-pack **********************************************************************
   "f1/27":
     - ./src/irmin-pack/dune # ^^^
@@ -189,23 +204,6 @@ perspectives:
     # - ./src/irmin-http/closeable.ml
     # - ./src/irmin-http/irmin_http_common.ml
     # - ./src/irmin-http/irmin_http_server.ml
-
-# src/irmin-layers **********************************************************************
-  # "f?/?7":
-  # "f?/?8":
-  # "f?/?9":
-  # "f?/?4":
-  # "f?/?5":
-  # "f?/?6":
-  # "f?/?1":
-  # "f?/?2":
-  # "f?/?3":
-  # "f?/?0":
-  # "f?/?+":
-    # - ./src/irmin-layers/dune # ^^^
-    # - ./src/irmin-layers/irmin_layers.ml # $$$
-    # - ./src/irmin-layers/layered_store.ml
-    # - ./src/irmin-layers/stats.ml
 
 # src/irmin-git **********************************************************************
   # "f?/?7":
@@ -351,6 +349,26 @@ perspectives:
     # - ./examples/sync.ml
     # - ./examples/trees.ml
 
+# test/irmin-pack **********************************************************************
+  "f2/27":
+    - [./test/irmin-pack/dune, ./test/irmin-pack/test_pack.ml, ./test/irmin-pack/test_utils.ml]
+    - [./test/irmin-pack/test.ml, <up>, <up>]
+  "f2/28":
+  "f2/29":
+    - ./test/irmin-pack/common.mli
+  "f2/24":
+    - ./test/irmin-pack/test_existing_stores.ml
+    - ./test/irmin-pack/layered.ml
+    - ./test/irmin-pack/multiple_instances.ml
+  "f2/25":
+  "f2/26":
+  "f2/21":
+  "f2/22":
+  "f2/23":
+  "f2/20":
+  "f2/2+":
+
+
 # test/irmin-chunk **********************************************************************
   # "f?/?7":
   # "f?/?8":
@@ -468,26 +486,6 @@ perspectives:
     # - ./test/irmin-mem/test_mem.ml
     # - ./test/irmin-mem/bench.ml
 
-# test/irmin-pack **********************************************************************
-  # "f?/?7":
-  # "f?/?8":
-  # "f?/?9":
-  # "f?/?4":
-  # "f?/?5":
-  # "f?/?6":
-  # "f?/?1":
-  # "f?/?2":
-  # "f?/?3":
-  # "f?/?0":
-  # "f?/?+":
-    # - ./test/irmin-pack/dune # ^^^
-    # - ./test/irmin-pack/test.ml
-    # - ./test/irmin-pack/test_existing_stores.ml
-    # - ./test/irmin-pack/test_pack.ml
-    # - ./test/irmin-pack/test_utils.ml
-    # - ./test/irmin-pack/common.ml
-    # - ./test/irmin-pack/layered.ml
-    # - ./test/irmin-pack/multiple_instances.ml
 
 # test/irmin-pack/cli **********************************************************************
   # "f?/?7":
