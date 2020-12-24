@@ -22,6 +22,18 @@ let classify_filename s =
   else if string_endswith s ".ml" then (sub s 0 (len - 3), `Ml)
   else (s, `None)
 
+let first_line_of_cmd cmd =
+  let rec read_lines chan =
+    match input_line chan with
+    | exception End_of_file -> []
+    | s -> s :: read_lines chan
+  in
+  let chan = Unix.open_process_in cmd in
+  let l = read_lines chan in
+  match (Unix.close_process_in chan, l) with
+  | Unix.WEXITED 0, [ s ] -> Some s
+  | _, _ -> None
+
 (* Real path manipulations ************************************************** *)
 
 let same_path p q = Core.Filename.realpath p = Core.Filename.realpath q

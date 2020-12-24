@@ -239,6 +239,59 @@ let my_context_of_line () =
   in
   Ecaml.message (lhs ^ rhs)
 
+(* Open github ************************************************************** *)
+
+let open_github page_type () =
+  let aux () =
+    let ( let* ) v f = Result.map f v in
+    let ( let+ ) v f = Result.bind v f in
+    let+ path =
+      current_filename ()
+      |> Option.to_result ~none:"open_github failed: buffer not a file"
+    in
+    let+ dir =
+      if Sys.is_directory path then Ok path
+      else if Sys.file_exists path then Ok (Filename.dirname path)
+      else Error "open_github failed: buffer strange"
+    in
+    let+ origin =
+      Printf.sprintf "git -C '%s' remote get-url origin 2>/dev/null" dir
+      |> first_line_of_cmd
+      |> Option.to_result ~none:"open_github failed: couldn't fetch origin url"
+    in
+    let+ origin =
+      if Base.String.substr_index origin ~pattern:"http" = None then
+        Error "open_github failed: origin is not an http url"
+      else Ok origin
+    in
+    let+ repo_root =
+      Printf.sprintf "git -C '%s' rev-parse --show-toplevel 2>/dev/null" dir
+      |> first_line_of_cmd
+      |> Option.to_result
+           ~none:"open_github failed: couldn't get the root of the repo"
+    in
+    let repo_root = Core.Filename.realpath repo_root in
+    let+ path =
+      Base.String.chop_prefix path ~prefix:repo_root
+      |> Option.to_result
+           ~none:"open_github failed: couldn't relate repo root with file"
+    in
+    let path =
+      Base.String.strip ~drop:(function '/' -> true | _ -> false) path
+    in
+    let line = Ecaml.Point.line_number () in
+    let url =
+      match page_type with
+      | `Blob -> Printf.sprintf "%s/blob/master/%s#L%d" origin path line
+      | `Blame -> Printf.sprintf "%s/blame/master/%s#L%d" origin path line
+      | `Commits -> Printf.sprintf "%s/commits/master/%s" origin path
+    in
+    first_line_of_cmd ("open " ^ url ^ " 2>/dev/null") |> ignore;
+    print ("Opening: " ^ url);
+    Ok ()
+  in
+  (match aux () with Error e -> print e | Ok _ -> ())
+
 (* The rest ***************************************************************** *)
 
 let override_merlin_lighter () =
@@ -274,5 +327,9 @@ let () =
   defun_noarg [%here] my_location_undo "my-location-undo";
   defun_noarg [%here] my_location_redo "my-location-redo";
   defun_noarg [%here] my_late_set_keys "my-late-set-keys";
+  defun_noarg [%here] (open_github `Blob) ~seq:"C-c 1" "open_github_blob";
+  defun_noarg [%here] (open_github `Blame) ~seq:"C-c 2" "open_github_blame";
+  defun_noarg [%here] (open_github `Commits) ~seq:"C-c 3" "open_github_commits";
+
   Ecaml.provide ("my-ecaml" |> Ecaml.Symbol.intern);
   ()

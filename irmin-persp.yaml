@@ -24,8 +24,8 @@ perspectives:
     - ./.ocamlformat-ignore
   "f1/05":
     - ./bench/irmin-pack/dune # ^^^
-    - ./bench/irmin-pack/layers.mli
-    - ./bench/irmin-pack/main.mli
+    - ./bench/irmin-pack/layers.ml
+    - ./bench/irmin-pack/main.ml
   "f1/06":
   "f1/01":
   "f1/02":
