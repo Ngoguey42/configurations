@@ -175,19 +175,17 @@
 ;;/tuarzgeg
 
 ;;merlin
-(defvar merlin_path (concat confPath "/merlin/emacs/"))
-(add-to-list 'load-path merlin_path)
-
 (let ((opam-share (ignore-errors (car (process-lines "opam" "config" "var" "share")))))
   (when (and opam-share (file-directory-p opam-share))
+    ;; Register Merlin
+    (add-to-list 'load-path (expand-file-name "emacs/site-lisp" opam-share))
     (autoload 'merlin-mode "merlin" nil t nil)
+    ;; Automatically start it in OCaml buffers
     (add-hook 'tuareg-mode-hook 'merlin-mode t)
+    (add-hook 'caml-mode-hook 'merlin-mode t)
     (setq merlin-error-after-save nil)
-    (setq merlin-locate-in-new-window 0)
+    ;; Use opam switch to lookup ocamlmerlin binary
     (setq merlin-command 'opam)))
-
-;; (autoload 'merlin-mode "merlin" nil t nil)
-;; (add-hook 'tuareg-mode-hook 'merlin-mode t)
 ;;/merlin
 
 
