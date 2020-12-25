@@ -35,3 +35,5 @@ I use [persp-mode](https://github.com/Bad-ptr/persp-mode.el/) to associate proje
 <br/><br/>
 
 I found the perfect solution to remember about the details of the fun things in life like <ins>how to install CUDA</ins>, or <ins>how to setup a macbook</ins>, or <ins>how to install ubuntu [on an optimus laptop](https://www.youtube.com/watch?v=_36yNWw_07g)</ins> or <ins>how to shrink a wsl partition</ins>. I write down my little adventures! [./adventures/](https://github.com/Ngoguey42/configurations/tree/master/adventures)
+
+![ezg](https://user-images.githubusercontent.com/9285880/103137014-93605e00-46c5-11eb-8fa6-539a9f7565cc.gif)
