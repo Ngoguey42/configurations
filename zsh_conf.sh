@@ -1,32 +1,18 @@
+# ZSH CONFIG
 export ZSH=$HOME/.oh-my-zsh
-
 ZSH_THEME="robbyrussell"
 DISABLE_AUTO_UPDATE="true"
 DISABLE_LS_COLORS="true"
 COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="yyyy-mm-dd"
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
-
 source $ZSH/oh-my-zsh.sh
-
-# ZSH CONFIG
 zstyle ':completion:*:*:emacs:*:*files' ignored-patterns '*.o' '*.cmx' '*.cmi' '*.cmo'
 export ZSH_THEME_GIT_PROMPT_PREFIX="%{\e[01;34m%}%{\e[31m%}"
 export ZSH_THEME_GIT_PROMPT_CLEAN="%{\e[34m%}"
 export ZSH_THEME_GIT_PROMPT_DIRTY="%{\e[33m%}"
 autoload -U colors && colors
+export HISTSIZE=200000
 
 # CONFIG FILES EDITION
 alias zshconf="e $NGOCONF_PATH/zsh_conf.sh"
@@ -35,46 +21,16 @@ alias econf="e $NGOCONF_PATH/my_config.el"
 alias ebconf="e $NGOCONF_PATH/my_bindings.el"
 alias eeconf="e $NGOCONF_PATH/my_ecaml/plugin.ml"
 
-# FILES EXPLORATION
-MYEXTENSIONS="cpp|hpp|c|h|php|tpp|ml|mli|vert|frag|geom|tesc|tese|glsl|xml|lua|py|R|dart|sh|html|css"
-alias cloc='cloc --force-lang="C++",tpp --force-lang="HLSL",glsl --force-lang="HLSL",frag --force-lang="HLSL",geom --force-lang="HLSL",tese --force-lang="HLSL",tesc --force-lang="HLSL",vert'
-alias wccool='_(){ cat $@ | ack -v "^\s*(//|/\*|\*)"| ack -v "^\s*$" | wc; }; _'
-
 # OCAML
-alias o="rlwrap --prompt-colour=green ocaml"
-alias of="rlwrap --prompt-colour=green ocaml -init "
-alias oc="ocamlopt.opt"
-alias ocl="
-printf '\033[31m' ;rm -r ./*.cmi && echo '\033[32mrm ./*.cmi'
-printf '\033[31m' ;rm -r ./*.cmo && echo '\033[32mrm ./*.cmo'
-printf '\033[31m' ;rm -r ./*.cmx && echo '\033[32mrm ./*.cmx'
-printf '\033[31m' ;rm -r ./*.o && echo '\033[32mrm ./*.o'
-printf '\033[0m'"
-alias oclr="
-printf '\033[31m' ;rm -r **/*.cmi && echo '\033[32mrm **/*.cmi'
-printf '\033[31m' ;rm -r **/*.cmo && echo '\033[32mrm **/*.cmo'
-printf '\033[31m' ;rm -r **/*.cmx && echo '\033[32mrm **/*.cmx'
-printf '\033[31m' ;rm -r **/*.o && echo '\033[32mrm **/*.o'
-printf '\033[0m'"
-alias ok='ocamlopt graphics.cmxa -i *.ml && ocamlopt graphics.cmxa *.ml && ocl && ./a.out'
-alias okt='rr ; ocamlopt.opt *.ml && printf "\033[33m" && ocamlopt -i *.ml && printf "\033[0m" && time ./a.out && rm a.out && ocl'
-alias oktf='rr ; ocamlfind ocamlcp *.ml -package yojson -package core -thread -linkpkg && printf "\033[33m" && ocamlfind ocamlc -i *.ml -package yojson -package core -thread -linkpkg && printf "\033[0m" && time ./a.out && rm a.out && ocl'
-alias oktfna='rr ; ocamlfind ocamloptp *.ml -package yojson -package core -thread -linkpkg && printf "\033[33m" && ocamlfind ocamlc -i *.ml -package yojson -package core -thread -linkpkg && printf "\033[0m" && time ./a.out && rm a.out && ocl'
 
 # GIT RELATED
 export USER="ngoguey"
 export MAIL="ngoguey@student.42.fr"
 # export MAIL="ngoguey@airware.com"
-# export MAIL="ngoguey@student.42.fr"
 alias gitals="git add \`git ls-files\` ; git status"
-alias gitls="git ls-files"
-alias gitac="git add \`ls -1 **/*.($MYEXTENSIONS)\` ; git status"
-alias gitpom="git pull origin master"
 alias gits="git status"
 alias gitcm="git commit -m"
-alias gitcmf="git commit -F"
 alias gitck="git checkout"
-alias gitf="git fetch ; git status"
 alias gitcl="git clean -xn"
 alias gitclF="git clean -xf"
 alias gitcld="git clean -xdn"
@@ -82,18 +38,6 @@ alias gitcldF="git clean -xdf"
 alias groot='git rev-parse --show-toplevel'
 
 # MISC
-alias makevar='make -pn nosuchrule 2>/dev/null | grep -A1 "^# makefile"| grep -v "^#\|^--" | sort | uniq'
-alias scopcog="
-cog.py -I conf -rU include/configuration/cog_enums.h
-cog.py -I conf -rU include/configuration/cog_meshfill.h
-cog.py -I conf -rU srcs/configuration/cog_loadconf1.c
-cog.py -I conf -rU srcs/configuration/cog_loadconf2.c
-cog.py -I conf -rU srcs/configuration/cog_meshfill1.c
-cog.py -I conf -rU srcs/configuration/cog_meshfill2.c
-"
-alias lret="echo $?"
-alias save="pwd | cat > ~/.save_pwd"
-alias gogo="cd \`cat ~/.save_pwd\` ; clear"
 alias rr="
 printf '\033[31m' ;rm **/*~ 2>/dev/null && echo '\033[32mrm **/*~'
 printf '\033[31m' ;rm **/\#* && echo '\033[32mrm **/\#*'
@@ -103,13 +47,36 @@ printf '\033[31m' ;rm **/.\#* && echo '\033[32mrm **/.\#*'
 printf '\033[31m' ;rm -r **/.DS_Store && echo '\033[32mrm **/.DS_Store'
 printf '\033[31m' ;rm -r **/*.dSYM && echo '\033[32mrm **/*.dSYM'
 printf '\033[0m'"
-alias ch="chmod 644 \`ls -1d *.($MYEXTENSIONS)\` ; chmod 644 \`ls -1d *.h\`; chmod 744 Makefile ; chmod 644 auteur ; l"
-alias chr="chmod 644 \`ls -1d **/*.($MYEXTENSIONS)\` ; chmod 744 Makefile ; chmod 644 auteur ; lr"
-alias dumpsizeof="sh $NGOCONF_PATH/dump_sizeof.sh" #TODO: improve
-export HISTSIZE=20000
+
+alias ocamldepdot="ocaml unix.cma $NGOCONF_PATH/scripts/ocamldep-dot.ml"
+alias persp_of_yaml="python3 persp_of_yaml.py"
+alias sed_hashes="python3 sed_hashes.py"
 
 # LIBRARIES CONF ************************************************************ **
 export PYTEST_ADDOPTS="--color=yes"
+
+__conda_setup="$('$HOME/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "$HOME/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "$HOME/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="$HOME/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+test -r ~/.opam/opam-init/init.zsh && . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+# function opam_info {
+#     test -r ~/.opam/opam-init/init.zsh && opam switch show --safe 2>/dev/null | sed 's|.*/|*|'
+# }
+# test -r ~/.opam/opam-init/init.zsh && export PS1="{\$(opam_info)} $PS1" || true
 
 # SHLVL ********************************************************************* **
 if [[ $SHLVL -ge 2 ]]; then
@@ -119,23 +86,21 @@ fi
 
 # LOCATION SPECIFIC ********************************************************* **
 UNAME=`uname | cut -c1-6`
-
 if uname -r | grep -i microsoft >/dev/null
 then
     UNAME="WSL"
 fi
 
-if [ "$UNAME" = "WSL" ]
+if [ "$UNAME" = "WSL" ] # *************************************************** **
 then
     EDITOR="/usr/bin/emacs26 -nw"
     alias l="ls -gohFG --color"
     open(){
 	explorer.exe `wslpath -aw $1`
     }
-
 fi
 
-if [ "$UNAME" = "Linux" ]
+if [ "$UNAME" = "Linux" ] # ************************************************* **
 then
     alias spotify="nohup spotify &"
     EDITOR="/usr/bin/emacs -nw"
@@ -155,10 +120,9 @@ then
     export LD_LIBRARY_PATH=/usr/local/cuda-10.0/lib64:/usr/local/cuda/extras/CUPTI/lib64:$LD_LIBRARY_PATH
 
     export QT_STYLE_OVERRIDE=gtk2 # To silence `QGtkStyle could not resolve GTK` warning
-
 fi
 
-if [ "$UNAME" = "CYGWIN" ]
+if [ "$UNAME" = "CYGWIN" ] # ************************************************ **
 then
     # export DISABLE_AUTO_TITLE=true
     EDITOR="emacs"
@@ -167,19 +131,6 @@ then
     alias l="ls -gohFG --color"
     export PATH="`/usr/bin/python -u $NGOCONF_PATH/scripts/clean_path.py`"
 
-    export CAML_LD_LIBRARY_PATH="$HOME/.opam/system/lib/stublibs:/cygdrive/c/OCaml/lib/stublibs"
-    export MANPATH="$HOME/.opam/system/man:$MANPATH"
-    export CAMLP4LIB="C:/OCaml/lib/camlp4"
-    export CUDA_HOME='C:\\CUDA'
-    export GDAL_DATA=`cygpath -w '/cygdrive/c/Anaconda3/Library/share/gdal'`
-    export PYTHONPATH="`cygpath -w ~/buzz/buzzard`;`cygpath -w ~/nest/data-science/wip`"
-
-    # . /home/Ngo/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-    # eval `opam config env`
-    alias pub="/cygdrive/c/tools/dart-sdk/bin/pub.bat"
-    alias dart2js="/cygdrive/c/tools/dart-sdk/bin/dart2js.bat"
-    alias ipython="winpty ipython"
-    alias ocaml="winpty ocaml"
     alias subl='/cygdrive/c/Program\ Files/Sublime\ Text\ 3/sublime_text.exe'
     # alias git="/cygdrive/c/Program\ Files/Git/mingw64/bin/git"
 
@@ -199,32 +150,11 @@ then
 
 fi
 
-if [ "$UNAME" = "Darwin" ]
+if [ "$UNAME" = "Darwin" ] # ************************************************ **
 then
     alias l="ls -gohFG"
-
-    # TODO: check those 3 lines under macos
-    # export C_INCLUDE_PATH="$HOME/.brew/include:$HOME/.brew/include/freetype2"
-    # export CPLUS_INCLUDE_PATH="$HOME/.brew/include:$HOME/.brew/include/freetype2"
-    # export LIBRARY_PATH="$HOME/.brew/lib"
-
-    # alias tig="~/.brew/bin/tig/"
     EDITOR="emacs"
     export PATH="`/usr/bin/python -u $NGOCONF_PATH/scripts/clean_path.py`"
-    # export HOMEBREW_TEMP="/tmp/ngobrewtmp"
-    # export HOMEBREW_CACHE="/tmp/ngobrewcache"
-    # . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-    # eval `opam config env`
-    # alias ack="~/.brew/bin/ack"
-    # alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --kiosk --args 'file://'`pwd`'/' 2>/dev/null"
-    # alias chromegit="$NGOCONF_PATH/chromegit.sh"
-    # alias kic='ls -dltu /nfs/z*/*/*/* |  awk  '"'"'{printf "%15s (%s) %3s %2s %s\n", $3, $4, $6, $7, $8}'"'"' | rev | uniq -f4 | rev'
-    # alias qui='_(){ ldapsearch uid="$1" ; }; _'
-
-    # alias cddown="cd ~/Downloads/"
-    # alias cddesk="cd ~/Desktop/"
-    # alias cddocs="cd ~/Documents/"
-
 fi
 
 # POST - LOCATION SPECIFIC ************************************************** **
@@ -232,6 +162,7 @@ alias e="$EDITOR"
 export EDITOR="$EDITOR"
 
 # SSH *********************************************************************** **
+# Preprend to prompt the life time of the zsh-agent spawned using `ssh-agent zsh`
 function promptssh {
     NOW="$(date +%s)"
     DELTA=$(($SSH_TIMEOUT_THEN - $NOW))
