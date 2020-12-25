@@ -1,51 +1,51 @@
 [submodule "web-mode"]
-	path = web-mode
+	path = vendored/web-mode
 	url = https://github.com/fxbois/web-mode
 [submodule "tuareg"]
-	path = tuareg
+	path = vendored/tuareg
 	url = https://github.com/ocaml/tuareg
 [submodule "glsl-mode"]
-	path = glsl-mode
+	path = vendored/glsl-mode
 	url = https://github.com/jimhourihan/glsl-mode
 [submodule "lua-mode"]
-	path = lua-mode
+	path = vendored/lua-mode
 	url = https://github.com/immerrr/lua-mode
 [submodule "Fill-Column-Indicator"]
-	path = Fill-Column-Indicator
+	path = vendored/Fill-Column-Indicator
 	url = https://github.com/alpaker/Fill-Column-Indicator
 [submodule "markdown-mode"]
-	path = markdown-mode
+	path = vendored/markdown-mode
 	url = https://github.com/jrblevin/markdown-mode
 [submodule "dockerfile-mode"]
-	path = dockerfile-mode
+	path = vendored/dockerfile-mode
 	url = https://github.com/spotify/dockerfile-mode
 [submodule "buffer-move"]
-	path = buffer-move
+	path = vendored/buffer-move
 	url = https://github.com/lukhas/buffer-move
 [submodule "scala-mode2"]
-	path = scala-mode2
+	path = vendored/scala-mode2
 	url = https://github.com/hvesalai/scala-mode2
 [submodule "dart-mode"]
-	path = dart-mode
+	path = vendored/dart-mode
 	url = https://github.com/nex3/dart-mode
 [submodule "dash.el"]
-	path = dash.el
+	path = vendored/dash.el
 	url = https://github.com/magnars/dash.el
 [submodule "flycheck"]
-	path = flycheck
+	path = vendored/flycheck
 	url = https://github.com/flycheck/flycheck
 [submodule "seq.el"]
-	path = seq.el
+	path = vendored/seq.el
 	url = https://github.com/NicolasPetton/seq.el
 [submodule "yaml-mode"]
-	path = yaml-mode
+	path = vendored/yaml-mode
 	url = https://github.com/yoshiki/yaml-mode
 [submodule "persp-mode.el"]
-	path = persp-mode.el
+	path = vendored/persp-mode.el
 	url = https://github.com/Bad-ptr/persp-mode.el
 [submodule "ESS"]
-	path = ESS
+	path = vendored/ESS
 	url = https://github.com/emacs-ess/ESS
 [submodule "PG"]
-	path = PG
+	path = vendored/PG
 	url = https://github.com/ProofGeneral/PG

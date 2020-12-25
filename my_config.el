@@ -14,11 +14,11 @@
 ;; ************************************************************************** ;;
 
 ;; ;;proof general(major);;
-;; (load (concat confPath "/PG/generic/proof-site"))
+;; (load (concat confPath "/vendored/PG/generic/proof-site"))
 ;; ;;/proof general;;
 
 ;; ;;r-mode(major)
-;; (defvar rmode_path (concat confPath "/ESS/lisp/"))
+;; (defvar rmode_path (concat confPath "/vendored/ESS/lisp/"))
 ;; (if (file-exists-p rmode_path)
 ;;     (progn
 ;;       (add-to-list 'load-path rmode_path)
@@ -36,7 +36,7 @@
 (add-hook 'merlin-mode-hook (lambda () (my-late-set-keys)))
 
 ;;yaml-mode(major)
-(defvar yamlmode_path (concat confPath "/yaml-mode/"))
+(defvar yamlmode_path (concat confPath "/vendored/yaml-mode/"))
 (add-to-list 'load-path yamlmode_path)
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
@@ -44,26 +44,26 @@
 ;;/yaml-mode
 
 ;;dart-mode(major)
-(defvar dashdotel_path (concat confPath "/dash.el/"))
+(defvar dashdotel_path (concat confPath "/vendored/dash.el/"))
 (add-to-list 'load-path dashdotel_path)
 
-(defvar flycheck_path (concat confPath "/flycheck/"))
+(defvar flycheck_path (concat confPath "/vendored/flycheck/"))
 (add-to-list 'load-path flycheck_path)
 
-(defvar seqdotel_path (concat confPath "/seq.el/"))
+(defvar seqdotel_path (concat confPath "/vendored/seq.el/"))
 (add-to-list 'load-path seqdotel_path)
 
-(defvar let-alist_path (concat confPath "/let-alist-1.0.4/"))
+(defvar let-alist_path (concat confPath "/vendored/let-alist-1.0.4/"))
 (add-to-list 'load-path let-alist_path)
 
-(defvar dartmode_path (concat confPath "/dart-mode/"))
+(defvar dartmode_path (concat confPath "/vendored/dart-mode/"))
 (add-to-list 'load-path dartmode_path)
 (require 'dart-mode)
 (add-to-list 'auto-mode-alist '("\\.dart\\'" . dart-mode))
 ;;/dart-mode
 
 ;;scala-mode2(major)
-(defvar scalamode2_path (concat confPath "/scala-mode2/"))
+(defvar scalamode2_path (concat confPath "/vendored/scala-mode2/"))
 (add-to-list 'load-path scalamode2_path)
 (require 'scala-mode2)
 (add-to-list 'auto-mode-alist '("\\.scala\\'" . scala-mode))
@@ -83,14 +83,14 @@
 ;;/erlang-mode
 
 ;;dockerfile-mode(major)
-(defvar dockerfilemode_path (concat confPath "/dockerfile-mode/"))
+(defvar dockerfilemode_path (concat confPath "/vendored/dockerfile-mode/"))
 (add-to-list 'load-path dockerfilemode_path)
 (require 'dockerfile-mode)
 (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
 ;;/dockerfile-mode
 
 ;;markdown-mode(major)
-(defvar markdownmode_path (concat confPath "/markdown-mode/"))
+(defvar markdownmode_path (concat confPath "/vendored/markdown-mode/"))
 (add-to-list 'load-path markdownmode_path)
 (require 'markdown-mode)
 (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
@@ -99,7 +99,7 @@
 ;;/markdown-mode
 
 ;;nasm-mode
-(defvar nasmmode_path (concat confPath "/nasm-mode/Matthieu-Hauglustaine-nasm-mode.el"))
+(defvar nasmmode_path (concat confPath "/vendored/nasm-mode/Matthieu-Hauglustaine-nasm-mode.el"))
 (autoload 'nasm-mode nasmmode_path "" t)
 (add-to-list 'auto-mode-alist '("\\.\\(asm\\|s\\)$" . nasm-mode))
 (add-hook
@@ -108,7 +108,7 @@
 ;;/nasm-mode
 
 ;;web-mode
-(defvar webmode_path (concat confPath "/web-mode/"))
+(defvar webmode_path (concat confPath "/vendored/web-mode/"))
 (add-to-list 'load-path webmode_path)
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.php$" . web-mode))
@@ -140,7 +140,7 @@
 ;;/emacs-lisp-mode-hook
 
 ;;tuareg
-(defvar tuareg_path (concat confPath "/tuareg/"))
+(defvar tuareg_path (concat confPath "/vendored/tuareg/"))
 (add-to-list 'load-path tuareg_path)
 
 (autoload 'tuareg-mode "tuareg" "Major mode for editing Caml code" t)
@@ -190,7 +190,7 @@
 
 
 ;;glsl-mode
-(defvar glslmode_path (concat confPath "/glsl-mode/"))
+(defvar glslmode_path (concat confPath "/vendored/glsl-mode/"))
 (add-to-list 'load-path glslmode_path)
 
 (autoload 'glsl-mode "glsl-mode" nil t)
@@ -204,7 +204,7 @@
 ;;/glsl-mode
 
 ;;lua-mode
-(defvar luamode_path (concat confPath "/lua-mode/"))
+(defvar luamode_path (concat confPath "/vendored/lua-mode/"))
 (add-to-list 'load-path luamode_path)
 
 (autoload 'lua-mode "lua-mode" "Lua editing mode." t)
@@ -260,7 +260,7 @@
              '("Permission to use, copy, modify, and/or" . "WITH THE USE OR PERFORMANCE OF THIS SOFTWARE."))
 
 ;; minor perspective(minor)
-(defvar perspdotel_path (concat confPath "/persp-mode.el/"))
+(defvar perspdotel_path (concat confPath "/vendored/persp-mode.el/"))
 (add-to-list 'load-path perspdotel_path)
 
 ;; (setq persp-add-buffer-on-after-change-major-mode t)
@@ -314,7 +314,7 @@
 
 
 ;;fci-mode (minor)
-;; (defvar fci_path (concat confPath "/Fill-Column-Indicator/"))
+;; (defvar fci_path (concat confPath "/vendored/Fill-Column-Indicator/"))
 ;; (add-to-list 'load-path fci_path)
 ;; (require 'fill-column-indicator)
 ;; (define-globalized-minor-mode
@@ -333,7 +333,7 @@
 ;; ************************************************************************** ;;
 
 ;;42 site-lisp
-;; (defvar siteLispDir42 (concat confPath "/davidGironLisp"))
+;; (defvar siteLispDir42 (concat confPath "/vendored/davidGironLisp"))
 ;; (add-to-list 'load-path siteLispDir42)
 ;; (load "header.el")
 ;;/42 site-lisp

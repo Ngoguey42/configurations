@@ -8,7 +8,7 @@
 ;;   Created: 2016/04/19 09:55:30 by ngoguey           #+#    #+#             ;;
 ;;                                                                            ;;
 ;;****************************************************************************;;
-
+0;10;1c
 (load "my_functions.el")
 
 ;; ************************************************************************** ;;
@@ -72,7 +72,7 @@
 ;; (control c) (control x) (pgdown)  ??
 
 ;;buffer-move
-(load "buffer-move/buffer-move.el")
+(load "vendored/buffer-move/buffer-move.el")
 (global-set-key [(control c) (control x) (up)] 'buf-move-up)
 (global-set-key [(control c) (control x) (down)] 'buf-move-down)
 (global-set-key [(control c) (control x) (right)] 'buf-move-right)
