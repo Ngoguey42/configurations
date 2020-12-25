@@ -139,7 +139,7 @@ if [ "$UNAME" = "Linux" ]
 then
     alias spotify="nohup spotify &"
     EDITOR="/usr/bin/emacs -nw"
-    export PATH="`/usr/bin/python -u $NGOCONF_PATH/clean_path.py`"
+    export PATH="`/usr/bin/python -u $NGOCONF_PATH/scripts/clean_path.py`"
 
     alias termvert6="nohup terminator -b -l vert6 &"
     alias termvert2="nohup terminator -b -l vert2 &"
@@ -165,7 +165,7 @@ then
     alias open="cygstart.exe"
     alias clear='printf "\033c"'
     alias l="ls -gohFG --color"
-    export PATH="`/usr/bin/python -u $NGOCONF_PATH/clean_path.py`"
+    export PATH="`/usr/bin/python -u $NGOCONF_PATH/scripts/clean_path.py`"
 
     export CAML_LD_LIBRARY_PATH="$HOME/.opam/system/lib/stublibs:/cygdrive/c/OCaml/lib/stublibs"
     export MANPATH="$HOME/.opam/system/man:$MANPATH"
@@ -210,7 +210,7 @@ then
 
     # alias tig="~/.brew/bin/tig/"
     EDITOR="emacs"
-    export PATH="`/usr/bin/python -u $NGOCONF_PATH/clean_path.py`"
+    export PATH="`/usr/bin/python -u $NGOCONF_PATH/scripts/clean_path.py`"
     # export HOMEBREW_TEMP="/tmp/ngobrewtmp"
     # export HOMEBREW_CACHE="/tmp/ngobrewcache"
     # . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
