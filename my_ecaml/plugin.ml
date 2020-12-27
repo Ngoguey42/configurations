@@ -196,7 +196,7 @@ let my_merlin_locate () =
   | Some (pname', window') ->
       let winloc' = winloc_of_window_exn window' in
       print
-      @@ Printf.sprintf "Gone to %s %s %s %d %d (found window for file)" pname
+      @@ Printf.sprintf "Gone to %s %s %s %d %d (found window for file)" pname'
            path' (string_of_winloc winloc') line' column';
       activate_pname_safe pname';
       Ecaml.Selected_window.set window';

@@ -96,10 +96,8 @@ perspectives:
     - ./src/irmin-pack/pack_index.mli
     - ./src/irmin-pack/stats.mli
   "f1/29":
-    - ./src/irmin-pack/dict_intf.ml
-    - ./src/irmin-pack/pack_dict.mli
-    - ./src/irmin-pack/layout.mli
-    - ./src/irmin-pack/IO.mli
+    - [./src/irmin-pack/dict_intf.ml, ./src/irmin-pack/pack_dict.mli, ./src/irmin-pack/IO.mli]
+    - [<up>, ./src/irmin-pack/layout.mli, <up>]
   "f1/24":
     - ./src/irmin-pack/pack_intf.ml
     - ./src/irmin-pack/inode_intf.ml

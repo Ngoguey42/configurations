@@ -55,7 +55,7 @@ alias sed_hashes="python3 sed_hashes.py"
 # LIBRARIES CONF ************************************************************ **
 export PYTEST_ADDOPTS="--color=yes"
 
-__conda_setup="$('$HOME/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$($HOME/anaconda3/bin/conda 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
