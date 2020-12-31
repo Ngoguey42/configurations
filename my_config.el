@@ -174,20 +174,50 @@
   auto-mode-alist))
 ;;/tuarzgeg
 
+;;opam
+(let ((opam-share (ignore-errors (car (process-lines "opam" "config" "var" "share")))))
+  (when (and opam-share (file-directory-p opam-share))
+    (add-to-list 'load-path (expand-file-name "emacs/site-lisp" opam-share))
+    ))
+;;/opam
+
 ;;merlin
 (let ((opam-share (ignore-errors (car (process-lines "opam" "config" "var" "share")))))
   (when (and opam-share (file-directory-p opam-share))
-    ;; Register Merlin
-    (add-to-list 'load-path (expand-file-name "emacs/site-lisp" opam-share))
     (autoload 'merlin-mode "merlin" nil t nil)
-    ;; Automatically start it in OCaml buffers
     (add-hook 'tuareg-mode-hook 'merlin-mode t)
     (add-hook 'caml-mode-hook 'merlin-mode t)
     (setq merlin-error-after-save nil)
-    ;; Use opam switch to lookup ocamlmerlin binary
     (setq merlin-command 'opam)))
 ;;/merlin
 
+;;ocamlformat
+(add-hook 'tuareg-mode-hook (lambda ()
+  (define-key tuareg-mode-map (kbd "C-x f") #'ocamlformat)
+  (let ((opam-share (ignore-errors (car (process-lines "opam" "config" "var" "share")))))
+    (when (and opam-share (file-directory-p opam-share))
+      (setq ocamlformat-command (concat (getenv "HOME") "/.opam/of16/bin/ocamlformat"))
+      (require 'ocamlformat)
+      ))
+  ))
+
+(defun ft-ocamlformat016 ()
+  "swap lines down"
+  (interactive)
+  (if (> (count-lines (point) (point-max)) 0)
+      (let ((colnb (current-column)))
+        (end-of-line)
+        (delete-forward-char 1)
+        (kill-line)
+        (beginning-of-line)
+        (yank)
+        (newline)
+        (move-to-column colnb)
+        )
+    )
+  )
+
+;;/ocamlformat
 
 ;;glsl-mode
 (defvar glslmode_path (concat confPath "/vendored/glsl-mode/"))
@@ -253,11 +283,11 @@
 
 (require 'elide-head)
 (add-to-list 'elide-head-headers-to-hide
-             '("Copyright (c)" . "WITH THE USE OR PERFORMANCE OF THIS SOFTWARE."))
+             '("Copyright (c)" . "PERFORMANCE OF THIS SOFTWARE."))
 (add-to-list 'elide-head-headers-to-hide
              '("The MIT License" . "all copies or substantial portions of the Software."))
 (add-to-list 'elide-head-headers-to-hide
-             '("Permission to use, copy, modify, and/or" . "WITH THE USE OR PERFORMANCE OF THIS SOFTWARE."))
+             '("Permission to use, copy, modify, and/or" . "PERFORMANCE OF THIS SOFTWARE."))
 
 ;; minor perspective(minor)
 (defvar perspdotel_path (concat confPath "/vendored/persp-mode.el/"))

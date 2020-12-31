@@ -49,8 +49,8 @@ printf '\033[31m' ;rm -r **/*.dSYM && echo '\033[32mrm **/*.dSYM'
 printf '\033[0m'"
 
 alias ocamldepdot="ocaml unix.cma $NGOCONF_PATH/scripts/ocamldep-dot.ml"
-alias persp_of_yaml="python3 persp_of_yaml.py"
-alias sed_hashes="python3 sed_hashes.py"
+alias persp_of_yaml="python3 $NGOCONF_PATH/scripts/persp_of_yaml.py"
+alias sed_hashes="python3 $NGOCONF_PATH/scripts/sed_hashes.py"
 
 # LIBRARIES CONF ************************************************************ **
 export PYTEST_ADDOPTS="--color=yes"

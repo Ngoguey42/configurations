@@ -294,26 +294,6 @@ perspectives:
     # - ./src/ppx_irmin/dune # ^^^
     # - ./src/ppx_irmin/ppx_irmin.ml # $$$
 
-# src/irmin-test **********************************************************************
-  # "f?/?7":
-    # - ./src/irmin-test/dune # ^^^
-    # - ./src/irmin-test/irmin_test.ml # $$$
-  # "f?/?8":
-  # "f?/?9":
-  # "f?/?4":
-  # "f?/?5":
-  # "f?/?6":
-  # "f?/?1":
-  # "f?/?2":
-  # "f?/?3":
-  # "f?/?0":
-  # "f?/?+":
-    # - ./src/irmin-test/common.ml
-    # - ./src/irmin-test/irmin_bench.ml
-    # - ./src/irmin-test/layered_store.ml
-    # - ./src/irmin-test/rusage.ml
-    # - ./src/irmin-test/rusage_stubs.c
-    # - ./src/irmin-test/store.ml
 
 
 
@@ -347,6 +327,29 @@ perspectives:
     # - ./examples/sync.ml
     # - ./examples/trees.ml
 
+# src/irmin-test **********************************************************************
+  "f2/07":
+    - ./src/irmin-test/dune # ^^^
+    - ./src/irmin-test/irmin_test.mli # $$$
+    - ./src/irmin-test/common.ml
+  "f2/08":
+    - ./src/irmin-test/irmin_bench.ml
+    - ./src/irmin-test/rusage.ml
+    - ./src/irmin-test/rusage_stubs.c
+  "f2/09":
+  "f2/04":
+    - ./src/irmin-test/store.ml
+  "f2/05":
+    - ./src/irmin-test/layered_store.ml
+    - ./src/irmin-test/store_watch.ml
+    - ./src/irmin-test/store_graph.ml
+  "f2/06":
+  "f2/01":
+  "f2/02":
+  "f2/03":
+  "f2/00":
+  "f2/0+":
+
 # test/irmin-pack **********************************************************************
   "f2/27":
     - [./test/irmin-pack/dune, ./test/irmin-pack/test_pack.ml, ./test/irmin-pack/test_utils.ml]
@@ -366,6 +369,21 @@ perspectives:
   "f2/20":
   "f2/2+":
 
+# test/irmin **********************************************************************
+  "f2/17":
+    - [./test/irmin/dune, ./test/irmin/test_tree.ml ]
+    - [./test/irmin/test.ml, <up>]
+    - [./test/irmin/test_hash.ml, <up>]
+  "f2/18":
+  "f2/19":
+  "f2/14":
+  "f2/15":
+  "f2/16":
+  "f2/11":
+  "f2/12":
+  "f2/13":
+  "f2/10":
+  "f2/1+":
 
 # test/irmin-chunk **********************************************************************
   # "f?/?7":
@@ -516,19 +534,3 @@ perspectives:
     # - ./test/irmin-unix/dune # ^^^
     # - ./test/irmin-unix/test.ml
     # - ./test/irmin-unix/test_unix.ml
-
-# test/irmin **********************************************************************
-  # "f?/?7":
-  # "f?/?8":
-  # "f?/?9":
-  # "f?/?4":
-  # "f?/?5":
-  # "f?/?6":
-  # "f?/?1":
-  # "f?/?2":
-  # "f?/?3":
-  # "f?/?0":
-  # "f?/?+":
-    # - ./test/irmin/dune # ^^^
-    # - ./test/irmin/test.ml
-    # - ./test/irmin/test_tree.ml
