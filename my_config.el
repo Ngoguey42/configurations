@@ -35,6 +35,8 @@
 (require 'my-ecaml)
 (add-hook 'merlin-mode-hook (lambda () (my-late-set-keys)))
 
+(setq indent-tabs-mode nil)
+
 ;;yaml-mode(major)
 (defvar yamlmode_path (concat confPath "/vendored/yaml-mode/"))
 (add-to-list 'load-path yamlmode_path)
@@ -92,6 +94,10 @@
 ;;markdown-mode(major)
 (defvar markdownmode_path (concat confPath "/vendored/markdown-mode/"))
 (add-to-list 'load-path markdownmode_path)
+;;Can you please stop with your tabs you mode?!?
+(setq markdown-indent-on-enter nil)
+(defun insert-lol () "lol" (interactive) (insert "   "))
+(setq markdown-indent-function (quote insert-lol))
 (require 'markdown-mode)
 (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
@@ -157,15 +163,14 @@
    (elide-head)
    ;; (when (functionp 'flyspell-prog-mode) (flyspell-prog-mode))
 
-   ;; Quick and dirty setup of HIDESHOW minor mode for ocaml. Seems to work perfectly
-   (add-to-list 'hs-special-modes-alist
-                '(tuareg-mode
-                  "\\b\\(sig\\|struct\\|object\\|begin\\)\\b"
-                  "\\bend\\b"
-                  nil nil nil))
-   (hs-minor-mode 1)
-
    ))
+
+;; Quick and dirty setup of HIDESHOW minor mode for ocaml. Seems to work perfectly
+(add-to-list 'hs-special-modes-alist
+             '(tuareg-mode
+               "\\b\\(sig\\|struct\\|object\\|begin\\)\\b" "\\bend\\b"
+               nil nil nil))
+(add-hook 'tuareg-mode-hook (lambda () (hs-minor-mode 1)))
 
 (setq
  auto-mode-alist

@@ -19,7 +19,7 @@ import re, sys
 
 import names
 
-width = 8
+width = 5
 used = set()
 mapping = dict()
 

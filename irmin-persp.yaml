@@ -27,6 +27,8 @@ perspectives:
     - ./bench/irmin-pack/layers.ml
     - ./bench/irmin-pack/main.ml
   "f1/06":
+    - ./bench/irmin-pack/tree.ml
+    - ./bench/irmin-pack/bench_common.ml
   "f1/01":
   "f1/02":
   "f1/03":
@@ -92,29 +94,29 @@ perspectives:
     - ./src/irmin-pack/irmin_pack.mli # $$$
     - ./src/irmin-pack/s.ml # %%%
   "f1/28":
-    - ./src/irmin-pack/lru.mli
     - ./src/irmin-pack/pack_index.mli
     - ./src/irmin-pack/stats.mli
   "f1/29":
     - [./src/irmin-pack/dict_intf.ml, ./src/irmin-pack/pack_dict.mli, ./src/irmin-pack/IO.mli]
     - [<up>, ./src/irmin-pack/layout.mli, <up>]
   "f1/24":
-    - ./src/irmin-pack/pack_intf.ml
+    - ./src/irmin-pack/inode.ml
     - ./src/irmin-pack/inode_intf.ml
-    - ./src/irmin-pack/store_intf.ml
   "f1/25":
+    - ./src/irmin-pack/pack_intf.ml
     - ./src/irmin-pack/ext.mli
     - ./src/irmin-pack/closeable.mli
+    - ./src/irmin-pack/store_intf.ml
   "f1/26":
     - ./src/irmin-pack/checks_intf.ml
     - ./src/irmin-pack/config.mli
     - ./src/irmin-pack/utils.ml
   "f1/21":
-    - ./src/irmin-pack/irmin_pack_layers.mli
-    - ./src/irmin-pack/layered_store.mli
+    # - ./src/irmin-pack/irmin_pack_layers.mli
+    # - ./src/irmin-pack/layered_store.mli
   "f1/22":
-    - ./src/irmin-pack/inode_layers_intf.ml
-    - ./src/irmin-pack/IO_layers.mli
+    # - ./src/irmin-pack/inode_layers_intf.ml
+    # - ./src/irmin-pack/IO_layers.mli
   "f1/23":
   "f1/20":
   "f1/2+":
@@ -358,12 +360,13 @@ perspectives:
   "f2/29":
     - ./test/irmin-pack/common.mli
   "f2/24":
-    - ./test/irmin-pack/test_existing_stores.ml
-    - ./test/irmin-pack/layered.ml
-    - ./test/irmin-pack/multiple_instances.ml
+    - ./test/irmin-pack/test_inode.ml
   "f2/25":
   "f2/26":
   "f2/21":
+    - ./test/irmin-pack/test_existing_stores.ml
+    - ./test/irmin-pack/layered.ml
+    - ./test/irmin-pack/multiple_instances.ml
   "f2/22":
   "f2/23":
   "f2/20":
