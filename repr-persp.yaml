@@ -1,0 +1,39 @@
+
+./type_intf.ml
+./type_core_intf.ml
+./type_ordered.mli
+
+./type_size.mli
+./type_binary.mli
+
+./type_pp.mli
+./type_json.mli
+
+./utils.mli
+./witness.mli
+./staging.mli
+./repr.ml
+
+# size: size_of
+# ordered: equal / compare
+# binary: encode_bin / decode_bin / to_string staged / of_string staged
+# json: to_string / of_string / encode_json / decode_json / Fmt.t
+# pp: Fmt.t / to_string / of_string
+
+-------------------------------------------------------------------------------
+File                             blank        comment           code
+-------------------------------------------------------------------------------
+./type_binary.ml                    62             16            396
+./type_json.ml                      51             18            336
+./type.ml                           45             22            306
+./type_ordered.ml                   40             18            290
+./type_pp.ml                         9             20            223
+./type_size.ml                      24             15            144
+./type_core.ml                      11             15             96
+./utils.ml                           4              0             27
+./witness.ml                         6             15             18
+./repr.ml                            3             17              3
+./staging.ml                         1              0              3
+-------------------------------------------------------------------------------
+SUM:                               256            156           1842
+-------------------------------------------------------------------------------
