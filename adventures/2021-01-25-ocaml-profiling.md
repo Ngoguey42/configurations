@@ -1,15 +1,12 @@
 
-## TODO
-- Which goals clearly? (mem when, space, cpu when)
-- Regarder context.ml pour voir les diffs avec tezos-log
-
-## Unsolved problems
-- How to make sense out of Lwt fiber reordering that might occur sometimes
+## Unsolved problems (TODO: Move down)
+- Any other alternatives to speedscope? Some apps could exist
+- How to make sense out of Lwt fibers reordering that might occur sometimes.
 - How to produce a map file from symbols to file/line
 - How to hide collapse some parts of the call stack? Like OCaml's GC
 - How to simply process the raw data programmatically to produce ad-hoc high level infos, maybe using pandas.
 
-## Observations
+## Observations (TODO: Move out)
 - In encode_bin we can clearly see the tower of height <= 32, a non-tailrec flattening tool would be great
 - There is a strange non-tailrec tower of height >100 starting from tree.exe made of lru__find / pack__unsafe_find -_-'
 - Lru find calls Ht.find twice with the same key
@@ -25,9 +22,13 @@
     - 15% in Tree.find
 
 
+---
+---
+---
+
 > My dirty nodes
 
-A very similar documents: https://github.com/ocaml-bench/notes/blob/master/profiling_notes.md
+A very similar document: https://github.com/ocaml-bench/notes/blob/master/profiling_notes.md
 
 ---
 
@@ -35,9 +36,9 @@ A very similar documents: https://github.com/ocaml-bench/notes/blob/master/profi
 
 TLDR; doesn't work.
 
-After installing all those xcode and instruments stuff, you will be able to launch a process from xcode's window or using something like that `dune build ./bench/irmin-pack/tree.exe && time xcrun xctrace record --template 'Time Profiler' --launch -- _build/default/bench/irmin-pack/tree.exe --suite slow_trace && open *.trace`.
+After installing all those xcode and instruments stuff, you will be able to launch a command from xcode's window or using something like that `dune build ./bench/irmin-pack/tree.exe && time xcrun xctrace record --template 'Time Profiler' --launch -- _build/default/bench/irmin-pack/tree.exe --suite slow_trace && open *.trace`.
 
-The generated trace is very dirty, my guess is that the frame pointers are not clean enough for Instruments, and ocaml `+fp` switches are not supported on macos.
+The generated trace is very dirty, my guess is that the frame pointers are not clean enough for Instruments, and ocaml's `+fp` switches are not supported on macos AFAICT.
 
 Urls:
 - Instruments Tutorial with Swift: Getting Started
@@ -56,7 +57,7 @@ Urls:
 
 ## Profiling OCaml on linux using perf, flamegraph, speedscope
 
-```
+```sh
 dune build -- ./bench/irmin-pack/tree.exe && time perf record -F `cat /proc/sys/kernel/perf_event_max_sample_rate` --call-graph dwarf ./_build/default/bench/irmin-pack/tree.exe
 
 perf script -i ./perf.data | tee perf.txt | ../FlameGraph/stackcollapse-perf.pl | ../FlameGraph/flamegraph.pl > perf.svg
@@ -112,10 +113,10 @@ Flame Charts
 - Only for single-threaded
 
 #### Fixing Stacks & Symbols
-Bug
+Bugs in traces
 - Mangled RBP register, frame-pointer
 
-Command lines
+Command line
 - stackcollapse
 - Instead of `perf script`, use bcc/tools/profile.py
 
@@ -160,17 +161,11 @@ Urls:
 - memthol
     - https://www.ocamlpro.com/2020/12/01/memthol-exploring-program-profiling/
 - valgrind
-- FlameGraph
-    - Flame graphs are a visualization of profiled software, allowing the most frequent code-paths to be identified quickly and accurately.
-    - https://github.com/brendangregg/FlameGraph
-    - http://www.brendangregg.com/flamegraphs.html
-    - https://github.com/spiermar/d3-flame-graph
-    - 10k stars
-- pprof (go only?)
+- pprof (go only? that's unclear)
     - pprof is a tool for visualization and analysis of profiling data. 
     - https://github.com/google/pprof 
     - 4k stars
-    - KC uses pprof on multicore https://discuss.ocaml.org/t/about-multicore/138/18 usable on 4.0?
+    - KC uses pprof on multicore https://discuss.ocaml.org/t/about-multicore/138/18 usable on 4.x?
 - Hotspot 
     - the Linux perf GUI for performance analysis 
     - https://github.com/KDAB/hotspot 
