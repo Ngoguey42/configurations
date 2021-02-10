@@ -156,6 +156,7 @@ then
     EDITOR="emacs"
     export PATH="`/usr/bin/python -u $NGOCONF_PATH/scripts/clean_path.py`"
     alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
+    export PKG_CONFIG_PATH=$(brew --prefix openssl)/lib/pkgconfig
 fi
 
 # POST - LOCATION SPECIFIC ************************************************** **

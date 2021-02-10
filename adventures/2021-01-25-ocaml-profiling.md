@@ -1,38 +1,10 @@
-
-## Unsolved problems (TODO: Move down)
-- Any other alternatives to speedscope? Some apps could exist
-- How to make sense out of Lwt fibers reordering that might occur sometimes.
-- How to produce a map file from symbols to file/line
-- How to hide collapse some parts of the call stack? Like OCaml's GC
-- How to simply process the raw data programmatically to produce ad-hoc high level infos, maybe using pandas.
-
-## Observations (TODO: Move out)
-- In encode_bin we can clearly see the tower of height <= 32, a non-tailrec flattening tool would be great
-- There is a strange non-tailrec tower of height >100 starting from tree.exe made of lru__find / pack__unsafe_find -_-'
-- Lru find calls Ht.find twice with the same key
-- Inode.add is 40% of the time used
-  - I don't understand the lazy.force but the slow Map.add may come from `let vs = StepMap.bindings (StepMap.add s v vs) in`
-  - 71% in Tree.?
-    - 17% on inode_aux
-      - 13% on Lazy.force
-        - 7% in stabilize's hash call (the one that call `list`)
-          - 4% in map.add
-    - 21% on Pack.unsafe_append
-  - 27% in Tree.?
-    - 15% in Tree.find
-
-
----
----
----
-
 > My dirty nodes
 
 A very similar document: https://github.com/ocaml-bench/notes/blob/master/profiling_notes.md
 
 ---
 
-## Profiling OCaml on macos using Instruments
+## Instruments with OCaml
 
 TLDR; doesn't work.
 
@@ -40,7 +12,7 @@ After installing all those xcode and instruments stuff, you will be able to laun
 
 The generated trace is very dirty, my guess is that the frame pointers are not clean enough for Instruments, and ocaml's `+fp` switches are not supported on macos AFAICT.
 
-Urls:
+### Urls
 - Instruments Tutorial with Swift: Getting Started
     - 2021
     - https://www.raywenderlich.com/16126261-instruments-tutorial-with-swift-getting-started#:~:text=The%20Call%20Tree%20shows%20the,profiler%20stops%20in%20each%20method.
@@ -55,7 +27,13 @@ Urls:
 
 ---
 
-## Profiling OCaml on linux using perf, flamegraph, speedscope
+## Perf
+
+> aka perf_events
+
+Official linux profiler
+
+### OCaml
 
 ```sh
 dune build -- ./bench/irmin-pack/tree.exe && time perf record -F `cat /proc/sys/kernel/perf_event_max_sample_rate` --call-graph dwarf ./_build/default/bench/irmin-pack/tree.exe
@@ -69,17 +47,64 @@ perf script -i ./perf.data | tee perf.txt | ../FlameGraph/stackcollapse-perf.pl 
 
 I didn't spot much differences between `-F <max> --call-graph dwarf` on a normal switch and `-F <max> --call-graph fp` on a `+fp` switch.
 
-Urls:
+To find a line from a symbol
+```
+addr2line -e _build/default/bench/irmin-pack/tree.exe  `objdump -t _build/default/bench/irmin-pack/tree.exe  | grep "__set__to_seq_from" | cut -f1 -d' '`
+```
+
+### Kernel Recipes 2017 - Perf in Netflix - Brendan Gregg
+
+> https://www.youtube.com/watch?v=UVM3WX8Lq2k
+
+### Urls
 - Speedscope: Importing from perf (linux)
     - 2018
     - https://github.com/jlfwong/speedscope/wiki/Importing-from-perf-(linux)
 - [ANN] perf demangling of OCaml symbols (& a short introduction to perf)
     - 2021
     - https://discuss.ocaml.org/t/ann-perf-demangling-of-ocaml-symbols-a-short-introduction-to-perf/7143
+- http://www.brendangregg.com/perf.html#OneLiners
 
 ---
 
-## USENIX ATC '17: Visualizing Performance with Flame Graphs
+## Speedscope
+
+> https://github.com/jlfwong/speedscope/
+
+A browser application to visualize traces. 
+
+Among the many features. Pressing `r` is nice to collapse the recursive call for non-tail-recursive functions. Selecting a function in the `sandwich` mode allows to see both the callees and the callers.
+
+Doesn't seem to work when traces are over 1GB.
+
+---
+
+## Coz
+
+> https://github.com/plasma-umass/coz
+> https://cacm.acm.org/magazines/2018/6/228044-coz/fulltext?mobile=false
+
+To speed up concurrent code by placing C macros calls throughout your code.
+
+### "Performance Matters" by Emery Berger
+
+> https://www.youtube.com/watch?v=r-TLSBdHe1A
+
+The Layout of a tranlated program is source of a lot of variance in the performances. 
+
+He is selling `stabilizer`, it randomizes layout. You now have a gaussian for your performances. It randomizes the layout twice per second during execution too.
+
+Virtual speedup: In concurrent program, to find out the impact of a speed up, slow down components one by one and see the impact on the total time. Sometime, speeding a component slows the total because of new congestions.
+
+---
+
+## Flamegraph
+
+> http://brendangregg.com/flamegraphs.html
+
+Check out the shortcuts. The highlighting search is nice.
+
+### USENIX ATC '17: Visualizing Performance with Flame Graphs
 
 > https://www.youtube.com/watch?v=D53T1Ejig1Q
 
@@ -143,24 +168,32 @@ Flame graph diffs
 
 ## Memprof using memtrace
 
-Urls:
+### Urls
 - http://www.lix.polytechnique.fr/Labo/Gabreil.Scherer/doc/chameau-sur-le-plateau/2019-11-12-jacques-henri-jourdan-statmemprof.pdf
 - https://github.com/jhjourdan/statmemprof-emacs
 - https://blog.janestreet.com/finding-memory-leaks-with-memtrace/
 - https://github.com/janestreet/memtrace
 - https://github.com/janestreet/memtrace_viewer
 
-
 ---
 
+## Unsolved problems
+- Any other alternatives to speedscope? Some desktop apps could exist
+- How to make sense out of Lwt fibers reordering that might occur sometimes.
+- How to hide collapse some parts of the call stack? Like OCaml's GC
+- How to simply process the raw data programmatically to produce ad-hoc high level infos, maybe using python.
+
+--
+
 ## Unexplored tools
-- landmarks (deprecated?)
+- landmarks (deprec ated?)
 - ocamlperf
 - ocaml spacetime (kind of the ancestor of memprof/memtrace)
     - https://blog.janestreet.com/a-brief-trip-through-spacetime/
 - memthol
     - https://www.ocamlpro.com/2020/12/01/memthol-exploring-program-profiling/
 - valgrind
+- dtrace
 - pprof (go only? that's unclear)
     - pprof is a tool for visualization and analysis of profiling data. 
     - https://github.com/google/pprof 
@@ -173,10 +206,6 @@ Urls:
 - Tracy 
     - A real time, nanosecond resolution, remote telemetry, hybrid frame and sampling profiler for games and other applications. 
     - https://github.com/wolfpld/tracy 
-    - 2k stars
-- Coz 
-    - Finding Code that Counts with Causal Profiling 
-    - https://github.com/plasma-umass/coz 
     - 2k stars
 - Orbit 
     - standalone C/C++ profiler for Windows and Linux. Its main purpose is to help developers visualize the execution flow of a complex application. 
