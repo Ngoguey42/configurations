@@ -46,7 +46,7 @@ perspectives:
     - ./src/irmin/s.ml # %%%
   "f1/18":
     - [./src/irmin/type.mli, ./src/irmin/branch.mli, ./src/irmin/lock.mli ]
-    - [./src/irmin/path.mli, ./src/irmin/version.ml, ./src/irmin/stdlib_ext.mli]
+    - [./src/irmin/path.mli, ./src/irmin/version.ml, <up>]
   "f1/19":
     - ./src/irmin/slice.mli
     - ./src/irmin/sync.mli
@@ -58,8 +58,8 @@ perspectives:
     - ./src/irmin/object_graph.mli
     - ./src/irmin/node.mli
   "f1/16":
-    - ./src/irmin/hash.mli
-    - ./src/irmin/commit.mli
+    - ./src/irmin/hash_intf.ml
+    - ./src/irmin/commit_intf.ml
   "f1/11":
     - ./src/irmin/contents.mli
     - ./src/irmin/dot.mli

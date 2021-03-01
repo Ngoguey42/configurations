@@ -293,6 +293,8 @@
              '("The MIT License" . "all copies or substantial portions of the Software."))
 (add-to-list 'elide-head-headers-to-hide
              '("Permission to use, copy, modify, and/or" . "PERFORMANCE OF THIS SOFTWARE."))
+(add-to-list 'elide-head-headers-to-hide
+             '("Open Source License" . "DEALINGS IN THE SOFTWARE."))
 
 ;; minor perspective(minor)
 (defvar perspdotel_path (concat confPath "/vendored/persp-mode.el/"))
