@@ -201,7 +201,7 @@
   (define-key tuareg-mode-map (kbd "C-x f") #'ocamlformat)
   (let ((opam-share (ignore-errors (car (process-lines "opam" "config" "var" "share")))))
     (when (and opam-share (file-directory-p opam-share))
-      (setq ocamlformat-command (concat (getenv "HOME") "/.opam/of16/bin/ocamlformat"))
+      (setq ocamlformat-command (concat (getenv "HOME") "/.opam/of18/bin/ocamlformat"))
       (require 'ocamlformat)
       ))
   ))
