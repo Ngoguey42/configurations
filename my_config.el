@@ -159,7 +159,6 @@
  (lambda ()
    (setq show-trailing-whitespace t)
    (setq indicate-empty-lines t)
-   (setq mode-name "🐫")
    (elide-head)
    ;; (when (functionp 'flyspell-prog-mode) (flyspell-prog-mode))
 

@@ -294,12 +294,6 @@ let open_github page_type () =
 
 (* The rest ***************************************************************** *)
 
-let override_merlin_lighter () =
-  let g () = " 🧙" in
-  Ecaml.defun_nullary
-    (Ecaml.Symbol.intern "merlin-lighter")
-    [%here] (Ecaml.Defun.Returns.Returns Ecaml.Value.Type.string) g
-
 (** Set those shortcuts after merlin and such *)
 let my_late_set_keys () =
   (* Remove a merlin shortcut that blocks my buf-move shortcuts *)
@@ -313,8 +307,6 @@ let my_late_set_keys () =
   set_key ~command:"my-merlin-locate" ~seq:"C-c C-l";
   set_key ~command:"my-location-undo" ~seq:"C-c [";
   set_key ~command:"my-location-redo" ~seq:"C-c ]";
-
-  override_merlin_lighter ();
   ()
 
 let () =
