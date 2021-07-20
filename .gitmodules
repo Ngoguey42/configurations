@@ -49,3 +49,9 @@
 [submodule "PG"]
 	path = vendored/PG
 	url = https://github.com/ProofGeneral/PG
+[submodule "vendored/iedit"]
+	path = vendored/iedit
+	url = https://github.com/victorhge/iedit
+[submodule "vendored/imenu-list"]
+	path = vendored/imenu-list
+	url = https://github.com/bmag/imenu-list

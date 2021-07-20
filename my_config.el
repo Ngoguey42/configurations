@@ -191,6 +191,12 @@
     (autoload 'merlin-mode "merlin" nil t nil)
     (add-hook 'tuareg-mode-hook 'merlin-mode t)
     (add-hook 'caml-mode-hook 'merlin-mode t)
+    ;; (add-hook 'my-mode-hook 'imenu-add-menubar-index)
+    (defvar imenulist_path (concat confPath "/vendored/imenu-list/"))
+    (add-to-list 'load-path imenulist_path)
+    (require 'imenu-list)
+    (require 'merlin-imenu)
+    ;; (add-hook 'imenu-list-minor-mode 'merlin-mode t)
     (setq merlin-error-after-save nil)
     (setq merlin-command 'opam)))
 ;;/merlin
