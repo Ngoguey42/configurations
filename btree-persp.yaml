@@ -1,0 +1,31 @@
+perspectives:
+
+# src **********************************************************************
+  "f1/-":
+    - ./src/btree.ml
+    - ./src/node.ml
+    - ./src/leaf.ml
+    # - ./src/dune
+
+  "f1/=":
+    - ./src/vertex.ml
+    - ./src/vertex_header.ml
+
+  "f1/[":
+    - ./src/data.ml
+    - ./src/recorder.ml
+    - ./src/input.ml
+
+  "f1/]":
+    - ./src/store.ml
+    - ./src/cache.ml
+    - ./src/field.ml
+
+  "f1/;":
+    - [./src/log.ml, ./src/pread.c, ./src/pwrite.c]
+    - [./src/syscalls.ml,  <up>, <up>]
+
+  "f1/'":
+    - ./src/stats.ml
+    - ./src/params.ml
+    - ./src/utils.ml
